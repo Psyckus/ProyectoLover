@@ -17,7 +17,9 @@ namespace capaPresentacionValidadorPerfiles
                        "~/Scripts/DataTables/jquery.dataTables.js",
                         "~/Scripts/DataTables/dataTables.responsive.js",
                          "~/Scripts/loadingoverlay/loadingoverlay.min.js",
+                         "~/Scripts/Emparejamiento.js",
                          "~/Scripts/sweetalert.min.js"
+
                         ));
 
 
@@ -29,6 +31,7 @@ namespace capaPresentacionValidadorPerfiles
                 "~/Content/site.css",
                 "~/Content/DataTables/css/jquery.dataTables.css",
                 "~/Content/DataTables/css/responsive.dataTables.css",
+                "~/Content/Emparejamiento.css",
                 "~/Content/sweetalert.css"
                 ));
         }
