@@ -9,3 +9,14 @@ C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.cspr
 C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
 C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.dll
 C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.pdb
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\bin\Debug\CapaNegocios.dll
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\bin\Debug\CapaNegocios.pdb
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\bin\Debug\CapaDatos.dll
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\bin\Debug\CapaEntidad.dll
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\bin\Debug\CapaDatos.pdb
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\bin\Debug\CapaEntidad.pdb
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.csproj.AssemblyReference.cache
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.dll
+C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.pdb
