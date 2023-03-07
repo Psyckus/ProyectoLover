@@ -20,3 +20,14 @@ C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.cspr
 C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
 C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.dll
 C:\Users\kevin\Source\Repos\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.pdb
+D:\Proyectos\lover\CapaNegocios\bin\Debug\CapaNegocios.dll
+D:\Proyectos\lover\CapaNegocios\bin\Debug\CapaNegocios.pdb
+D:\Proyectos\lover\CapaNegocios\bin\Debug\CapaDatos.dll
+D:\Proyectos\lover\CapaNegocios\bin\Debug\CapaEntidad.dll
+D:\Proyectos\lover\CapaNegocios\bin\Debug\CapaDatos.pdb
+D:\Proyectos\lover\CapaNegocios\bin\Debug\CapaEntidad.pdb
+D:\Proyectos\lover\CapaNegocios\obj\Debug\CapaNegocios.csproj.AssemblyReference.cache
+D:\Proyectos\lover\CapaNegocios\obj\Debug\CapaNegocios.csproj.CoreCompileInputs.cache
+D:\Proyectos\lover\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
+D:\Proyectos\lover\CapaNegocios\obj\Debug\CapaNegocios.dll
+D:\Proyectos\lover\CapaNegocios\obj\Debug\CapaNegocios.pdb

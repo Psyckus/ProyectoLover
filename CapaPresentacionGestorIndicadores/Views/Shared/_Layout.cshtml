@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -37,23 +37,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="@Url.Action("Usuarios","Home")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                            Usuarios
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Mantenimiento</div>
-                        <a class="nav-link" href="@Url.Action("categoria","Mantenedor")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Categorias
-                        </a>
-                        <a class="nav-link" href="@Url.Action("marca","Mantenedor")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
-                            Marcas
-                        </a>
-                        <a class="nav-link" href="@Url.Action("producto","Mantenedor")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
-                            Productos
-                        </a>
+                        
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
