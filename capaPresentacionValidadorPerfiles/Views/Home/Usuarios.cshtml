@@ -44,7 +44,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Productos</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Usuarios</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -232,7 +232,41 @@
                             console.log(error)
                         },
 
-                });
+        });
+
+
+
+        jQuery.validator.addMethod("validar", function (value, element) {
+            return this.optional(element) || /^\d{0,4}(\. \d{0,2})?$/i.test(value);
+        }, "Solo debe ingresar numeros en la identificacion");
+
+        $("#contenedor").validate({
+            rules: {
+
+                nombre: {
+                    required: true
+                },
+                apellido: {
+                    required: true
+                },
+                email: {
+                    required: true
+                },
+                
+                identificacion: {
+                    required: true,
+                    number: true
+                }
+            },
+            messages: {
+                nombre: "- El campo nombre es obligatorio",
+                apellido: "- El campo apellido es obligatorio",
+                email: "- El campo email es obligatorio",
+                identificacion: { required: "- El campo identificacion es obligatorio", validar: "-Debe ingresar solo numeros" }
+            },
+            errorElement: "div",
+            errorLabelContainer: ".alert-danger"
+        })
 
 
 
@@ -325,11 +359,9 @@
         function guardar() {
 
 
-            //if (!$("#contenedor").valid()) {
-            //    return;
-            //}
-
-
+            if (!$("#contenedor").valid()) {
+                return;
+            }
 
             var usuario = {
 
