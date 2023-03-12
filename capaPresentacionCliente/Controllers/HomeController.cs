@@ -13,6 +13,16 @@ namespace capaPresentacionCliente.Controllers
             return View();
         }
 
+        public ActionResult Principal()
+        {
+            return View();
+        }
+
+        public ActionResult Panel()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
