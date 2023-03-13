@@ -120,8 +120,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccesoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\preguntasInteresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -247,6 +249,9 @@
     <Content Include="Content\solid.css" />
     <Content Include="Content\solid.min.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\StylesJona\Preguntas.css" />
+    <Content Include="Content\StylesJona\styleLogin.css" />
+    <Content Include="Content\StylesJona\styleRegistro.css" />
     <Content Include="Content\svg-with-js.css" />
     <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\v4-shims.css" />
@@ -258,6 +263,7 @@
     <Content Include="imagenes\icons8-editar-propiedad-50.png" />
     <Content Include="imagenes\icons8-historia-de-la-actividad-80.png" />
     <Content Include="imagenes\icons8-usuario-masculino-en-círculo-50.png" />
+    <Content Include="imagenes\login.svg" />
     <Content Include="imagenes\pruebas.png" />
     <Content Include="imagenes\susana.jpeg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -381,10 +387,17 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Home\Panel.cshtml" />
+    <Content Include="Views\Acceso\Index.cshtml" />
+    <Content Include="Views\Acceso\Registrar.cshtml" />
+    <Content Include="Views\Acceso\Reestablecer.cshtml" />
+    <Content Include="Views\Acceso\CambiarClave.cshtml" />
+    <Content Include="Views\preguntasInteres\Pregunta1.cshtml" />
+    <Content Include="Views\preguntasInteres\Pregunta2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="Views\Index\" />
   </ItemGroup>
   <ItemGroup>

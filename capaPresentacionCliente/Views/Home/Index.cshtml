@@ -1,8 +1,7 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    Layout = null;
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +56,8 @@
                     <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Asistencia</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
-                    <li><a class="getstarted scrollto" href="#about">Registrarse</a></li>
+                    <li><a class="getstarted scrollto" href="@Url.Action("Registrar","Acceso")">Crear Cuenta</a></li>
+                    <li><a class="getstarted scrollto" href="@Url.Action("Index","Acceso")">Iniciar Sesion</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -70,7 +70,7 @@
             <h1>Lover</h1>
             <h2>Mejor opcion para encotrar a tu pareja</h2>
             <div class="d-flex">
-                <a href="#about" class="btn-get-started scrollto">Registrarse</a>
+                <a href="@Url.Action("Registrar","Acceso")" class="btn-get-started scrollto">Crear Cuenta</a>
             </div>
         </div>
     </section><!-- End Hero -->
@@ -454,5 +454,3 @@
 </body>
 
 </html>
-
-

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CN_Clientes.cs" />
     <Compile Include="CN_Recurso.cs" />
     <Compile Include="CN_Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
