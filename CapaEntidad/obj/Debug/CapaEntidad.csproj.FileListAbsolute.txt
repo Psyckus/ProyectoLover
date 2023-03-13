@@ -16,3 +16,8 @@ C:\Users\dnb12\Source\Repos\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.csproj
 C:\Users\dnb12\Source\Repos\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Users\dnb12\Source\Repos\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Users\dnb12\Source\Repos\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.pdb
