@@ -13,16 +13,9 @@
 
 <div class="card">
     <div class="card-header">
-        <i class="fas fa-users me-1"></i> Lista de usuarios
+        <i class="fas fa-users me-1"></i> Modulo Emparejamiento
     </div>
     <div class="card-body">
-        <div class="row">
-            <div class="col-12">
-                <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
-            </div>
-        </div>
-
-        <hr />
         <table id="tabla" class="display cell-border" style="width: 100%">
             <thead>
                 <tr>
@@ -33,6 +26,26 @@
                 </tr>
             </thead>
             <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CriterioInteres)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EdadCriterio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestCriterio)
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i>@Html.ActionLink("Edit", "Edit", new { id = item.Id_modconf })</button>
+                            
+                        </td>
+                    </tr>
+                }
+
             </tbody>
         </table>
     </div>
@@ -40,41 +53,4 @@
 
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CriterioInteres)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EdadCriterio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TestCriterio)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CriterioInteres)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EdadCriterio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestCriterio)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id_modconf }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id_modconf }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id_modconf })
-            </td>
-        </tr>
-    }
-
-</table>
