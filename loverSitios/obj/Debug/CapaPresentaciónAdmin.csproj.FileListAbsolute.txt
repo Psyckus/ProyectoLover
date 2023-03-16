@@ -274,3 +274,7 @@ C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\loverS
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\loverSitios\obj\Debug\CapaPresentaciónAdmin.csproj.CopyComplete
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\loverSitios\obj\Debug\loverSitios.dll
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\loverSitios\obj\Debug\loverSitios.pdb
+C:\Users\kevin\Source\Repos\loverSitios\loverSitios\bin\EntityFramework.dll
+C:\Users\kevin\Source\Repos\loverSitios\loverSitios\bin\EntityFramework.SqlServer.dll
+C:\Users\kevin\Source\Repos\loverSitios\loverSitios\bin\EntityFramework.xml
+C:\Users\kevin\Source\Repos\loverSitios\loverSitios\bin\EntityFramework.SqlServer.xml

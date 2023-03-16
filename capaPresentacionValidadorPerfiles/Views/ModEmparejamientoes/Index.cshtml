@@ -1,0 +1,80 @@
+﻿@model IEnumerable<capaPresentacionValidadorPerfiles.Modelo.ModEmparejamiento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
+    <li class="breadcrumb-item active">Modulo Emparejamiento</li>
+</ol>
+
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de usuarios
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
+            </div>
+        </div>
+
+        <hr />
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Citerio interes</th>
+                    <th>Edad Critrio</th>
+                    <th>Test Criterio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CriterioInteres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EdadCriterio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestCriterio)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CriterioInteres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EdadCriterio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestCriterio)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id_modconf }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id_modconf }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id_modconf })
+            </td>
+        </tr>
+    }
+
+</table>

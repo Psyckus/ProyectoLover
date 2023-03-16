@@ -366,3 +366,7 @@ C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\capaPr
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\capaPresentacionCliente\obj\Debug\capaPresentacionCliente.csproj.CopyComplete
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\capaPresentacionCliente\obj\Debug\capaPresentacionCliente.dll
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\capaPresentacionCliente\obj\Debug\capaPresentacionCliente.pdb
+C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.dll
+C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.SqlServer.dll
+C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.xml
+C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.SqlServer.xml

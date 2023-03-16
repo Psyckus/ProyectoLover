@@ -274,3 +274,7 @@ C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\capaPr
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\capaPresentacionValidadorPerfiles\obj\Debug\capaPresentacionValidadorPerfiles.csproj.CopyComplete
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\capaPresentacionValidadorPerfiles\obj\Debug\capaPresentacionValidadorPerfiles.dll
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\capaPresentacionValidadorPerfiles\obj\Debug\capaPresentacionValidadorPerfiles.pdb
+C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionValidadorPerfiles\bin\EntityFramework.dll
+C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionValidadorPerfiles\bin\EntityFramework.SqlServer.dll
+C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionValidadorPerfiles\bin\EntityFramework.xml
+C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionValidadorPerfiles\bin\EntityFramework.SqlServer.xml

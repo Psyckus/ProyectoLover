@@ -274,3 +274,7 @@ C:\Users\kevin\Source\Repos\loverSitios\CapaPresentacionGestorIndicadores\obj\De
 C:\Users\kevin\Source\Repos\loverSitios\CapaPresentacionGestorIndicadores\obj\Debug\CapaPresentacionGestorIndicadores.csproj.CopyComplete
 C:\Users\kevin\Source\Repos\loverSitios\CapaPresentacionGestorIndicadores\obj\Debug\CapaPresentacionGestorIndicadores.dll
 C:\Users\kevin\Source\Repos\loverSitios\CapaPresentacionGestorIndicadores\obj\Debug\CapaPresentacionGestorIndicadores.pdb
+C:\Users\kevin\Source\Repos\loverSitios\CapaPresentacionGestorIndicadores\bin\EntityFramework.dll
+C:\Users\kevin\Source\Repos\loverSitios\CapaPresentacionGestorIndicadores\bin\EntityFramework.SqlServer.dll
+C:\Users\kevin\Source\Repos\loverSitios\CapaPresentacionGestorIndicadores\bin\EntityFramework.xml
+C:\Users\kevin\Source\Repos\loverSitios\CapaPresentacionGestorIndicadores\bin\EntityFramework.SqlServer.xml

@@ -53,7 +53,6 @@
     <Compile Include="match1.cs" />
     <Compile Include="match2.cs" />
     <Compile Include="mensaje.cs" />
-    <Compile Include="ModEmparejamiento.cs" />
     <Compile Include="preferencia.cs" />
     <Compile Include="preferencia_cliente.cs" />
     <Compile Include="preguntaTest.cs" />
