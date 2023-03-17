@@ -6,3 +6,334 @@
 
 <h2>interes</h2>
 
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
+    <li class="breadcrumb-item active">Intereses</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista interes
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
+            </div>
+        </div>
+
+        <hr />
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+
+                    <th>Nombre Interes</th>
+                    <th>Estado Interes</th>
+                    <th>Nombre Categoria</th>
+                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Intereses</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <input id="txtid" type="hidden" value="0" />
+
+
+                <form id="contenedor" class="row">
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre Interes</label>
+                            <input type="text" class="form-control" id="txtnombre" name="nombre" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Estado</label>
+                            <select id="cboestado" class="form-select">
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mb-2">
+                            <label class="form-label">Categoria</label>
+                            <select id="cboCate" class="form-select">
+                            </select>
+                        </div>
+                       
+                    </div>
+
+
+                
+                </form>
+                <!--Mensaje de alerta-->
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+
+        var tabladata;
+        var filaSeleccionada
+
+        jQuery.ajax({
+            url: '@Url.Action("ListarInteres", "Mantenedor")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+
+
+                console.log(data)
+            }
+        })
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarInteres", "Mantenedor")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+
+                { "data": "nombreI" },
+
+
+                {
+                    "data": "estado", "render": function (valor) {
+
+                        if (valor) {
+                            return '<span class="badge rounded-pill bg-success">Activo</span>'
+                        } else {
+                            return '<span class="badge rounded-pill bg-danger">Inactivo</span>'
+                        }
+
+                    }
+                },
+                {
+                    "data": "oCategoria_interes", "render": function (data) {
+                        return data.nombre
+                    }
+                },
+
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "90px"
+                }
+
+            ],
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.13.2/i18n/es-ES.json" }
+        });
+           jQuery.ajax({
+                        url: '@Url.Action("ListarCaI", "Mantenedor")',
+                        type: "GET",
+                        data: null,
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data)
+
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cboCate");
+
+                $.each(data.data, function (index, item)
+                {
+                    $("<option>").attr({ "value": item.idCategoria_interes }).text(item.nombre).appendTo("#cboCate");
+                })
+
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        },
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $("#contenedor").validate({
+            rules: {
+
+                nombre: {
+                    required: true
+                },
+            },
+            messages: {
+                nombre: "- El campo nombre es obligatorio"
+            },
+            errorElement: "div",
+            errorLabelContainer: ".alert-danger"
+        })
+
+
+
+        function abrirModatl(json) {
+            //campos del modal txtid es invisible
+            $("#txtid").val(0);
+            $("#txtnombre").val("");
+            $("#cboestado").val(1);
+            $("#cboCate").val($("#cboCate option:first").val());
+            $("#mensajeError").hide();
+
+
+
+            //información obtenida de bd
+            if (json != null) {
+
+                $("#txtid").val(json.idinteres);
+                $("#txtnombre").val(json.nombreI);
+                $("#cboestado").val(json.estado == true ? 1 : 0);
+                $("#cboCate").val(json.oCategoria_interes.idCategoria_interes);
+            }
+
+            $("#FormModal").modal("show")
+        }
+
+        $("#tabla tbody").on("click", '.btn-editar', function () {
+            filaSeleccionada = $(this).closest("tr");
+            var data = tabladata.row(filaSeleccionada).data();
+
+            abrirModatl(data)
+
+
+        })
+
+
+
+        //crear un nuevo usuario y editarlo
+        function guardar() {
+
+
+            if (!$("#contenedor").valid()) {
+                return;
+            }
+
+            var categoria = {
+
+                idCategoria_interes: $("#txtid").val(),
+
+
+                nombre: $("#txtnombre").val(),
+
+                estado: $("#cboestado").val() == 1 ? true: false
+
+
+
+            }
+
+            jQuery.ajax({
+                url: '@Url.Action("GuardarCategoria", "Mantenedor")',
+                type: "POST",
+                data: JSON.stringify({ obj: categoria }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+
+
+                    //crear nueva categoria
+                    if (categoria.idCategoria_interes == 0) {
+
+                        if (data.resultado != 0) {
+
+                            categoria.idCategoria_interes = data.resultado;
+                            tabladata.row.add(categoria).draw(false);
+                            $("#FormModal").modal("hide");
+
+
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+
+
+
+                         //Editar categoria
+                    } else {
+
+                        if (data.resultado) {
+                            tabladata.row(filaSeleccionada).data(categoria).draw(false);
+                            filaSeleccionada = null;
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error");
+                    $("#mensajeError").show();
+                },
+                beforeSend: function () {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "Cargando...",
+                        size:14
+                        })
+                }
+            });
+
+
+
+        }
+
+
+    </script>
+
+}

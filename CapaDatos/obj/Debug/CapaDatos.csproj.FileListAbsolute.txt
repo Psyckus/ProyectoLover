@@ -34,3 +34,12 @@ C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\CapaDa
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (2)\loverSitios\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Usuario\Source\Repos\loverSitios\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Usuario\Source\Repos\loverSitios\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Usuario\Source\Repos\loverSitios\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\Usuario\Source\Repos\loverSitios\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\Usuario\Source\Repos\loverSitios\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\Usuario\Source\Repos\loverSitios\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Source\Repos\loverSitios\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\Usuario\Source\Repos\loverSitios\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Usuario\Source\Repos\loverSitios\CapaDatos\obj\Debug\CapaDatos.pdb
