@@ -370,3 +370,7 @@ C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramew
 C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.SqlServer.dll
 C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.xml
 C:\Users\kevin\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.SqlServer.xml
+C:\Users\dnb12\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.dll
+C:\Users\dnb12\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.SqlServer.dll
+C:\Users\dnb12\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.xml
+C:\Users\dnb12\Source\Repos\loverSitios\capaPresentacionCliente\bin\EntityFramework.SqlServer.xml
