@@ -2,9 +2,12 @@
 using CapaNegocios;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CapaDatos;
 
 namespace capaPresentacionCliente.Controllers
 {
@@ -63,6 +66,29 @@ namespace capaPresentacionCliente.Controllers
             }
 
         }
-       
+
+        //metodo para obtener la imagen/solo una imagen tipo jpeg
+        public ActionResult GetImage(int id)
+        {
+            byte[] imageData = null;
+
+
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                oconexion.Open();
+
+                SqlCommand command = new SqlCommand("SELECT rutaFoto FROM foto WHERE idCliente = @idCliente", oconexion);
+                command.Parameters.Add("@idCliente", SqlDbType.Int).Value = id;
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    imageData = (byte[])reader["rutaFoto"];
+                }
+            }
+
+            return File(imageData, "image/jpeg");
+        }
+
     }
 }

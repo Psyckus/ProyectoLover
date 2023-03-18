@@ -19,18 +19,27 @@
         <div class="side">
             <div class="header">
                 <div class="avatar">
-                    <a href="~/Home/Panel">
-                        <img src="~/imagenes/susana.jpeg" alt="" id="img" />
+                    <a href="~/Home/Cuenta">
+                        @*@con esto me tarigo el nombre y la imagen del usuario actual@*@
+                        @{
+                            var miObjeto = Session["Cliente"] as CapaEntidad.cliente;
+                        }
+
+                        @if (miObjeto != null)
+                        {
+                            <p></p>
+                        }
+                        <img src="@Url.Action("GetImage", "preguntasInteres", new { id = @Session["idCliente"] })" />
                     </a>
-                    
+
                 </div>
-                <div class="title" id="nomP">Susana</div>
+                <div class="title"><samp> @Session["nombre"]</samp></div>
             </div>
             <div class="menu">
                 <ul>
                     <li>Matches</li>
                     <li class="active">Mensajes</li>
-                    <li >Suspiros</li>
+                    <li>Suspiros</li>
                 </ul>
             </div>
             <div class="messages">

@@ -509,6 +509,7 @@
     <Content Include="Views\Acceso\CambiarClave.cshtml" />
     <Content Include="Views\preguntasInteres\Pregunta1.cshtml" />
     <Content Include="Views\preguntasInteres\Pregunta2.cshtml" />
+    <Content Include="Views\Home\Cuenta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -522,6 +523,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{BF9A5C14-03C0-41BE-90B5-FE8834B03B66}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
       <Project>{0b66d9ff-6b59-4920-923d-01cbb4847cb0}</Project>
       <Name>CapaEntidad</Name>
