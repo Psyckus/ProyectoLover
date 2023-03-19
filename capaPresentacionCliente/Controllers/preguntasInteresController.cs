@@ -43,8 +43,8 @@ namespace capaPresentacionCliente.Controllers
 
             if (respuesta)
             {
-                //var session = HttpContext.Session;
-                //var oClienteSession = session["Cliente"];
+                var session = HttpContext.Session;
+                var oClienteSession = session["Cliente"];
                 TempData["idCliente"] = idCliente;
                 return RedirectToAction("Pregunta3");
             }

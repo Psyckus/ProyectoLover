@@ -13,6 +13,88 @@ namespace CapaDatos
 {
     public class CD_Cliente
     {
+
+        #region Geolocalizacion
+
+
+        public bool geolocalizacion(int idC, string latitud, string longitud, out string mensaje)
+        {
+            bool resultado = false;
+            mensaje = string.Empty;
+            // Definir la consulta SQL
+            string consulta = "select * from ubicacion where idCliente = @idCliente";
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+                    SqlCommand cmd = new SqlCommand(consulta, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd.Parameters.AddWithValue("@idCliente", idC);
+                    //cmd.Parameters.AddWithValue("@latitud", latitud);
+                    //cmd.Parameters.AddWithValue("@logitud", longitud);
+                    oconexion.Open();
+
+                    // Ejecutar la consulta y obtener los resultados
+                    SqlDataReader result = cmd.ExecuteReader();
+
+                    // Verificar si el cliente existe en la base de datos
+                    if (result.HasRows)
+                    {
+
+                        // Si el cliente existe, editar los datos
+                        result.Read();
+                        string idCliente = result["idCliente"].ToString();
+                        result.Close();
+                        // Definir la consulta SQL para actualizar los datos del cliente
+
+                        consulta = "UPDATE ubicacion SET latitud = @latitud, logitud = @logitud WHERE idCliente = @idCliente";
+                        cmd = new SqlCommand(consulta, oconexion);
+                        // Agregar los parámetros a la consulta
+                        cmd.Parameters.AddWithValue("@idCliente",idCliente);
+                        cmd.Parameters.AddWithValue("@latitud",latitud);
+                        cmd.Parameters.AddWithValue("@logitud", longitud);
+
+                        // Ejecutar la consulta para actualizar los datos del cliente
+                        cmd.ExecuteNonQuery();
+
+                    }
+                    else
+                    {
+                        // Si el cliente no existe, agregarlo a la base de datos
+                        result.Close();
+
+                        // Definir la consulta SQL para agregar un nuevo cliente
+                        consulta = "INSERT INTO ubicacion (idCliente, latitud, logitud) VALUES (@idCliente, @latitud, @logitud)";
+                        cmd = new SqlCommand(consulta, oconexion);
+
+                        // Agregar los parámetros a la consulta
+                        cmd.Parameters.AddWithValue("@idCliente", idC);
+                        cmd.Parameters.AddWithValue("@latitud", latitud);
+                        cmd.Parameters.AddWithValue("@logitud", longitud);
+                        // Ejecutar la consulta para agregar el nuevo cliente
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Cerrar la conexión
+                    oconexion.Close();
+                    resultado = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+                mensaje = ex.Message;
+
+            }
+            return resultado;
+        }
+
+
+
+        #endregion
+
         public int Registrar(cliente obj, out string mensaje)
         {
             int idautogenerado = 0;

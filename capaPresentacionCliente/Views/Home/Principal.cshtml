@@ -14,7 +14,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <title>Principal</title>
 </head>
-<body>
+<body onload="getLocation()">
     <div class="container">
         <div class="side">
             <div class="header">
@@ -24,16 +24,18 @@
                         @{
                             var miObjeto = Session["Cliente"] as CapaEntidad.cliente;
                         }
-
                         @if (miObjeto != null)
                         {
                             <p></p>
                         }
+
+
                         <img src="@Url.Action("GetImage", "preguntasInteres", new { id = miObjeto.idCliente})" />
                     </a>
 
                 </div>
                 <div class="title"><samp>@(miObjeto != null ? miObjeto.nombre : Session["nombre"])</samp></div>
+                <div id="id"  style="display: none">@(miObjeto != null ? miObjeto.idCliente : Session["idCliente"])</div>
 
             </div>
             <div class="menu">
@@ -117,5 +119,40 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("La geolocalización no es compatible con este navegador.");
+            }
+        }
+
+
+        function showPosition(position) {
+
+            var id = document.querySelector('#id').innerHTML;
+          
+            $.ajax({
+                type: "POST",
+                 url: '@Url.Action("ubicacion", "Acceso")',
+                data: JSON.stringify({ idCliente: id,latitud: position.coords.latitude, longitud: position.coords.longitude }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert("Su ubicación actual esta siendo utilizada");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Error al enviar la ubicación al servidor.");
+                }
+            });
+        }
+
+    </script>
+
 </body>
 </html>

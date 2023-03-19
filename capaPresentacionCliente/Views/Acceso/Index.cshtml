@@ -28,6 +28,7 @@
             <form action="@Url.Action("Index","Acceso")" method="post" class="inputs-container">
                 <input class="input" name="correo" type="email" autocomplete="off" placeholder="name@example.com">
                 <input class="input" name="clave" type="password" autocomplete="off" placeholder="Contraseña">
+
                 @{
                     if (ViewBag.Error != null)
                     {
@@ -46,16 +47,20 @@
                     }
                 }
                 <a href="@Url.Action("Reestablecer","Acceso")"> <p>Haz olviado tu contraseña? <span class="span">Click here</span></p></a>
-                <button type="submit" class="btn">Ingresar</button>
+                <button type="submit" onclick="getLocation()" class="btn">Ingresar</button>
 
 
                 <a href="@Url.Action("Registrar","Acceso")"> <p>No tienes cuenta? Registrate! <span class="span">Sign Up</span></p></a>
+
             </form>
+            <p id="demo"></p>
         </div>
         <img class="image-container" src="~/imagenes/login.svg" alt="">
     </div>
 
+  
 
+  
 
 </body>
 
