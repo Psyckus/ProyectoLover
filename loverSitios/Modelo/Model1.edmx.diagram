@@ -59,6 +59,9 @@
         <AssociationConnector Association="tiusr3pl_loverModel1.FK__usuario__idRol__5E8A0973" ManuallyRouted="false" />
         <AssociationConnector Association="tiusr3pl_loverModel1.FK__testUser__idTest__24285DB4" ManuallyRouted="false" />
         <AssociationConnector Association="tiusr3pl_loverModel1.FK__usuario__tipoIde__5F7E2DAC" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="tiusr3pl_loverModel1.ConfCorreos" Width="1.5" PointX="10.125" PointY="3.875" />
+        <EntityTypeShape EntityType="tiusr3pl_loverModel1.Correos" Width="1.5" PointX="12.625" PointY="3.875" />
+        <AssociationConnector Association="tiusr3pl_loverModel1.FK__Correos__idConfC__6D9742D9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<loverSitios.Modelo.Correos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Asunto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mensaje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfCorreos.Servidor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asunto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mensaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConfCorreos.Servidor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idCorreo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idCorreo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idCorreo })
+        </td>
+    </tr>
+}
+
+</table>
