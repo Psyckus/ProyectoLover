@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>capaPresentacionCliente</RootNamespace>
     <AssemblyName>capaPresentacionCliente</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -501,7 +501,6 @@
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Home\Panel.cshtml" />
     <Content Include="Views\Acceso\Index.cshtml" />

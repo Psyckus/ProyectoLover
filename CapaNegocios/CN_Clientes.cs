@@ -15,6 +15,14 @@ namespace CapaNegocios
 
 
 
+
+        public bool geolocalizacion(int idCliente, string latitud, string longitud, out string mensaje)
+        {
+            return objCapaDato.geolocalizacion(idCliente,latitud,longitud, out mensaje);
+        }
+
+
+
         public int Registrar(cliente obj, out string mensaje)
         {
             mensaje = string.Empty;
