@@ -130,7 +130,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
-    <Compile Include="Controllers\AdministradorController.cs" />
+    <Compile Include="Controllers\ConfCorreosController.cs" />
+    <Compile Include="Controllers\CorreosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -142,6 +143,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\cliente.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ConfCorreos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Correos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\estado.cs">
@@ -364,12 +371,19 @@
     <Content Include="webfonts\fa-brands-400.woff" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
-    <Content Include="Views\Administrador\Sitio.cshtml" />
-    <Content Include="Views\Administrador\Sistema.cshtml" />
-    <Content Include="Views\Administrador\Servidor.cshtml" />
     <Content Include="Views\Acceso\Index.cshtml" />
     <Content Include="Views\Acceso\CambiarClave.cshtml" />
     <Content Include="Views\Acceso\Reestablecer.cshtml" />
+    <Content Include="Views\ConfCorreos\Create.cshtml" />
+    <Content Include="Views\ConfCorreos\Delete.cshtml" />
+    <Content Include="Views\ConfCorreos\Details.cshtml" />
+    <Content Include="Views\ConfCorreos\Edit.cshtml" />
+    <Content Include="Views\ConfCorreos\Index.cshtml" />
+    <Content Include="Views\Correos\Create.cshtml" />
+    <Content Include="Views\Correos\Delete.cshtml" />
+    <Content Include="Views\Correos\Details.cshtml" />
+    <Content Include="Views\Correos\Edit.cshtml" />
+    <Content Include="Views\Correos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

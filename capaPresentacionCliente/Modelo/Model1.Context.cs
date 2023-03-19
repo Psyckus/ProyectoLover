@@ -50,5 +50,7 @@ namespace capaPresentacionCliente.Modelo
         public virtual DbSet<tipoIdentificacion> tipoIdentificacion { get; set; }
         public virtual DbSet<ubicacion> ubicacion { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<ConfCorreos> ConfCorreos { get; set; }
+        public virtual DbSet<Correos> Correos { get; set; }
     }
 }

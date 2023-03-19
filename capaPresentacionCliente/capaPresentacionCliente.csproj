@@ -145,6 +145,12 @@
     <Compile Include="Modelo\cliente.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\ConfCorreos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Correos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\estado.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -512,12 +518,12 @@
     <Content Include="Views\Home\Cuenta.cshtml" />
     <Content Include="Views\preguntasInteres\Pregunta4.cshtml" />
     <Content Include="Views\preguntasInteres\Pregunta3.cshtml" />
+    <Content Include="Views\Index\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="NewFolder1\" />
-    <Folder Include="Views\Index\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

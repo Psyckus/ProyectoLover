@@ -771,5 +771,44 @@
       <End Role="tipoIdentificacion" EntitySet="tipoIdentificacion" />
       <End Role="usuario" EntitySet="usuario" />
     </AssociationSet>
+    <EntitySet Name="ConfCorreos" EntityType="tiusr3pl_loverModel.ConfCorreos" />
+    <EntitySet Name="Correos" EntityType="tiusr3pl_loverModel.Correos" />
+    <AssociationSet Name="FK__Correos__idConfC__6D9742D9" Association="tiusr3pl_loverModel.FK__Correos__idConfC__6D9742D9">
+      <End Role="ConfCorreos" EntitySet="ConfCorreos" />
+      <End Role="Correos" EntitySet="Correos" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="ConfCorreos">
+    <Key>
+      <PropertyRef Name="idConfCorreo" />
+    </Key>
+    <Property Name="idConfCorreo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Servidor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Puerto" Type="Int32" />
+    <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Correos" Relationship="tiusr3pl_loverModel.FK__Correos__idConfC__6D9742D9" FromRole="ConfCorreos" ToRole="Correos" />
+  </EntityType>
+  <EntityType Name="Correos">
+    <Key>
+      <PropertyRef Name="idCorreo" />
+    </Key>
+    <Property Name="idCorreo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Asunto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Mensaje" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="idConfCorreo" Type="Int32" />
+    <NavigationProperty Name="ConfCorreos" Relationship="tiusr3pl_loverModel.FK__Correos__idConfC__6D9742D9" FromRole="Correos" ToRole="ConfCorreos" />
+  </EntityType>
+  <Association Name="FK__Correos__idConfC__6D9742D9">
+    <End Type="tiusr3pl_loverModel.ConfCorreos" Role="ConfCorreos" Multiplicity="0..1" />
+    <End Type="tiusr3pl_loverModel.Correos" Role="Correos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfCorreos">
+        <PropertyRef Name="idConfCorreo" />
+      </Principal>
+      <Dependent Role="Correos">
+        <PropertyRef Name="idConfCorreo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

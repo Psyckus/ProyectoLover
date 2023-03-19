@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="tiusr3pl_loverModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="tiusr3pl_loverModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="categoria_interes">
           <Key>
             <PropertyRef Name="idCategoria_interes" />
@@ -35,6 +35,25 @@
           <Property Name="activo" Type="bit" />
           <Property Name="itsActive" Type="bit" />
           <Property Name="fechaRegistro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ConfCorreos">
+          <Key>
+            <PropertyRef Name="idConfCorreo" />
+          </Key>
+          <Property Name="idConfCorreo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Servidor" Type="varchar" MaxLength="100" />
+          <Property Name="Puerto" Type="int" />
+          <Property Name="Usuario" Type="varchar" MaxLength="100" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Correos">
+          <Key>
+            <PropertyRef Name="idCorreo" />
+          </Key>
+          <Property Name="idCorreo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Asunto" Type="varchar" MaxLength="100" />
+          <Property Name="Mensaje" Type="varchar" MaxLength="500" />
+          <Property Name="idConfCorreo" Type="int" />
         </EntityType>
         <EntityType Name="estado">
           <Key>
@@ -69,14 +88,6 @@
           <Property Name="nombre" Type="varchar" MaxLength="50" />
           <Property Name="estado" Type="bit" />
         </EntityType>
-        <EntityType Name="interes_ciente">
-          <Key>
-            <PropertyRef Name="idInteresCliente" />
-          </Key>
-          <Property Name="idInteresCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idinteres" Type="int" />
-          <Property Name="idCliente" Type="int" />
-        </EntityType>
         <EntityType Name="match1">
           <Key>
             <PropertyRef Name="idMatch" />
@@ -84,7 +95,6 @@
           <Property Name="idMatch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cliente1" Type="int" />
           <Property Name="cliente2" Type="int" />
-          <Property Name="idEstado" Type="int" />
           <Property Name="fechaRegistro" Type="datetime" />
         </EntityType>
         <EntityType Name="match2">
@@ -228,6 +238,18 @@
           <Property Name="activo" Type="bit" />
           <Property Name="fechaRegistro" Type="datetime" />
         </EntityType>
+        <Association Name="FK__Correos__idConfC__6D9742D9">
+          <End Role="ConfCorreos" Type="Self.ConfCorreos" Multiplicity="0..1" />
+          <End Role="Correos" Type="Self.Correos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfCorreos">
+              <PropertyRef Name="idConfCorreo" />
+            </Principal>
+            <Dependent Role="Correos">
+              <PropertyRef Name="idConfCorreo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__foto__idCliente__7A3223E8">
           <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
           <End Role="foto" Type="Self.foto" Multiplicity="*" />
@@ -276,30 +298,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__interes_c__idCli__7755B73D">
-          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
-          <End Role="interes_ciente" Type="Self.interes_ciente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cliente">
-              <PropertyRef Name="idCliente" />
-            </Principal>
-            <Dependent Role="interes_ciente">
-              <PropertyRef Name="idCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__interes_c__idint__76619304">
-          <End Role="interes" Type="Self.interes" Multiplicity="0..1" />
-          <End Role="interes_ciente" Type="Self.interes_ciente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="interes">
-              <PropertyRef Name="idinteres" />
-            </Principal>
-            <Dependent Role="interes_ciente">
-              <PropertyRef Name="idinteres" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__match1__cliente1__0880433F">
           <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
           <End Role="match1" Type="Self.match1" Multiplicity="*" />
@@ -321,18 +319,6 @@
             </Principal>
             <Dependent Role="match1">
               <PropertyRef Name="cliente2" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__match1__idEstado__0A688BB1">
-          <End Role="estado" Type="Self.estado" Multiplicity="0..1" />
-          <End Role="match1" Type="Self.match1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado">
-              <PropertyRef Name="idEstado" />
-            </Principal>
-            <Dependent Role="match1">
-              <PropertyRef Name="idEstado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -580,11 +566,12 @@
           <EntitySet Name="categoria_interes" EntityType="Self.categoria_interes" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="categoria_preferencia" EntityType="Self.categoria_preferencia" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="loverusr" store:Type="Tables" />
+          <EntitySet Name="ConfCorreos" EntityType="Self.ConfCorreos" Schema="loverusr" store:Type="Tables" />
+          <EntitySet Name="Correos" EntityType="Self.Correos" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="estado" EntityType="Self.estado" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="foto" EntityType="Self.foto" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="generoCliente" EntityType="Self.generoCliente" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="interes" EntityType="Self.interes" Schema="loverusr" store:Type="Tables" />
-          <EntitySet Name="interes_ciente" EntityType="Self.interes_ciente" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="match1" EntityType="Self.match1" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="match2" EntityType="Self.match2" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="mensaje" EntityType="Self.mensaje" Schema="loverusr" store:Type="Tables" />
@@ -602,6 +589,10 @@
           <EntitySet Name="tipoIdentificacion" EntityType="Self.tipoIdentificacion" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="ubicacion" EntityType="Self.ubicacion" Schema="loverusr" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="loverusr" store:Type="Tables" />
+          <AssociationSet Name="FK__Correos__idConfC__6D9742D9" Association="Self.FK__Correos__idConfC__6D9742D9">
+            <End Role="ConfCorreos" EntitySet="ConfCorreos" />
+            <End Role="Correos" EntitySet="Correos" />
+          </AssociationSet>
           <AssociationSet Name="FK__foto__idCliente__7A3223E8" Association="Self.FK__foto__idCliente__7A3223E8">
             <End Role="cliente" EntitySet="cliente" />
             <End Role="foto" EntitySet="foto" />
@@ -618,24 +609,12 @@
             <End Role="categoria_interes" EntitySet="categoria_interes" />
             <End Role="interes" EntitySet="interes" />
           </AssociationSet>
-          <AssociationSet Name="FK__interes_c__idCli__7755B73D" Association="Self.FK__interes_c__idCli__7755B73D">
-            <End Role="cliente" EntitySet="cliente" />
-            <End Role="interes_ciente" EntitySet="interes_ciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__interes_c__idint__76619304" Association="Self.FK__interes_c__idint__76619304">
-            <End Role="interes" EntitySet="interes" />
-            <End Role="interes_ciente" EntitySet="interes_ciente" />
-          </AssociationSet>
           <AssociationSet Name="FK__match1__cliente1__0880433F" Association="Self.FK__match1__cliente1__0880433F">
             <End Role="cliente" EntitySet="cliente" />
             <End Role="match1" EntitySet="match1" />
           </AssociationSet>
           <AssociationSet Name="FK__match1__cliente2__09746778" Association="Self.FK__match1__cliente2__09746778">
             <End Role="cliente" EntitySet="cliente" />
-            <End Role="match1" EntitySet="match1" />
-          </AssociationSet>
-          <AssociationSet Name="FK__match1__idEstado__0A688BB1" Association="Self.FK__match1__idEstado__0A688BB1">
-            <End Role="estado" EntitySet="estado" />
             <End Role="match1" EntitySet="match1" />
           </AssociationSet>
           <AssociationSet Name="FK__match2__cliente1__0F2D40CE" Association="Self.FK__match2__cliente1__0F2D40CE">
@@ -719,8 +698,7 @@
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="tiusr3pl_loverModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1495,7 +1473,46 @@
             <End Role="tipoIdentificacion" EntitySet="tipoIdentificacion" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
+          <EntitySet Name="ConfCorreos" EntityType="tiusr3pl_loverModel1.ConfCorreos" />
+          <EntitySet Name="Correos" EntityType="tiusr3pl_loverModel1.Correos" />
+          <AssociationSet Name="FK__Correos__idConfC__6D9742D9" Association="tiusr3pl_loverModel1.FK__Correos__idConfC__6D9742D9">
+            <End Role="ConfCorreos" EntitySet="ConfCorreos" />
+            <End Role="Correos" EntitySet="Correos" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ConfCorreos">
+          <Key>
+            <PropertyRef Name="idConfCorreo" />
+          </Key>
+          <Property Name="idConfCorreo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Servidor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Puerto" Type="Int32" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Correos" Relationship="tiusr3pl_loverModel1.FK__Correos__idConfC__6D9742D9" FromRole="ConfCorreos" ToRole="Correos" />
+        </EntityType>
+        <EntityType Name="Correos">
+          <Key>
+            <PropertyRef Name="idCorreo" />
+          </Key>
+          <Property Name="idCorreo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Asunto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="idConfCorreo" Type="Int32" />
+          <NavigationProperty Name="ConfCorreos" Relationship="tiusr3pl_loverModel1.FK__Correos__idConfC__6D9742D9" FromRole="Correos" ToRole="ConfCorreos" />
+        </EntityType>
+        <Association Name="FK__Correos__idConfC__6D9742D9">
+          <End Type="tiusr3pl_loverModel1.ConfCorreos" Role="ConfCorreos" Multiplicity="0..1" />
+          <End Type="tiusr3pl_loverModel1.Correos" Role="Correos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfCorreos">
+              <PropertyRef Name="idConfCorreo" />
+            </Principal>
+            <Dependent Role="Correos">
+              <PropertyRef Name="idConfCorreo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1573,22 +1590,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="interes_ciente">
-            <EntityTypeMapping TypeName="tiusr3pl_loverModel1.interes_ciente">
-              <MappingFragment StoreEntitySet="interes_ciente">
-                <ScalarProperty Name="idInteresCliente" ColumnName="idInteresCliente" />
-                <ScalarProperty Name="idinteres" ColumnName="idinteres" />
-                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="match1">
             <EntityTypeMapping TypeName="tiusr3pl_loverModel1.match1">
               <MappingFragment StoreEntitySet="match1">
                 <ScalarProperty Name="idMatch" ColumnName="idMatch" />
                 <ScalarProperty Name="cliente1" ColumnName="cliente1" />
                 <ScalarProperty Name="cliente2" ColumnName="cliente2" />
-                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1747,6 +1754,27 @@
                 <ScalarProperty Name="Reestablecer" ColumnName="Reestablecer" />
                 <ScalarProperty Name="activo" ColumnName="activo" />
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfCorreos">
+            <EntityTypeMapping TypeName="tiusr3pl_loverModel1.ConfCorreos">
+              <MappingFragment StoreEntitySet="ConfCorreos">
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Puerto" ColumnName="Puerto" />
+                <ScalarProperty Name="Servidor" ColumnName="Servidor" />
+                <ScalarProperty Name="idConfCorreo" ColumnName="idConfCorreo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Correos">
+            <EntityTypeMapping TypeName="tiusr3pl_loverModel1.Correos">
+              <MappingFragment StoreEntitySet="Correos">
+                <ScalarProperty Name="idConfCorreo" ColumnName="idConfCorreo" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="idCorreo" ColumnName="idCorreo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
