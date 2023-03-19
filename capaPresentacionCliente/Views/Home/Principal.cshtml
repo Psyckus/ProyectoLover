@@ -29,11 +29,12 @@
                         {
                             <p></p>
                         }
-                        <img src="@Url.Action("GetImage", "preguntasInteres", new { id = @Session["idCliente"] })" />
+                        <img src="@Url.Action("GetImage", "preguntasInteres", new { id = miObjeto.idCliente})" />
                     </a>
 
                 </div>
-                <div class="title"><samp> @Session["nombre"]</samp></div>
+                <div class="title"><samp>@(miObjeto != null ? miObjeto.nombre : Session["nombre"])</samp></div>
+
             </div>
             <div class="menu">
                 <ul>

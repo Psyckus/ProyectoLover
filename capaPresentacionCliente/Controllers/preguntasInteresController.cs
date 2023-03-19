@@ -26,6 +26,12 @@ namespace capaPresentacionCliente.Controllers
         {
             return View();
         }
+        public ActionResult Pregunta4()
+
+        {
+            ObtenerCategorias();
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Pregunta1(string idCliente, string fecha_nac)
@@ -34,10 +40,13 @@ namespace capaPresentacionCliente.Controllers
             oCliente = new CN_Clientes().Listar().Where(u => u.idCliente == int.Parse(idCliente)).FirstOrDefault();
             string mensaje = string.Empty;
             bool respuesta = new CN_Clientes().Pregunta1(int.Parse(idCliente), fecha_nac, out mensaje);
+
             if (respuesta)
             {
+                //var session = HttpContext.Session;
+                //var oClienteSession = session["Cliente"];
                 TempData["idCliente"] = idCliente;
-                return RedirectToAction("Pregunta2", "preguntasInteres");
+                return RedirectToAction("Pregunta3");
             }
             else
             {
@@ -48,15 +57,22 @@ namespace capaPresentacionCliente.Controllers
 
         }
         [HttpPost]
-        public ActionResult Pregunta2(string idCliente, string descripcion)
+        public ActionResult Pregunta2( string descripcion)
         {
-            cliente oCliente = new cliente();
-            oCliente = new CN_Clientes().Listar().Where(u => u.idCliente == int.Parse(idCliente)).FirstOrDefault();
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+
+
+
+            var idCliente = oClienteSession.idCliente;
             string mensaje = string.Empty;
-            bool respuesta = new CN_Clientes().Pregunta2(int.Parse(idCliente), descripcion, out mensaje);
+            bool respuesta = new CN_Clientes().Pregunta2(idCliente, descripcion, out mensaje);
             if (respuesta)
             {
-                return RedirectToAction("Index", "Index");
+
+
+
+                return RedirectToAction("Principal", "Home");
             }
             else
             {
@@ -89,6 +105,126 @@ namespace capaPresentacionCliente.Controllers
 
             return File(imageData, "image/jpeg");
         }
+        [HttpPost]
+        public JsonResult ObtenerInteresesPorCategoria(List<int> categorias)
+        {
+            List<interes> intereses = new List<interes>();
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                string query = "SELECT idinteres, idCategoria_interes, nombre FROM interes WHERE estado = 1 AND idCategoria_interes IN (" + string.Join(",", categorias) + ")";
+                SqlCommand cmd = new SqlCommand(query, oconexion);
+                oconexion.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    interes interes = new interes();
+                    interes.idinteres = Convert.ToInt32(reader["idinteres"]);
+                    interes.idCategoria_interes = Convert.ToInt32(reader["idCategoria_interes"]);
+                    interes.nombre = reader["nombre"].ToString();
+                    intereses.Add(interes);
+                }
+            }
 
+            return Json(intereses);
+        }
+        public void ObtenerIntereses()
+        {
+            // Obtener todos los intereses activos
+            List<interes> intereses = new List<interes>();
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT idinteres, idCategoria_interes, nombre FROM interes WHERE estado = 1", oconexion);
+                oconexion.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    interes interes = new interes();
+                    interes.idinteres = Convert.ToInt32(reader["idinteres"]);
+                    interes.idCategoria_interes = Convert.ToInt32(reader["idCategoria_interes"]);
+                    interes.nombre = reader["nombre"].ToString();
+                    intereses.Add(interes);
+                }
+            }
+            ViewBag.Intereses = intereses;
+
+        }
+        public void ObtenerCategorias()
+        {
+            List<categoria_interes> categorias = new List<categoria_interes>();
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT idCategoria_interes, nombre FROM categoria_interes WHERE estado = 1", oconexion);
+                oconexion.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    categoria_interes categoria = new categoria_interes();
+                    categoria.idCategoria_interes = Convert.ToInt32(reader["idCategoria_interes"]);
+                    categoria.nombre = reader["nombre"].ToString();
+                    categorias.Add(categoria);
+                }
+            }
+            ViewBag.Categorias = categorias;
+
+        }
+        [HttpPost]
+
+        public ActionResult Pregunta4(string interesesSeleccionados)
+        {
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+
+
+
+            var idCliente = oClienteSession.idCliente;
+            string[] interesesIds = interesesSeleccionados.Split(',');
+            int[] interesesIdsInt = Array.ConvertAll(interesesIds, int.Parse);
+
+            //aquí debes insertar los intereses en la base de datos con el ID del cliente
+            foreach (int interesId in interesesIdsInt)
+            {
+                string query = "INSERT INTO interes_cliente (idinteres,idCliente) VALUES (@idinteres,@idCliente)";
+                using (SqlConnection conn = new SqlConnection(conexion.cn))
+                {
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@idinteres", interesId);
+                    cmd.Parameters.AddWithValue("@idCliente", idCliente);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            TempData["idCliente"] = idCliente;
+            return RedirectToAction("Pregunta1");
+
+
+        }
+        [HttpPost]
+        public ActionResult Pregunta3(int idCliente, HttpPostedFileBase file)
+        {
+            cliente oCliente = new cliente();
+            oCliente = new CN_Clientes().Listar().Where(u => u.idCliente == idCliente).FirstOrDefault();
+            string mensaje = string.Empty;
+            bool respuesta = new CN_Clientes().Pregunta3(idCliente, file, out mensaje);
+            if (respuesta)
+            {
+                var session = HttpContext.Session;
+                var oClienteSession = session["Cliente"];
+                TempData["idCliente"] = idCliente;
+                TempData["Message"] = "La imagen se ha cargado correctamente.";
+                TempData["MessageType"] = "success";
+                //coregir aqui
+                return RedirectToAction("Pregunta4");
+
+            }
+            else
+            {
+                TempData["idCliente"] = idCliente;
+                TempData["Message"] = "Hubo un problema al cargar la imagen.";
+                TempData["MessageType"] = "error";
+                //ViewBag.Error = mensaje;
+                return View();
+            }
+
+        }
     }
 }

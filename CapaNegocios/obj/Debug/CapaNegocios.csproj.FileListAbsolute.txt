@@ -64,3 +64,14 @@ C:\Users\dnb12\Source\Repos\loverSitios1\CapaNegocios\obj\Debug\CapaNegocios.csp
 C:\Users\dnb12\Source\Repos\loverSitios1\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
 C:\Users\dnb12\Source\Repos\loverSitios1\CapaNegocios\obj\Debug\CapaNegocios.dll
 C:\Users\dnb12\Source\Repos\loverSitios1\CapaNegocios\obj\Debug\CapaNegocios.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\bin\Debug\CapaNegocios.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\bin\Debug\CapaNegocios.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\bin\Debug\CapaDatos.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\bin\Debug\CapaEntidad.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\bin\Debug\CapaDatos.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\bin\Debug\CapaEntidad.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete

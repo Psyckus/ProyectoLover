@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CapaNegocios
 {
@@ -61,6 +62,10 @@ namespace CapaNegocios
         public bool CambiarClave(int idCliente, string nuevaclave, out string mensaje)
         {
             return objCapaDato.CambiarClave(idCliente, nuevaclave, out mensaje);
+        }
+        public bool Pregunta3(int idCliente, HttpPostedFileBase file, out string mensaje)
+        {
+            return objCapaDato.Pregunta3(idCliente, file, out mensaje);
         }
 
 

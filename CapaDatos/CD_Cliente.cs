@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CapaDatos
 {
@@ -154,7 +156,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("update cliente set descripcion = @descripcion where idCliente = @id", oconexion);
+                    SqlCommand cmd = new SqlCommand("update cliente set descripcion = @descripcion, itsActive = 0 where idCliente = @id", oconexion);
                     cmd.Parameters.AddWithValue("@id", idCliente);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
 
@@ -198,6 +200,45 @@ namespace CapaDatos
             }
             return resultado;
         }
+        public bool Pregunta3(int idCliente, HttpPostedFileBase file, out string mensaje)
+        {
+            bool resultado = false;
+            mensaje = string.Empty;
+            try
+            {
 
+                if (file != null && file.ContentLength > 0)
+                {
+                    byte[] imageData = null;
+                    using (var binaryReader = new BinaryReader(file.InputStream))
+                    {
+                        imageData = binaryReader.ReadBytes(file.ContentLength);
+                    }
+
+
+                    using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                    {
+
+
+                        SqlCommand command = new SqlCommand("sp_InsertImage", oconexion);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@rutaFoto", SqlDbType.VarBinary).Value = imageData;
+                        command.Parameters.Add("@idCliente", SqlDbType.Int).Value = idCliente;
+                        oconexion.Open();
+                        resultado = command.ExecuteNonQuery() > 0 ? true : false;
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+                mensaje = ex.Message;
+
+            }
+
+            return resultado;
+        }
     }
 }

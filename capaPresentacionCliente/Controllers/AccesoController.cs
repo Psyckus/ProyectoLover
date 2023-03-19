@@ -79,21 +79,22 @@ namespace capaPresentacionCliente.Controllers
                     return RedirectToAction("CambiarClave", "Acceso");
 
                 }
+                else if (oCliente.itsActive)
+                {
+                    TempData["idCliente"] = oCliente.idCliente;
+                    //TempData["itsActive"] = oCliente.itsActive;
+                    Session["Cliente"] = oCliente;
+                    return RedirectToAction("Pregunta1", "preguntasInteres");
 
+                }
                 else
                 {
-                    FormsAuthentication.SetAuthCookie(oCliente.nombre, false);
-
+                    FormsAuthentication.SetAuthCookie(oCliente.email, false);
                     //me permite guardar la informacion del cliente y me deja llamarlo a cualquier controlador 
                     Session["Cliente"] = oCliente;
-                    Session["nombre"] = oCliente.nombre.ToString();
-                    Session["idCliente"] = oCliente.idCliente.ToString();
                     ViewBag.Error = null;
                     //redireccionar al incio de nuestra aplicacion
                     return RedirectToAction("Principal", "Home");
-
-
-
                 }
             }
 
