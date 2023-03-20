@@ -17,7 +17,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
+                <button type="button" class="btn btn-success">@Html.ActionLink("Crear configuracion", "Create")</button>
             </div>
         </div>
 
@@ -33,12 +33,33 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Servidor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Puerto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Contraseña)
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i>@Html.ActionLink("Edita", "Edit", new { id = item.idConfCorreo })</button>
+                            <button type="button" class="btn btn-danger btn-sm btn-eliminar"><i class="fas fa-trash"></i>@Html.ActionLink("Eliminar", "Delete", new { id = item.idConfCorreo })</button>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -81,4 +102,4 @@
         </tr>
     }
 
-</table>
+</table>*@

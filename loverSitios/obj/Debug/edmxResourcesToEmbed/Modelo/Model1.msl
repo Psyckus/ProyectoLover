@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="tiusr3pl_loverModel1StoreContainer" CdmEntityContainer="tiusr3pl_loverEntities1">
+  <EntityContainerMapping StorageEntityContainer="tiusr3pl_loverModelStoreContainer" CdmEntityContainer="tiusr3pl_loverEntities2">
     <EntitySetMapping Name="categoria_interes">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.categoria_interes">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.categoria_interes">
         <MappingFragment StoreEntitySet="categoria_interes">
           <ScalarProperty Name="idCategoria_interes" ColumnName="idCategoria_interes" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="categoria_preferencia">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.categoria_preferencia">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.categoria_preferencia">
         <MappingFragment StoreEntitySet="categoria_preferencia">
           <ScalarProperty Name="idCategoria_preferencia" ColumnName="idCategoria_preferencia" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -20,7 +20,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="cliente">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.cliente">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.cliente">
         <MappingFragment StoreEntitySet="cliente">
           <ScalarProperty Name="idCliente" ColumnName="idCliente" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -35,8 +35,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ConfCorreos">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.ConfCorreos">
+        <MappingFragment StoreEntitySet="ConfCorreos">
+          <ScalarProperty Name="idConfCorreo" ColumnName="idConfCorreo" />
+          <ScalarProperty Name="Servidor" ColumnName="Servidor" />
+          <ScalarProperty Name="Puerto" ColumnName="Puerto" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Correos">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.Correos">
+        <MappingFragment StoreEntitySet="Correos">
+          <ScalarProperty Name="idCorreo" ColumnName="idCorreo" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="idConfCorreo" ColumnName="idConfCorreo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="estado">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.estado">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.estado">
         <MappingFragment StoreEntitySet="estado">
           <ScalarProperty Name="idEstado" ColumnName="idEstado" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -44,7 +65,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="foto">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.foto">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.foto">
         <MappingFragment StoreEntitySet="foto">
           <ScalarProperty Name="idfoto" ColumnName="idfoto" />
           <ScalarProperty Name="idCliente" ColumnName="idCliente" />
@@ -53,7 +74,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="generoCliente">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.generoCliente">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.generoCliente">
         <MappingFragment StoreEntitySet="generoCliente">
           <ScalarProperty Name="idGenero" ColumnName="idGenero" />
           <ScalarProperty Name="idtipoGenero" ColumnName="idtipoGenero" />
@@ -63,7 +84,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="interes">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.interes">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.interes">
         <MappingFragment StoreEntitySet="interes">
           <ScalarProperty Name="idinteres" ColumnName="idinteres" />
           <ScalarProperty Name="idCategoria_interes" ColumnName="idCategoria_interes" />
@@ -72,8 +93,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="interes_cliente">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.interes_cliente">
+        <MappingFragment StoreEntitySet="interes_cliente">
+          <ScalarProperty Name="idInteresCliente" ColumnName="idInteresCliente" />
+          <ScalarProperty Name="idinteres" ColumnName="idinteres" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="match1">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.match1">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.match1">
         <MappingFragment StoreEntitySet="match1">
           <ScalarProperty Name="idMatch" ColumnName="idMatch" />
           <ScalarProperty Name="cliente1" ColumnName="cliente1" />
@@ -83,7 +113,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="match2">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.match2">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.match2">
         <MappingFragment StoreEntitySet="match2">
           <ScalarProperty Name="idMatch" ColumnName="idMatch" />
           <ScalarProperty Name="cliente2" ColumnName="cliente2" />
@@ -94,7 +124,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="mensaje">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.mensaje">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.mensaje">
         <MappingFragment StoreEntitySet="mensaje">
           <ScalarProperty Name="idMensaje" ColumnName="idMensaje" />
           <ScalarProperty Name="idTexto1" ColumnName="idTexto1" />
@@ -102,8 +132,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Mensajes">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.Mensajes">
+        <MappingFragment StoreEntitySet="Mensajes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ModEmparejamiento">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.ModEmparejamiento">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.ModEmparejamiento">
         <MappingFragment StoreEntitySet="ModEmparejamiento">
           <ScalarProperty Name="CriterioInteres" ColumnName="CriterioInteres" />
           <ScalarProperty Name="EdadCriterio" ColumnName="EdadCriterio" />
@@ -113,7 +153,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="preferencia">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.preferencia">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.preferencia">
         <MappingFragment StoreEntitySet="preferencia">
           <ScalarProperty Name="idPreferencia" ColumnName="idPreferencia" />
           <ScalarProperty Name="idCategoria_interes" ColumnName="idCategoria_interes" />
@@ -123,7 +163,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="preferencia_cliente">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.preferencia_cliente">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.preferencia_cliente">
         <MappingFragment StoreEntitySet="preferencia_cliente">
           <ScalarProperty Name="idPrefenciaCliente" ColumnName="idPrefenciaCliente" />
           <ScalarProperty Name="idPreferencia" ColumnName="idPreferencia" />
@@ -132,7 +172,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="preguntaTest">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.preguntaTest">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.preguntaTest">
         <MappingFragment StoreEntitySet="preguntaTest">
           <ScalarProperty Name="idpreguntaTest" ColumnName="idpreguntaTest" />
           <ScalarProperty Name="idTest" ColumnName="idTest" />
@@ -141,7 +181,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="rol">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.rol">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.rol">
         <MappingFragment StoreEntitySet="rol">
           <ScalarProperty Name="idRol" ColumnName="idRol" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -149,7 +189,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="suspiro1">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.suspiro1">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.suspiro1">
         <MappingFragment StoreEntitySet="suspiro1">
           <ScalarProperty Name="idSuspiro" ColumnName="idSuspiro" />
           <ScalarProperty Name="cliente2" ColumnName="cliente2" />
@@ -160,7 +200,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="suspiro2">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.suspiro2">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.suspiro2">
         <MappingFragment StoreEntitySet="suspiro2">
           <ScalarProperty Name="idSuspiro" ColumnName="idSuspiro" />
           <ScalarProperty Name="cliente2" ColumnName="cliente2" />
@@ -171,7 +211,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="test">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.test">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.test">
         <MappingFragment StoreEntitySet="test">
           <ScalarProperty Name="idtest" ColumnName="idtest" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -179,7 +219,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="testUser">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.testUser">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.testUser">
         <MappingFragment StoreEntitySet="testUser">
           <ScalarProperty Name="idTestUser" ColumnName="idTestUser" />
           <ScalarProperty Name="idTest" ColumnName="idTest" />
@@ -188,7 +228,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="texto">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.texto">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.texto">
         <MappingFragment StoreEntitySet="texto">
           <ScalarProperty Name="idTexto" ColumnName="idTexto" />
           <ScalarProperty Name="texto1" ColumnName="texto" />
@@ -197,7 +237,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tipo_genero">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.tipo_genero">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.tipo_genero">
         <MappingFragment StoreEntitySet="tipo_genero">
           <ScalarProperty Name="idtipoGenero" ColumnName="idtipoGenero" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -205,7 +245,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tipoIdentificacion">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.tipoIdentificacion">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.tipoIdentificacion">
         <MappingFragment StoreEntitySet="tipoIdentificacion">
           <ScalarProperty Name="idTipoIdentificacion" ColumnName="idTipoIdentificacion" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -213,7 +253,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ubicacion">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.ubicacion">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.ubicacion">
         <MappingFragment StoreEntitySet="ubicacion">
           <ScalarProperty Name="idUbicación" ColumnName="idUbicación" />
           <ScalarProperty Name="idCliente" ColumnName="idCliente" />
@@ -223,7 +263,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="usuario">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.usuario">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.usuario">
         <MappingFragment StoreEntitySet="usuario">
           <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
           <ScalarProperty Name="idRol" ColumnName="idRol" />
@@ -236,27 +276,6 @@
           <ScalarProperty Name="Reestablecer" ColumnName="Reestablecer" />
           <ScalarProperty Name="activo" ColumnName="activo" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ConfCorreos">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.ConfCorreos">
-        <MappingFragment StoreEntitySet="ConfCorreos">
-          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Puerto" ColumnName="Puerto" />
-          <ScalarProperty Name="Servidor" ColumnName="Servidor" />
-          <ScalarProperty Name="idConfCorreo" ColumnName="idConfCorreo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Correos">
-      <EntityTypeMapping TypeName="tiusr3pl_loverModel1.Correos">
-        <MappingFragment StoreEntitySet="Correos">
-          <ScalarProperty Name="idConfCorreo" ColumnName="idConfCorreo" />
-          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
-          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
-          <ScalarProperty Name="idCorreo" ColumnName="idCorreo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

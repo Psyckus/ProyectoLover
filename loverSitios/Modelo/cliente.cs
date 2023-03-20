@@ -19,7 +19,7 @@ namespace loverSitios.Modelo
         {
             this.foto = new HashSet<foto>();
             this.generoCliente = new HashSet<generoCliente>();
-            this.interes_ciente = new HashSet<interes_ciente>();
+            this.interes_cliente = new HashSet<interes_cliente>();
             this.match1 = new HashSet<match1>();
             this.match11 = new HashSet<match1>();
             this.match2 = new HashSet<match2>();
@@ -49,7 +49,7 @@ namespace loverSitios.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<generoCliente> generoCliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<interes_ciente> interes_ciente { get; set; }
+        public virtual ICollection<interes_cliente> interes_cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<match1> match1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

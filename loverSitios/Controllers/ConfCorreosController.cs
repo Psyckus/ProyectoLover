@@ -12,7 +12,7 @@ namespace loverSitios.Controllers
 {
     public class ConfCorreosController : Controller
     {
-        private tiusr3pl_loverEntities1 db = new tiusr3pl_loverEntities1();
+        private tiusr3pl_loverEntities2 db = new tiusr3pl_loverEntities2();
 
         // GET: ConfCorreos
         public ActionResult Index()

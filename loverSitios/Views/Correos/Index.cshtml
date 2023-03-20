@@ -5,42 +5,92 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Asunto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mensaje)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConfCorreos.Servidor)
-        </th>
-        <th></th>
-    </tr>
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
+    <li class="breadcrumb-item active">Correos del sistema</li>
+</ol>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Asunto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mensaje)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConfCorreos.Servidor)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idCorreo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idCorreo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idCorreo })
-        </td>
-    </tr>
-}
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Correos del sistema
+    </div>
+    <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn btn-success">@Html.ActionLink("Crear Correo", "Create")</button>
+                </div>
+            </div>
+        <hr />
+            <table id="tabla" class="display cell-border" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th>Asunto</th>
+                        <th>Mensaje</th>
+                        <th>Configuracion</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
 
-</table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Asunto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mensaje)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ConfCorreos.Servidor)
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i>@Html.ActionLink("Editar", "Edit", new { id = item.idCorreo })</button>
+
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Asunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mensaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfCorreos.Servidor)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asunto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mensaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfCorreos.Servidor)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.idCorreo }) |
+                @Html.ActionLink("Details", "Details", new { id=item.idCorreo }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.idCorreo })
+            </td>
+        </tr>
+    }
+
+    </table>*@
