@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="tiusr3pl_loverModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="tiusr3pl_loverModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="categoria_interes">
     <Key>
       <PropertyRef Name="idCategoria_interes" />
@@ -83,6 +83,14 @@
     <Property Name="nombre" Type="varchar" MaxLength="50" />
     <Property Name="estado" Type="bit" />
   </EntityType>
+  <EntityType Name="interes_cliente">
+    <Key>
+      <PropertyRef Name="idInteresCliente" />
+    </Key>
+    <Property Name="idInteresCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idinteres" Type="int" />
+    <Property Name="idCliente" Type="int" />
+  </EntityType>
   <EntityType Name="match1">
     <Key>
       <PropertyRef Name="idMatch" />
@@ -109,6 +117,15 @@
     <Property Name="idMensaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idTexto1" Type="int" />
     <Property Name="idTexto2" Type="int" />
+  </EntityType>
+  <EntityType Name="Mensajes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sender" Type="varchar" MaxLength="50" />
+    <Property Name="Message" Type="varchar" MaxLength="50" />
+    <Property Name="Timestamp" Type="datetime" />
   </EntityType>
   <EntityType Name="ModEmparejamiento">
     <Key>
@@ -290,6 +307,30 @@
       </Principal>
       <Dependent Role="interes">
         <PropertyRef Name="idCategoria_interes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__interes_c__idCli__7755B73D">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="interes_cliente" Type="Self.interes_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="interes_cliente">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__interes_c__idint__76619304">
+    <End Role="interes" Type="Self.interes" Multiplicity="0..1" />
+    <End Role="interes_cliente" Type="Self.interes_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="interes">
+        <PropertyRef Name="idinteres" />
+      </Principal>
+      <Dependent Role="interes_cliente">
+        <PropertyRef Name="idinteres" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -557,7 +598,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="tiusr3pl_loverModel1StoreContainer">
+  <EntityContainer Name="tiusr3pl_loverModelStoreContainer">
     <EntitySet Name="categoria_interes" EntityType="Self.categoria_interes" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="categoria_preferencia" EntityType="Self.categoria_preferencia" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="cliente" EntityType="Self.cliente" Schema="loverusr" store:Type="Tables" />
@@ -567,9 +608,11 @@
     <EntitySet Name="foto" EntityType="Self.foto" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="generoCliente" EntityType="Self.generoCliente" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="interes" EntityType="Self.interes" Schema="loverusr" store:Type="Tables" />
+    <EntitySet Name="interes_cliente" EntityType="Self.interes_cliente" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="match1" EntityType="Self.match1" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="match2" EntityType="Self.match2" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="mensaje" EntityType="Self.mensaje" Schema="loverusr" store:Type="Tables" />
+    <EntitySet Name="Mensajes" EntityType="Self.Mensajes" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="ModEmparejamiento" EntityType="Self.ModEmparejamiento" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="preferencia" EntityType="Self.preferencia" Schema="loverusr" store:Type="Tables" />
     <EntitySet Name="preferencia_cliente" EntityType="Self.preferencia_cliente" Schema="loverusr" store:Type="Tables" />
@@ -603,6 +646,14 @@
     <AssociationSet Name="FK__interes__idCateg__72910220" Association="Self.FK__interes__idCateg__72910220">
       <End Role="categoria_interes" EntitySet="categoria_interes" />
       <End Role="interes" EntitySet="interes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__interes_c__idCli__7755B73D" Association="Self.FK__interes_c__idCli__7755B73D">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="interes_cliente" EntitySet="interes_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__interes_c__idint__76619304" Association="Self.FK__interes_c__idint__76619304">
+      <End Role="interes" EntitySet="interes" />
+      <End Role="interes_cliente" EntitySet="interes_cliente" />
     </AssociationSet>
     <AssociationSet Name="FK__match1__cliente1__0880433F" Association="Self.FK__match1__cliente1__0880433F">
       <End Role="cliente" EntitySet="cliente" />

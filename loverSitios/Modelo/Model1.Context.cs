@@ -13,10 +13,10 @@ namespace loverSitios.Modelo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class tiusr3pl_loverEntities1 : DbContext
+    public partial class tiusr3pl_loverEntities2 : DbContext
     {
-        public tiusr3pl_loverEntities1()
-            : base("name=tiusr3pl_loverEntities1")
+        public tiusr3pl_loverEntities2()
+            : base("name=tiusr3pl_loverEntities2")
         {
         }
     
@@ -28,14 +28,17 @@ namespace loverSitios.Modelo
         public virtual DbSet<categoria_interes> categoria_interes { get; set; }
         public virtual DbSet<categoria_preferencia> categoria_preferencia { get; set; }
         public virtual DbSet<cliente> cliente { get; set; }
+        public virtual DbSet<ConfCorreos> ConfCorreos { get; set; }
+        public virtual DbSet<Correos> Correos { get; set; }
         public virtual DbSet<estado> estado { get; set; }
         public virtual DbSet<foto> foto { get; set; }
         public virtual DbSet<generoCliente> generoCliente { get; set; }
         public virtual DbSet<interes> interes { get; set; }
-        public virtual DbSet<interes_ciente> interes_ciente { get; set; }
+        public virtual DbSet<interes_cliente> interes_cliente { get; set; }
         public virtual DbSet<match1> match1 { get; set; }
         public virtual DbSet<match2> match2 { get; set; }
         public virtual DbSet<mensaje> mensaje { get; set; }
+        public virtual DbSet<Mensajes> Mensajes { get; set; }
         public virtual DbSet<ModEmparejamiento> ModEmparejamiento { get; set; }
         public virtual DbSet<preferencia> preferencia { get; set; }
         public virtual DbSet<preferencia_cliente> preferencia_cliente { get; set; }
@@ -50,7 +53,5 @@ namespace loverSitios.Modelo
         public virtual DbSet<tipoIdentificacion> tipoIdentificacion { get; set; }
         public virtual DbSet<ubicacion> ubicacion { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
-        public virtual DbSet<ConfCorreos> ConfCorreos { get; set; }
-        public virtual DbSet<Correos> Correos { get; set; }
     }
 }
