@@ -15,6 +15,15 @@ namespace CapaNegocios
 
 
 
+        #region Descubrir
+        public descubrir Descubrir(int idCliente)
+        {
+            return objCapaDato.Descubrir(idCliente);
+        }
+
+        #endregion
+
+
 
         public bool geolocalizacion(int idCliente, string latitud, string longitud, out string mensaje)
         {

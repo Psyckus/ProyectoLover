@@ -508,7 +508,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\Home\Principal.cshtml" />
-    <Content Include="Views\Home\Panel.cshtml" />
     <Content Include="Views\Acceso\Index.cshtml" />
     <Content Include="Views\Acceso\Registrar.cshtml" />
     <Content Include="Views\Acceso\Reestablecer.cshtml" />
@@ -519,6 +518,7 @@
     <Content Include="Views\preguntasInteres\Pregunta4.cshtml" />
     <Content Include="Views\preguntasInteres\Pregunta3.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Home\VerPerfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

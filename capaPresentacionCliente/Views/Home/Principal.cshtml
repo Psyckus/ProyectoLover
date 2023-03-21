@@ -12,6 +12,7 @@
           rel="stylesheet" />
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <title>Principal</title>
 </head>
 <body onload="getLocation()">
@@ -35,7 +36,7 @@
 
                 </div>
                 <div class="title"><samp>@(miObjeto != null ? miObjeto.nombre : Session["nombre"])</samp></div>
-                <div id="id"  style="display: none">@(miObjeto != null ? miObjeto.idCliente : Session["idCliente"])</div>
+                <div id="id" style="display: none">@(miObjeto != null ? miObjeto.idCliente : Session["idCliente"])</div>
 
             </div>
             <div class="menu">
@@ -94,26 +95,37 @@
         <div class="content">
             <div class="card">
                 <div class="user">
-                    <img class="user"
-                         src="https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80"
-                         alt="" />
+                    <img class="user" id="user" />
                     <div class="profile">
-                        <div class="name">Rafaela <span>20</span></div>
-                        <div class="local">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>a 20 quilômetros daqui</span>
+                        <div class="name">
+                            <span id="nom">20</span>
+                            <span id="edad">20</span>
                         </div>
+                        <div class="icon">
+                            <a href="@Url.Action("VerPerfil", "Home")">
+                                <i class="las la-eye"></i>
+                            </a>
+
+                        </div>
+
+                        <div class="local">
+                            <span><b>Descripción:</b></span>
+                        </div>
+                        <div class="desc">
+                            <span id="desc">Hola soy lotso y adoro los abrazos</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="buttons">
                 <div class="no">
-                    <i class="fas fa-times"></i>
+                    <i class="fas fa-times" onclick="getData()"></i>
                 </div>
                 <div class="star">
                     <i class="fas fa-star fa"></i>
                 </div>
-                <div class="heart">
+                <div class="heart" onclick="getData()">
                     <i class="fas fa-heart"></i>
                 </div>
             </div>
@@ -123,6 +135,72 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
+
+
+
+
+        window.addEventListener('load', function(){
+
+            $.ajax({
+                type: "POST",
+                 url: '@Url.Action("Descubrir", "Home")',
+                data: JSON.stringify({ idCliente: id}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+
+                    var obj = data.data;
+                    var ruta = obj.idCliente;
+                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(ruta);
+                    $("#user").attr("src", data)
+                    $("#prueba").text(obj.idCliente)
+                    $("#nom").text(obj.nombre)
+                    $("#edad").text(obj.edad)
+                    $("#desc").text(obj.descripcion)
+                    console.log('Datos cargados con exito')
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Error al enviar la ubicación al servidor.");
+                }
+            });
+
+
+        });
+
+
+        var id = document.querySelector('#id').innerHTML;
+
+
+
+
+        function getData() {
+
+            $.ajax({
+                type: "POST",
+                 url: '@Url.Action("Descubrir", "Home")',
+                data: JSON.stringify({ idCliente: id}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var obj = data.data;
+                    var ruta = obj.idCliente;
+                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(ruta);
+                    $("#user").attr("src", data)
+                    $("#nom").text(obj.nombre)
+                    $("#edad").text(obj.edad)
+                    $("#desc").text(obj.descripcion)
+                    console.log("Datos obtenidos con exito");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Error al enviar la datos al servidor.");
+                        }
+                    });
+
+        }
+
+
+
+
 
         function getLocation() {
             if (navigator.geolocation) {
@@ -136,7 +214,7 @@
         function showPosition(position) {
 
             var id = document.querySelector('#id').innerHTML;
-          
+
             $.ajax({
                 type: "POST",
                  url: '@Url.Action("ubicacion", "Acceso")',
@@ -144,10 +222,10 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Su ubicación actual esta siendo utilizada");
+                    console.log('Su ubicación esta siendo utilizada')
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("Error al enviar la ubicación al servidor.");
+                    console.log('Error')
                 }
             });
         }
