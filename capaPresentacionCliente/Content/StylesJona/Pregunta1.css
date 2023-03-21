@@ -131,6 +131,39 @@ hr.vertical {
     margin-bottom: 10px;
 }
 
+.error-message {
+    color: #ff0000;
+    margin-bottom: 10px;
+}
 
+form {
+    border: 2px solid #5f0c0c;
+    border-radius: 10px;
+    padding: 20px;
+}
 
+    form input,
+    form textarea {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+        line-height: 1.5;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        resize: none;
+    }
 
+        form input[type="submit"] {
+            background-color: #5f0c0c;
+            color: #fff;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            form input[type="submit"]:hover {
+                background-color: #a50e0e;
+            }

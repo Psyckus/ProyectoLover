@@ -32,6 +32,57 @@ namespace capaPresentacionCliente.Controllers
             ObtenerCategorias();
             return View();
         }
+        public ActionResult Pregunta5()
+
+        {
+            ObtenerGeneros();
+
+            return View();
+        }
+        public void ObtenerGeneros()
+        {
+            // Obtener todos los intereses activos
+            List<tipo_genero> tipo_generos = new List<tipo_genero>();
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT idtipoGenero , nombre  FROM tipo_genero ", oconexion);
+                oconexion.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    tipo_genero tipo_genero = new tipo_genero();
+                    tipo_genero.idtipoGenero = Convert.ToInt32(reader["idtipoGenero"]);
+                    tipo_genero.nombre = reader["nombre"].ToString();
+                    tipo_generos.Add(tipo_genero);
+                }
+            }
+            ViewBag.tipo_generos = tipo_generos;
+
+        }
+        [HttpPost]
+        public ActionResult Pregunta5(int generos)
+        {
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+            var idCliente = oClienteSession.idCliente;
+
+            //Guardar el género seleccionado en la base de datos
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO generoCliente (idtipoGenero, idCliente) VALUES (@idtipoGenero,@idCliente)", oconexion);
+                cmd.Parameters.AddWithValue("@idtipoGenero", generos);
+                cmd.Parameters.AddWithValue("@idCliente", idCliente);
+                oconexion.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            // Redirigir al usuario a la siguiente página
+            return RedirectToAction("Principal", "Home");
+
+
+
+
+        }
 
         [HttpPost]
         public ActionResult Pregunta1(string idCliente, string fecha_nac)
@@ -72,7 +123,7 @@ namespace capaPresentacionCliente.Controllers
 
 
 
-                return RedirectToAction("Principal", "Home");
+                return RedirectToAction("Pregunta5");
             }
             else
             {

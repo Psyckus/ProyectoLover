@@ -40,3 +40,9 @@ C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaEntida
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\loverSitios\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\loverSitios\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\loverSitios\CapaEntidad\obj\Debug\CapaEntidad.pdb

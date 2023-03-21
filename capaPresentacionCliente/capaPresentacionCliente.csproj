@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>capaPresentacionCliente</RootNamespace>
     <AssemblyName>capaPresentacionCliente</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
+    <Compile Include="Controllers\HistorialesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\preguntasInteresController.cs" />
@@ -354,10 +355,15 @@
     <Content Include="Content\solid.css" />
     <Content Include="Content\solid.min.css" />
     <Content Include="Content\style.css" />
-    <Content Include="Content\StylesJona\Preguntas.css" />
+    <Content Include="Content\StylesJona\Pregunta1.css" />
+    <Content Include="Content\StylesJona\Pregunta4.css" />
+    <Content Include="Content\StylesJona\Pregunta5.css" />
+    <Content Include="Content\StylesJona\style2.css" />
+    <Content Include="Content\StylesJona\styleImagenes.css" />
     <Content Include="Content\StylesJona\styleLogin.css" />
     <Content Include="Content\StylesJona\styleLogin1.css" />
     <Content Include="Content\StylesJona\styleRegistro.css" />
+    <Content Include="Content\StylesJona\tablaMeGusta.css" />
     <Content Include="Content\svg-with-js.css" />
     <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\v4-shims.css" />
@@ -371,6 +377,7 @@
     <Content Include="imagenes\icons8-usuario-masculino-en-círculo-50.png" />
     <Content Include="imagenes\login.svg" />
     <Content Include="imagenes\pruebas.png" />
+    <Content Include="imagenes\signo-de-genero.png" />
     <Content Include="imagenes\susana.jpeg" />
     <Content Include="Modelo\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -519,6 +526,10 @@
     <Content Include="Views\preguntasInteres\Pregunta3.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Home\VerPerfil.cshtml" />
+    <Content Include="Views\preguntasInteres\Pregunta5.cshtml" />
+    <Content Include="Views\Historiales\VistaMeGusta.cshtml" />
+    <Content Include="Views\Historiales\VistaQuienLeGusto.cshtml" />
+    <Content Include="Views\Historiales\VistaYaNoMeGusta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
