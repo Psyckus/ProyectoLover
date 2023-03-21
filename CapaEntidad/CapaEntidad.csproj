@@ -45,6 +45,7 @@
     <Compile Include="categoria_intereses.cs" />
     <Compile Include="categoria_preferencias.cs" />
     <Compile Include="cliente.cs" />
+    <Compile Include="descubrir.cs" />
     <Compile Include="estado.cs" />
     <Compile Include="foto.cs" />
     <Compile Include="generoCliente.cs" />

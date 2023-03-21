@@ -129,6 +129,52 @@ namespace CapaDatos
 
 
 
+        #region Descubirir
+
+
+        public descubrir Descubrir(int idCliente)
+        {
+            descubrir obj = new descubrir();
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+                    string query = "  select top 1 idCliente, nombre, DATEDIFF(year,fecha_nac,GETDATE()) as edad, descripcion from cliente where idCliente != @idCliente order by newid() ";
+
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@idCliente", idCliente);
+                    oconexion.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            obj = new descubrir()
+                            {
+                                idCliente = Convert.ToInt32(dr["idCliente"]),
+                                nombre = dr["nombre"].ToString(),
+                                edad = Convert.ToDouble(dr["edad"]),
+                                descripcion = dr["descripcion"].ToString(),
+
+                            };
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception)
+            {
+                obj = new descubrir();
+            }
+            return obj;
+
+
+        }
+
+
+        #endregion
+
         public List<cliente> Listar()
         {
             List<cliente> lista = new List<cliente>();

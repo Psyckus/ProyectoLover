@@ -37,6 +37,28 @@ namespace capaPresentacionCliente.Controllers
             return View();
         }
 
+        public ActionResult VerPerfil()
+        {
+            return View();
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public JsonResult Descubrir(int idCliente)
+        {
+
+            descubrir obj = new CN_Clientes().Descubrir(idCliente);
+            return Json(new { data = obj }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
+
 
         [HttpGet]
         public JsonResult ListarUsuario()
