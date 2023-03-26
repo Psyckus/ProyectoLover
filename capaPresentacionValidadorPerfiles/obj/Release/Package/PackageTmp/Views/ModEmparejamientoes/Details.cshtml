@@ -1,0 +1,43 @@
+﻿@model capaPresentacionValidadorPerfiles.Modelo.ModEmparejamiento
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ModEmparejamiento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CriterioInteres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CriterioInteres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EdadCriterio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EdadCriterio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestCriterio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestCriterio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_modconf }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

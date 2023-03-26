@@ -1,0 +1,11 @@
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\bin\Release\CapaNegocios.dll
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\bin\Release\CapaNegocios.pdb
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\bin\Release\CapaDatos.dll
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\bin\Release\CapaEntidad.dll
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\bin\Release\CapaDatos.pdb
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\bin\Release\CapaEntidad.pdb
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\obj\Release\CapaNegocios.csproj.AssemblyReference.cache
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\obj\Release\CapaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\obj\Release\CapaNegocios.csproj.CopyComplete
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\obj\Release\CapaNegocios.dll
+C:\Users\dnb12\Source\Repos\loverSitios\CapaNegocios\obj\Release\CapaNegocios.pdb

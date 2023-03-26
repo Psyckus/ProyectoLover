@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -12,6 +13,17 @@ namespace CapaNegocios
     public class CN_Clientes
     {
         private CD_Cliente objCapaDato = new CD_Cliente();
+
+
+
+        #region Matches
+        public bool match(int cliente1, int cliente2, int activo)
+        {
+            return objCapaDato.matches(cliente1, cliente2, activo);
+        }
+
+
+        #endregion
 
 
 

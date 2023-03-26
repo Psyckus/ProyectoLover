@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>capaPresentacionCliente</RootNamespace>
     <AssemblyName>capaPresentacionCliente</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -355,6 +355,7 @@
     <Content Include="Content\solid.css" />
     <Content Include="Content\solid.min.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\StyleMatch.css" />
     <Content Include="Content\StylesJona\Pregunta1.css" />
     <Content Include="Content\StylesJona\Pregunta4.css" />
     <Content Include="Content\StylesJona\Pregunta5.css" />
@@ -376,9 +377,11 @@
     <Content Include="imagenes\icons8-historia-de-la-actividad-80.png" />
     <Content Include="imagenes\icons8-usuario-masculino-en-círculo-50.png" />
     <Content Include="imagenes\login.svg" />
+    <Content Include="imagenes\MicrosoftTeams-image.png" />
     <Content Include="imagenes\pruebas.png" />
     <Content Include="imagenes\signo-de-genero.png" />
     <Content Include="imagenes\susana.jpeg" />
+    <Content Include="imagenes\prueba.jpeg" />
     <Content Include="Modelo\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -530,6 +533,7 @@
     <Content Include="Views\Historiales\VistaMeGusta.cshtml" />
     <Content Include="Views\Historiales\VistaQuienLeGusto.cshtml" />
     <Content Include="Views\Historiales\VistaYaNoMeGusta.cshtml" />
+    <Content Include="Views\Home\Match.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,9 @@
+C:\Users\dnb12\Source\Repos\loverSitios\CapaDatos\bin\Release\CapaDatos.dll
+C:\Users\dnb12\Source\Repos\loverSitios\CapaDatos\bin\Release\CapaDatos.pdb
+C:\Users\dnb12\Source\Repos\loverSitios\CapaDatos\bin\Release\CapaEntidad.dll
+C:\Users\dnb12\Source\Repos\loverSitios\CapaDatos\bin\Release\CapaEntidad.pdb
+C:\Users\dnb12\Source\Repos\loverSitios\CapaDatos\obj\Release\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\dnb12\Source\Repos\loverSitios\CapaDatos\obj\Release\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\dnb12\Source\Repos\loverSitios\CapaDatos\obj\Release\CapaDatos.csproj.CopyComplete
+C:\Users\dnb12\Source\Repos\loverSitios\CapaDatos\obj\Release\CapaDatos.dll
+C:\Users\dnb12\Source\Repos\loverSitios\CapaDatos\obj\Release\CapaDatos.pdb

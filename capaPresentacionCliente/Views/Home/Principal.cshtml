@@ -97,6 +97,7 @@
                 <div class="user">
                     <img class="user" id="user" />
                     <div class="profile">
+                        <p id="id2" style="display:none"></p>
                         <div class="name">
                             <span id="nom">20</span>
                             <span id="edad">20</span>
@@ -119,13 +120,13 @@
                 </div>
             </div>
             <div class="buttons">
-                <div class="no">
-                    <i class="fas fa-times" onclick="getData()"></i>
+                <div class="no" onclick="Nogusta()">
+                    <i class="fas fa-times" ></i>
                 </div>
                 <div class="star">
                     <i class="fas fa-star fa"></i>
                 </div>
-                <div class="heart" onclick="getData()">
+                <div class="heart" onclick="gusta()">
                     <i class="fas fa-heart"></i>
                 </div>
             </div>
@@ -172,8 +173,8 @@
 
 
 
+        function gusta() {
 
-        function getData() {
 
             $.ajax({
                 type: "POST",
@@ -189,12 +190,80 @@
                     $("#nom").text(obj.nombre)
                     $("#edad").text(obj.edad)
                     $("#desc").text(obj.descripcion)
+
+
+             $.ajax({
+                type: "POST",
+                 url: '@Url.Action("Matches", "Home")',
+                data: JSON.stringify({cliente1: id, cliente2: ruta, activo:1}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log('Me gusta exitoso')
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error')
+                }
+            });
+
+
+
                     console.log("Datos obtenidos con exito");
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                             alert("Error al enviar la datos al servidor.");
                         }
-                    });
+            });
+
+
+
+        }
+
+
+
+           function Nogusta() {
+
+
+            $.ajax({
+                type: "POST",
+                 url: '@Url.Action("Descubrir", "Home")',
+                data: JSON.stringify({ idCliente: id}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var obj = data.data;
+                    var ruta = obj.idCliente;
+                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(ruta);
+                    $("#user").attr("src", data)
+                    $("#nom").text(obj.nombre)
+                    $("#edad").text(obj.edad)
+                    $("#desc").text(obj.descripcion)
+
+
+             $.ajax({
+                type: "POST",
+                 url: '@Url.Action("Matches", "Home")',
+                 data: JSON.stringify({ cliente1: id, cliente2: ruta, activo: 2 }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log('No me gusta exitoso')
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error')
+                }
+            });
+
+
+
+                    console.log("Datos obtenidos con exito");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Error al enviar la datos al servidor.");
+                        }
+            });
+
+
 
         }
 
@@ -222,10 +291,10 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    console.log('Su ubicación esta siendo utilizada')
+                    alert('Su ubicación esta siendo utilizada')
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    console.log('Error')
+                    alert('Error')
                 }
             });
         }

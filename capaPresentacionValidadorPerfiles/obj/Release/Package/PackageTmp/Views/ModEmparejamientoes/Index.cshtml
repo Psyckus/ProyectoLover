@@ -1,0 +1,56 @@
+﻿@model IEnumerable<capaPresentacionValidadorPerfiles.Modelo.ModEmparejamiento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
+    <li class="breadcrumb-item active">Modulo Emparejamiento</li>
+</ol>
+
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Modulo Emparejamiento
+    </div>
+    <div class="card-body">
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Citerio interes</th>
+                    <th>Edad Critrio</th>
+                    <th>Test Criterio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CriterioInteres)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EdadCriterio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestCriterio)
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i>@Html.ActionLink("Edit", "Edit", new { id = item.Id_modconf })</button>
+                            
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

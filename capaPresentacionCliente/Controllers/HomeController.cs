@@ -42,7 +42,23 @@ namespace capaPresentacionCliente.Controllers
             return View();
         }
 
+        public ActionResult Match()
+        {
+            return View();
+        }
 
+
+        [HttpPost]
+        public JsonResult Matches(int cliente1, int cliente2, int activo)
+        {
+            bool respuesta = false;
+           
+
+            respuesta = new CN_Clientes().match(cliente1, cliente2, activo);
+
+            return Json(new { resultado = respuesta}, JsonRequestBehavior.AllowGet);
+
+        }
 
 
 

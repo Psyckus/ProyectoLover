@@ -75,7 +75,7 @@ namespace capaPresentacionCliente.Controllers
             using (SqlConnection oconexion = new SqlConnection(conexion.cn))
             {
                 oconexion.Open();
-                SqlCommand cmd = new SqlCommand("update match1 SET Activo = 0 WHERE cliente2 = @idcliente", oconexion);
+                SqlCommand cmd = new SqlCommand("update match1 SET idEstado = 3 WHERE cliente2 = @idcliente", oconexion);
                 cmd.Parameters.AddWithValue("@idcliente", idCliente);
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)

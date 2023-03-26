@@ -1,0 +1,451 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>LOVER</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/Index.css" rel="stylesheet" />
+    <!-- =======================================================
+    * Template Name: Dewi - v4.10.0
+    * Template URL: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center justify-content-between" style="color: black">
+
+            <h1 class="logo"><a href="index.html">lOVER</a></h1>
+
+            <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">Sobre nosotros</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Asistencia</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
+                    <li><a class="getstarted scrollto" href="@Url.Action("Registrar","Acceso")">Crear Cuenta</a></li>
+                    <li><a class="getstarted scrollto" href="@Url.Action("Index","Acceso")">Iniciar Sesion</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+            <h1>Lover</h1>
+            <h2>Mejor opcion para encotrar a tu pareja</h2>
+            <div class="d-flex">
+                <a href="@Url.Action("Registrar","Acceso")" class="btn-get-started scrollto">Crear Cuenta</a>
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row justify-content-end">
+                    <div class="col-lg-11">
+                        <div class="row justify-content-end">
+
+                            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                                <div class="count-box">
+                                    <i class="bi bi-people"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="50000" data-purecounter-duration="1" class="purecounter"></span>
+                                    <p>Clientes</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                                <div class="count-box">
+                                    <i class="bi bi-fire"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="1085" data-purecounter-duration="1" class="purecounter"></span>
+                                    <p>Suspiros</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                                <div class="count-box">
+                                    <i class="bi bi-heart"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="3500" data-purecounter-duration="1" class="purecounter"></span>
+                                    <p>Citas</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                                <div class="count-box">
+                                    <i class="bi bi-hand-thumbs-up"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="4800" data-purecounter-duration="1" class="purecounter"></span>
+                                    <p>Likes</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+        <        <!-- ======= Features Section ======= -->
+        <section id="features" class="features">
+            <div class="container" data-aos="fade-up">
+
+                <ul class="nav nav-tabs row d-flex">
+                    <li class="nav-item col-3">
+                        <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+                            <i class="ri-question-line"></i>
+                            <h4 class="d-none d-lg-block">¿Porque nuestra app?</h4>
+                        </a>
+                    </li>
+                    <li class="nav-item col-3">
+                        <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                            <i class="ri-eye-line"></i>
+                            <h4 class="d-none d-lg-block">Caracteristica principal</h4>
+                        </a>
+                    </li>
+                    <li class="nav-item col-3">
+                        <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                            <i class="ri-money-dollar-box-line"></i>
+                            <h4 class="d-none d-lg-block">Totalmente gratis</h4>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active show" id="tab-1">
+                        <div class="row">
+                            <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+
+                                <p>
+                                    Se sabe que hay muchas apps de citas, por ejemplo: Tinder, Bumble, Happn, Grindr, entre otras... Cada una tiene una función distinta, pero al final cada una de estas llega al mismo objetivo, que es buscar algo casual, algo mas serio o una amistad simplemente.
+                                </p>
+                            </div>
+                            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                                <img src="assets/img/features-1.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-2">
+                        <div class="row">
+                            <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                                <p>
+                                    Nuestra app tiene múltiples características y beneficios muy parecidos a estas apps pero lo que nos hace sobresalir ante estas apps son los mensajes volátiles. Gracias a esta opción los usuarios pueden activar que sus mensajes se eliminen en el tiempo que vean adecuado.
+                                </p>
+                            </div>
+                            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                                <img src="assets/img/features-2.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-3">
+                        <div class="row">
+                            <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                                <p>
+                                    Otra ventaja la cual beneficia a los usuarios es que no se tienen que suscribir para ver o utilizar las diferentes caracteristicas, ya que nuestra app es gratuita.
+                                </p>
+                            </div>
+                            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                                <img src="assets/img/features-3.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Features Section -->
+
+        <section id="services" class="services section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Servicios</h2>
+                    <p>Mira nuestros servicios</p>
+                </div>
+
+                <div class="row" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-md-6 mt-4 mt-md-0">
+                        <div class="icon-box">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                            <h4><a href="#">Selecciona tus intereses</a></h4>
+                            <p>Es más fácil chatear con tu match cuando sabes que tienen algo en común te permite añadir Intereses a tu perfil y conectar con personas que comparten tus intereses..</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                        <div class="icon-box">
+                            <i class="bi bi-clock-history"></i>
+                            <h4><a href="#">Mantén tu historial de me gustas</a></h4>
+                            <p>Quieres ver todas aquellas personas que te gustaron o que no, contamos con un historial de estas mismas opción</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                        <div class="icon-box">
+                            <i class="bi bi-skip-backward-circle"></i>
+                            <h4><a href="#">Reconsidera tus opciones  </a></h4>
+                            <p>Las personas cambiamos mucho de opinión por lo que es normal arrepentirse de nuestra elección o porque no equivocarnos, para esto contamos con la opción de reconsiderar tus opciones y escoger la opción que mejor te parezca</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                        <div class="icon-box">
+                            <i class="bi bi-fire"></i>
+                            <h4><a href="#">Suspiros</a></h4>
+                            <p>Quieres ver el perfil de una persona con más rapidez y sin la necesidad de hacer un match por lo que te ofrecemos la opción de suspiro.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                        <div class="icon-box">
+                            <i class="bi bi-eye-slash"></i>
+                            <h4><a href="#">Mensajes volatiles</a></h4>
+                            <p>No te gusta tener los mensajes en tu chat siempre, nosotros le ofrecemos la opción de que se elimine en el tiempo que desees</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                        <div class="icon-box">
+                            <i class="bi bi-pin-map"></i>
+                            <h4><a href="#">Geolocalización</a></h4>
+                            <p>Quieres ver que tan cerca están la gente de vos para tener una cita, para eso contamos con un apartado de geolocalización</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+        <!-- ======= Testimonials Section ======= -->
+
+        <section id="testimonials" class="testimonials">
+            <div class="container" data-aos="zoom-in">
+
+                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="~/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+
+                                <h3>Saul Goodman</h3>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Gracias por conseguir a la mujer de mis sueños
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="~/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                                <h3>Sara Wilsson</h3>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Consegui a futuro hombre de mis hijos
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="~/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                                <h3>Jena Karlis</h3>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Gracias a lover tengo lo que tanto desee
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </section><!-- End Testimonials Section -->
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class=" section-title">
+                    <h2>Contacto</h2>
+                    <p>Como contactarnos</p>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="info-box">
+                                    <i class="bx bx-map"></i>
+                                    <h3>Dirección</h3>
+                                    <p>
+                                        200 metros oeste
+                                        del Colegio
+                                        Universitario
+                                        de Cartago.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box mt-4">
+                                    <i class="bx bx-envelope"></i>
+                                    <h3>Correo</h3>
+                                    <p>lover@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box mt-4">
+                                    <i class="bx bx-phone-call"></i>
+                                    <h3>Telefono</h3>
+                                    <p>2554 8765</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Correo" required>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                            </div>
+                            <div class="my-3">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                            </div>
+                            <div class="text-center"><button type="submit">Enviar correo</button></div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>Lover</h3>
+                            <p>
+                                200 metros oeste
+                                del Colegio
+                                Universitario
+                                de Cartago. <br>
+                                <br><br>
+                                <strong>Telefono:</strong>2554 8765<br>
+                                <strong>Correo:</strong> lover@gmail.com<br>
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Sobre Nosotros</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Servicios</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Contacto</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Asistencias</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Selecion de intereses</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Hisstorial de me gustas</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Reconsideracion de opcion</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Suspiro</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Mensajes volatiles</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>lover</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/assets/vendor/aos/aos.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/Index.js"></script>
+
+</body>
+
+</html>
