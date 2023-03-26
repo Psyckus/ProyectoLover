@@ -19,7 +19,7 @@
         <div class="profile">
 
             <div class="profile-img">
-                <a href="https://localhost:44393/Home/Principal">
+                <a href="@Url.Action("Principal","Home")">
                     @*@con esto me tarigo el nombre y la imagen del usuario actual@*@
                     @{
                         var miObjeto = Session["Cliente"] as CapaEntidad.cliente;
@@ -118,6 +118,13 @@
                     <a href="#" class="dropdown_link">
                         <span class=""><i class="las la-user-check"></i></span>
                         <small>Test Personalidad</small>
+                    </a>
+                </li>
+
+                <li class="dropdown_list">
+                    <a href="@Url.Action("Index","Index")" class="dropdown_link">
+                        <span class=""><i class="las la-times-circle"></i></span>
+                        <small>Cerrar sesión</small>
                     </a>
                 </li>
             </ul>

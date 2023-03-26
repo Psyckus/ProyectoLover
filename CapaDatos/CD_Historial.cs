@@ -21,7 +21,7 @@ namespace CapaDatos
 
                 string sql = "SELECT c.* FROM cliente c " +
                              "INNER JOIN match1 m ON c.idCliente = m.cliente2 " +
-                             "WHERE m.cliente1 = @idCliente and  m.Activo = 1";
+                             "WHERE m.cliente1 = @idCliente and  m.idEstado = 1";
 
                 SqlCommand cmd = new SqlCommand(sql, oconexion);
                 cmd.Parameters.AddWithValue("@idCliente", idCliente);
@@ -87,7 +87,7 @@ namespace CapaDatos
 
                 string sql = "SELECT c.* FROM cliente c " +
                              "INNER JOIN match1 m ON c.idCliente = m.cliente2 " +
-                             "WHERE m.cliente1 = @idCliente and  m.Activo = 0";
+                             "WHERE m.cliente1 = @idCliente and  m.idEstado = 3";
 
                 SqlCommand cmd = new SqlCommand(sql, oconexion);
                 cmd.Parameters.AddWithValue("@idCliente", idCliente);

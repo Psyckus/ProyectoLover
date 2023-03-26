@@ -1,0 +1,105 @@
+﻿@model IEnumerable<loverSitios.Modelo.ConfCorreos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
+    <li class="breadcrumb-item active">Modulo Configuracion</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de usuarios
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success">@Html.ActionLink("Crear configuracion", "Create")</button>
+            </div>
+        </div>
+
+        <hr />
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Servidor</th>
+                    <th>Puerto</th>
+                    <th>Usuario</th>
+                    <th>Contraseña</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Servidor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Puerto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Contraseña)
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i>@Html.ActionLink("Edita", "Edit", new { id = item.idConfCorreo })</button>
+                            <button type="button" class="btn btn-danger btn-sm btn-eliminar"><i class="fas fa-trash"></i>@Html.ActionLink("Eliminar", "Delete", new { id = item.idConfCorreo })</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Servidor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puerto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contraseña)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servidor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puerto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contraseña)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idConfCorreo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idConfCorreo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idConfCorreo })
+            </td>
+        </tr>
+    }
+
+</table>*@

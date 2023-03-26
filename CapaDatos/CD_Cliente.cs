@@ -14,6 +14,45 @@ namespace CapaDatos
     public class CD_Cliente
     {
 
+
+        #region Me gusta
+        public bool matches(int cliente1, int cliente2, int activo)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+                   
+                    string query = "Insert into match1 (cliente1, cliente2, idEstado, fechaRegistro) values (@cliente1, @cliente2, @idEstado, @fechaRegistro)";
+                    oconexion.Open();
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
+                    cmd.Parameters.AddWithValue("@cliente2", cliente2);
+                    cmd.Parameters.AddWithValue("@idEstado", activo);
+                    cmd.Parameters.AddWithValue("@fechaRegistro", DateTime.Now);
+                    // Ejecutar la consulta para agregar el nuevo cliente
+                    cmd.ExecuteNonQuery();
+                    oconexion.Close();
+                    resultado = true;
+                }
+            }
+            catch (Exception)
+            {
+                resultado = false;
+             
+            }
+            return resultado;
+
+        }
+
+        #endregion
+
+
+
         #region Geolocalizacion
 
 
