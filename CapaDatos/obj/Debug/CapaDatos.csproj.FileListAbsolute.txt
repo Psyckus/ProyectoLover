@@ -70,3 +70,12 @@ C:\Users\dnb12\source\repos\loverSitios\CapaDatos\obj\Debug\CapaDatos.csproj.Cor
 C:\Users\dnb12\source\repos\loverSitios\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 C:\Users\dnb12\source\repos\loverSitios\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\dnb12\source\repos\loverSitios\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (3)\loverSitios\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (3)\loverSitios\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (3)\loverSitios\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (3)\loverSitios\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (3)\loverSitios\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (3)\loverSitios\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (3)\loverSitios\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (3)\loverSitios\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder (3)\loverSitios\CapaDatos\obj\Debug\CapaDatos.pdb

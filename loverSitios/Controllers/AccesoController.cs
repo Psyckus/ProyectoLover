@@ -44,11 +44,27 @@ namespace loverSitios.Controllers
                     TempData["idUsuario"] = oUsuario.idUsuario;
                     return RedirectToAction("CambiarClave");
                 }
+                //aqui se valia que rol traer el usuario y lo redirecciona segun cada pagina a que le pertenezca al usuario
+                else if (oUsuario.orol.nombre.Contains("Admin"))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (oUsuario.orol.nombre.Contains("Validador de perfiles"))
+                {
+
+                    ViewBag.Error = "Error! Solo administradores se permiten";
+                    return View();
+
+                }
+                else if (oUsuario.orol.nombre.Contains("Gestor de indicadores"))
+                {
+                    ViewBag.Error = "Error! Solo administradores se permiten";
+                    return View();
+                }
 
 
-
+                return View();
                 ViewBag.Error = null;
-                return RedirectToAction("Index", "Home");
             }
             //hay que agregar lo demas para poder aplicar la autenticacion en los forms
             //FormsAuthentication.SetAuthCookie(oUsuario.email, false);

@@ -29,25 +29,6 @@ namespace capaPresentacionCliente.Controllers
         {
             return View();
         }
-
-
-        #region ubicacion
-
-        [HttpPost]
-        public JsonResult ubicacion(int idCliente, string latitud, string longitud)
-        {
-            bool respuesta = false;
-            string mensaje = string.Empty;
-
-            respuesta = new CN_Clientes().geolocalizacion(idCliente, latitud,longitud, out mensaje);
-
-            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
-
-        }
-        #endregion
-
-
-
         [HttpPost]
         public ActionResult Registrar(cliente objeto)
         {
@@ -57,21 +38,25 @@ namespace capaPresentacionCliente.Controllers
             ViewData["email"] = string.IsNullOrEmpty(objeto.nombre) ? "" : objeto.email;
             if (objeto.clave != objeto.ConfirmarClave)
             {
-                ViewBag.Error = "Las contraseñas no coinciden";
+                //ViewBag.Error = "Las contraseñas no coinciden";
                 //retornar a la misma vista que se encuentra
-                return View();
+                var error = new { message = "Las contraseñas no coinciden", success = false };
+                return Json(error, JsonRequestBehavior.AllowGet);
+
             }
 
             resultado = new CN_Clientes().Registrar(objeto, out mensaje);
             if (resultado > 0)
             {
-                ViewBag.Error = null;
-                return RedirectToAction("Index", "Acceso");
+
+                var success = new { message = "Usuario registrado exitosamente", success = true };
+                return Json(success, JsonRequestBehavior.AllowGet);
+
             }
             else
             {
-                ViewBag.Error = mensaje;
-                return View();
+                var error = new { message = "Error no se pudo registrar el usuario", success = false };
+                return Json(error, JsonRequestBehavior.AllowGet);
 
             }
 

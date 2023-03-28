@@ -29,7 +29,7 @@
                     {
                         <p></p>
                     }
-                    <img src="@Url.Action("GetImage", "preguntasInteres", new { id = miObjeto.idCliente})" alt="" />
+                    <img src="@Url.Action("GetImagePrincipal", "perfil", new { id = miObjeto.idCliente })" alt="" />
                     @*<img src="~/imagenes/susana.jpeg" alt="" />*@
                 </a>
             </div>
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="dropdown_list">
-                    <a href="#" class="dropdown_link">
+                    <a href="@Url.Action("Index","Perfil")" class="dropdown_link">
                         <span class=""><i class="las la-user-circle"></i></span>
                         <small>Perfil</small>
                     </a>
