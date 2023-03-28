@@ -12,17 +12,13 @@ namespace capaPresentacionCliente.Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class match2
+    public partial class interes_cliente
     {
-        public int idMatch { get; set; }
-        public Nullable<int> cliente2 { get; set; }
-        public Nullable<int> cliente1 { get; set; }
-        public Nullable<int> idEstado { get; set; }
-        public Nullable<System.DateTime> fechaRegistro { get; set; }
-        public Nullable<System.DateTime> fecha_Registro { get; set; }
+        public int idInteresCliente { get; set; }
+        public Nullable<int> idinteres { get; set; }
+        public Nullable<int> idCliente { get; set; }
     
         public virtual cliente cliente { get; set; }
-        public virtual cliente cliente3 { get; set; }
-        public virtual estado estado { get; set; }
+        public virtual interes interes { get; set; }
     }
 }

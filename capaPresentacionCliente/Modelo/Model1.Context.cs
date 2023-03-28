@@ -52,5 +52,8 @@ namespace capaPresentacionCliente.Modelo
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<ConfCorreos> ConfCorreos { get; set; }
         public virtual DbSet<Correos> Correos { get; set; }
+        public virtual DbSet<Configuracion> Configuracion { get; set; }
+        public virtual DbSet<interes_cliente> interes_cliente { get; set; }
+        public virtual DbSet<Mensajes> Mensajes { get; set; }
     }
 }

@@ -12,17 +12,10 @@ namespace capaPresentacionCliente.Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class match2
+    public partial class Configuracion
     {
-        public int idMatch { get; set; }
-        public Nullable<int> cliente2 { get; set; }
-        public Nullable<int> cliente1 { get; set; }
-        public Nullable<int> idEstado { get; set; }
-        public Nullable<System.DateTime> fechaRegistro { get; set; }
-        public Nullable<System.DateTime> fecha_Registro { get; set; }
-    
-        public virtual cliente cliente { get; set; }
-        public virtual cliente cliente3 { get; set; }
-        public virtual estado estado { get; set; }
+        public int id_configuracion { get; set; }
+        public string nombre { get; set; }
+        public Nullable<int> LimiteSeleccion { get; set; }
     }
 }

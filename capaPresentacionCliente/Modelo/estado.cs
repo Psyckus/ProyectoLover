@@ -21,6 +21,7 @@ namespace capaPresentacionCliente.Modelo
             this.match2 = new HashSet<match2>();
             this.suspiro1 = new HashSet<suspiro1>();
             this.suspiro2 = new HashSet<suspiro2>();
+            this.match11 = new HashSet<match1>();
         }
     
         public int idEstado { get; set; }
@@ -34,5 +35,7 @@ namespace capaPresentacionCliente.Modelo
         public virtual ICollection<suspiro1> suspiro1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<suspiro2> suspiro2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<match1> match11 { get; set; }
     }
 }

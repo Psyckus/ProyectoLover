@@ -31,6 +31,9 @@ namespace capaPresentacionCliente.Modelo
             this.suspiro21 = new HashSet<suspiro2>();
             this.testUser = new HashSet<testUser>();
             this.ubicacion = new HashSet<ubicacion>();
+            this.interes_cliente = new HashSet<interes_cliente>();
+            this.Mensajes = new HashSet<Mensajes>();
+            this.Mensajes1 = new HashSet<Mensajes>();
         }
     
         public int idCliente { get; set; }
@@ -72,5 +75,11 @@ namespace capaPresentacionCliente.Modelo
         public virtual ICollection<testUser> testUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ubicacion> ubicacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<interes_cliente> interes_cliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mensajes> Mensajes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mensajes> Mensajes1 { get; set; }
     }
 }
