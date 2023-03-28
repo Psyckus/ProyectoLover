@@ -18,6 +18,7 @@ namespace capaPresentacionCliente.Modelo
         public interes()
         {
             this.interes_ciente = new HashSet<interes_ciente>();
+            this.interes_cliente = new HashSet<interes_cliente>();
         }
     
         public int idinteres { get; set; }
@@ -28,5 +29,7 @@ namespace capaPresentacionCliente.Modelo
         public virtual categoria_interes categoria_interes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<interes_ciente> interes_ciente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<interes_cliente> interes_cliente { get; set; }
     }
 }

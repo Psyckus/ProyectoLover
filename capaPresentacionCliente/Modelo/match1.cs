@@ -19,9 +19,11 @@ namespace capaPresentacionCliente.Modelo
         public Nullable<int> cliente2 { get; set; }
         public Nullable<int> idEstado { get; set; }
         public Nullable<System.DateTime> fechaRegistro { get; set; }
+        public Nullable<int> idEstado1 { get; set; }
     
         public virtual cliente cliente { get; set; }
         public virtual cliente cliente3 { get; set; }
         public virtual estado estado { get; set; }
+        public virtual estado estado1 { get; set; }
     }
 }

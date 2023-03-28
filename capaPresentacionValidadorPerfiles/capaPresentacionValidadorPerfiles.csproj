@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\TestPersonalidadController.cs" />
     <Compile Include="Modelo\ModEmparejamientoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenedorController.cs" />
@@ -610,6 +611,7 @@
     <Content Include="Views\ModEmparejamientoes\Details.cshtml" />
     <Content Include="Views\ModEmparejamientoes\Edit.cshtml" />
     <Content Include="Views\ModEmparejamientoes\Index.cshtml" />
+    <Content Include="Views\TestPersonalidad\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
