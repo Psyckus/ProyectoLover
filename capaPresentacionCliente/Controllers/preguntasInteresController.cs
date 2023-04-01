@@ -137,24 +137,34 @@ namespace capaPresentacionCliente.Controllers
         //metodo para obtener la imagen/solo una imagen tipo jpeg
         public ActionResult GetImage(int id)
         {
-            byte[] imageData = null;
 
-
-            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            try
             {
-                oconexion.Open();
+                byte[] imageData = null;
 
-                SqlCommand command = new SqlCommand("SELECT rutaFoto FROM foto WHERE idCliente = @idCliente", oconexion);
-                command.Parameters.Add("@idCliente", SqlDbType.Int).Value = id;
 
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    imageData = (byte[])reader["rutaFoto"];
-                }
-            }
+                    oconexion.Open();
 
-            return File(imageData, "image/jpeg");
+                    SqlCommand command = new SqlCommand("SELECT rutaFoto FROM foto WHERE idCliente = @idCliente", oconexion);
+                    command.Parameters.Add("@idCliente", SqlDbType.Int).Value = id;
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        imageData = (byte[])reader["rutaFoto"];
+                    }
+                }
+
+                return File(imageData, "image/jpeg");
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+          
         }
         [HttpPost]
         public JsonResult ObtenerInteresesPorCategoria(List<int> categorias)

@@ -31,7 +31,7 @@
                         }
 
 
-                        <img src="@Url.Action("GetImagePrincipal", "perfil", new { id = miObjeto.idCliente })" alt="" />
+                        <img src="@Url.Action("GetImage", "preguntasInteres", new { id = miObjeto.idCliente })" alt="" />
                     </a>
 
                 </div>
@@ -121,7 +121,7 @@
             </div>
             <div class="buttons">
                 <div class="no" onclick="Nogusta()">
-                    <i class="fas fa-times" ></i>
+                    <i class="fas fa-times"></i>
                 </div>
                 <div class="star">
                     <i class="fas fa-star fa"></i>
@@ -131,11 +131,128 @@
                 </div>
             </div>
         </div>
+        <!-- Contenido del modal -->
+        <div id="mi-modal" class="modal">
+            <div class="match">
+                <div class="logo">
+                    <img class="logo" src="~/imagenes/logoBla.png" alt="">
+                </div>
+                <div class="perfiles">
+                    <h1>¡Felicidades!</h1>
+                    <p>Hiciste un match!</p>
+                    <div class="container">
+                        <div class="box">
+                            <img class="cliente1" src="@Url.Action("GetImage", "preguntasInteres", new { id = miObjeto.idCliente})" alt="">
+                            <p class="nom"><samp>@(miObjeto != null ? miObjeto.nombre : Session["nombre"])</samp></p>
+                        </div>
+                        <div class="box">
+                            <img id="cliente2" class="cliente2">
+                            <p id="nomMatch" class="nom"><samp></samp></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="botones">
+                    <div class="boton1" onclick="">
+                        <a href="#">
+                            Enviar mensaje
+                        </a>
+                    </div>
+                    <div id="miDiv" class="boton2" >
+                        Seguir desplazando
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
+
+        var div = document.getElementById("miDiv");
+        div.addEventListener("click", guardarMatch);
+
+
+       
+        //// Obtener el modal
+        var modal = document.getElementById("mi-modal");
+        //// Obtener el botón para cerrar el modal
+        var cerrar = document.getElementsByClassName("boton2")[0];
+       
+        // Cuando el usuario haga clic en el botón de cerrar, cerrar el modal
+        cerrar.onclick = function () {
+            modal.style.display = "none";
+        }
+        //// Cuando el usuario haga clic en cualquier parte fuera del modal, cerrar el modal
+        //window.onclick = function (event) {
+        //    if (event.target == modal) {
+        //        modal.style.display = "none";
+        //    }
+        //}
+
+
+
+        function guardarMatch() {
+
+
+
+              $.ajax({
+                type: "POST",
+                 url: '@Url.Action("guadarMatches", "Home")',
+                  data: JSON.stringify({ cliente1: id, cliente2: window.ruta }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                  success: function (response) {
+
+                    console.log('Match exitoso')
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error')
+                }
+            });
+
+
+
+
+        }
+
+
+        function match() {
+             $.ajax({
+                type: "POST",
+                 url: '@Url.Action("mostrarMatch", "Home")',
+                 data: JSON.stringify({ cliente1: id, cliente2: id, cliente3:id }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                 success: function (data) {
+                      var obj = data.data;
+                    window.ruta = obj.idCliente;
+                     var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(window.ruta);
+                    $("#cliente2").attr("src", data)
+                    $("#nomMatch").text(obj.nombre)
+
+
+                     if (obj.idCliente == 0) {
+
+                         console.log("Error al enviar la datos al servidor.");
+
+                     } else {
+
+                         $("#mi-modal").css("display", "block");
+
+                          
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("Error al enviar la datos al servidor.");
+                        }
+            });
+
+        }
+
+        setInterval(match, 30000);
 
 
 
@@ -145,14 +262,14 @@
             $.ajax({
                 type: "POST",
                  url: '@Url.Action("Descubrir", "Home")',
-                data: JSON.stringify({ idCliente: id}),
+                data: JSON.stringify({ cliente1: id, idCliente: id }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
 
                     var obj = data.data;
-                    var ruta = obj.idCliente;
-                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(ruta);
+                    window.ajaxData = obj.idCliente;
+                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(window.ajaxData);
                     $("#user").attr("src", data)
                     $("#prueba").text(obj.idCliente)
                     $("#nom").text(obj.nombre)
@@ -165,7 +282,6 @@
                 }
             });
 
-
         });
 
 
@@ -176,29 +292,36 @@
         function gusta() {
 
 
-            $.ajax({
+              $.ajax({
+                type: "POST",
+                 url: '@Url.Action("Matches", "Home")',
+                data: JSON.stringify({cliente1: id, cliente2: window.ajaxData, activo:1}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                  success: function (response) {
+                      $.ajax({
                 type: "POST",
                  url: '@Url.Action("Descubrir", "Home")',
-                data: JSON.stringify({ idCliente: id}),
+                data: JSON.stringify({ cliente1: id, idCliente: id }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
                     var obj = data.data;
-                    var ruta = obj.idCliente;
-                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(ruta);
+                    window.ajaxData = obj.idCliente;
+                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(window.ajaxData);
                     $("#user").attr("src", data)
                     $("#nom").text(obj.nombre)
                     $("#edad").text(obj.edad)
                     $("#desc").text(obj.descripcion)
 
+                    console.log("Datos obtenidos con exito");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Error al enviar la datos al servidor.");
+                        }
+            });
 
-             $.ajax({
-                type: "POST",
-                 url: '@Url.Action("Matches", "Home")',
-                data: JSON.stringify({cliente1: id, cliente2: ruta, activo:1}),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
+
                     console.log('Me gusta exitoso')
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -207,13 +330,6 @@
             });
 
 
-
-                    console.log("Datos obtenidos con exito");
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            alert("Error al enviar la datos al servidor.");
-                        }
-            });
 
 
 
@@ -224,37 +340,28 @@
            function Nogusta() {
 
 
-            $.ajax({
+
+              $.ajax({
+                type: "POST",
+                 url: '@Url.Action("Matches", "Home")',
+                data: JSON.stringify({cliente1: id, cliente2: window.ajaxData, activo:2}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                  success: function (response) {
+                      $.ajax({
                 type: "POST",
                  url: '@Url.Action("Descubrir", "Home")',
-                data: JSON.stringify({ idCliente: id}),
+                data: JSON.stringify({ cliente1: id, idCliente: id }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
                     var obj = data.data;
-                    var ruta = obj.idCliente;
-                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(ruta);
+                    window.ajaxData = obj.idCliente;
+                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(window.ajaxData);
                     $("#user").attr("src", data)
                     $("#nom").text(obj.nombre)
                     $("#edad").text(obj.edad)
                     $("#desc").text(obj.descripcion)
-
-
-             $.ajax({
-                type: "POST",
-                 url: '@Url.Action("Matches", "Home")',
-                 data: JSON.stringify({ cliente1: id, cliente2: ruta, activo: 2 }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    console.log('No me gusta exitoso')
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    console.log('Error')
-                }
-            });
-
-
 
                     console.log("Datos obtenidos con exito");
                 },
@@ -262,6 +369,15 @@
                             alert("Error al enviar la datos al servidor.");
                         }
             });
+
+
+                    console.log('No me gusta exitoso')
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error')
+                }
+            });
+
 
 
 

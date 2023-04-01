@@ -60,14 +60,38 @@ namespace capaPresentacionCliente.Controllers
 
         }
 
+        [HttpPost]
+        public JsonResult guadarMatches(int cliente1, int cliente2)
+        {
+            bool respuesta = false;
+
+
+            respuesta = new CN_Clientes().guardarMatch(cliente1, cliente2);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
 
 
 
         [HttpPost]
-        public JsonResult Descubrir(int idCliente)
+        public JsonResult Descubrir(int cliente1, int idCliente)
         {
 
-            descubrir obj = new CN_Clientes().Descubrir(idCliente);
+            descubrir obj = new CN_Clientes().Descubrir(cliente1,idCliente);
+            return Json(new { data = obj }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        [HttpPost]
+        public JsonResult mostrarMatch(int cliente1, int cliente2, int cliente3)
+        {
+
+            match1 obj = new CN_Clientes().mostrarMatch(cliente1, cliente2, cliente3);
             return Json(new { data = obj }, JsonRequestBehavior.AllowGet);
 
         }

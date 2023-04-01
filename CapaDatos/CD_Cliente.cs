@@ -53,6 +53,44 @@ namespace CapaDatos
 
 
 
+
+        #region GuardarMatch
+        public bool guardarMatch(int cliente1, int cliente2)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+
+                    string query = "insert into matches (cliente1, cliente2, fecha) values (@cliente1,@cliente2,@fechaRegistro)";
+                    oconexion.Open();
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
+                    cmd.Parameters.AddWithValue("@cliente2", cliente2);
+                    cmd.Parameters.AddWithValue("@fechaRegistro", DateTime.Now);
+                    // Ejecutar la consulta para agregar el nuevo cliente
+                    cmd.ExecuteNonQuery();
+                    oconexion.Close();
+                    resultado = true;
+                }
+            }
+            catch (Exception)
+            {
+                resultado = false;
+
+            }
+            return resultado;
+
+        }
+
+        #endregion
+
+
+
         #region Geolocalizacion
 
 
@@ -171,17 +209,18 @@ namespace CapaDatos
         #region Descubirir
 
 
-        public descubrir Descubrir(int idCliente)
+        public descubrir Descubrir(int cliente1, int idCliente)
         {
             descubrir obj = new descubrir();
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    string query = "  select top 1 idCliente, nombre, DATEDIFF(year,fecha_nac,GETDATE()) as edad, descripcion from cliente where idCliente != @idCliente order by newid() ";
+                    string query = " select top 1 c.idCliente, c.nombre, DATEDIFF(year,c.fecha_nac,GETDATE()) as edad, c.descripcion from cliente c  WHERE c.idCliente NOT IN (SELECT cliente2 FROM match1 where cliente1 = @cliente1) and c.idCliente !=  @idCliente  ORDER BY NEWID() ";
 
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
                     cmd.Parameters.AddWithValue("@idCliente", idCliente);
                     oconexion.Open();
                     using (SqlDataReader dr = cmd.ExecuteReader())
@@ -205,6 +244,52 @@ namespace CapaDatos
             catch (Exception)
             {
                 obj = new descubrir();
+            }
+            return obj;
+
+
+        }
+
+
+        #endregion
+
+
+        #region match
+
+        public match1 mostrarMatch(int cliente1, int cliente2, int cliente3)
+        {
+            match1 obj = new match1();
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+                    string query = "select top 1 a.idCliente, a.nombre from cliente a where a.idcliente  in (select cliente2 from match1 b where b.cliente1= @cliente1 and b.idEstado=1) and a.idcliente in (select cliente1 from match1 b where b.cliente2= @cliente2  and b.idEstado=1) and a.idCliente not in (select cliente2 from matches where cliente1 = @cliente3)  ORDER BY NEWID()";
+
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
+                    cmd.Parameters.AddWithValue("@cliente2", cliente2);
+                    cmd.Parameters.AddWithValue("@cliente3", cliente3);
+                    oconexion.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            obj = new match1()
+                            {
+                                idCliente = Convert.ToInt32(dr["idCliente"]),
+                                nombre = dr["nombre"].ToString(),
+                             
+                            };
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception)
+            {
+                obj = new match1();
             }
             return obj;
 

@@ -29,6 +29,25 @@ namespace capaPresentacionCliente.Controllers
         {
             return View();
         }
+
+        #region ubicacion
+
+        [HttpPost]
+        public JsonResult ubicacion(int idCliente, string latitud, string longitud)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Clientes().geolocalizacion(idCliente, latitud, longitud, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+
+        }
+        #endregion
+
+
+
+
         [HttpPost]
         public ActionResult Registrar(cliente objeto)
         {

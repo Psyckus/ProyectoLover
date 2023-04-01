@@ -8,10 +8,8 @@ namespace CapaEntidad
 {
     public class match1
     {
-        public int idMatch { get; set; }
-        public cliente ocliente1 { get; set; }
-        public cliente ocliente2 { get; set; }
-        public int idEstado { get; set; }
-
+        public int idCliente { get; set; }
+        public string nombre { get; set; }
+       
     }
 }

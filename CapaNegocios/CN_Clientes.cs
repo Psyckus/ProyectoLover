@@ -26,11 +26,25 @@ namespace CapaNegocios
         #endregion
 
 
+        #region guardarMatches
+        public bool guardarMatch(int cliente1, int cliente2)
+        {
+            return objCapaDato.guardarMatch(cliente1, cliente2);
+        }
+        #endregion
+
+        #region mostrarMatch
+        public match1 mostrarMatch(int cliente1, int cliente2, int cliente3)
+        {
+            return objCapaDato.mostrarMatch(cliente1, cliente2, cliente3);
+        }
+
+        #endregion
 
         #region Descubrir
-        public descubrir Descubrir(int idCliente)
+        public descubrir Descubrir(int cliente1, int idCliente)
         {
-            return objCapaDato.Descubrir(idCliente);
+            return objCapaDato.Descubrir(cliente1, idCliente);
         }
 
         #endregion
