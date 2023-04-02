@@ -81,6 +81,17 @@
             font-size: 14px;
             line-height: 1;
         }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+            .logo-container img {
+                width: 50%;
+                height: 50%;
+            }
+
 
             .btn-interes:hover {
                 background-color: rgba(255, 0, 0, 0.5);
@@ -119,41 +130,42 @@
         }
 
         /* Estilo para el modal */
+
         .modal {
-            display: none; /* El modal está oculto por defecto */
-            position: fixed; /* Se posiciona de manera fija */
-            z-index: 1; /* Se sitúa por encima de otros elementos */
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Se aplica un fondo oscuro y traslúcido */
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            top: 50px;
         }
 
-        /* Estilo para el contenido del modal */
         .modal-contenido {
-            background-color: white;
-            margin: 15% auto; /* Se centra verticalmente */
+            background-color: #fefefe;
+            margin: auto;
             padding: 20px;
-            border-radius: 5px;
-            width: 50%;
-            position: relative;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+            border: 2px solid #5f0c0c;
+            border-radius: 10px;
         }
 
-        /* Estilo para el botón de cerrar el modal */
         .cerrar {
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: #aaaaaa;
+            color: #aaa;
+            float: right;
             font-size: 28px;
             font-weight: bold;
-            cursor: pointer;
         }
 
             .cerrar:hover,
             .cerrar:focus {
-                color: #5f0c0c;
+                color: black;
                 text-decoration: none;
                 cursor: pointer;
             }
@@ -323,6 +335,8 @@
             #agregar-interes:hover {
                 background-color: lightgray;
             }
+    
+
     </style>
 </head>
 <body>
@@ -352,9 +366,6 @@
                             <span class="fas fa-camera"></span> Subir Foto
                         </button>
                     </div>
-
-
-
                     <div class="contenedor-fotos">
                         @foreach (var f in ViewBag.fotos)
                         {
@@ -376,126 +387,124 @@
 
                     </div>
 
+                </div>
+                @*modal para abrir foto*@
+                <div class="modal fade" id="modalAgregarFoto" tabindex="-1" role="dialog" aria-labelledby="modalAgregarFotoLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalAgregarFotoLabel">Agregar Foto</h5>
+                                <button type="button" class="close" data-dismiss="modal" id="btnCerrarModal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
 
 
+                                <div class="form-group">
 
+                                    <div class="upload-button" onclick="document.getElementById('file').click()">
+                                        <span>Subir imagen</span>
 
-                    <div class="modal fade" id="modalAgregarFoto" tabindex="-1" role="dialog" aria-labelledby="modalAgregarFotoLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalAgregarFotoLabel">Agregar Foto</h5>
-                                    <button type="button" class="close" data-dismiss="modal" id="btnCerrarModal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                        <input type="file" name="file" id="file" accept=".jpeg" onchange="validateFileSize(this)" />
+                                    </div>
                                 </div>
-                                <div class="modal-body">
+                                <div class="button-container">
+                                    <button class="submit-btn" type="submit" id="submit-btn" disabled>Subir</button>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
 
 
-                                    <div class="form-group">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                        <div class="upload-button" onclick="document.getElementById('file').click()">
-                                            <span>Subir imagen</span>
 
-                                            <input type="file" name="file" id="file" accept=".jpeg" onchange="validateFileSize(this)" />
-                                        </div>
+
+
+
+
+
+
+                <div class="profile-edit__section">
+                    <h3>Intereses</h3>
+
+
+                    @*modal para agregar los interes*@
+          
+
+
+                    <button id="btn-modal">  Agregar </button>
+                    <div class="modal" id="mi-modal">
+                        <div class="modal-contenido">
+                            <span class="cerrar">&times;</span>
+                            <div class="card-container">
+                                <div class="card">                        
+                                    @*<h2>Intereses</h2>*@
+                                    <div class="label-container">
+                                        <label id="max-intereses-label"></label>
+                                        <input type="hidden" id="intereses-seleccionados" />
+                                        <ul id="lista-intereses" class="intereses-seleccionados-lista"></ul>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p id="mensaje-error" class="alert alert-danger"></p>
+                                    </div>
+                                    <div class="modal-contenido modal-intereses">
+                                        <ul id="interesesSeleccionados"></ul>
+                                        <label for="categorias">Categorías:</label>
+                                        <select id="categorias" name="categorias">
+                                            <option value="">Seleccione una categoría</option>
+                                            @foreach (var categoria in ViewBag.Categorias)
+                                            {
+                                                <option value="@categoria.idCategoria_interes">@categoria.nombre</option>
+                                            }
+                                        </select>
+                                        <label for="intereses">Intereses:</label>
+                                        <select id="intereses" name="intereses" multiple></select>
                                     </div>
                                     <div class="button-container">
-                                        <button class="submit-btn" type="submit" id="submit-btn" disabled>Subir</button>
+                                        <button type="button" id="agregar-interes">Agregar</button>
                                     </div>
-
-                                </div>
-                                <div class="modal-footer">
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="profile-edit__section">
-                        <h3>Intereses</h3>
-
-
-                        @*modal para agregar los interes*@
-                        <button id="btn-modal">Agregar Intereses</button>
-
-
-                        <div class="modal" id="mi-modal">
-                            <div class="modal-contenido">
-                                <span class="cerrar">&times;</span>
 
 
 
-                                <div class="card-container">
-                                    <div class="card">
-                                        @*<div class="logo-container">
-                                                <img src="~/imagenes/image001.png" style="width: 30%; height: 30%;" alt="Logo">
-                                            </div>*@
 
-                                        <h2>Intereses</h2>
-                                        <div class="label-container">
-                                            <label id="max-intereses-label"></label>
-                                            <input type="hidden" id="intereses-seleccionados" />
-
-                                            <ul id="lista-intereses" class="intereses-seleccionados-lista"></ul>
-
-                                        </div>
-
-                                        <div class="modal-body">
-                                            <p id="mensaje-error" class="alert alert-danger"></p>
-                                        </div>
-
-                                        <div class="modal-contenido modal-intereses">
-
-                                            <ul id="interesesSeleccionados"></ul>
-                                            <label for="categorias">Categorías:</label>
-                                            <select id="categorias" name="categorias">
-                                                <option value="">Seleccione una categoría</option>
-                                                @foreach (var categoria in ViewBag.Categorias)
-                                                {
-                                                    <option value="@categoria.idCategoria_interes">@categoria.nombre</option>
-                                                }
-                                            </select>
-                                            <label for="intereses">Intereses:</label>
-                                            <select id="intereses" name="intereses" multiple></select>
-                                        </div>
-                                        <div class="button-container">
-                                            <button type="button" id="agregar-interes">Agregar</button>
-                                        </div>
+                    @*para mostrar los interes qye ya tengo*@
 
 
-                                    </div>
-                                </div>
+                    <div class="form-group">
+                        <label for="interests">Mis intereses:</label>
+
+                        <ul class="button-list">
+                            @foreach (var interes in ViewBag.Intereses)
+                            {
+                                <li class="button-item">
+                                    @interes.nombre
+                                    <button type="button" data-id="@interes.idinteres" class="btn-eliminar-interes" data-id-interes="@interes.idinteres">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
 
 
-
-                            </div>
-                        </div>
-
-                        @*para mostrar los interes qye ya tengo*@
-                        <div class="form-group">
-                            <label for="interests">Mis intereses:</label>
-
-                            <ul class="button-list">
-                                @foreach (var interes in ViewBag.Intereses)
-                                {
-                                    <li class="button-item">
-                                        @interes.nombre
-                                        <button type="button" data-id="@interes.idinteres" class="btn-eliminar-interes" data-id-interes="@interes.idinteres">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-
-
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-
-
+                                </li>
+                            }
+                        </ul>
                     </div>
+
+
+
+
 
                 </div>
+
+            </div>
             </div>
             <div class="profile-edit__footer">
 
@@ -503,366 +512,340 @@
         </div>
     </div>
 
+    <script>
 
-    @section scripts {
-        <script>
+        //controladores para el bio
 
-$('#btnCerrarModal').on('click', function () {
-    $('#modalAgregarFoto').modal('hide');
-});
-
-$('#btnAgregarFoto').on('click', function () {
-    $('#modalAgregarFoto').modal('show');
-});
-
-
-$(document).ready(function () {
-    $('#submit-btn').click(function (e) {
-        e.preventDefault();
-        var formData = new FormData();
-        formData.append('file', $('#file')[0].files[0]);
+            $(document).ready(function () {
         $.ajax({
-            url: '@Url.Action("SubirImagen", "Perfil")',
-            type: 'POST',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (result) {
-                Swal.fire({
-                    title: '¡Éxito!',
-                    text: 'La imagen se ha cargado correctamente.',
-                    icon: 'success'
-                }).then(function () {
-                    location.reload();
-                });
+            url: '@Url.Action("CargarDatosCliente", "Perfil")',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data) {
+                    $('#nombre').val(data.Nombre);
+                    $('#descripcion').val(data.Descripcion);
+                }
             },
-            error: function (xhr, status, error) {
-                Swal.fire({
-                    title: '¡Error!',
-                    text: 'Hubo un problema al cargar la imagen.',
-                    icon: 'error'
-                });
+            error: function () {
+                console.error('Ocurrió un error al obtener los datos del cliente');
             }
         });
-    });
-});
-
-
-
-function validateFileSize(input) {
-    if (input.files[0].size > 2 * 1024 * 1024) {
-        Swal.fire("Error", "La imagen debe ser menor que 2 MB.", "error");
-        input.value = "";
-        document.getElementById('submit-btn').disabled = true;
-    } else {
-        Swal.fire({
-            title: "¿Está seguro de que desea subir esta imagen?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonText: "Sí",
-            cancelButtonText: "No"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('submit-btn').disabled = false;
-            } else {
-                input.value = "";
-                document.getElementById('submit-btn').disabled = true;
-            }
-        });
-    }
-}
-
-$(document).ready(function () {
-    $('.eliminar-form').submit(function (e) {
-        e.preventDefault(); // Prevenir envío del formulario
-        var form = this;
-        Swal.fire({
-            title: '¿Estás seguro de eliminar la foto?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar',
-            customClass: {
-                confirmButton: 'btn btn-danger',
-                cancelButton: 'btn btn-primary'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit(); // Continuar con el envío del formulario
-            }
-        });
-    });
-});
-
-
-$(document).ready(function () {
-    $.ajax({
-        url: '@Url.Action("CargarDatosCliente", "Perfil")',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            if (data) {
-                $('#nombre').val(data.Nombre);
-                $('#descripcion').val(data.Descripcion);
-            }
-        },
-        error: function () {
-            console.error('Ocurrió un error al obtener los datos del cliente');
-        }
-    });
-});
-
-
-$(document).ready(function () {
-    $("#descripcion").on("change", function () {
+            });
+$(document).ready(function() {
+    $("#descripcion").on("change", function() {
         var descripcion = $(this).val();
         $.ajax({
             url: "@Url.Action("ActualizarDatosCliente", "Perfil")",
             type: "POST",
             data: { description: descripcion },
-            success: function (response) {
+            success: function(response) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Éxito',
                     text: response.message
+                }).then(function() {
+                    location.reload();
                 });
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
                 console.log("Error al actualizar los datos: " + error);
             }
         });
     });
 });
 
-
-
-
-$(function () {
-    $('#categorias').on('change', function () {
-        var categoriasSeleccionadas = $(this).val();
-        $.ajax({
-            url: '@Url.Action("ObtenerInteresesPorCategoria", "Perfil")',
-            type: 'POST',
-            data: { categorias: categoriasSeleccionadas },
-            success: function (data) {
-                var selectIntereses = $('#intereses');
-                selectIntereses.empty();
-                $.each(data, function (index, interes) {
-                    selectIntereses.append('<option value="' + interes.idinteres + '">' + interes.nombre + '</option>');
-                });
-            }
+        //script para abrir el modal de fotos
+        $('#btnCerrarModal').on('click', function () {
+            $('#modalAgregarFoto').modal('hide');
         });
-    });
-});
 
-$(function () {
-    $('#interesesSeleccionados').on('click', 'li', function () {
-        $(this).remove();
-    });
-
-    $('#agregarInteres').on('click', function () {
-        var interesSeleccionado = $('#intereses').find(':selected');
-        var interesesSeleccionados = $('#interesesSeleccionados');
-
-        if (interesSeleccionado.length > 0) {
-            var interesId = interesSeleccionado.val();
-            var interesNombre = interesSeleccionado.text();
-
-            if (interesesSeleccionados.find('li[data-id="' + interesId + '"]').length === 0) {
-                interesesSeleccionados.append('<li data-id="' + interesId + '">' + interesNombre + '</li>');
-            } else {
-                alert('Este interés ya ha sido seleccionado.');
-            }
-        } else {
-            alert('Seleccione un interés para agregar.');
-        }
-    });
-});
-
-
-//modal
-
-// Seleccionar el botón y el modal
-var btnModal = document.getElementById("btn-modal");
-var miModal = document.getElementById("mi-modal");
-
-// Seleccionar el botón de cerrar el modal
-var btnCerrar = miModal.getElementsByClassName("cerrar")[0];
-
-// Función para abrir el modal
-function abrirModal() {
-    miModal.style.display = "block";
-    $("#categorias").click(function (event) {
-        event.stopPropagation();
-    });
-    $('#intereses').click(function (event) {
-        event.stopPropagation(); // Evita que el evento se propague al modal
-        event.preventDefault(); // Evita que el formulario se envíe y la página se recargue
-        // Resto del código para agregar el interés
-    });
-
-
-}
-
-// Función para cerrar el modal
-function cerrarModal() {
-    miModal.style.display = "none";
-}
-
-// Asignar eventos a los botones
-btnModal.addEventListener("click", abrirModal);
-btnCerrar.addEventListener("click", cerrarModal);
-miModal.addEventListener("click", cerrarModal);
-
-
-
-
-
-$(document).ready(function () {
-    $('.btn-eliminar-interes').click(function () {
-        var idInteres = $(this).data('id-interes');
-        $.ajax({
-            url: '@Url.Action("eliminarInteres", "Perfil")',
-            type: 'POST',
-            data: { idInteres: idInteres },
-            success: function () {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: 'Interés eliminado correctamente'
-                }).then(function () {
-                    location.reload();
-                });
-            },
-            error: function () {
-                // Manejar el error
-            }
+        $('#btnAgregarFoto').on('click', function () {
+            $('#modalAgregarFoto').modal('show');
         });
-    });
-});
-
-
-$('#intereses').on('change', function () {
-    var idInteres = $(this).val();
-    var interes = $('#intereses option:selected').text();
-
-    // Actualizar el valor del input con los id de los intereses seleccionados
-    var interesesSeleccionados = $('#intereses-seleccionados').val();
-    if (interesesSeleccionados === "") {
-        $('#intereses-seleccionados').val(idInteres);
-    } else {
-        $('#intereses-seleccionados').val(interesesSeleccionados + "," + idInteres);
-    }
-
-    $('#lista-intereses').append('<li>' + interes + '</li>');
-
-    // Limpia el select de intereses seleccionados para que el usuario pueda agregar nuevos intereses
-    $('#intereses option:selected').remove();
-});
-
-
-// Controlador del evento click del botón para agregar el interés
-$('button').on('click', function (event) {
-    event.stopPropagation(); // Evita que el evento se propague al modal
-    event.preventDefault(); // Evita que el formulario se envíe y la página se recargue
-
-    // Verificar si el cliente ha alcanzado el límite de intereses permitidos
+        //funcionalidad
+             $(document).ready(function() {
+  $('#submit-btn').click(function(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('file', $('#file')[0].files[0]);
     $.ajax({
-        type: "GET",
-        url: "@Url.Action("ObtenerDatosInteres","Perfil")",
-        success: function (data) {
-            if (data.InteresesDisponibles <= 0) {
-                alert("Ya ha seleccionado el máximo de intereses permitidos.");
-                return;
-            }
-
-            // Agregar el interés a la base de datos
-            var idInteres = $('#intereses').val();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Error al obtener el límite de intereses: " + errorThrown);
-        }
+      url: '@Url.Action("SubirImagen", "Perfil")',
+      type: 'POST',
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(result) {
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'La imagen se ha cargado correctamente.',
+          icon: 'success'
+        }).then(function() {
+          location.reload();
+        });
+      },
+      error: function(xhr, status, error) {
+        Swal.fire({
+          title: '¡Error!',
+          text: 'Hubo un problema al cargar la imagen.',
+          icon: 'error'
+        });
+      }
     });
-});
+  });
+             });
 
-$(document).ready(function () {
-    $('#agregar-interes').click(function () {
-        var interesesSeleccionados = $('#intereses-seleccionados').val();
-
-        $.ajax({
-            type: "POST",
-            url: "@Url.Action("AgregarInteres","Perfil")",
-            data: { idInteres: interesesSeleccionados },
-            success: function (data) {
+        function validateFileSize(input) {
+            if (input.files[0].size > 2 * 1024 * 1024) {
+                Swal.fire("Error", "La imagen debe ser menor que 2 MB.", "error");
+                input.value = "";
+                document.getElementById('submit-btn').disabled = true;
+            } else {
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Interés agregado con éxito',
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then(() => {
-                    location.reload();
+                    title: "¿Está seguro de que desea subir esta imagen?",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonText: "Sí",
+                    cancelButtonText: "No"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('submit-btn').disabled = false;
+                    } else {
+                        input.value = "";
+                        document.getElementById('submit-btn').disabled = true;
+                    }
                 });
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Error al agregar el interés: " + errorThrown);
             }
+        }
+
+        $(document).ready(function () {
+            $('.eliminar-form').submit(function (e) {
+                e.preventDefault(); // Prevenir envío del formulario
+                var form = this;
+                Swal.fire({
+                    title: '¿Estás seguro de eliminar la foto?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar',
+                    customClass: {
+                        confirmButton: 'btn btn-danger',
+                        cancelButton: 'btn btn-primary'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit(); // Continuar con el envío del formulario
+                    }
+                });
+            });
+        });
+
+        //fin
+        //seccion de intereses
+       //modal intereses
+        var btnModal = document.getElementById("btn-modal");
+        var miModal = document.getElementById("mi-modal");
+
+        // Seleccionar el botón de cerrar el modal
+        var btnCerrar = miModal.getElementsByClassName("cerrar")[0];
+
+        // Función para abrir el modal
+        function abrirModal() {
+            miModal.style.display = "block";
+            $("#categorias").click(function (event) {
+                event.stopPropagation();
+            });
+            $('#intereses').click(function (event) {
+                event.stopPropagation(); // Evita que el evento se propague al modal
+                event.preventDefault(); // Evita que el formulario se envíe y la página se recargue
+                // Resto del código para agregar el interés
+            });
+
+
+        }
+
+        // Función para cerrar el modal
+        function cerrarModal() {
+            miModal.style.display = "none";
+        }
+
+        // Asignar eventos a los botones
+        btnModal.addEventListener("click", abrirModal);
+        btnCerrar.addEventListener("click", cerrarModal);
+        miModal.addEventListener("click", cerrarModal);
+
+                 $(function () {
+        $('#categorias').on('change', function () {
+            var categoriasSeleccionadas = $(this).val();
+            $.ajax({
+                url: '@Url.Action("ObtenerInteresesPorCategoria", "Perfil")',
+                type: 'POST',
+                data: { categorias: categoriasSeleccionadas },
+                success: function (data) {
+                    var selectIntereses = $('#intereses');
+                    selectIntereses.empty();
+                    $.each(data, function (index, interes) {
+                        selectIntereses.append('<option value="' + interes.idinteres + '">' + interes.nombre + '</option>');
+                    });
+                }
+            });
         });
     });
-});
+        $(function () {
+            $('#interesesSeleccionados').on('click', 'li', function () {
+                $(this).remove();
+            });
+
+            $('#agregarInteres').on('click', function () {
+                var interesSeleccionado = $('#intereses').find(':selected');
+                var interesesSeleccionados = $('#interesesSeleccionados');
+
+                if (interesSeleccionado.length > 0) {
+                    var interesId = interesSeleccionado.val();
+                    var interesNombre = interesSeleccionado.text();
+
+                    if (interesesSeleccionados.find('li[data-id="' + interesId + '"]').length === 0) {
+                        interesesSeleccionados.append('<li data-id="' + interesId + '">' + interesNombre + '</li>');
+                    } else {
+                        alert('Este interés ya ha sido seleccionado.');
+                    }
+                } else {
+                    alert('Seleccione un interés para agregar.');
+                }
+            });
+        });
+
+          $(document).ready(function() {
+        $('.btn-eliminar-interes').click(function() {
+            var idInteres = $(this).data('id-interes');
+            $.ajax({
+                url: '@Url.Action("eliminarInteres", "Perfil")',
+                type: 'POST',
+                data: { idInteres: idInteres },
+                success: function() {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Interés eliminado correctamente'
+                    }).then(function () {
+                        location.reload();
+                    });
+                },
+                error: function() {
+                    // Manejar el error
+                }
+            });
+        });
+    });
+        $('#intereses').on('change', function () {
+            var idInteres = $(this).val();
+            var interes = $('#intereses option:selected').text();
+
+            // Actualizar el valor del input con los id de los intereses seleccionados
+            var interesesSeleccionados = $('#intereses-seleccionados').val();
+            if (interesesSeleccionados === "") {
+                $('#intereses-seleccionados').val(idInteres);
+            } else {
+                $('#intereses-seleccionados').val(interesesSeleccionados + "," + idInteres);
+            }
+
+            $('#lista-intereses').append('<li>' + interes + '</li>');
+
+            // Limpia el select de intereses seleccionados para que el usuario pueda agregar nuevos intereses
+            $('#intereses option:selected').remove();
+        });
 
 
+        //aqui
+        // Controlador del evento click del botón para agregar el interés
+// Definir una variable para indicar si se ha mostrado la alerta
+var alertaMostrada = false;
 
+$('button').on('click', function (event) {
+  event.stopPropagation(); // Evita que el evento se propague al modal
 
-
-
-
-$('#eliminar-interes').on('click', function () {
-    var interesesSeleccionados = $('#intereses-seleccionados').val();
-    var listaIntereses = $('#lista-intereses');
-
-    // Elimina la última coma y el espacio de la cadena de intereses seleccionados
-    interesesSeleccionados = interesesSeleccionados.substring(0, interesesSeleccionados.length - 2);
-
-    // Obtiene el último interés agregado a la lista y lo agrega al select de intereses
-    var ultimoInteres = listaIntereses.children('li:last').text();
-    var opcion = $('<option>').val('').text(ultimoInteres);
-    $('#intereses').append(opcion);
-
-    // Elimina el último elemento de la lista de intereses seleccionados
-    listaIntereses.children('li:last').remove();
-
-    // Actualiza el valor del input con los id de los intereses seleccionados
-    $('#intereses-seleccionados').val(interesesSeleccionados);
-});
-
-
-
-
-
-
-$.ajax({
+  // Verificar si el cliente ha alcanzado el límite de intereses permitidos
+  $.ajax({
     type: "GET",
     url: "@Url.Action("ObtenerDatosInteres","Perfil")",
-    success: function (data) {
-        $("#max-intereses-label").text("Cantidad de intereses disponibles: " + data.InteresesDisponibles);
+    success: function(data) {
+      if (data.InteresesDisponibles <= 0 && !alertaMostrada) {
+        alertaMostrada = true; // Cambiar el valor de la variable
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ya ha seleccionado el máximo de intereses permitidos.'
+        });
+        return;
+      }
+
+      // Agregar el interés a la base de datos
+      var idInteres = $('#intereses').val();
     },
-    error: function (jqXHR, textStatus, errorThrown) {
-        console.log("Error al obtener el límite de intereses: " + errorThrown);
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("Error al obtener el límite de intereses: " + errorThrown);
     }
+  });
+});
+
+        //fin
+
+$(document).ready(function() {
+  $('#agregar-interes').click(function() {
+    var interesesSeleccionados = $('#intereses-seleccionados').val();
+
+    // Validar si no se ha seleccionado ningún interés
+    if (interesesSeleccionados === "") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Debe seleccionar al menos un interés antes de continuar.'
+      });
+      return;
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "@Url.Action("AgregarInteres","Perfil")",
+      data: { idInteres: interesesSeleccionados },
+      success: function(data) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Interés agregado con éxito',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          location.reload();
+        });
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log("Error al agregar el interés: " + errorThrown);
+      }
+    });
+  });
+
+  // Obtener la cantidad de intereses disponibles
+  $.ajax({
+    type: "GET",
+    url: "@Url.Action("ObtenerDatosInteres","Perfil")",
+    success: function(data) {
+      $("#max-intereses-label").text("Cantidad de intereses disponibles: " + data.InteresesDisponibles);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("Error al obtener el límite de intereses: " + errorThrown);
+    }
+  });
 });
 
 
 
+        //fin
 
 
-
-
-        </script>
-    }
-
+    </script>
 
 </body>
 </html>

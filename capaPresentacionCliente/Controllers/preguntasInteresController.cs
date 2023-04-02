@@ -85,17 +85,22 @@ namespace capaPresentacionCliente.Controllers
         }
 
         [HttpPost]
-        public ActionResult Pregunta1(string idCliente, string fecha_nac)
+        public ActionResult Pregunta1( string fecha_nac)
         {
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+
+
+
+            var idCliente = oClienteSession.idCliente;
             cliente oCliente = new cliente();
-            oCliente = new CN_Clientes().Listar().Where(u => u.idCliente == int.Parse(idCliente)).FirstOrDefault();
+            oCliente = new CN_Clientes().Listar().Where(u => u.idCliente == idCliente).FirstOrDefault();
             string mensaje = string.Empty;
-            bool respuesta = new CN_Clientes().Pregunta1(int.Parse(idCliente), fecha_nac, out mensaje);
+            bool respuesta = new CN_Clientes().Pregunta1(idCliente, fecha_nac, out mensaje);
 
             if (respuesta)
             {
-                var session = HttpContext.Session;
-                var oClienteSession = session["Cliente"];
+              
                 TempData["idCliente"] = idCliente;
                 return RedirectToAction("Pregunta3");
             }
@@ -137,34 +142,32 @@ namespace capaPresentacionCliente.Controllers
         //metodo para obtener la imagen/solo una imagen tipo jpeg
         public ActionResult GetImage(int id)
         {
+            byte[] imageData = null;
 
-            try
+
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
             {
-                byte[] imageData = null;
+                oconexion.Open();
 
+                SqlCommand command = new SqlCommand("SELECT rutaFoto FROM foto WHERE idCliente = @idCliente", oconexion);
+                command.Parameters.Add("@idCliente", SqlDbType.Int).Value = id;
 
-                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    oconexion.Open();
-
-                    SqlCommand command = new SqlCommand("SELECT rutaFoto FROM foto WHERE idCliente = @idCliente", oconexion);
-                    command.Parameters.Add("@idCliente", SqlDbType.Int).Value = id;
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        imageData = (byte[])reader["rutaFoto"];
-                    }
+                    imageData = (byte[])reader["rutaFoto"];
                 }
+            }
 
+            if (imageData == null)
+            {
+                return View();
+            }
+            else
+            {
                 return File(imageData, "image/jpeg");
             }
-            catch (Exception)
-            {
 
-                return null;
-            }
-          
         }
         [HttpPost]
         public JsonResult ObtenerInteresesPorCategoria(List<int> categorias)
@@ -258,6 +261,21 @@ namespace capaPresentacionCliente.Controllers
             return RedirectToAction("Pregunta1");
 
 
+        }
+        public int ObtenerLimiteMaximoIntereses()
+        {
+            int limiteMaximoIntereses = 0;
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT LimiteSeleccion FROM configuracion WHERE Nombre = 'LimiteMaximoIntereses'", oconexion);
+                oconexion.Open();
+                var resultado = cmd.ExecuteScalar();
+                if (resultado != null)
+                {
+                    limiteMaximoIntereses = Int32.Parse(resultado.ToString());
+                }
+            }
+            return limiteMaximoIntereses;
         }
         [HttpPost]
         public ActionResult Pregunta3(int idCliente, HttpPostedFileBase file)

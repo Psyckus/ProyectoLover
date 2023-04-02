@@ -74,7 +74,7 @@
             <h1>Lover</h1>
             <h2>Mejor opcion para encotrar a tu pareja</h2>
             <div class="d-flex">
-                <a id="crear-cuenta" class="btn-get-started scrollto">Crear Cuenta</a>
+                <a id="crear" class="btn-get-started scrollto">Crear Cuenta</a>
             </div>
         </div>
     </section><!-- End Hero -->
@@ -503,10 +503,12 @@
         // Obtener el modal y el botón que lo abre
         var modal = document.getElementById("modal-crear-cuenta");
         var btn = document.getElementById("crear-cuenta");
-
+            var btn2 = document.getElementById("crear");
         // Obtener el botón "Cerrar" que cierra el modal
         var span = document.getElementsByClassName("close")[0];
-
+        btn2.onclick = function () {
+            modal.style.display = "block";
+        }
         // Abrir el modal cuando se hace clic en el botón
         btn.onclick = function () {
             modal.style.display = "block";
@@ -546,7 +548,7 @@
                           confirmButtonText: "OK"
                         }).then(function(result) {
                           // redirigir a la página de inicio de sesión
-                          window.location.href = '@Url.Action("Index", "Home")';
+                          window.location.href = '@Url.Action("Index", "Index")';
                         });
                       } else {
                         // mostrar mensaje de error en el modal

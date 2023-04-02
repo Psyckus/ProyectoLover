@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>capaPresentacionCliente</RootNamespace>
     <AssemblyName>capaPresentacionCliente</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -369,16 +369,20 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\styleImagenes2.css" />
     <Content Include="Content\StyleMatch.css" />
+    <Content Include="Content\StylesJona\BtonModal.css" />
     <Content Include="Content\StylesJona\Editperfil.css" />
+    <Content Include="Content\StylesJona\estilosBotones.css" />
     <Content Include="Content\StylesJona\Modal.css" />
     <Content Include="Content\StylesJona\Pregunta1.css" />
     <Content Include="Content\StylesJona\pregunta1p.css" />
     <Content Include="Content\StylesJona\Pregunta4.css" />
+    <Content Include="Content\StylesJona\pregunta4p.css" />
     <Content Include="Content\StylesJona\Pregunta5.css" />
     <Content Include="Content\StylesJona\Select.css" />
     <Content Include="Content\StylesJona\selectgenero.css" />
     <Content Include="Content\StylesJona\style2.css" />
     <Content Include="Content\StylesJona\styleImagenes.css" />
+    <Content Include="Content\StylesJona\styleImagenes2.css" />
     <Content Include="Content\StylesJona\styleLogin.css" />
     <Content Include="Content\StylesJona\styleLogin1.css" />
     <Content Include="Content\StylesJona\styleRegistro.css" />
@@ -394,6 +398,7 @@
     <Content Include="imagenes\icons8-editar-propiedad-50.png" />
     <Content Include="imagenes\icons8-historia-de-la-actividad-80.png" />
     <Content Include="imagenes\icons8-usuario-masculino-en-círculo-50.png" />
+    <Content Include="imagenes\image001.png" />
     <Content Include="imagenes\login.svg" />
     <Content Include="imagenes\MicrosoftTeams-image.png" />
     <Content Include="imagenes\pruebas.png" />
@@ -506,7 +511,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\scrpts.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

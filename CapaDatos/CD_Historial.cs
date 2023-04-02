@@ -50,8 +50,8 @@ namespace CapaDatos
             {
                 oconexion.Open();
 
-                string sql = "SELECT c.*, m.fecha_Registro FROM cliente c " +
-                             "INNER JOIN match2 m ON c.idCliente = m.cliente2 " +
+                string sql = "SELECT c.*, m.fecha FROM cliente c " +
+                             "INNER JOIN matches m ON c.idCliente = m.cliente2 " +
                              "WHERE m.cliente1 = @idCliente";
 
                 SqlCommand cmd = new SqlCommand(sql, oconexion);

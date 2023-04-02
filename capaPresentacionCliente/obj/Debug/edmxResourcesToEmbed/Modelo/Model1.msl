@@ -46,6 +46,7 @@
     <EntitySetMapping Name="foto">
       <EntityTypeMapping TypeName="tiusr3pl_loverModel.foto">
         <MappingFragment StoreEntitySet="foto">
+          <ScalarProperty Name="esPrincipal" ColumnName="esPrincipal" />
           <ScalarProperty Name="idfoto" ColumnName="idfoto" />
           <ScalarProperty Name="idCliente" ColumnName="idCliente" />
           <ScalarProperty Name="rutaFoto" ColumnName="rutaFoto" />
@@ -75,6 +76,7 @@
     <EntitySetMapping Name="match1">
       <EntityTypeMapping TypeName="tiusr3pl_loverModel.match1">
         <MappingFragment StoreEntitySet="match1">
+          <ScalarProperty Name="idEstado1" ColumnName="idEstado" />
           <ScalarProperty Name="idMatch" ColumnName="idMatch" />
           <ScalarProperty Name="cliente1" ColumnName="cliente1" />
           <ScalarProperty Name="cliente2" ColumnName="cliente2" />
@@ -85,11 +87,11 @@
     <EntitySetMapping Name="match2">
       <EntityTypeMapping TypeName="tiusr3pl_loverModel.match2">
         <MappingFragment StoreEntitySet="match2">
+          <ScalarProperty Name="fecha_Registro" ColumnName="fecha_Registro" />
           <ScalarProperty Name="idMatch" ColumnName="idMatch" />
           <ScalarProperty Name="cliente2" ColumnName="cliente2" />
           <ScalarProperty Name="cliente1" ColumnName="cliente1" />
           <ScalarProperty Name="idEstado" ColumnName="idEstado" />
-          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -257,6 +259,35 @@
           <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
           <ScalarProperty Name="Asunto" ColumnName="Asunto" />
           <ScalarProperty Name="idCorreo" ColumnName="idCorreo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configuracion">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.Configuracion">
+        <MappingFragment StoreEntitySet="Configuracion">
+          <ScalarProperty Name="LimiteSeleccion" ColumnName="LimiteSeleccion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_configuracion" ColumnName="id_configuracion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="interes_cliente">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.interes_cliente">
+        <MappingFragment StoreEntitySet="interes_cliente">
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="idinteres" ColumnName="idinteres" />
+          <ScalarProperty Name="idInteresCliente" ColumnName="idInteresCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mensajes">
+      <EntityTypeMapping TypeName="tiusr3pl_loverModel.Mensajes">
+        <MappingFragment StoreEntitySet="Mensajes">
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="idCliente2" ColumnName="idCliente2" />
+          <ScalarProperty Name="idCliente1" ColumnName="idCliente1" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

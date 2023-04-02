@@ -1,4 +1,5 @@
-﻿
+﻿@model CapaEntidad.interes
+
 
 
 @{
@@ -11,7 +12,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Pregunta4</title>
-    <link href="~/Content/StylesJona/pregunta1p.css" rel="stylesheet" />
+    <link href="~/Content/StylesJona/pregunta4p.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <link href="~/Content/StylesJona/Select.css" rel="stylesheet" />
@@ -44,12 +45,15 @@
                         <h2><strong>intereses:</strong></h2>
                     </div>
                     <div class="question-body">
-                        <input type="hidden" id="interesesSeleccionadosInput" name="interesesSeleccionados" value="">
+                        <input type="text" id="interesesSeleccionadosInput" name="interesesSeleccionados" value="">
 
-                        @using (Html.BeginForm("Pregunta4", "preguntasInteres", FormMethod.Post))
+                        @using (Html.BeginForm("Pregunta4", "preguntasInteres", FormMethod.Post, new { id = "formularioIntereses" }))
                         {
-
-                            <ul id="interesesSeleccionados"></ul>
+                            <h1>Selecciona algunos intereses:</h1>
+                            <div>
+                                Intereses seleccionados:
+                                <ul id="interesesSeleccionados"></ul>
+                            </div>
                             <label for="categorias">Categorías:</label>
                             <select id="categorias" name="categorias">
                                 <option value="">Seleccione una categoría</option>
@@ -58,13 +62,14 @@
                                     <option value="@categoria.idCategoria_interes">@categoria.nombre</option>
                                 }
                             </select>
-                            <label for="intereses">Intereses:</label>
-                            <select id="intereses" name="intereses" multiple></select>
-                            <div class="button-container">
-
+                            <div>
+                                <label for="intereses">Intereses:</label>
+                                <select id="intereses" name="intereses" multiple></select>
                             </div>
 
-                            <input id="button" type="submit" value="Continuar">
+
+                            <input id="btnSubmit" type="submit" value="Continuar">
+
                         }
                     </div>
                 </div>
@@ -90,11 +95,6 @@
             });
         });
     });
-
-
-
-
-
     $(function () {
         var interesesSeleccionados = [];
         var limiteIntereses = 0;
@@ -120,7 +120,6 @@
                 }
             }
         });
-
     $('#interesesSeleccionados').on('click', '.eliminar-interes', function () {
         var id = $(this).data('id');
         var index = interesesSeleccionados.indexOf(id);
@@ -131,18 +130,12 @@
         $(this).parent().remove();
     });
     });
-
-
-
         //metodo para enviar los datos al controlador
-
     $(function() {
-        $('#button').on('click', function(event) {
+        $('#btnSubmit').on('click', function(event) {
         event.preventDefault();
-
         // Obtener los intereses seleccionados
         var interesesSeleccionados = $('#interesesSeleccionadosInput').val();
-
         // Enviar una solicitud AJAX al controlador
         $.ajax({
           url: '@Url.Action("Pregunta4", "preguntasInteres")',
@@ -155,6 +148,7 @@
         });
       });
     });
+
     </script>
 </body>
 </html>
