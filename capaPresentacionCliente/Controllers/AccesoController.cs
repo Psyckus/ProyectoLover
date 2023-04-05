@@ -1,8 +1,11 @@
-﻿using CapaEntidad;
+﻿using CapaDatos;
+using CapaEntidad;
 using CapaNegocios;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -30,6 +33,11 @@ namespace capaPresentacionCliente.Controllers
             return View();
         }
 
+        public async Task<ActionResult> DobleAutenticacion()
+        {
+           await GenerarCodigo();
+            return View();
+        }
         #region ubicacion
 
         [HttpPost]
@@ -117,7 +125,7 @@ namespace capaPresentacionCliente.Controllers
                     Session["Cliente"] = oCliente;
                     ViewBag.Error = null;
                     //redireccionar al incio de nuestra aplicacion
-                    return RedirectToAction("Principal", "Home");
+                    return RedirectToAction("DobleAutenticacion");
                 }
             }
 
@@ -192,5 +200,66 @@ namespace capaPresentacionCliente.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "index");
         }
+      
+        public async Task<JsonResult> GenerarCodigo()
+        {
+            // Buscar al cliente por correo electrónico
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+            var idCliente = oClienteSession.idCliente;
+            var Correo = oClienteSession.email;
+            if (oClienteSession == null)
+            {
+                return Json(new { success = false, message = "El cliente no existe" });
+            }
+
+            // Generar un código aleatorio de seis dígitos
+
+            var codigo = CN_Recurso.GenerarCodigo();
+
+            // Crear un registro en la tabla de códigos de autenticación
+            var codigoAutenticacion = new CodigoAutenticacion
+            {
+                IdCliente = idCliente,
+                Codigo = codigo
+            };
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO codigo_autenticacion (idcliente, codigo) VALUES (@idcliente,@codigo)", oconexion);
+                cmd.Parameters.AddWithValue("@idcliente", idCliente);
+                cmd.Parameters.AddWithValue("@codigo", codigo);
+                oconexion.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            // Enviar correo electrónico con el código de autenticación
+            var asunto = "Código de autenticación";
+            var mensaje = $"Su código de autenticación es: {codigo}";
+            await CN_Recurso.EnviarCorreoAsync(Correo, asunto, mensaje);
+
+            return Json(new { success = true, message = "Código generado correctamente" });
+        }
+        public async Task<JsonResult> VerificarCodigo(string codigo)
+        {
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+            var idCliente = oClienteSession.idCliente;
+
+            // Verificar si el código es válido
+            var codigoValido = await CN_Recurso.ValidarCodigoAsync(idCliente, codigo);
+
+            if (codigoValido)
+            {
+                // Redirigir al usuario a la página correspondiente si el código es válido
+                return Json(new { success = true, message = "Código verificado correctamente" });
+            }
+            else
+            {
+                // Si el código no es válido, mostrar un mensaje de error
+                //ViewBag.ErrorMessage = "El código ingresado no es válido";
+                return Json(new { success = false, message = "Código incorrecto" });
+            }
+        }
+
     }
 }

@@ -139,7 +139,9 @@ namespace capaPresentacionCliente.Controllers
 
         }
 
+        [HttpGet]
         public ActionResult GetImagePrincipal(int id)
+        
         {
             byte[] imageData = null;
 
@@ -168,7 +170,7 @@ namespace capaPresentacionCliente.Controllers
             }
 
         }
-
+     
         [HttpPost]
         public ActionResult EstablecerComoPrincipal(int idfoto)
         {

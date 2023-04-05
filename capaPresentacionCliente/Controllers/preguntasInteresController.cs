@@ -77,7 +77,7 @@ namespace capaPresentacionCliente.Controllers
             }
 
             // Redirigir al usuario a la siguiente página
-            return RedirectToAction("Principal", "Home");
+            return RedirectToAction("DobleAutenticacion", "Aceeso");
 
 
 

@@ -1,0 +1,144 @@
+﻿.table-responsive {
+    display: block;
+    width: 50%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+    .table td,
+    .table th {
+        padding: 0.75rem;
+        vertical-align: middle;
+        border-top: 1px solid #dee2e6 !important;
+    }
+
+    .table th {
+        font-weight: 700;
+        border-top-width: 2px !important;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6 !important;
+    }
+
+    .table tbody + tbody {
+        border-top: 2px solid #dee2e6 !important;
+    }
+
+.table-sm td,
+.table-sm th {
+    padding: 0.3rem;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6 !important;
+}
+
+    .table-bordered td,
+    .table-bordered th {
+        border: 1px solid #dee2e6 !important;
+    }
+
+    .table-bordered thead td,
+    .table-bordered thead th {
+        border-bottom-width: 2px !important;
+    }
+
+.table-borderless tbody + tbody,
+.table-borderless td,
+.table-borderless th,
+.table-borderless thead th {
+    border: 0 !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+@media (max-width: 575.98px) {
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+        .table-responsive > .table-bordered {
+            border: 0;
+        }
+}
+
+@media (max-width: 767.98px) {
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+        .table-responsive > .table-bordered {
+            border: 0;
+        }
+}
+
+@media (max-width: 991.98px) {
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+        .table-responsive > .table-bordered {
+            border: 0;
+        }
+}
+
+@media (max-width: 1199.98px) {
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+        .table-responsive > .table-bordered {
+            border: 0;
+        }
+   
+}
+
+.table-bordered td,
+.table-bordered th {
+    border: 1px solid #5f0c0c !important;
+}
+.imagen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; /* ajustar según el tamaño deseado */
+}
+
+.imagen-circular {
+    border-radius: 70%;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+

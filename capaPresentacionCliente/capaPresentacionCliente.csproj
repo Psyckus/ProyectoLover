@@ -380,6 +380,7 @@
     <Content Include="Content\StylesJona\Pregunta5.css" />
     <Content Include="Content\StylesJona\Select.css" />
     <Content Include="Content\StylesJona\selectgenero.css" />
+    <Content Include="Content\StylesJona\shake.css" />
     <Content Include="Content\StylesJona\style2.css" />
     <Content Include="Content\StylesJona\styleImagenes.css" />
     <Content Include="Content\StylesJona\styleImagenes2.css" />
@@ -389,6 +390,7 @@
     <Content Include="Content\StylesJona\tablaMeGusta.css" />
     <Content Include="Content\svg-with-js.css" />
     <Content Include="Content\svg-with-js.min.css" />
+    <Content Include="Content\Tblas.css" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="favicon.ico" />
@@ -559,6 +561,7 @@
     <Content Include="Views\Home\Match.cshtml" />
     <Content Include="Views\chat\Index.cshtml" />
     <Content Include="Views\Perfil\Index.cshtml" />
+    <Content Include="Views\Acceso\DobleAutenticacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

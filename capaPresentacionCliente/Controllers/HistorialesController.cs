@@ -67,11 +67,10 @@ namespace capaPresentacionCliente.Controllers
             return RedirectToAction("VistaYaNoMeGusta");
 
         }
+
         [HttpPost]
-        public ActionResult ReconsiderarCliente(int idCliente)
+        public JsonResult ReconsiderarCliente(int idCliente)
         {
-            // hacer el update correspondiente en la base de datos
-            // ...
             using (SqlConnection oconexion = new SqlConnection(conexion.cn))
             {
                 oconexion.Open();
@@ -80,14 +79,15 @@ namespace capaPresentacionCliente.Controllers
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    return RedirectToAction("VistaMeGusta");
+                    return Json(new { success = true, message = "Se ha reconsiderado tu me gusta." });
                 }
                 else
                 {
-                    return View("Error");
+                    return Json(new { success = false, message = "No se pudo realizar la operación." });
                 }
             }
         }
+
 
 
         //public ActionResult GetImage(int idMatch)

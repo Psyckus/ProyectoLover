@@ -66,7 +66,7 @@ namespace CapaDatos
 
                     cliente.idCliente = Convert.ToInt32(reader["idCliente"]);
                     cliente.nombre = reader["nombre"].ToString();
-                    cliente.fecha_Registro = reader["fecha_Registro"].ToString();
+                    //cliente.fecha_Registro = reader["fecha_Registro"].ToString();
         
                     // Obtener otros campos de cliente según sea necesario
 
