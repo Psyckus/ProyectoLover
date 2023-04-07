@@ -1,0 +1,120 @@
+﻿.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+.modal-header {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.modal-body {
+    padding: 10px;
+}
+
+.modal-footer {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    text-align: right;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: white;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .btn:hover {
+        background-color: #4cae4c;
+    }
+
+
+
+.contenedor {
+    position: relative;
+ 
+}
+
+#btnAgregarFoto {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    transform: translateY(-50%);
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px 10px; /* cambiar tamaño del padding */
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px; /* reducir tamaño de la fuente */
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+    #btnAgregarFoto {
+        position: static;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+}
+
+#btnAgregarFoto span {
+    font-size: 1.2em;
+    margin-right: 5px;
+}

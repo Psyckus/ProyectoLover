@@ -12,66 +12,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link href="~/Content/StylesJona/style2.css" rel="stylesheet" />
+    <link href="~/Content/pregunta2p.css" rel="stylesheet" />
+    <link href="~/Content/styleImagenes2.css" rel="stylesheet" />
     <title>Input Image With Preview Image</title>
-    <link href="~/Content/StylesJona/styleImagenes.css" rel="stylesheet" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
+    <div class="outer-container">
+        <div class="question-container">
+            <!-- Código HTML actual de la pregunta -->
+            <div id="container">
+                <div class="question-container">
+                    <div class="question-header">
+                        <img src="~/imagenes/image001.png" alt="Logo">
+                        <hr>
+                        <h2><strong>Añade una foto:</strong></h2>
+                    </div>
+                    <div class="question-body">
+                        @{
+                            if (ViewBag.Error != null)
+                            {
+                                <div class="form-floating mb-3">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewBag.Error
+                                    </div>
+                                </div>
+                            }
+                        }
 
-    <div class="container">
+                        @using (Html.BeginForm("Pregunta3", "preguntasInteres", FormMethod.Post, new { enctype = "multipart/form-data", id = "myForm" }))
+                        {
+                            <input class="form-control" type="hidden" value="@TempData["idCliente"]" name="idCliente" />
+                            <div class="upload-button" onclick="document.getElementById('file').click()">
+                                <span>Subir imagen</span>
 
-        <script>
-            function validateFileSize(input) {
-                if (input.files[0].size > 2 * 1024 * 1024) {
-                    alert("La imagen debe ser menor que 2 MB.");
-                    input.value = "";
-                }
-            }
-        </script>
-        @{
-            if (ViewBag.Error != null)
-            {
+                                <input type="file" name="file" id="file" accept=".jpeg" onchange="validateFileSize(this)" />
+                            </div>
 
-                <div class="form-floating mb-3">
-                    <div class="alert alert-danger" role="alert">
-                        @ViewBag.Error
+
+                            <div class="button-container">
+                                <button class="submit-btn" type="submit" id="submit-btn" disabled>Subir</button>
+
+
+
+                            </div>
+                        }
                     </div>
                 </div>
-            }
-        }
-
-        @*<form @Url.Action("Pregunta3", "preguntasInteres") method="post">
-
-
-                @Html.TextBoxFor(m => m.rutaFoto, new { type = "file", @class = "my-file-input-class", @id = "image", name = "Image", @accept = "image/*" })
-                <button type="submit">enviar</button>
-            </form>*@
-        @using (Html.BeginForm("Pregunta3", "preguntasInteres", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            <input class="form-control" type="hidden" value="@TempData["idCliente"]" name="idCliente" />
-            <div class="upload-button" onclick="document.getElementById('file').click()">
-                <span>Subir imagen</span>
-                <input type="file" name="file" id="file" accept=".jpeg" onchange="validateFileSize(this)" />
-
             </div>
-            <button class="submit-btn" type="submit">Subir </button>
-        }
-        @if (TempData["Message"] != null)
-        {
-            <div class="alert alert-@TempData["MessageType"]">
-                @TempData["Message"]
-            </div>
-        }
-
-
-
+        </div>
     </div>
 
 
-    <script src="~/Scripts/script.js"></script>
-
+    <script>
+        function validateFileSize(input) {
+            if (input.files[0].size > 2 * 1024 * 1024) {
+                Swal.fire("Error", "La imagen debe ser menor que 2 MB.", "error");
+                input.value = "";
+                document.getElementById('submit-btn').disabled = true;
+            } else {
+                Swal.fire({
+                    title: "¿Está seguro de que desea subir esta imagen?",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonText: "Sí",
+                    cancelButtonText: "No"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('submit-btn').disabled = false;
+                    } else {
+                        input.value = "";
+                        document.getElementById('submit-btn').disabled = true;
+                    }
+                });
+            }
+        }
+        function previewImage(input) {
+            var preview = document.getElementById('preview');
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.style.display = 'block';
+                    preview.src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </body>
 
 

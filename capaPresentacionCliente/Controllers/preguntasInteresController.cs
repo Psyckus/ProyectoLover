@@ -39,6 +39,8 @@ namespace capaPresentacionCliente.Controllers
 
             return View();
         }
+
+        [HttpGet]
         public void ObtenerGeneros()
         {
             // Obtener todos los intereses activos
@@ -139,6 +141,8 @@ namespace capaPresentacionCliente.Controllers
 
         }
 
+        [HttpGet]
+
         //metodo para obtener la imagen/solo una imagen tipo jpeg
         public ActionResult GetImage(int id)
         {
@@ -191,6 +195,8 @@ namespace capaPresentacionCliente.Controllers
 
             return Json(intereses);
         }
+
+        [HttpGet]
         public void ObtenerIntereses()
         {
             // Obtener todos los intereses activos
@@ -212,6 +218,8 @@ namespace capaPresentacionCliente.Controllers
             ViewBag.Intereses = intereses;
 
         }
+
+        [HttpGet]
         public void ObtenerCategorias()
         {
             List<categoria_interes> categorias = new List<categoria_interes>();
@@ -262,12 +270,14 @@ namespace capaPresentacionCliente.Controllers
 
 
         }
+
+        [HttpGet]
         public int ObtenerLimiteMaximoIntereses()
         {
             int limiteMaximoIntereses = 0;
             using (SqlConnection oconexion = new SqlConnection(conexion.cn))
             {
-                SqlCommand cmd = new SqlCommand("SELECT LimiteSeleccion FROM configuracion WHERE Nombre = 'LimiteMaximoIntereses'", oconexion);
+                SqlCommand cmd = new SqlCommand("SELECT LimiteSeleccion FROM configuracion WHERE nombre = 'LimiteMaximoIntereses'", oconexion);
                 oconexion.Open();
                 var resultado = cmd.ExecuteScalar();
                 if (resultado != null)

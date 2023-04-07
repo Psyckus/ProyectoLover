@@ -1,0 +1,191 @@
+﻿/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f6f6f6;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal */
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor de la pregunta */
+.question-container 
+   
+
+{
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 20px;
+    border: 2px solid #ccc;
+}
+
+
+
+/* Encabezado de la pregunta */
+.question-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+    .question-header img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 0px;
+        margin-bottom: 10px;
+    }
+
+    .question-header h2 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+/* Cuerpo de la pregunta */
+.question-body {
+    padding: 20px;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: #f6f6f6;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#button {
+    background-color: #5F0C0C;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    #button:hover {
+        background-color: black;
+    }
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    .question-container {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .question-header {
+        padding: 10px;
+        border-radius: 0;
+        border-bottom: 1px solid #dddddd;
+    }
+
+        .question-header h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+    .form-control {
+        font-size: 16px;
+        padding: 8px;
+        margin-bottom: 5px;
+    }
+
+    #text {
+        font-size: 18px;
+    }
+
+    #button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+}
+
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+
+.question-header hr {
+    border: none;
+    height: 1px;
+    margin: 10px 0;
+    background-color: black;
+    color: black
+}
+
+.question-header h2::before {
+    content: "";
+    display: block;
+    width: 50px;
+    border-bottom: 2px solid #000000;
+    margin: 10px auto 20px auto;
+}
+
+.my-textarea-class {
+    width: 100%;
+    max-width: 1000px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    resize: none; /* Desactiva la capacidad de cambiar el tamaño por el usuario */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.etiqueta-interes {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

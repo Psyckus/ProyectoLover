@@ -9,8 +9,7 @@ namespace CapaEntidad
     public class suspiro1
     {
         public int idSuspiro { get; set; }
-        public cliente ocliente1 { get; set; }
-        public cliente ocliente2 { get; set; }
-        public int idEstado { get; set; }
+        public int cliente2 { get; set; }
+        public string nombre { get; set; }
     }
 }

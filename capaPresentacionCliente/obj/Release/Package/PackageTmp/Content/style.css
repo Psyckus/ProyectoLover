@@ -8,6 +8,124 @@ body {
     margin: 0;
 }
 
+/* Estilos para el modal */
+.modal {
+    display: none; /* Oculta el modal por defecto */
+    position: fixed; /* Posición fija */
+    z-index: 1; /* Indice z para estar por encima del contenido */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Hace scroll cuando se muestra el modal */
+    background-color: rgba(0,0,0,0.4); /* Fondo oscuro con transparencia */
+}
+
+/* Estilos para el contenido del modal */
+.match {
+    background-color: #5F0C0C;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 300px;
+    margin: 50px auto;
+    height: 500px;
+}
+
+    .match h1 {
+        font-size: 36px;
+        margin-top: 0;
+        color: #fff;
+    }
+
+    .match p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+
+    .match p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+.box {
+    float: left;
+    width: 50%; /* opcional para hacer que ambos div tengan el mismo ancho */
+    height: 100px; /* altura opcional */
+    background-color: #5F0C0C; /* color de fondo opcional */
+    color: #000000;
+}
+
+
+button {
+    display: block;
+    margin-bottom: 10px; /* Para agregar un poco de espacio entre los botones */
+}
+
+.match .perfiles img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 8px 0 rgba(0, 20, 20, 0.2);
+}
+
+
+
+.botones {
+    width: 200%;
+    text-align: center;
+    position: relative; /* asegúrate de que el div tenga una posición definida */
+    top: 60px;
+    margin: 10px auto;
+    left: 10px;
+}
+
+.boton1 a, .boton2 {
+    display: block;
+    margin: 10px;
+    background-color: rgb(128,128,128,0.5);
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 40%; /**/ /* Establecer un ancho igual para ambos elementos */
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: #fff;
+}
+
+
+
+
+    .boton1 a:hover {
+        background-color: rgb(30, 29, 29, 0.3);
+        color: #fff;
+    }
+
+    .boton2:hover {
+        background-color: rgb(30, 29, 29, 0.30);
+        color: #fff;
+    }
+
+
+.match .logo img {
+    width: 125px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
 .container {
     display: flex;
 }

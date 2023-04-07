@@ -62,6 +62,14 @@
         <EntityTypeShape EntityType="tiusr3pl_loverModel.ConfCorreos" Width="1.5" PointX="9.625" PointY="3.625" />
         <EntityTypeShape EntityType="tiusr3pl_loverModel.Correos" Width="1.5" PointX="11.875" PointY="3.75" />
         <AssociationConnector Association="tiusr3pl_loverModel.FK__Correos__idConfC__6D9742D9" />
+        <EntityTypeShape EntityType="tiusr3pl_loverModel.Configuracion" Width="1.5" PointX="8.375" PointY="6.75" />
+        <EntityTypeShape EntityType="tiusr3pl_loverModel.interes_cliente" Width="1.5" PointX="6" PointY="22" />
+        <EntityTypeShape EntityType="tiusr3pl_loverModel.Mensajes" Width="1.5" PointX="3" PointY="29.5" />
+        <AssociationConnector Association="tiusr3pl_loverModel.FK__interes_c__idCli__7755B73D1" />
+        <AssociationConnector Association="tiusr3pl_loverModel.FK_Mensajes_cliente2" />
+        <AssociationConnector Association="tiusr3pl_loverModel.FK_Mensajes_cliente3" />
+        <AssociationConnector Association="tiusr3pl_loverModel.FK__match1__idEstado__3335971A" />
+        <AssociationConnector Association="tiusr3pl_loverModel.FK__interes_c__idint__766193041" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -43,6 +43,7 @@ body {
         font-size: 18px;
         margin-bottom: 20px;
         color: #fff;
+        font-family: inherit;
     }
 
 
@@ -50,6 +51,7 @@ body {
         font-size: 18px;
         margin-bottom: 20px;
         color: #fff;
+        font-family: Arial;
     }
 
 .box {
@@ -139,12 +141,70 @@ button {
     border-right: 1px solid #e1e1e1;
 }
 
+
+
+@media (max-width: 768px) {
+    .side {
+        display: none;
+    }
+
+    .content .card .responsive {
+        display: flex;
+    }
+
+
+    .container .content .card {
+        height: 490px;
+    }
+   
+}
+
+
+
+
+.responsive {
+    
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boxes {
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    
+}
+
+ .boxes i {
+    font-size: 2em;
+    text-decoration: none;
+    color: #000000;
+}
+
+
+
+
+
+
+.image {
+    text-align: center;
+    flex-grow: 1;
+}
+
+    .image img {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+    }
+
 .content {
     width: 100%;
     display: flex;
     padding: 20px 0;
     align-items: center;
     flex-direction: column;
+    height: 10px;
 }
 
 .side .header {

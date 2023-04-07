@@ -108,3 +108,22 @@ C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\NuevoProye
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\NuevoProyecto\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\NuevoProyecto\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.dll
 C:\Users\Usuario\OneDrive\Escritorio\respaldos\New folder\loverSitios\NuevoProyecto\loverSitios\CapaNegocios\obj\Debug\CapaNegocios.pdb
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.csproj.AssemblyReference.cache
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\CapaNegocios.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\CapaNegocios.pdb
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\CapaDatos.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\CapaEntidad.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\Microsoft.CSharp.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\System.Data.DataSetExtensions.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\System.Data.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\System.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\System.Net.Http.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\System.Web.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\System.Xml.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\System.Xml.Linq.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\CapaDatos.pdb
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\bin\Debug\CapaEntidad.pdb
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.dll
+C:\Users\dnb12\source\repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.pdb

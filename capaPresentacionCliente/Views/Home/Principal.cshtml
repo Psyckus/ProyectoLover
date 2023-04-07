@@ -13,6 +13,8 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>Principal</title>
 </head>
 <body onload="getLocation()">
@@ -94,6 +96,23 @@
         </div>
         <div class="content">
             <div class="card">
+                <div class="responsive">
+                    <div class="boxes">
+                        <a href="~/Home/Cuenta">
+                            <i class="las la-user"></i>
+                        </a>
+                       
+                    </div>
+                    <div class="image">
+                        <img src="~/imagenes/image001.png" alt="Alternate Text" />
+                    </div>
+                    <div class="boxes">
+                        <a  href="#">
+                            <i class="las la-sms"></i>
+                        </a>
+                      
+                    </div>
+                </div>
                 <div class="user">
                     <img class="user" id="user" />
                     <div class="profile">
@@ -123,7 +142,7 @@
                 <div class="no" onclick="Nogusta()">
                     <i class="fas fa-times"></i>
                 </div>
-                <div class="star">
+                <div class="star" onclick="guardarSuspiro()">
                     <i class="fas fa-star fa"></i>
                 </div>
                 <div class="heart" onclick="gusta()">
@@ -157,7 +176,7 @@
                             Enviar mensaje
                         </a>
                     </div>
-                    <div id="miDiv" class="boton2" >
+                    <div id="miDiv" class="boton2">
                         Seguir desplazando
                     </div>
                 </div>
@@ -165,21 +184,25 @@
         </div>
 
     </div>
+   
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
 
+
+
+
         var div = document.getElementById("miDiv");
         div.addEventListener("click", guardarMatch);
 
 
-       
+
         //// Obtener el modal
         var modal = document.getElementById("mi-modal");
         //// Obtener el botón para cerrar el modal
         var cerrar = document.getElementsByClassName("boton2")[0];
-       
+
         // Cuando el usuario haga clic en el botón de cerrar, cerrar el modal
         cerrar.onclick = function () {
             modal.style.display = "none";
@@ -218,6 +241,44 @@
         }
 
 
+          function guardarSuspiro() {
+
+
+
+              $.ajax({
+                type: "POST",
+                 url: '@Url.Action("guadarSuspiro", "Home")',
+                  data: JSON.stringify({ cliente1: id, cliente2: window.ajaxData }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                  success: function (resultado) {
+                      if (resultado.resultado == true) {
+                          Swal.fire({
+                              title: '¡Éxito!',
+                              text: 'Has dado un suspiro.',
+                              icon: 'success'
+                          });
+                      } else {
+                          Swal.fire({
+                              title: '¡Error!',
+                              text: 'Ya le has dado un suspiro a este perfil.',
+                              icon: 'error'
+                          });
+                      }
+                   
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error')
+                }
+            });
+
+
+
+
+        }
+
+
+
         function match() {
              $.ajax({
                 type: "POST",
@@ -241,7 +302,7 @@
 
                          $("#mi-modal").css("display", "block");
 
-                          
+
                     }
 
                 },
@@ -252,7 +313,7 @@
 
         }
 
-        setInterval(match, 30000);
+        setInterval(match, 5000);
 
 
 
