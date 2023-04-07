@@ -46,7 +46,7 @@ namespace CapaNegocios
                 //Correo a donde se va a enviar 
                 mail.To.Add(correo);
                 //De donde se va a enviar
-                mail.From = new MailAddress("euforia806@gmail.com");
+                mail.From = new MailAddress("Lover2023Cuc@gmail.com");
                 //El asunto del mensaje
                 mail.Subject = asunto;
                 //El mensaje que se va a enviar
@@ -58,7 +58,7 @@ namespace CapaNegocios
                 var smtp = new SmtpClient()
                 {
                     //Se agrega nuestro correo y contraseña
-                    Credentials = new NetworkCredential("euforia806@gmail.com", "vftbfkryqppotffb"),
+                    Credentials = new NetworkCredential("Lover2023Cuc@gmail.com", "glplmohnvmynoqsl"),
                     //El srvidor que utiliza gmail para los correos 
                     Host = "smtp.gmail.com",
                     //  El puerto por el que se envian 
@@ -124,7 +124,7 @@ namespace CapaNegocios
                 //Correo a donde se va a enviar 
                 mail.To.Add(correo);
                 //De donde se va a enviar
-                mail.From = new MailAddress("euforia806@gmail.com");
+                mail.From = new MailAddress("Lover2023Cuc@gmail.com");
                 //El asunto del mensaje
                 mail.Subject = asunto;
                 //El mensaje que se va a enviar
@@ -136,7 +136,7 @@ namespace CapaNegocios
                 var smtp = new SmtpClient()
                 {
                     //Se agrega nuestro correo y contraseña
-                    Credentials = new NetworkCredential("euforia806@gmail.com", "vftbfkryqppotffb"),
+                    Credentials = new NetworkCredential("Lover2023Cuc@gmail.com", "glplmohnvmynoqsl"),
                     //El srvidor que utiliza gmail para los correos 
                     Host = "smtp.gmail.com",
                     //  El puerto por el que se envian 

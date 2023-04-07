@@ -2,6 +2,64 @@
     box-sizing: border-box;
 }
 
+
+
+
+
+@media (max-width: 768px) {
+    .side {
+        display: none;
+    }
+
+    .content .card .responsive {
+        display: flex;
+    }
+
+
+    .container .content .card {
+        height: 490px;
+    }
+}
+
+
+
+
+.responsive {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boxes {
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+    .boxes i {
+        font-size: 2em;
+        text-decoration: none;
+        color: #000000;
+    }
+
+
+
+
+
+
+.image {
+    text-align: center;
+    flex-grow: 1;
+}
+
+    .image img {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+    }
+
+
+
 body {
     background-color: #f5f7fa;
     font-family: 'Roboto', sans-serif;
@@ -122,7 +180,43 @@ button {
 
 
 
+.perfil-modal {
+    
+    display: none; /* Oculta el modal por defecto */
+    position: fixed; /* Posición fija para mantener el modal en la pantalla */
+    z-index: 1; /* Sitúa el modal por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho del modal */
+    height: 100%; /* Altura del modal */
+    overflow: auto; /* Permite hacer scroll si el contenido es demasiado grande */
+    background-color: rgba(0,0,0,0.4); /* Fondo oscuro para resaltar el modal */
+}
 
+.modal-content {
+    background-color: #fefefe; /* Color de fondo del modal */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 300px;
+    margin: 50px auto;
+    height: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
 
 
@@ -138,6 +232,8 @@ button {
     min-height: 100vh;
     border-right: 1px solid #e1e1e1;
 }
+
+
 
 .content {
     width: 100%;

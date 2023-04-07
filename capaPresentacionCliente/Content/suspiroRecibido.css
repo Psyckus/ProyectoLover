@@ -1,6 +1,9 @@
 ﻿
 
 
+body h2 {
+    text-align: center;
+}
 
 .cards {
     position: relative;
@@ -10,7 +13,7 @@
     flex-direction: row; /* para que los elementos se acomoden de arriba a abajo */
     gap: 10px; /* para agregar espacio entre cada elemento */
     max-width: 60%;
-    height: 550px;
+    height: 500px;
     margin: 20px auto;
     border: 1px solid #ccc;
     padding: 20px;
@@ -18,6 +21,7 @@
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     overflow: auto;
 }
+
 
 .card {
     align-items: center;
@@ -99,7 +103,7 @@
     color: #fff;
 }
 
-/*    .button-container button:last-child {
+    .button-container button:last-child {
             margin-right: 0;
         }
-*/
+
