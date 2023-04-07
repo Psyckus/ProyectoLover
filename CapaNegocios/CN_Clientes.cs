@@ -16,6 +16,63 @@ namespace CapaNegocios
 
 
 
+
+        #region reconsiderado
+        public bool Reconsiderado(int cliente1, int cliente2)
+        {
+            return objCapaDato.Reconsiderado(cliente1, cliente2);
+        }
+        #endregion
+
+
+
+        #region Rechazado
+        public bool Rechazado(int cliente1, int cliente2)
+        {
+            return objCapaDato.Rechazado(cliente1, cliente2);
+        }
+        #endregion
+
+
+        #region Aceptado
+        public bool Aceptado(int cliente1, int cliente2)
+        {
+            return objCapaDato.Aceptado(cliente1, cliente2);
+        }
+        #endregion
+
+
+        #region gusrdarSuspiro
+        public bool guardarSuspiro(int cliente1, int cliente2)
+        {
+            return objCapaDato.guardarSuspiro(cliente1, cliente2);
+        }
+
+        #endregion
+
+
+
+        public List<suspiro1> ListarSuspiro(int cliente1)
+        {
+            return objCapaDato.ListarSuspiro(cliente1);
+        }
+
+
+        public List<suspiro1> ListarSuspiroAceptados(int cliente1)
+        {
+            return objCapaDato.ListarSuspiroAceptados(cliente1);
+        }
+
+
+        public List<suspiro1> ListarSuspiroRecibido(int cliente2)
+        {
+            return objCapaDato.ListarSuspiroRecibido(cliente2);
+        }
+
+
+
+
+
         #region Matches
         public bool match(int cliente1, int cliente2, int activo)
         {

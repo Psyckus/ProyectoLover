@@ -388,6 +388,8 @@
     <Content Include="Content\StylesJona\styleLogin1.css" />
     <Content Include="Content\StylesJona\styleRegistro.css" />
     <Content Include="Content\StylesJona\tablaMeGusta.css" />
+    <Content Include="Content\suspiro.css" />
+    <Content Include="Content\suspiroRecibido.css" />
     <Content Include="Content\svg-with-js.css" />
     <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\Tblas.css" />
@@ -562,6 +564,9 @@
     <Content Include="Views\chat\Index.cshtml" />
     <Content Include="Views\Perfil\Index.cshtml" />
     <Content Include="Views\Acceso\DobleAutenticacion.cshtml" />
+    <Content Include="Views\Home\suspiro.cshtml" />
+    <Content Include="Views\Home\suspiroRecibido.cshtml" />
+    <Content Include="Views\Home\suspiroAceptado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
