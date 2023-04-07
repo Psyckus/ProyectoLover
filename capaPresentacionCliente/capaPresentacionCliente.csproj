@@ -136,6 +136,7 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\preguntasInteresController.cs" />
+    <Compile Include="Controllers\TestPersonalidadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -388,6 +389,7 @@
     <Content Include="Content\StylesJona\styleLogin1.css" />
     <Content Include="Content\StylesJona\styleRegistro.css" />
     <Content Include="Content\StylesJona\tablaMeGusta.css" />
+    <Content Include="Content\StylesJona\Test.css" />
     <Content Include="Content\svg-with-js.css" />
     <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\Tblas.css" />
@@ -397,13 +399,16 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="imagenes\analysis.png" />
+    <Content Include="imagenes\Ansiedad.png" />
     <Content Include="imagenes\icons8-editar-propiedad-50.png" />
     <Content Include="imagenes\icons8-historia-de-la-actividad-80.png" />
     <Content Include="imagenes\icons8-usuario-masculino-en-círculo-50.png" />
     <Content Include="imagenes\image001.png" />
     <Content Include="imagenes\login.svg" />
     <Content Include="imagenes\MicrosoftTeams-image.png" />
+    <Content Include="imagenes\Polar.png" />
     <Content Include="imagenes\pruebas.png" />
+    <Content Include="imagenes\Psicologia.png" />
     <Content Include="imagenes\signo-de-genero.png" />
     <Content Include="imagenes\susana.jpeg" />
     <Content Include="imagenes\prueba.jpeg" />
@@ -562,6 +567,7 @@
     <Content Include="Views\chat\Index.cshtml" />
     <Content Include="Views\Perfil\Index.cshtml" />
     <Content Include="Views\Acceso\DobleAutenticacion.cshtml" />
+    <Content Include="Views\TestPersonalidad\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

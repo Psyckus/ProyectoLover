@@ -77,7 +77,7 @@ namespace capaPresentacionCliente.Controllers
             }
 
             // Redirigir al usuario a la siguiente página
-            return RedirectToAction("DobleAutenticacion", "Aceeso");
+            return RedirectToAction("DobleAutenticacion", "Acceso");
 
 
 
@@ -278,16 +278,20 @@ namespace capaPresentacionCliente.Controllers
             return limiteMaximoIntereses;
         }
         [HttpPost]
-        public ActionResult Pregunta3(int idCliente, HttpPostedFileBase file)
+        public ActionResult Pregunta3( HttpPostedFileBase file)
         {
-            cliente oCliente = new cliente();
-            oCliente = new CN_Clientes().Listar().Where(u => u.idCliente == idCliente).FirstOrDefault();
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+
+
+
+            var idCliente = oClienteSession.idCliente;
             string mensaje = string.Empty;
-            bool respuesta = new CN_Clientes().Pregunta3(idCliente, file, out mensaje);
+            bool respuesta = new CN_Clientes().Pregunta3Principal(idCliente, file, out mensaje);
             if (respuesta)
             {
-                var session = HttpContext.Session;
-                var oClienteSession = session["Cliente"];
+                //var session = HttpContext.Session;
+                //var oClienteSession = session["Cliente"];
                 TempData["idCliente"] = idCliente;
                 TempData["Message"] = "La imagen se ha cargado correctamente.";
                 TempData["MessageType"] = "success";

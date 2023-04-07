@@ -492,5 +492,45 @@ namespace CapaDatos
 
             return resultado;
         }
+        public bool Pregunta3Principal(int idCliente, HttpPostedFileBase file, out string mensaje)
+        {
+            bool resultado = false;
+            mensaje = string.Empty;
+            try
+            {
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    byte[] imageData = null;
+                    using (var binaryReader = new BinaryReader(file.InputStream))
+                    {
+                        imageData = binaryReader.ReadBytes(file.ContentLength);
+                    }
+
+
+                    using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                    {
+
+
+                        SqlCommand command = new SqlCommand("sp_InsertImagePrimeraVez", oconexion);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@rutaFoto", SqlDbType.VarBinary).Value = imageData;
+                        command.Parameters.Add("@idCliente", SqlDbType.Int).Value = idCliente;
+                        oconexion.Open();
+                        resultado = command.ExecuteNonQuery() > 0 ? true : false;
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+                mensaje = ex.Message;
+
+            }
+
+            return resultado;
+        }
     }
 }

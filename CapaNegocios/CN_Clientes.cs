@@ -110,6 +110,10 @@ namespace CapaNegocios
         {
             return objCapaDato.Pregunta3(idCliente, file, out mensaje);
         }
+        public bool Pregunta3Principal(int idCliente, HttpPostedFileBase file, out string mensaje)
+        {
+            return objCapaDato.Pregunta3Principal(idCliente, file, out mensaje);
+        }
 
 
         public bool ReestablecerClave(int idCliente, string correo, out string mensaje)

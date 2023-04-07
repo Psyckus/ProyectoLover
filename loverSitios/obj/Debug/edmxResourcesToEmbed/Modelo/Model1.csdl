@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tiusr3pl_loverModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="categoria_interes">
+    <Key>
+      <PropertyRef Name="idCategoria_interes" />
+    </Key>
+    <Property Name="idCategoria_interes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="interes" Relationship="Self.FK__interes__idCateg__72910220" FromRole="categoria_interes" ToRole="interes" />
+    <NavigationProperty Name="preferencia" Relationship="Self.FK__preferenc__idCat__681373AD" FromRole="categoria_interes" ToRole="preferencia" />
+  </EntityType>
+  <EntityType Name="categoria_preferencia">
+    <Key>
+      <PropertyRef Name="idCategoria_preferencia" />
+    </Key>
+    <Property Name="idCategoria_preferencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_nac" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Reestablecer" Type="Boolean" />
+    <Property Name="activo" Type="Boolean" />
+    <Property Name="itsActive" Type="Boolean" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="foto" Relationship="Self.FK__foto__idCliente__7A3223E8" FromRole="cliente" ToRole="foto" />
+    <NavigationProperty Name="generoCliente" Relationship="Self.FK__generoCli__idCli__00DF2177" FromRole="cliente" ToRole="generoCliente" />
+    <NavigationProperty Name="interes_cliente" Relationship="Self.FK__interes_c__idCli__7755B73D" FromRole="cliente" ToRole="interes_cliente" />
+    <NavigationProperty Name="match1" Relationship="Self.FK__match1__cliente1__0880433F" FromRole="cliente" ToRole="match1" />
+    <NavigationProperty Name="match11" Relationship="Self.FK__match1__cliente2__09746778" FromRole="cliente" ToRole="match1" />
+    <NavigationProperty Name="match2" Relationship="Self.FK__match2__cliente1__0F2D40CE" FromRole="cliente" ToRole="match2" />
+    <NavigationProperty Name="match21" Relationship="Self.FK__match2__cliente2__0E391C95" FromRole="cliente" ToRole="match2" />
+    <NavigationProperty Name="preferencia_cliente" Relationship="Self.FK__preferenc__idCli__6CD828CA" FromRole="cliente" ToRole="preferencia_cliente" />
+    <NavigationProperty Name="suspiro1" Relationship="Self.FK__suspiro1__client__13F1F5EB" FromRole="cliente" ToRole="suspiro1" />
+    <NavigationProperty Name="suspiro11" Relationship="Self.FK__suspiro1__client__14E61A24" FromRole="cliente" ToRole="suspiro1" />
+    <NavigationProperty Name="suspiro2" Relationship="Self.FK__suspiro2__client__19AACF41" FromRole="cliente" ToRole="suspiro2" />
+    <NavigationProperty Name="suspiro21" Relationship="Self.FK__suspiro2__client__1A9EF37A" FromRole="cliente" ToRole="suspiro2" />
+    <NavigationProperty Name="testUser" Relationship="Self.FK__testUser__idClie__251C81ED" FromRole="cliente" ToRole="testUser" />
+    <NavigationProperty Name="ubicacion" Relationship="Self.FK__ubicacion__idCli__03BB8E22" FromRole="cliente" ToRole="ubicacion" />
+  </EntityType>
+  <EntityType Name="ConfCorreos">
+    <Key>
+      <PropertyRef Name="idConfCorreo" />
+    </Key>
+    <Property Name="idConfCorreo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Servidor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Puerto" Type="Int32" />
+    <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Correos" Relationship="Self.FK__Correos__idConfC__6D9742D9" FromRole="ConfCorreos" ToRole="Correos" />
+  </EntityType>
+  <EntityType Name="Correos">
+    <Key>
+      <PropertyRef Name="idCorreo" />
+    </Key>
+    <Property Name="idCorreo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Asunto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Mensaje" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="idConfCorreo" Type="Int32" />
+    <NavigationProperty Name="ConfCorreos" Relationship="Self.FK__Correos__idConfC__6D9742D9" FromRole="Correos" ToRole="ConfCorreos" />
+  </EntityType>
+  <EntityType Name="estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="match2" Relationship="Self.FK__match2__idEstado__10216507" FromRole="estado" ToRole="match2" />
+    <NavigationProperty Name="suspiro1" Relationship="Self.FK__suspiro1__idEsta__15DA3E5D" FromRole="estado" ToRole="suspiro1" />
+    <NavigationProperty Name="suspiro2" Relationship="Self.FK__suspiro2__idEsta__1B9317B3" FromRole="estado" ToRole="suspiro2" />
+  </EntityType>
+  <EntityType Name="foto">
+    <Key>
+      <PropertyRef Name="idfoto" />
+    </Key>
+    <Property Name="idfoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int32" />
+    <Property Name="rutaFoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__foto__idCliente__7A3223E8" FromRole="foto" ToRole="cliente" />
+  </EntityType>
+  <EntityType Name="generoCliente">
+    <Key>
+      <PropertyRef Name="idGenero" />
+    </Key>
+    <Property Name="idGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idtipoGenero" Type="Int32" />
+    <Property Name="estado" Type="Boolean" />
+    <Property Name="idCliente" Type="Int32" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__generoCli__idCli__00DF2177" FromRole="generoCliente" ToRole="cliente" />
+    <NavigationProperty Name="tipo_genero" Relationship="Self.FK__generoCli__idtip__7EF6D905" FromRole="generoCliente" ToRole="tipo_genero" />
+  </EntityType>
+  <EntityType Name="interes">
+    <Key>
+      <PropertyRef Name="idinteres" />
+    </Key>
+    <Property Name="idinteres" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCategoria_interes" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="categoria_interes" Relationship="Self.FK__interes__idCateg__72910220" FromRole="interes" ToRole="categoria_interes" />
+    <NavigationProperty Name="interes_cliente" Relationship="Self.FK__interes_c__idint__76619304" FromRole="interes" ToRole="interes_cliente" />
+  </EntityType>
+  <EntityType Name="interes_cliente">
+    <Key>
+      <PropertyRef Name="idInteresCliente" />
+    </Key>
+    <Property Name="idInteresCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idinteres" Type="Int32" />
+    <Property Name="idCliente" Type="Int32" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__interes_c__idCli__7755B73D" FromRole="interes_cliente" ToRole="cliente" />
+    <NavigationProperty Name="interes" Relationship="Self.FK__interes_c__idint__76619304" FromRole="interes_cliente" ToRole="interes" />
+  </EntityType>
+  <EntityType Name="match1">
+    <Key>
+      <PropertyRef Name="idMatch" />
+    </Key>
+    <Property Name="idMatch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliente1" Type="Int32" />
+    <Property Name="cliente2" Type="Int32" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__match1__cliente1__0880433F" FromRole="match1" ToRole="cliente" />
+    <NavigationProperty Name="cliente3" Relationship="Self.FK__match1__cliente2__09746778" FromRole="match1" ToRole="cliente" />
+  </EntityType>
+  <EntityType Name="match2">
+    <Key>
+      <PropertyRef Name="idMatch" />
+    </Key>
+    <Property Name="idMatch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliente2" Type="Int32" />
+    <Property Name="cliente1" Type="Int32" />
+    <Property Name="idEstado" Type="Int32" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__match2__cliente1__0F2D40CE" FromRole="match2" ToRole="cliente" />
+    <NavigationProperty Name="cliente3" Relationship="Self.FK__match2__cliente2__0E391C95" FromRole="match2" ToRole="cliente" />
+    <NavigationProperty Name="estado" Relationship="Self.FK__match2__idEstado__10216507" FromRole="match2" ToRole="estado" />
+  </EntityType>
+  <EntityType Name="mensaje">
+    <Key>
+      <PropertyRef Name="idMensaje" />
+    </Key>
+    <Property Name="idMensaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTexto1" Type="Int32" />
+    <Property Name="idTexto2" Type="Int32" />
+    <NavigationProperty Name="texto" Relationship="Self.FK__mensaje__idTexto__2AD55B43" FromRole="mensaje" ToRole="texto" />
+    <NavigationProperty Name="texto1" Relationship="Self.FK__mensaje__idTexto__2BC97F7C" FromRole="mensaje" ToRole="texto" />
+  </EntityType>
+  <EntityType Name="Mensajes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ModEmparejamiento">
+    <Key>
+      <PropertyRef Name="Id_modconf" />
+    </Key>
+    <Property Name="CriterioInteres" Type="Int32" />
+    <Property Name="EdadCriterio" Type="Boolean" />
+    <Property Name="TestCriterio" Type="Boolean" />
+    <Property Name="Id_modconf" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="preferencia">
+    <Key>
+      <PropertyRef Name="idPreferencia" />
+    </Key>
+    <Property Name="idPreferencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCategoria_interes" Type="Int32" />
+    <Property Name="estado" Type="Boolean" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="categoria_interes" Relationship="Self.FK__preferenc__idCat__681373AD" FromRole="preferencia" ToRole="categoria_interes" />
+    <NavigationProperty Name="preferencia_cliente" Relationship="Self.FK__preferenc__idPre__6BE40491" FromRole="preferencia" ToRole="preferencia_cliente" />
+  </EntityType>
+  <EntityType Name="preferencia_cliente">
+    <Key>
+      <PropertyRef Name="idPrefenciaCliente" />
+    </Key>
+    <Property Name="idPrefenciaCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPreferencia" Type="Int32" />
+    <Property Name="idCliente" Type="Int32" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__preferenc__idCli__6CD828CA" FromRole="preferencia_cliente" ToRole="cliente" />
+    <NavigationProperty Name="preferencia" Relationship="Self.FK__preferenc__idPre__6BE40491" FromRole="preferencia_cliente" ToRole="preferencia" />
+  </EntityType>
+  <EntityType Name="preguntaTest">
+    <Key>
+      <PropertyRef Name="idpreguntaTest" />
+    </Key>
+    <Property Name="idpreguntaTest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTest" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="test" Relationship="Self.FK__preguntaT__idTes__214BF109" FromRole="preguntaTest" ToRole="test" />
+  </EntityType>
+  <EntityType Name="rol">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK__usuario__idRol__5E8A0973" FromRole="rol" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="suspiro1">
+    <Key>
+      <PropertyRef Name="idSuspiro" />
+    </Key>
+    <Property Name="idSuspiro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliente2" Type="Int32" />
+    <Property Name="cliente1" Type="Int32" />
+    <Property Name="idEstado" Type="Int32" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__suspiro1__client__13F1F5EB" FromRole="suspiro1" ToRole="cliente" />
+    <NavigationProperty Name="cliente3" Relationship="Self.FK__suspiro1__client__14E61A24" FromRole="suspiro1" ToRole="cliente" />
+    <NavigationProperty Name="estado" Relationship="Self.FK__suspiro1__idEsta__15DA3E5D" FromRole="suspiro1" ToRole="estado" />
+  </EntityType>
+  <EntityType Name="suspiro2">
+    <Key>
+      <PropertyRef Name="idSuspiro" />
+    </Key>
+    <Property Name="idSuspiro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliente2" Type="Int32" />
+    <Property Name="cliente1" Type="Int32" />
+    <Property Name="idEstado" Type="Int32" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__suspiro2__client__19AACF41" FromRole="suspiro2" ToRole="cliente" />
+    <NavigationProperty Name="cliente3" Relationship="Self.FK__suspiro2__client__1A9EF37A" FromRole="suspiro2" ToRole="cliente" />
+    <NavigationProperty Name="estado" Relationship="Self.FK__suspiro2__idEsta__1B9317B3" FromRole="suspiro2" ToRole="estado" />
+  </EntityType>
+  <EntityType Name="test">
+    <Key>
+      <PropertyRef Name="idtest" />
+    </Key>
+    <Property Name="idtest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="preguntaTest" Relationship="Self.FK__preguntaT__idTes__214BF109" FromRole="test" ToRole="preguntaTest" />
+    <NavigationProperty Name="testUser" Relationship="Self.FK__testUser__idTest__24285DB4" FromRole="test" ToRole="testUser" />
+  </EntityType>
+  <EntityType Name="testUser">
+    <Key>
+      <PropertyRef Name="idTestUser" />
+    </Key>
+    <Property Name="idTestUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTest" Type="Int32" />
+    <Property Name="idCliente" Type="Int32" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__testUser__idClie__251C81ED" FromRole="testUser" ToRole="cliente" />
+    <NavigationProperty Name="test" Relationship="Self.FK__testUser__idTest__24285DB4" FromRole="testUser" ToRole="test" />
+  </EntityType>
+  <EntityType Name="texto">
+    <Key>
+      <PropertyRef Name="idTexto" />
+    </Key>
+    <Property Name="idTexto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="texto1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="mensaje" Relationship="Self.FK__mensaje__idTexto__2AD55B43" FromRole="texto" ToRole="mensaje" />
+    <NavigationProperty Name="mensaje1" Relationship="Self.FK__mensaje__idTexto__2BC97F7C" FromRole="texto" ToRole="mensaje" />
+  </EntityType>
+  <EntityType Name="tipo_genero">
+    <Key>
+      <PropertyRef Name="idtipoGenero" />
+    </Key>
+    <Property Name="idtipoGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="generoCliente" Relationship="Self.FK__generoCli__idtip__7EF6D905" FromRole="tipo_genero" ToRole="generoCliente" />
+  </EntityType>
+  <EntityType Name="tipoIdentificacion">
+    <Key>
+      <PropertyRef Name="idTipoIdentificacion" />
+    </Key>
+    <Property Name="idTipoIdentificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK__usuario__tipoIde__5F7E2DAC" FromRole="tipoIdentificacion" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="ubicacion">
+    <Key>
+      <PropertyRef Name="idUbicación" />
+    </Key>
+    <Property Name="idUbicación" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int32" />
+    <Property Name="latitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="logitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__ubicacion__idCli__03BB8E22" FromRole="ubicacion" ToRole="cliente" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRol" Type="Int32" />
+    <Property Name="identificacion" Type="Int32" />
+    <Property Name="tipoIdentificacion" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Reestablecer" Type="Boolean" />
+    <Property Name="activo" Type="Boolean" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="rol" Relationship="Self.FK__usuario__idRol__5E8A0973" FromRole="usuario" ToRole="rol" />
+    <NavigationProperty Name="tipoIdentificacion1" Relationship="Self.FK__usuario__tipoIde__5F7E2DAC" FromRole="usuario" ToRole="tipoIdentificacion" />
+  </EntityType>
+  <Association Name="FK__interes__idCateg__72910220">
+    <End Role="categoria_interes" Type="Self.categoria_interes" Multiplicity="0..1" />
+    <End Role="interes" Type="Self.interes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria_interes">
+        <PropertyRef Name="idCategoria_interes" />
+      </Principal>
+      <Dependent Role="interes">
+        <PropertyRef Name="idCategoria_interes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__preferenc__idCat__681373AD">
+    <End Role="categoria_interes" Type="Self.categoria_interes" Multiplicity="0..1" />
+    <End Role="preferencia" Type="Self.preferencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria_interes">
+        <PropertyRef Name="idCategoria_interes" />
+      </Principal>
+      <Dependent Role="preferencia">
+        <PropertyRef Name="idCategoria_interes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__foto__idCliente__7A3223E8">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="foto" Type="Self.foto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="foto">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__generoCli__idCli__00DF2177">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="generoCliente" Type="Self.generoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="generoCliente">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__interes_c__idCli__7755B73D">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="interes_cliente" Type="Self.interes_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="interes_cliente">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__match1__cliente1__0880433F">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="match1" Type="Self.match1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="match1">
+        <PropertyRef Name="cliente1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__match1__cliente2__09746778">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="match1" Type="Self.match1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="match1">
+        <PropertyRef Name="cliente2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__match2__cliente1__0F2D40CE">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="match2" Type="Self.match2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="match2">
+        <PropertyRef Name="cliente1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__match2__cliente2__0E391C95">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="match2" Type="Self.match2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="match2">
+        <PropertyRef Name="cliente2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__preferenc__idCli__6CD828CA">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="preferencia_cliente" Type="Self.preferencia_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="preferencia_cliente">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__suspiro1__client__13F1F5EB">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="suspiro1" Type="Self.suspiro1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="suspiro1">
+        <PropertyRef Name="cliente2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__suspiro1__client__14E61A24">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="suspiro1" Type="Self.suspiro1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="suspiro1">
+        <PropertyRef Name="cliente1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__suspiro2__client__19AACF41">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="suspiro2" Type="Self.suspiro2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="suspiro2">
+        <PropertyRef Name="cliente2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__suspiro2__client__1A9EF37A">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="suspiro2" Type="Self.suspiro2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="suspiro2">
+        <PropertyRef Name="cliente1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__testUser__idClie__251C81ED">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="testUser" Type="Self.testUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="testUser">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ubicacion__idCli__03BB8E22">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="ubicacion" Type="Self.ubicacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="ubicacion">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Correos__idConfC__6D9742D9">
+    <End Role="ConfCorreos" Type="Self.ConfCorreos" Multiplicity="0..1" />
+    <End Role="Correos" Type="Self.Correos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfCorreos">
+        <PropertyRef Name="idConfCorreo" />
+      </Principal>
+      <Dependent Role="Correos">
+        <PropertyRef Name="idConfCorreo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__match2__idEstado__10216507">
+    <End Role="estado" Type="Self.estado" Multiplicity="0..1" />
+    <End Role="match2" Type="Self.match2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="match2">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__suspiro1__idEsta__15DA3E5D">
+    <End Role="estado" Type="Self.estado" Multiplicity="0..1" />
+    <End Role="suspiro1" Type="Self.suspiro1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="suspiro1">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__suspiro2__idEsta__1B9317B3">
+    <End Role="estado" Type="Self.estado" Multiplicity="0..1" />
+    <End Role="suspiro2" Type="Self.suspiro2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="suspiro2">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__generoCli__idtip__7EF6D905">
+    <End Role="tipo_genero" Type="Self.tipo_genero" Multiplicity="0..1" />
+    <End Role="generoCliente" Type="Self.generoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_genero">
+        <PropertyRef Name="idtipoGenero" />
+      </Principal>
+      <Dependent Role="generoCliente">
+        <PropertyRef Name="idtipoGenero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__interes_c__idint__76619304">
+    <End Role="interes" Type="Self.interes" Multiplicity="0..1" />
+    <End Role="interes_cliente" Type="Self.interes_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="interes">
+        <PropertyRef Name="idinteres" />
+      </Principal>
+      <Dependent Role="interes_cliente">
+        <PropertyRef Name="idinteres" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mensaje__idTexto__2AD55B43">
+    <End Role="texto" Type="Self.texto" Multiplicity="0..1" />
+    <End Role="mensaje" Type="Self.mensaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="texto">
+        <PropertyRef Name="idTexto" />
+      </Principal>
+      <Dependent Role="mensaje">
+        <PropertyRef Name="idTexto1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mensaje__idTexto__2BC97F7C">
+    <End Role="texto" Type="Self.texto" Multiplicity="0..1" />
+    <End Role="mensaje" Type="Self.mensaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="texto">
+        <PropertyRef Name="idTexto" />
+      </Principal>
+      <Dependent Role="mensaje">
+        <PropertyRef Name="idTexto2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__preferenc__idPre__6BE40491">
+    <End Role="preferencia" Type="Self.preferencia" Multiplicity="0..1" />
+    <End Role="preferencia_cliente" Type="Self.preferencia_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="preferencia">
+        <PropertyRef Name="idPreferencia" />
+      </Principal>
+      <Dependent Role="preferencia_cliente">
+        <PropertyRef Name="idPreferencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__preguntaT__idTes__214BF109">
+    <End Role="test" Type="Self.test" Multiplicity="0..1" />
+    <End Role="preguntaTest" Type="Self.preguntaTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="test">
+        <PropertyRef Name="idtest" />
+      </Principal>
+      <Dependent Role="preguntaTest">
+        <PropertyRef Name="idTest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__usuario__idRol__5E8A0973">
+    <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__testUser__idTest__24285DB4">
+    <End Role="test" Type="Self.test" Multiplicity="0..1" />
+    <End Role="testUser" Type="Self.testUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="test">
+        <PropertyRef Name="idtest" />
+      </Principal>
+      <Dependent Role="testUser">
+        <PropertyRef Name="idTest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__usuario__tipoIde__5F7E2DAC">
+    <End Role="tipoIdentificacion" Type="Self.tipoIdentificacion" Multiplicity="0..1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoIdentificacion">
+        <PropertyRef Name="idTipoIdentificacion" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="tipoIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tiusr3pl_loverEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categoria_interes" EntityType="Self.categoria_interes" />
+    <EntitySet Name="categoria_preferencia" EntityType="Self.categoria_preferencia" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="ConfCorreos" EntityType="Self.ConfCorreos" />
+    <EntitySet Name="Correos" EntityType="Self.Correos" />
+    <EntitySet Name="estado" EntityType="Self.estado" />
+    <EntitySet Name="foto" EntityType="Self.foto" />
+    <EntitySet Name="generoCliente" EntityType="Self.generoCliente" />
+    <EntitySet Name="interes" EntityType="Self.interes" />
+    <EntitySet Name="interes_cliente" EntityType="Self.interes_cliente" />
+    <EntitySet Name="match1" EntityType="Self.match1" />
+    <EntitySet Name="match2" EntityType="Self.match2" />
+    <EntitySet Name="mensaje" EntityType="Self.mensaje" />
+    <EntitySet Name="Mensajes" EntityType="Self.Mensajes" />
+    <EntitySet Name="ModEmparejamiento" EntityType="Self.ModEmparejamiento" />
+    <EntitySet Name="preferencia" EntityType="Self.preferencia" />
+    <EntitySet Name="preferencia_cliente" EntityType="Self.preferencia_cliente" />
+    <EntitySet Name="preguntaTest" EntityType="Self.preguntaTest" />
+    <EntitySet Name="rol" EntityType="Self.rol" />
+    <EntitySet Name="suspiro1" EntityType="Self.suspiro1" />
+    <EntitySet Name="suspiro2" EntityType="Self.suspiro2" />
+    <EntitySet Name="test" EntityType="Self.test" />
+    <EntitySet Name="testUser" EntityType="Self.testUser" />
+    <EntitySet Name="texto" EntityType="Self.texto" />
+    <EntitySet Name="tipo_genero" EntityType="Self.tipo_genero" />
+    <EntitySet Name="tipoIdentificacion" EntityType="Self.tipoIdentificacion" />
+    <EntitySet Name="ubicacion" EntityType="Self.ubicacion" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" />
+    <AssociationSet Name="FK__interes__idCateg__72910220" Association="Self.FK__interes__idCateg__72910220">
+      <End Role="categoria_interes" EntitySet="categoria_interes" />
+      <End Role="interes" EntitySet="interes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__preferenc__idCat__681373AD" Association="Self.FK__preferenc__idCat__681373AD">
+      <End Role="categoria_interes" EntitySet="categoria_interes" />
+      <End Role="preferencia" EntitySet="preferencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__foto__idCliente__7A3223E8" Association="Self.FK__foto__idCliente__7A3223E8">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="foto" EntitySet="foto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__generoCli__idCli__00DF2177" Association="Self.FK__generoCli__idCli__00DF2177">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="generoCliente" EntitySet="generoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__interes_c__idCli__7755B73D" Association="Self.FK__interes_c__idCli__7755B73D">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="interes_cliente" EntitySet="interes_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__match1__cliente1__0880433F" Association="Self.FK__match1__cliente1__0880433F">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="match1" EntitySet="match1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__match1__cliente2__09746778" Association="Self.FK__match1__cliente2__09746778">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="match1" EntitySet="match1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__match2__cliente1__0F2D40CE" Association="Self.FK__match2__cliente1__0F2D40CE">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="match2" EntitySet="match2" />
+    </AssociationSet>
+    <AssociationSet Name="FK__match2__cliente2__0E391C95" Association="Self.FK__match2__cliente2__0E391C95">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="match2" EntitySet="match2" />
+    </AssociationSet>
+    <AssociationSet Name="FK__preferenc__idCli__6CD828CA" Association="Self.FK__preferenc__idCli__6CD828CA">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="preferencia_cliente" EntitySet="preferencia_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__suspiro1__client__13F1F5EB" Association="Self.FK__suspiro1__client__13F1F5EB">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="suspiro1" EntitySet="suspiro1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__suspiro1__client__14E61A24" Association="Self.FK__suspiro1__client__14E61A24">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="suspiro1" EntitySet="suspiro1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__suspiro2__client__19AACF41" Association="Self.FK__suspiro2__client__19AACF41">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="suspiro2" EntitySet="suspiro2" />
+    </AssociationSet>
+    <AssociationSet Name="FK__suspiro2__client__1A9EF37A" Association="Self.FK__suspiro2__client__1A9EF37A">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="suspiro2" EntitySet="suspiro2" />
+    </AssociationSet>
+    <AssociationSet Name="FK__testUser__idClie__251C81ED" Association="Self.FK__testUser__idClie__251C81ED">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="testUser" EntitySet="testUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ubicacion__idCli__03BB8E22" Association="Self.FK__ubicacion__idCli__03BB8E22">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="ubicacion" EntitySet="ubicacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Correos__idConfC__6D9742D9" Association="Self.FK__Correos__idConfC__6D9742D9">
+      <End Role="ConfCorreos" EntitySet="ConfCorreos" />
+      <End Role="Correos" EntitySet="Correos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__match2__idEstado__10216507" Association="Self.FK__match2__idEstado__10216507">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="match2" EntitySet="match2" />
+    </AssociationSet>
+    <AssociationSet Name="FK__suspiro1__idEsta__15DA3E5D" Association="Self.FK__suspiro1__idEsta__15DA3E5D">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="suspiro1" EntitySet="suspiro1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__suspiro2__idEsta__1B9317B3" Association="Self.FK__suspiro2__idEsta__1B9317B3">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="suspiro2" EntitySet="suspiro2" />
+    </AssociationSet>
+    <AssociationSet Name="FK__generoCli__idtip__7EF6D905" Association="Self.FK__generoCli__idtip__7EF6D905">
+      <End Role="tipo_genero" EntitySet="tipo_genero" />
+      <End Role="generoCliente" EntitySet="generoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__interes_c__idint__76619304" Association="Self.FK__interes_c__idint__76619304">
+      <End Role="interes" EntitySet="interes" />
+      <End Role="interes_cliente" EntitySet="interes_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mensaje__idTexto__2AD55B43" Association="Self.FK__mensaje__idTexto__2AD55B43">
+      <End Role="texto" EntitySet="texto" />
+      <End Role="mensaje" EntitySet="mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mensaje__idTexto__2BC97F7C" Association="Self.FK__mensaje__idTexto__2BC97F7C">
+      <End Role="texto" EntitySet="texto" />
+      <End Role="mensaje" EntitySet="mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__preferenc__idPre__6BE40491" Association="Self.FK__preferenc__idPre__6BE40491">
+      <End Role="preferencia" EntitySet="preferencia" />
+      <End Role="preferencia_cliente" EntitySet="preferencia_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__preguntaT__idTes__214BF109" Association="Self.FK__preguntaT__idTes__214BF109">
+      <End Role="test" EntitySet="test" />
+      <End Role="preguntaTest" EntitySet="preguntaTest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__usuario__idRol__5E8A0973" Association="Self.FK__usuario__idRol__5E8A0973">
+      <End Role="rol" EntitySet="rol" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__testUser__idTest__24285DB4" Association="Self.FK__testUser__idTest__24285DB4">
+      <End Role="test" EntitySet="test" />
+      <End Role="testUser" EntitySet="testUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__usuario__tipoIde__5F7E2DAC" Association="Self.FK__usuario__tipoIde__5F7E2DAC">
+      <End Role="tipoIdentificacion" EntitySet="tipoIdentificacion" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

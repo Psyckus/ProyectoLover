@@ -1,0 +1,137 @@
+﻿
+
+
+.imagenes {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+    margin-left: 30px;
+    font-size: 0; /* establecer el valor de font-size en 0 */
+    border-radius: 10px; /* agregar borde redondeado */
+    overflow: hidden; /* evitar que los elementos sobresalgan del contenedor */
+    border: 2px solid dashed; /* agregar borde de 2px sólido negro */
+    padding: 20px; /* agregar un padding alrededor de las imágenes */
+    background-color: #ffffff; /* agregar un fondo blanco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* agregar una sombra */
+}
+
+
+.imagen {
+    display: inline-block;
+    position: relative;
+    margin: 0 5px; /* reducir el margen horizontal */
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+    font-size: 1rem; /* establecer el valor de font-size en 1rem */
+    vertical-align: top; /* evitar espacio adicional debajo de los elementos */
+    padding:20px;
+}
+
+    .imagen:first-child {
+        margin-left: 0; /* quitar el margen izquierdo para el primer elemento */
+    }
+
+    .imagen:last-child {
+        margin-right: 0; /* quitar el margen derecho para el último elemento */
+    }
+
+    .imagen + .imagen {
+        margin-left: 0; /* quitar el margen izquierdo para los elementos que siguen al primer elemento */
+    }
+
+
+
+    .imagen img {
+        transition: transform 0.5s ease;
+        max-width: 300px;
+        height: auto;
+
+    }
+
+    .imagen:hover img {
+        transform: scale(1.2);
+    }
+
+.descripcion {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.boton {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    margin-bottom:-30px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .imagenes {
+        flex-wrap: wrap;
+        margin-top: 50px;
+        margin-left: 0;
+    }
+
+    .imagen {
+        margin: 10px 0;
+        margin-bottom: 20px;
+    }
+
+        .imagen + .imagen {
+            margin-left: 10px;
+        }
+
+    .boton {
+        bottom: -20px;
+    }
+}
+.imagen {
+    position: relative;
+}
+
+    .imagen .toggle-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        border: none;
+        border-radius: 50%;
+        background-color: #000;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .imagen .descripcion {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background-color: transparent;
+        color: black;
+        font-size: 14px;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .imagen .descripcion.oculto {
+            display: none;
+        }
+

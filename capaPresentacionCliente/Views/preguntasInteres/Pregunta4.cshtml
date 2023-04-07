@@ -45,7 +45,7 @@
                         <h2><strong>intereses:</strong></h2>
                     </div>
                     <div class="question-body">
-                        <input type="text" id="interesesSeleccionadosInput" name="interesesSeleccionados" value="">
+                        <input type="hidden" id="interesesSeleccionadosInput" name="interesesSeleccionados" value="">
 
                         @using (Html.BeginForm("Pregunta4", "preguntasInteres", FormMethod.Post, new { id = "formularioIntereses" }))
                         {
@@ -99,7 +99,7 @@
         var interesesSeleccionados = [];
         var limiteIntereses = 0;
         $.ajax({
-            url: '/PreguntasInteres/ObtenerLimiteMaximoIntereses',
+            url: '@Url.Action("ObtenerLimiteMaximoIntereses", "PreguntasInteres")',
             type: 'GET',
             success: function (data) {
                 limiteIntereses = data;
