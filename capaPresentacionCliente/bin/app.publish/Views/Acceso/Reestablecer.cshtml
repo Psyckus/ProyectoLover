@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reestablecer</title>
+    <link href="~/Content/StylesJona/styleRegistro.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <h2>Recuperacion de contraseña</h2>
+            <form action="@Url.Action("Reestablecer","Acceso")" method="post">
+
+
+                <input type="email" name="correo" placeholder="Hola@example.com">
+                @{
+                    if (ViewBag.Error != null)
+                    {
+
+                        <div class="form-floating mb-3">
+                            <div class="alert alert-danger" role="alert">
+                                @ViewBag.Error
+                            </div>
+                        </div>
+                    }
+                }
+
+
+                <button type="submit">Restablecer la contraseña </button>
+
+                <div style="text-align:center;">
+
+                    <a class="small" href="@Url.Action("Index","Acceso")">Regresar al login</a>
+
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+﻿
+@model IEnumerable<capaPresentacionCliente.Modelo.Mensajes>
+
+<h2>Chat</h2>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,500&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <title>Principal</title>
+</head>
+<body onload="getLocation()">
+    <div class="container">
+        <div class="side">
+            <div class="header">
+                <div class="avatar">
+                    <a href="~/Home/Cuenta">
+                        @*@con esto me tarigo el nombre y la imagen del usuario actual@*@
+                        @{
+                            var miObjeto = Session["Cliente"] as CapaEntidad.cliente;
+                        }
+                        @if (miObjeto != null)
+                        {
+                            <p></p>
+                        }
+
+
+                        <img src="@Url.Action("GetImage", "preguntasInteres", new { id = miObjeto.idCliente})" />
+                    </a>
+
+                </div>
+                <div class="title"><samp>@(miObjeto != null ? miObjeto.nombre : Session["nombre"])</samp></div>
+                <div id="id" style="display: none">@(miObjeto != null ? miObjeto.idCliente : Session["idCliente"])</div>
+
+            </div>
+            <div class="menu">
+                <ul>
+                    <li>Matches</li>
+                    <li class="active">Mensajes</li>
+                    <li>Suspiros</li>
+                </ul>
+            </div>
+            <div class="messages">
+                <div class="avatar">
+                    <img src="https://randomuser.me/api/portraits/women/38.jpg" alt="" />
+                </div>
+                <div class="message">
+                    <div class="user">Caroline</div>
+                    <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing</div>
+                </div>
+            </div>
+
+            <div class="content">
+                <section style="background-color: #eee;">
+                    <div class="container py-5">
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-8 col-lg-6 col-xl-4">
+
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center p-3"
+                                         style="border-top: 4px solid #5F0C0C;">
+                                        <h5 class="mb-0">Chat</h5>
+                                        <div class="d-flex flex-row align-items-center">
+
+                                            <i class="far fa-eye text-muted fa-xs"></i>
+                                            <i class="fas fa-times text-muted fa-xs"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+
+                                        <div class="d-flex justify-content-between">
+
+
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-start">
+
+                                            <div>
+
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                                            <div class="input-group mb-0">
+                                                <form id="formulario">
+                                                    <input type="text" id="idCliente2" placeholder="idCliente2">
+                                                    <input type="text" id="Mensaje" placeholder="Mensaje">
+                                                    <button type="submit"><ion-icon name="navigate-outline"></ion-icon></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <ul id="mensajes">
+        @foreach (var mensaje in Model)
+        {
+            <li>@mensaje.FechaHora.ToString("dd/MM/yyyy HH:mm:ss") - @mensaje.idCliente1: @mensaje.Mensaje</li>
+        }
+    </ul>
+
+
+
+
+    @section scripts {
+        <script>
+            $(function () {
+                var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+                connection.on("RecibirMensaje", function (mensaje) {
+                    $("#mensajes").append("<li>" + mensaje.fechaHora + " - " + mensaje.idCliente1 + ": " + mensaje.mensaje + "</li>");
+                });
+
+                connection.start().then(function () {
+                    $("#formulario").submit(function (event) {
+                        event.preventDefault();
+                        var idCliente2 = $("#idCliente2").val();
+                        var texto = $("#texto").val();
+                        connection.invoke("EnviarMensaje", destinatario, texto).catch(function (error) {
+                            console.error(error);
+                        });
+                        $("#Mensaje").val("");
+                    });
+                });
+            });
+        </script>
+    }
+</body>
+</html>

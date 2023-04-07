@@ -1,0 +1,68 @@
+﻿.etiqueta-interes {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo para la lista desordenada */
+#interesesSeleccionados {
+    list-style: none; /* Quita los puntos/bolitas de la lista */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para los elementos "label" */
+label {
+    display: block; /* Hace que el "label" ocupe toda la línea */
+    font-weight: bold; /* Hace que el texto se vea en negrita */
+    margin-bottom: 5px; /* Agrega un espacio entre el "label" y el elemento siguiente */
+}
+
+/* Estilo para el elemento "select" de categorías */
+select#categorias {
+    display: block; /* Hace que el "select" ocupe toda la línea */
+    margin-bottom: 10px; /* Agrega un espacio entre el "select" y el elemento siguiente */
+    padding: 5px; /* Agrega un poco de espacio alrededor del texto */
+    font-size: 16px; /* Aumenta el tamaño del texto */
+    border-radius: 5px; /* Agrega esquinas redondeadas al borde */
+    border: 2px solid #ccc; /* Agrega un borde más grueso y gris */
+    width: 100%; /* Establece el ancho al 100% del contenedor */
+    box-sizing: border-box; /* Hace que el ancho incluya el borde */
+}
+
+/* Estilo para el elemento "select" de intereses */
+select#intereses {
+    display: block; /* Hace que el "select" ocupe toda la línea */
+    margin-bottom: 10px; /* Agrega un espacio entre el "select" y el elemento siguiente */
+    padding: 5px; /* Agrega un poco de espacio alrededor del texto */
+    font-size: 16px; /* Aumenta el tamaño del texto */
+    border-radius: 5px; /* Agrega esquinas redondeadas al borde */
+    border: 2px solid #ccc; /* Agrega un borde más grueso y gris */
+    width: 100%; /* Establece el ancho al 100% del contenedor */
+    box-sizing: border-box; /* Hace que el ancho incluya el borde */
+    height: 150px; /* Establece la altura del "select" */
+}
+
+/* Estilo para las opciones seleccionadas */
+#interesesSeleccionados li {
+    display: inline-block; /* Hace que los elementos se muestren en línea */
+    margin: 5px; /* Agrega un espacio entre los elementos */
+    padding: 5px; /* Agrega un poco de espacio alrededor del texto */
+    font-size: 14px; /* Reduce el tamaño del texto */
+    background-color: #f0f0f0; /* Agrega un fondo gris claro */
+    border-radius: 5px; /* Agrega esquinas redondeadas al borde */
+}
+
+input[type="submit"] {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #5f0c0c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

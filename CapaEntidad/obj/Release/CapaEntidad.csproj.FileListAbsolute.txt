@@ -4,3 +4,17 @@ C:\Users\dnb12\Source\Repos\loverSitios\CapaEntidad\obj\Release\CapaEntidad.cspr
 C:\Users\dnb12\Source\Repos\loverSitios\CapaEntidad\obj\Release\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Users\dnb12\Source\Repos\loverSitios\CapaEntidad\obj\Release\CapaEntidad.dll
 C:\Users\dnb12\Source\Repos\loverSitios\CapaEntidad\obj\Release\CapaEntidad.pdb
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\bin\Release\CapaEntidad.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\bin\Release\CapaEntidad.pdb
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\bin\Release\Microsoft.CSharp.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\bin\Release\System.Data.DataSetExtensions.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\bin\Release\System.Data.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\bin\Release\System.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\bin\Release\System.Net.Http.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\bin\Release\System.Xml.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\bin\Release\System.Xml.Linq.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\obj\Release\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\obj\Release\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\obj\Release\CapaEntidad.csproj.CopyComplete
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\obj\Release\CapaEntidad.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\obj\Release\CapaEntidad.pdb
