@@ -95,6 +95,23 @@
         </div>
         <div class="content">
             <div class="card">
+                <div class="responsive">
+                    <div class="boxes">
+                        <a href="~/Home/Cuenta">
+                            <i class="las la-user"></i>
+                        </a>
+
+                    </div>
+                    <div class="image">
+                        <img src="~/imagenes/image001.png" alt="Alternate Text" />
+                    </div>
+                    <div class="boxes">
+                        <a href="#">
+                            <i class="las la-sms"></i>
+                        </a>
+
+                    </div>
+                </div>
                 <div class="user">
                     <img class="user" id="user" />
                     <div class="profile">
@@ -103,10 +120,10 @@
                             <span id="nom">20</span>
                             <span id="edad">20</span>
                         </div>
-                        <div class="icon">
-                            <a href="@Url.Action("VerPerfil", "Home")">
+                        <div id="myBtn" class="icon">
+                            
                                 <i class="las la-eye"></i>
-                            </a>
+                            
 
                         </div>
 
@@ -114,7 +131,7 @@
                             <span><b>Descripción:</b></span>
                         </div>
                         <div class="desc">
-                            <span id="desc">Hola soy lotso y adoro los abrazos</span>
+                            <span id="desc">Hola soy olaf y adoro los abrazos</span>
                         </div>
 
                     </div>
@@ -132,7 +149,7 @@
                 </div>
             </div>
         </div>
-        <!-- Contenido del modal -->
+        <!-- Contenido del modal match-->
         <div id="mi-modal" class="modal">
             <div class="match">
                 <div class="logo">
@@ -158,10 +175,18 @@
                             Enviar mensaje
                         </a>
                     </div>
-                    <div id="miDiv" class="boton2" >
+                    <div id="miDiv" class="boton2">
                         Seguir desplazando
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Contenido del modal ver perfil -->
+        <div id="myModal" class="perfil-modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Ver perfil</p>
             </div>
         </div>
 
@@ -170,6 +195,37 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
+
+
+        // Obtén el botón que abre el modal
+        var btn = document.getElementById("myBtn");
+
+        // Obtén el modal
+        var modalperfil = document.getElementById("myModal");
+
+        // Obtén el elemento span que cierra el modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Cuando se haga clic en el botón, muestra el modal
+        btn.onclick = function () {
+            modalperfil.style.display = "block";
+        }
+
+        // Cuando se haga clic en la "x", cierra el modal
+        span.onclick = function () {
+            modalperfil.style.display = "none";
+        }
+
+        // Cuando se haga clic fuera del modal, cierra el modal
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modalperfil.style.display = "none";
+            }
+        }
+
+
+
+
 
         var div = document.getElementById("miDiv");
         div.addEventListener("click", guardarMatch);
