@@ -1,0 +1,59 @@
+﻿
+@model CapaEntidad.cliente
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegistrarseUsuario</title>
+
+    <link href="~/Content/StylesJona/styleRegistro.css" rel="stylesheet" />
+  
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <h2>Crear Una Cuenta</h2>
+            <form action="@Url.Action("Registrar","Acceso")" method="post">
+
+                @Html.TextBoxFor(m => m.nombre, new { @class = "form-control", @id = "txtnombre", @placeholder = "Nombre", @value = ViewData["nombre"] })
+
+
+
+                @Html.TextBoxFor(m => m.email, new { @class = "form-control", @id = "txtcorreo", @autocomplete = "off", @placeholder = "Correo electrónico", @value = ViewData["email"] })
+
+                @Html.PasswordFor(m => m.clave, new { @class = "form-control", @id = "txtclave", @placeholder = "Contraseña" })
+
+                @Html.PasswordFor(m => m.ConfirmarClave, new { @class = "form-control", @id = "txtconfirmarcontraseña", @placeholder = "confirmar Contraseña" })
+                @{
+                    if (ViewBag.Error != null)
+                    {
+
+                        <div class="row mb-3">
+                            <div class="alert alert-danger" role="alert">
+                                @ViewBag.Error
+                            </div>
+                        </div>
+                    }
+                }
+                <button type="submit">Crear Cuenta</button>
+
+            </form>
+            <div style="text-align:center;">
+                <a style="margin-left: 10px;" href="@Url.Action("Index","Acceso")">Ya tienes una cuenta? Iniciar Sesion</a>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</body>
+</html>

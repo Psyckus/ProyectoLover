@@ -1,0 +1,118 @@
+﻿/* Estilos generales */
+body {
+    margin: 0 auto;
+    padding: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para la pantalla de match */
+.match {
+    background-color: #5F0C0C;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 300px;
+    margin: 50px auto;
+    height: 500px;
+}
+
+    .match h1 {
+        font-size: 36px;
+        margin-top: 0;
+    }
+
+    .match p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+
+    .match p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+.box {
+    float: left;
+    width: 50%; /* opcional para hacer que ambos div tengan el mismo ancho */
+    height: 100px; /* altura opcional */
+    background-color: #5F0C0C; /* color de fondo opcional */
+    color: #000000;
+   
+}
+
+
+button {
+    display: block;
+    margin-bottom: 10px; /* Para agregar un poco de espacio entre los botones */
+}
+
+.match .perfiles img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    box-shadow: 0 1px 8px 0 rgba(0, 20, 20, 0.2);
+}
+
+
+
+.botones {
+    width: 40%;
+    text-align: center;
+    position: absolute; /* asegúrate de que el div tenga una posición definida */
+    bottom: 25px; /* mueve el div hacia abajo 20px */
+    margin: 10px auto;
+    right:255px;
+}
+
+.boton1 a, .boton2 a {
+    position: relative;
+    display: block;
+    margin: 10px;
+    background-color: rgb(128,128,128,0.5);
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 40%; /**/ /* Establecer un ancho igual para ambos elementos */
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: #000000;
+}
+
+
+
+
+    .boton1 a:hover {
+        background-color: rgb(30, 29, 29, 0.3);
+        color: #fff;
+    }
+
+    .boton2 a:hover {
+        background-color: rgb(30, 29, 29, 0.30);
+        color: #fff;
+    }
+
+
+/*.match .div1, .div2 {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}*/
+
+
+
+.match .logo img {
+    width: 150px;
+    height: 100px;
+    border-radius: 50%;
+}
