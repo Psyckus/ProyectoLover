@@ -15,6 +15,320 @@ namespace CapaDatos
     {
 
 
+        #region guardarSuspiro
+        public bool guardarSuspiro(int cliente1, int cliente2)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+
+                    string query = "IF NOT EXISTS (SELECT * FROM suspiro1 WHERE cliente1 = @cliente1 and cliente2= @cliente2 and idEstado = 1) BEGIN INSERT INTO suspiro1 (cliente1, cliente2, idEstado, fechaRegistro) VALUES (@cliente1,@cliente2,@idEstado,@fechaRegistro) END";
+                    oconexion.Open();
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
+                    cmd.Parameters.AddWithValue("@cliente2", cliente2);
+                    cmd.Parameters.AddWithValue("@idEstado", 1);
+                    cmd.Parameters.AddWithValue("@fechaRegistro", DateTime.Now);
+                    // Ejecutar la consulta para agregar el nuevo cliente
+                    int rows = cmd.ExecuteNonQuery();
+                    oconexion.Close();
+
+                    if (rows > 0)
+                    {
+                        resultado = true;
+                    }
+                    else
+                    {
+                        resultado = false;
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                resultado = false;
+
+            }
+            return resultado;
+
+        }
+
+        #endregion
+
+
+        #region Reconsiderado
+        public bool Reconsiderado(int cliente1, int cliente2)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+
+                    string query = "update suspiro1 set idEstado = 4 where cliente2 = @cliente2 and cliente1 = @cliente1";
+                    oconexion.Open();
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
+                    cmd.Parameters.AddWithValue("@cliente2", cliente2);
+                    // Ejecutar la consulta para agregar el nuevo cliente
+                    cmd.ExecuteNonQuery();
+                    int rows = cmd.ExecuteNonQuery();
+                    oconexion.Close();
+
+                    if (rows > 0)
+                    {
+                        resultado = true;
+                    }
+                    else
+                    {
+                        resultado = false;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                resultado = false;
+
+            }
+            return resultado;
+
+        }
+
+        #endregion
+
+
+        #region Rechazado
+        public bool Rechazado(int cliente1, int cliente2)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+
+                    string query = "update suspiro1 set idEstado = 5 where cliente2 = @cliente1 and cliente1 = @cliente2";
+                    oconexion.Open();
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
+                    cmd.Parameters.AddWithValue("@cliente2", cliente2);
+                    // Ejecutar la consulta para agregar el nuevo cliente
+                    cmd.ExecuteNonQuery();
+                    int rows = cmd.ExecuteNonQuery();
+                    oconexion.Close();
+
+                    if (rows > 0)
+                    {
+                        resultado = true;
+                    }
+                    else
+                    {
+                        resultado = false;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                resultado = false;
+
+            }
+            return resultado;
+
+        }
+        #endregion
+
+        #region Aceptado
+        public bool Aceptado(int cliente1, int cliente2)
+        {
+            bool resultado = false;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+
+                    string query = "update suspiro1 set idEstado = 6 where cliente1 = @cliente2 and cliente2 = @cliente1";
+                    oconexion.Open();
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd = new SqlCommand(query, oconexion);
+                    // Agregar los parámetros a la consulta
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
+                    cmd.Parameters.AddWithValue("@cliente2", cliente2);
+                    // Ejecutar la consulta para agregar el nuevo cliente
+                    cmd.ExecuteNonQuery();
+                    int rows = cmd.ExecuteNonQuery();
+                    oconexion.Close();
+
+                    if (rows > 0)
+                    {
+                        resultado = true;
+                    }
+                    else
+                    {
+                        resultado = false;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                resultado = false;
+
+            }
+            return resultado;
+        }
+
+        #endregion
+
+
+
+
+        #region Listar suspiro
+        public List<suspiro1> ListarSuspiro(int cliente1)
+        {
+            List<suspiro1> lista = new List<suspiro1>();
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+                    string query = "SELECT s.idSuspiro, s.cliente2, c.nombre FROM suspiro1 s JOIN cliente c ON s.cliente2 = c.idCliente where cliente1= @cliente1 and idEstado = 1";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
+                    oconexion.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new suspiro1()
+                            {
+                                idSuspiro = Convert.ToInt32(dr["idSuspiro"]),
+                                cliente2 = Convert.ToInt32(dr["cliente2"]),
+                                nombre = dr["nombre"].ToString()
+
+
+
+                            });
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception)
+            {
+                lista = new List<suspiro1>();
+            }
+            return lista;
+
+
+        }
+
+        #endregion
+
+
+
+        #region listarsuspirosAceptados
+        public List<suspiro1> ListarSuspiroAceptados(int cliente1)
+        {
+            List<suspiro1> lista = new List<suspiro1>();
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+                    string query = "SELECT s.idSuspiro, s.cliente1, c.nombre FROM suspiro1 s JOIN cliente c ON s.cliente2 = @cliente1 where cliente1 = c.idCliente and idEstado = 6\r\n";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@cliente1", cliente1);
+                    oconexion.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new suspiro1()
+                            {
+                                idSuspiro = Convert.ToInt32(dr["idSuspiro"]),
+                                cliente2 = Convert.ToInt32(dr["cliente1"]),
+                                nombre = dr["nombre"].ToString()
+
+
+
+                            });
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception)
+            {
+                lista = new List<suspiro1>();
+            }
+            return lista;
+
+
+        }
+        #endregion
+
+
+        #region ListarSupiroRecibido
+
+        public List<suspiro1> ListarSuspiroRecibido(int cliente2)
+        {
+            List<suspiro1> lista = new List<suspiro1>();
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+                {
+                    string query = "SELECT s.idSuspiro, s.cliente1, c.nombre FROM suspiro1 s JOIN cliente c ON s.cliente2 = @cliente2 where cliente1 = c.idCliente and idEstado = 1";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@cliente2", cliente2);
+                    oconexion.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new suspiro1()
+                            {
+                                idSuspiro = Convert.ToInt32(dr["idSuspiro"]),
+                                cliente2 = Convert.ToInt32(dr["cliente1"]),
+                                nombre = dr["nombre"].ToString()
+
+
+
+                            });
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception)
+            {
+                lista = new List<suspiro1>();
+            }
+            return lista;
+
+
+        }
+
+        #endregion
+
+
+
+
+
+
         #region Me gusta
         public bool matches(int cliente1, int cliente2, int activo)
         {

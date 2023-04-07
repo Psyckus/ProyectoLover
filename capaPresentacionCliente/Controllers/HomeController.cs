@@ -48,6 +48,115 @@ namespace capaPresentacionCliente.Controllers
         }
 
 
+        public ActionResult suspiro()
+        {
+            return View();
+        }
+
+
+        public ActionResult suspiroRecibido()
+        {
+            return View();
+        }
+
+        public ActionResult suspiroAceptado()
+        {
+            return View();
+        }
+
+
+
+
+
+        [HttpPost]
+        public JsonResult guadarSuspiro(int cliente1, int cliente2)
+        {
+            bool respuesta = false;
+
+
+            respuesta = new CN_Clientes().guardarSuspiro(cliente1, cliente2);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public JsonResult Reconsiderado(int cliente1, int cliente2)
+        {
+            bool respuesta = false;
+
+
+            respuesta = new CN_Clientes().Reconsiderado(cliente1, cliente2);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        [HttpPost]
+        public JsonResult Rechazado(int cliente1, int cliente2)
+        {
+            bool respuesta = false;
+
+
+            respuesta = new CN_Clientes().Rechazado(cliente1, cliente2);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        [HttpPost]
+        public JsonResult Aceptado(int cliente1, int cliente2)
+        {
+            bool respuesta = false;
+
+
+            respuesta = new CN_Clientes().Aceptado(cliente1, cliente2);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
+        [HttpPost]
+        public JsonResult ListarSuspiro(int cliente1)
+        {
+
+            List<suspiro1> oLista = new List<suspiro1>();
+            oLista = new CN_Clientes().ListarSuspiro(cliente1);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public JsonResult ListarSuspiroAceptados(int cliente1)
+        {
+
+            List<suspiro1> oLista = new List<suspiro1>();
+            oLista = new CN_Clientes().ListarSuspiroAceptados(cliente1);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+        [HttpPost]
+        public JsonResult ListarSuspiroRecibido(int cliente2)
+        {
+
+            List<suspiro1> oLista = new List<suspiro1>();
+            oLista = new CN_Clientes().ListarSuspiroRecibido(cliente2);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+
         [HttpPost]
         public JsonResult Matches(int cliente1, int cliente2, int activo)
         {
