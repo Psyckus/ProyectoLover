@@ -1,0 +1,17 @@
+﻿
+@media screen and (min-width: 1300px) {
+    #contenedor-principal {
+        max-width: 1000px;
+        padding: 40px;
+    }
+}
+@media screen and (max-width: 500px) {
+    #boton {
+   
+    }
+
+        #boton:hover {
+            background-color: #3f0606;
+        }
+}
+

@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link href="~/Content/StylesJona/Test.css" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+<body>
+
+
+
+    <div class="imagenes">
+        <div class="imagen">
+            <a href="@Url.Action("TestPersonalidad1", "TestPersonalidad")">
+                <img src="~/imagenes/Polar.png" alt="Imagen 1">
+            </a>
+            
+            <button class="toggle-button">+</button>
+            <div class="descripcion">@ViewBag.Descripcion1</div>
+
+        </div>
+
+        <div class="imagen">
+            <a href="@Url.Action("TestPersonalidad2", "TestPersonalidad")">
+                <img src="~/imagenes/Psicologia.png" alt="Imagen 2">
+            </a>
+        
+            <button class="toggle-button">+</button>
+            <div class="descripcion">@ViewBag.Descripcion2</div>
+
+        </div>
+
+        <div class="imagen">
+            <a href="@Url.Action("TestPersonalidad3", "TestPersonalidad")">
+                <img src="~/imagenes/Ansiedad.png" alt="Imagen 3">
+            </a>
+       
+            <button class="toggle-button">+</button>
+            <div class="descripcion">@ViewBag.Descripcion3</div>
+
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Agregar evento de clic al botón de mostrar/ocultar
+        $('.imagen .toggle-button').click(function() {
+            // Obtener la descripción de la imagen actual
+            var descripcion = $(this).siblings('.descripcion');
+            // Cambiar la clase CSS para mostrar/ocultar la descripción
+            descripcion.toggleClass('oculto');
+            // Cambiar el texto del botón para indicar si la descripción está visible o no
+            if (descripcion.hasClass('oculto')) {
+                $(this).text('+');
+            } else {
+                $(this).text('-');
+            }
+        });
+    });
+    </script>
+
+
+
+
+
+
+</body>
+</html>

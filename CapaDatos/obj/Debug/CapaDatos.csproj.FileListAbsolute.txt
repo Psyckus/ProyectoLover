@@ -106,3 +106,21 @@ C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\obj\Debug\CapaDatos.csproj.
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\Microsoft.CSharp.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\System.Configuration.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\System.Data.DataSetExtensions.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\System.Data.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\System.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\System.Net.Http.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\System.Web.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\System.Xml.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\System.Xml.Linq.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaDatos\obj\Debug\CapaDatos.pdb

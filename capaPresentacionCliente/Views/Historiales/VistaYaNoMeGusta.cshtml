@@ -19,7 +19,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/91aa7cf289.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="~/Content/Tblas.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="~/Content/suspiro.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         h2 {
@@ -48,51 +50,23 @@
         }
 
         <h2>Personas a los que les has dado "Ya no me gusta"</h2>
-        <div class="table-responsive">
-            <table  class="table table-bordered table-striped">
-                <thead  class="thead-dark">
-                    <tr>
-                        <th>Foto</th>
-                        <th>Nombre</th>
-                
-                    </tr>
-                </thead>
-                @if (ViewBag.ObtenerClientesYaNoMeGusta.Count == 0)
+        <div class="cards">
+            @if (ViewBag.ObtenerClientesYaNoMeGusta.Count == 0)
+            {
+                <p class="mensaje">No haz reconsiderado ningún me gusta a ninguna persona.</p>
+            }
+            else
+            {
+                foreach (var cliente in ViewBag.ObtenerClientesYaNoMeGusta)
                 {
-                    <tr>
-                        <td colspan="2">No  haz reconsiderado ningun me gusta a ninguna persona.</td>
-                    </tr>
+                    <div class="card">
+                        <img class="imagen" src="@Url.Action("GetImagePrincipal", "Perfil", new { id = cliente.idCliente })" alt="Foto" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=?'; this.title='No ha establecido ninguna foto como perfil';" title="Haz clic aquí para ver la foto de perfil" />
+                        <h3 class="titulo">@cliente.nombre</h3>
+                    </div>
                 }
-                else
-                {
-                    foreach (var cliente in ViewBag.ObtenerClientesYaNoMeGusta)
-                    {
-                        <tr>
-                            <td>
-                                <div class="imagen-container">
-                                    <img class="imagen-circular"
-                                         src="@Url.Action("GetImagePrincipal", "Perfil", new { id = cliente.idCliente })"
-                                         alt="Foto"
-                                         data-id="@cliente.idCliente"
-                                         onerror="this.onerror=null; this.src='https://via.placeholder.com/70x70?text=?'; this.title='No ha establecido ninguna foto como perfil';"
-                                         title="Haz clic aquí para ver la foto de perfil" />
-
-                                </div>
-
-                            </td>
-
-
-                            <td>@cliente.nombre</td>
-
-
-
-                        </tr>
-                    }
-                }
-
-
-            </table>
+            }
         </div>
+
 
     </div>
 

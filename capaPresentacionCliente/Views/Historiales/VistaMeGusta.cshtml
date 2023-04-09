@@ -21,6 +21,7 @@
     <script src="https://kit.fontawesome.com/91aa7cf289.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="~/Content/Tblas.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/suspiro.css" />
 
 
     <style>
@@ -61,126 +62,86 @@
     </style>
 </head>
 <body>
-    <div>
-        @*@con esto me tarigo el nombre y la imagen del usuario actual@*@
-        @{
-            var miObjeto = Session["Cliente"] as CapaEntidad.cliente;
-        }
+    <div class="cards">
+        @if (ViewBag.ClientesGustados.Count == 0)
+  {
+        <p class="mensaje">No le haz dado me gusta a ninguna persona.</p>
+  }
+  else
+  {
+    foreach (var cliente in ViewBag.ClientesGustados)
+    {
+        <div class="card">
+            <img class="imagen" src="@Url.Action("GetImagePrincipal", "Perfil", new { id = cliente.idCliente })" alt="Foto" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=?'; this.title='No ha establecido ninguna foto como perfil';" title="Haz clic aquí para ver la foto de perfil" />
+            <h3 class="titulo">@cliente.nombre</h3>
+         
+                <div class="dropdown">
+                    <button style="margin-right:-4px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
 
-        @if (miObjeto != null)
-        {
-            <p></p>
-        }
+                    <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item btnReconsiderar" data-id="@cliente.idCliente" href="#">Reconsiderar</a>
 
-        <h2>¿Quién me gusta?</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Foto</th>
-                        <th>Nombre</th>
-                        <th>Opciones</th>
+                        @*<a class="dropdown-item" href="#">Opción 2</a>
+                        <a class="dropdown-item" href="#">Opción 3</a>*@
+                    </div>
+                </div>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (ViewBag.ClientesGustados.Count == 0)
-                    {
-                        <tr>
-                            <td colspan="2">No le haz dado me gusta a ninguna persona.</td>
-                        </tr>
-                    }
-                    else
-                    {
-                        
-                        foreach (var cliente in ViewBag.ClientesGustados)
-                        {
-                <tr>
-                    <td>
-                        <div class="imagen-container">
-                            <img class="imagen-circular"
-                                 src="@Url.Action("GetImagePrincipal", "Perfil", new { id = cliente.idCliente })"
-                                 alt="Foto"
-                                 data-id="@cliente.idCliente"
-                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/70x70?text=?'; this.title='No ha establecido ninguna foto como perfil';"
-                                 title="Haz clic aquí para ver la foto de perfil" />
-
-                        </div>
-
-                    </td>
-                    @*<td>@cliente.idCliente</td>*@
-                    <td>@cliente.nombre</td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </button>
-
-                            <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item btnReconsiderar" data-id="@cliente.idCliente" href="#">Reconsiderar</a>
-
-                                @*<a class="dropdown-item" href="#">Opción 2</a>
-        <a class="dropdown-item" href="#">Opción 3</a>*@
-                            </div>
-                        </div>
-                    </td>
-
-
-                </tr>
-                        }
-                    }
-                </tbody>
-            </table>
+           
         </div>
 
+    }
+  }
 
     </div>
-    
-    <script>
-  $(document).ready(function() {
-  $('.btnReconsiderar').click(function() {
-    console.log('Se hizo click en el botón Reconsiderar');
-    var idCliente = $(this).data('id');
-    $.ajax({
-      url: '@Url.Action("ReconsiderarCliente", "Historiales")',
-      type: 'POST',
-      data: { idCliente: idCliente },
-      success: function(result) {
-          if (result.success) {
-              Swal.fire({
-                  icon: 'success',
-                  title: 'Éxito',
-                  text: result.message,
-                  showConfirmButton: false,
-                  timer: 1500
-              }).then(function () {
-                  location.reload();
-              });
-        } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: result.message,
-                    showConfirmButton: false,
-                    timer: 1500
+
+
+                <script>
+              $(document).ready(function() {
+              $('.btnReconsiderar').click(function() {
+                console.log('Se hizo click en el botón Reconsiderar');
+                var idCliente = $(this).data('id');
+                $.ajax({
+                  url: '@Url.Action("ReconsiderarCliente", "Historiales")',
+                  type: 'POST',
+                  data: { idCliente: idCliente },
+                  success: function(result) {
+                      if (result.success) {
+                          Swal.fire({
+                              icon: 'success',
+                              title: 'Éxito',
+                              text: result.message,
+                              showConfirmButton: false,
+                              timer: 1500
+                          }).then(function () {
+                              location.reload();
+                          });
+                    } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: result.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    },
+                  error: function() {
+                    // hacer algo en caso de error
+                  }
                 });
-            }
-        },
-      error: function() {
-        // hacer algo en caso de error
-      }
-    });
-  });
-});
+              });
+            });
 
 
 
 
 
-    </script>
+                </script>
 
 
-</body>
+            </body>
 
-</html>
+            </html>
 

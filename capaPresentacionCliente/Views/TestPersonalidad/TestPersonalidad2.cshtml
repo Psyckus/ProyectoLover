@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "TestPersonalidad2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "TestPersonalidad1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/Content/StylesJona/testpersonalidad.css" rel="stylesheet" />
+    <style>
+        #contenedor-principal {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.2);
+            justify-content: center;
+        }
+
+        #titulo {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #imagen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            #imagen img {
+                width: 100%;
+                height: auto;
+            }
+
+        #boton {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #texto {
+            font-size: 16px;
+            text-align: justify;
+            color: #333;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        #boton {
+            background-color: #5f0c0c;
+            color: white;
+            font-size: 24px;
+            padding: 10px 200px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            #boton:hover {
+                background-color: #3f0606;
+            }
+    </style>
+</head>
+<body>
+    <div id="contenedor-principal">
+        <div id="titulo">
+            TEST DE PSICOLOGÍA
+        </div>
+        <div id="imagen">
+            <img src="~/imagenes/Psicologia.png" alt="Imagen de ejemplo">
+            <a href="@Url.Action("Test2Preguntas", "TestPersonalidad")"><button id="boton">Empezar test</button></a>
+
+
+        </div>
+        <p id="texto">
+            La psicología es un tema que continúa siendo estudiado. Hay incontables psicólogos en el mundo, y todavía existen casos difíciles de descifrar. Gracias a ella, podemos determinar aspectos y rasgos de la personalidad de los individuos.
+            <br />
+            <br />
+            Sin embargo, no existe un solo tipo de psicología. Hay más de 10 clasificaciones, y una de ellas es la neuropsicología. Este tipo estudia la relación del cerebro y del comportamiento, combinando así la neurología con la psicología. Otra que podemos encontrar, es la psicología clínica.
+            <br />
+            <br />
+            Con ella se busca otorgar ayuda a sujetos cuya salud mental se encuentra afectada, para así promover su incorporación a la sociedad. Podríamos hablar en forma detallada de todas las ramas que existen, pero el día de hoy queremos presentarte un test de psicología en donde te haremos unas preguntas personales.
+            <br />
+            <br />
+            Se realizan en todo el mundo para que las personas puedan autoevaluarse y así conocerse mejor. Pero debes tener en cuenta que este test es sencillo, y no incluiremos ningún elemento científico.
+            <br />
+            <br />
+            Por medio de las preguntas, aprenderás a detectar algunas posibles patologías o comportamientos disfuncionales que no has podido descifrar aún. Te será de mucha ayuda, ya que no hay nada mejor que corregir comportamientos tóxicos que tenemos con nosotros mismos y con las personas que consideramos cercanos.
+            <br />
+            <br />
+            Asimismo, te impulsará a darte cuenta de todo lo bueno que tienes para ofrecer. Siempre tratamos de esconder nuestras virtudes, por lo que sacamos a la luz nuestras peores actitudes.
+            <br />
+            <br />
+            ¿Has hecho algún test de psicología en el pasado? De no ser así, entonces las preguntas que preparamos para ti serán muy útiles. Debes contestar con toda la honestidad posible y te tomes tu tiempo.
+            <br />
+            <br />
+            Muchas de las personas que realizan esta clase de pruebas en línea desean encontrar respuestas a lo que les pueda estar sucediendo en sus vidas, y si eres una de ellas, has hecho bien.
+            <br />
+            <br />
+            Las respuestas que obtengas al finalizar el test, podrán ser una guía para tu médico, quien necesitará la mayor cantidad de información posible para poder ayudarte en tu proceso de mejoría.
+            <br />
+            <br />
+            Y si eres alguien que solo busca respuestas sencillas para saciar tu curiosidad en cuanto a psicología se trata, este test también es para ti. Esperamos que sea de mucha utilidad, y que obtengas respuestas acordes a lo que vives actualmente.
+        </p>
+    </div>
+</body>
+</html>

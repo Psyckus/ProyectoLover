@@ -69,3 +69,17 @@ C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\obj\Debug\CapaEntidad.csp
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\bin\Debug\Microsoft.CSharp.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\bin\Debug\System.Data.DataSetExtensions.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\bin\Debug\System.Data.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\bin\Debug\System.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\bin\Debug\System.Net.Http.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\bin\Debug\System.Xml.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\bin\Debug\System.Xml.Linq.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.csproj.CopyComplete
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\Usuario\OneDrive\Escritorio\Respaldo\New folder\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.pdb

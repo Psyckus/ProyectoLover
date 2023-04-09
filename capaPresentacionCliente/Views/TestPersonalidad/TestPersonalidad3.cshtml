@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "TestPersonalidad3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "TestPersonalidad1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/Content/StylesJona/testpersonalidad.css" rel="stylesheet" />
+    <style>
+        #contenedor-principal {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.2);
+            justify-content: center;
+        }
+
+        #titulo {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #imagen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            #imagen img {
+                width: 100%;
+                height: auto;
+            }
+
+        #boton {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #texto {
+            font-size: 16px;
+            text-align: justify;
+            color: #333;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        #boton {
+            background-color: #5f0c0c;
+            color: white;
+            font-size: 24px;
+            padding: 10px 200px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            #boton:hover {
+                background-color: #3f0606;
+            }
+    </style>
+</head>
+<body>
+    <div id="contenedor-principal">
+        <div id="titulo">
+            TEST DE ANSIEDAD
+        </div>
+        <div id="imagen">
+            <img src="~/imagenes/Ansiedad.png" alt="Imagen de ejemplo">
+            <a href="@Url.Action("Test3Preguntas", "TestPersonalidad")"><button id="boton">Empezar test</button></a>
+
+
+        </div>
+        <p id="texto">
+            Aunque a muchos les pueda parecer increíble, la ansiedad forma parte de nuestras emociones básicas. Es natural sentirla en situaciones inesperadas, como un susto por alguna caída o por accidentes. Hay casos en los que se sale de nuestro control, y es aquí cuando se puede tornar peligrosa.
+            <br />
+            <br />
+            Si se presenta en niveles controlables, podrás apaciguar el sentimiento con ayuda de técnicas de respiración y meditación, pero cuando es constante, será más complejo calmarte.
+            <br />
+            <br />
+            Episodios repetitivos de ansiedad pueden desencadenar una gran variedad de síntomas en el cuerpo. Algunos de los más comunes son intranquilidad, aceleramiento de los latidos del corazón, miedo a cosas irracionales y muchos más.
+            <br />
+            <br />
+            Un test de ansiedad será de mucha ayuda si estás lidiando con esta condición que acecha a muchos en el mundo. Te ayudará a determinar en qué nivel te encuentras, ya que si estás dentro de los niveles básicos, podrás hacer ciertos cambios en tu vida para reducir la ansiedad, pero si estás en un nivel elevado, tendrás que medicarte bajo la recomendación de un médico profesional.
+            <br />
+            <br />
+            De lo contrario, si no hay ningún tipo de riesgos pero igual está emoción se manifiesta, todos los síntomas afectarán tu salud, y lo notarás a futuro. Debes saber, que existen casos, donde la ansiedad nos obliga a movernos, y gracias a esto, podemos salvar nuestras vidas.
+            <br />
+            <br />
+            Hay quienes sufren de ansiedad crónica, y viven con esto toda su vida. Estas personas acuden ante profesionales por ayuda y con la medicación apropiada, pueden tener un estilo de vida más calmado.
+            <br />
+            <br />
+            Y dinos ¿Has estado lidiando con ansiedad desde hace poco? ¿O ya tienes mucho tiempo con la intranquilidad? Cualquiera que sea tu caso, hoy vinimos a ayudarte.
+            <br />
+            <br />
+            Te presentaremos algunas preguntas que te ayudarán a clasificar tu nivel de ansiedad actual, y según las respuestas, tendrás un resultado en particular. De ser bajo, no tendrás de qué preocuparte, pero si reflejas un nivel alto, deberás hacer cambios significativos en tu día a día.
+            <br />
+            <br />
+            Las respuestas que obtengas, serán de mucha utilidad para tu médico, quien podrá usarlas para tener un mejor diagnóstico de tu nivel de ansiedad. Recuerda que este test es solo un pequeño cuestionario que utiliza preguntas determinadas para dar un resultado rápido.
+        </p>
+    </div>
+</body>
+</html>
+

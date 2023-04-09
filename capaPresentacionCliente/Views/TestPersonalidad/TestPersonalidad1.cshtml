@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "TestPersonalidad1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/Content/StylesJona/testpersonalidad.css" rel="stylesheet" />
+    <style>
+        #contenedor-principal {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.2);
+            justify-content:center;
+        }
+
+#titulo {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+        #imagen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            #imagen img {
+                width: 100%;
+                height: auto;
+            }
+
+#boton {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#texto {
+    font-size: 16px;
+    text-align: justify;
+    color: #333;
+    padding: 20px;
+    background-color: #fff;
+}
+
+        #boton {
+            background-color: #5f0c0c;
+            color: white;
+            font-size: 24px;
+            padding: 10px 200px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            #boton:hover {
+                background-color: #3f0606;
+            }
+
+        
+
+
+    </style>
+</head>
+<body>
+    <div id="contenedor-principal">
+        <div id="titulo">
+            TEST ESTRELLA POLAR
+        </div>
+        <div id="imagen">
+            <img src="~/imagenes/Polar.png" alt="Imagen de ejemplo">
+            <a href="@Url.Action("Test1Preguntas", "TestPersonalidad")"><button id="boton">Empezar test</button></a>
+
+
+        </div>
+        <p id="texto">
+            Se cree que la personalidad está relacionada con la carrera vocacional que las personas pueden llegar a estudiar. Según los estudios del reconocido psicólogo John L. Holland, existen 6 tipos de personalidades que se relacionan con relación directa a tu opción de estudio predilecta. Es por ello que te presentamos el test estrella polar.
+            <br />
+            <br />
+            La primera de ellas es la personalidad realista. Las personas con esta personalidad adoran los trabajos prácticos, y disfrutan de usar maquinaria pesada o herramientas manuales
+            <br />
+            <br />
+            En segundo lugar está la personalidad del investigador, son individuos a los cuales les gusta analizar y resolver problemas complejos usando su inteligencia, al igual que con el uso de símbolos, ideas y el lenguaje.
+            <br />
+            <br />
+            Por otra parte, está la inteligencia empresarial, y dentro de esta categoría se encuentran aquellos con una pasión por trabajar en entornos, donde haya competencia y en los que se requiera de liderazgo.
+            <br />
+            <br />
+            Otra de las inteligencias de las que habla John Holland, es la inteligencia artística. Todo aquel que presente tendencias artísticas, encontrará su pasión mediante la expresión de sus sentimientos e ideas en forma de arte. Les fascina trabajar de manera independiente y no les parece importante tener un orden.
+            <br />
+            <br />
+            De la misma manera, existe la inteligencia convencional, la cual representa al grupo que prefieren seguir direcciones y normas para elaborar sus tareas. Cuentan con la capacidad de organizar todos sus asuntos, ya sean laborales o personales, además de ser muy organizados y pasivos.
+            <br />
+            <br />
+            Por último, Holland coloca la inteligencia social. Estos sujetos tienen el don de la palabra. Les gustan las situaciones relacionadas a brindarle ayuda a otros en su desarrollo integral y aprender cosas nuevas. Sus habilidades sociales son excepcionales, y requieren de interacción con otras personas para sentirse cómodos.
+            <br />
+            <br />
+            Este test de orientación vocacional se realiza para descubrir qué tipo de perfil de personalidad tienes, y los resultados que tengas, determinarán la mejor profesión para ti.
+            <br />
+            <br />
+            Muchos tienen dificultad al momento de escoger una carrera vocacional, y tienden a elegir la incorrecta, lo que lleva a que no se sientan bien y terminen abandonando. Dinos ¿No sientes que tu carrera sea correcta para ti y quieres ayuda para saber cuál es la mejor para tu caso?
+            <br />
+            <br />
+            Estás de suerte. Nuestro pequeño test estrella polar te resultará muy útil. La carrera vocacional no es algo que se debe tomar a la ligera. Sin embargo, hay quienes optan por escoger la primera que les viene a la mente para no estar sin hacer nada, representando un error fatal.
+            <br />
+            <br />
+            Con ayuda de este test, sabrás que tipo de personalidad tienes, y con ello la carrera vocacional apropiada. No te apresures. Responde de manera honesta y aguarda a que los resultados finales aparezcan en tu pantalla.
+        </p>
+    </div>
+</body>
+</html>

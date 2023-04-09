@@ -19,21 +19,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/91aa7cf289.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="~/Content/Tblas.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/Content/suspiro.css" />
     <style>
-        h2{
-            text-align:center;
+        h2 {
+            text-align: center;
         }
-        th{
-            text-align:center;
+
+        th {
+            text-align: center;
         }
-        td{
-            text-align:center;
+
+        td {
+            text-align: center;
         }
+
         .ojitos {
             font-size: 24px;
             line-height: 3;
         }
+        p {
+            text-align: justify;
+        }
+
     </style>
 </head>
 <body>
@@ -49,49 +57,27 @@
         }
 
         <h2>¿A quién le gusto? <span class="ojitos">&#x1F440;</span></h2>
-        <div class="table-responsive">
-            <table  class="table table-bordered table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Foto</th>
-                        <th>Nombre</th>
-                    
-                    </tr>
-                </thead>
-                
-                @if (ViewBag.clientesQueinMeGusta.Count == 0)
-                {
-                    <tr>
-                        <td colspan="2">No le haz dado me gusta a ninguna persona.</td>
-                    </tr>
-                }
-                else
-                {
-                    foreach (var cliente in ViewBag.clientesQueinMeGusta)
-                    {
-                        <tr>
-                            <td>
-                                <div class="imagen-container">
-                                    <img class="imagen-circular"
-                                         src="@Url.Action("GetImagePrincipal", "Perfil", new { id = cliente.idCliente })"
-                                         alt="Foto"
-                                         data-id="@cliente.idCliente"
-                                         onerror="this.onerror=null; this.src='https://via.placeholder.com/70x70?text=?'; this.title='No ha establecido ninguna foto como perfil';"
-                                         title="Haz clic aquí para ver la foto de perfil" />
-
-                                </div>
-
-                            </td>
-
-                            <td>@cliente.nombre</td>
-
-
-                        </tr>
-                    }
-                }
-
-
-            </table>
+        <div class="cards">
+            @if (ViewBag.clientesQueinMeGusta.Count == 0)
+  {
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">No le haz dado me gusta a ninguna persona.</p>
+                </div>
+            </div>
+  }
+  else
+  {
+            foreach (var cliente in ViewBag.clientesQueinMeGusta)
+    {
+            <div class="card">
+                <img class="card-img-top" src="@Url.Action("GetImagePrincipal", "Perfil", new { id = cliente.idCliente })" alt="Foto" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=?'; this.title='No ha establecido ninguna foto como perfil';" title="Haz clic aquí para ver la foto de perfil" />
+                <div class="card-body">
+                    <h5 class="card-title">@cliente.nombre</h5>
+                </div>
+            </div>
+    }
+  }
         </div>
 
     </div>

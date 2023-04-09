@@ -1,0 +1,216 @@
+﻿
+@{
+    ViewBag.Title = "Test1Preguntas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link href="~/Content/StylesJona/testpersonalidad.css" rel="stylesheet" />
+
+
+<div id="preguntas-container" class="container">
+   
+
+</div>
+
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    #preguntas-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        height: 900px; /* ajusta el valor según lo que necesites */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilos para los botones de respuesta */
+    .respuesta {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #5f0c0c;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        color: #000;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+        .respuesta:hover {
+            background-color: #5f0c0c;
+            color: #fff;
+        }
+
+        .respuesta:focus {
+            outline: none;
+        }
+
+
+
+    #preguntas-container {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+    h3 {
+        font-size: 24px;
+        padding: 50px;
+        margin-top: -20px;
+    }
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-contenido {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        max-width: 90%;
+        max-height: 90%;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cerrar-modal {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #5f0c0c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .cerrar-modal:hover {
+            background-color: black;
+        }
+
+    .modal img {
+        display: block;
+        margin: 0 auto;
+        max-width: 50%;
+    }
+
+
+</style>
+<script>
+function cargarPreguntas() {
+  $.ajax({
+    url: '@Url.Action("ObtenerPreguntas1", "TestPersonalidad")',
+    type: 'GET',
+    dataType: 'json',
+    success: function (data) {
+      var preguntasHTML = '';
+      var progresoPuntosHTML = '';
+      $.each(data, function (index, pregunta) {
+        // generar el HTML para mostrar la pregunta y las opciones de respuesta
+        preguntasHTML += '<div class="pregunta" id="pregunta' + pregunta.id + '">';
+        preguntasHTML += '<h3>' + pregunta.texto + '</h3>';
+        preguntasHTML += '<div class="opciones">';
+        $.each(pregunta.opciones, function (index, opcion) {
+          preguntasHTML += '<button class="respuesta" data-pregunta="' + pregunta.id + '" data-opcion="' + opcion.id + '">' + opcion.texto + '</button>';
+        });
+        preguntasHTML += '</div>';
+        preguntasHTML += '</div>';
+
+   
+      });
+      $('#preguntas-container').html(preguntasHTML);
+      $('#progreso-container').html(progresoPuntosHTML);
+
+      // ocultar todas las preguntas excepto la primera
+      $('.pregunta:not(:first)').hide();
+
+      // agregar controlador de eventos para el botón de opción
+      $('.respuesta').on('click', function () {
+        // ocultar la pregunta actual y mostrar la siguiente pregunta
+        var preguntaActual = $(this).closest('.pregunta');
+        preguntaActual.hide();
+        if (preguntaActual.next('.pregunta').length) {
+          preguntaActual.next('.pregunta').show();
+        } else {
+          mostrarResultado();
+        }
+      });
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log('Error al cargar las preguntas');
+    }
+  });
+}
+
+    function mostrarResultado() {
+        // calcular la personalidad basada en las respuestas
+        var personalidades = ['social', 'empresarial', 'artística'];
+        var personalidad = personalidades[Math.floor(Math.random() * personalidades.length)];
+
+        // mostrar el modal con la personalidad seleccionada al azar
+        var resultadoHTML = '';
+        resultadoHTML += '<div class="modal">';
+        resultadoHTML += '<div class="modal-contenido">';
+        resultadoHTML += '<h3>Tienes una personalidad ' + personalidad + '</h3>';
+        resultadoHTML += '<img src="" alt="Imagen de personalidad">';
+        resultadoHTML += '<button class="cerrar-modal">Cerrar</button>';
+        resultadoHTML += '</div>';
+        resultadoHTML += '</div>';
+        $('body').append(resultadoHTML);
+
+        // cambiar la imagen según la personalidad seleccionada
+        var imagenSrc = '';
+        switch (personalidad) {
+            case 'social':
+                imagenSrc = '/imagenes/Social.jpg';
+                break;
+            case 'empresarial':
+                imagenSrc = '/imagenes/Empresarial.jpg';
+                break;
+            case 'artística':
+                imagenSrc = '/imagenes/Artistica.jpg';
+                break;
+            default:
+                // no se encontró una personalidad válida
+                break;
+        }
+        $('.modal img').attr('src', imagenSrc);
+
+        // agregar controlador de eventos para el botón de cerrar modal
+        $('.cerrar-modal').on('click', function () {
+            // redireccionar a la página que desees después de cerrar el modal
+            window.location.href = '@Url.Action("Index", "TestPersonalidad")';
+        });
+
+    }
+
+    $(document).ready(function () {
+        cargarPreguntas();
+    });
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>capaPresentacionCliente</RootNamespace>
     <AssemblyName>capaPresentacionCliente</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -62,9 +62,7 @@
     <Reference Include="System.Data">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing">
       <Private>True</Private>
     </Reference>
@@ -92,9 +90,7 @@
     <Reference Include="System.Web.Abstractions">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Extensions">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing">
       <Private>True</Private>
     </Reference>
@@ -150,9 +146,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -178,6 +172,7 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\preguntasInteresController.cs" />
+    <Compile Include="Controllers\TestPersonalidadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -430,6 +425,8 @@
     <Content Include="Content\StylesJona\styleLogin1.css" />
     <Content Include="Content\StylesJona\styleRegistro.css" />
     <Content Include="Content\StylesJona\tablaMeGusta.css" />
+    <Content Include="Content\StylesJona\Test.css" />
+    <Content Include="Content\StylesJona\testpersonalidad.css" />
     <Content Include="Content\suspiro.css" />
     <Content Include="Content\suspiroRecibido.css" />
     <Content Include="Content\svg-with-js.css" />
@@ -440,18 +437,30 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="imagenes\moderado.jpg" />
     <Content Include="imagenes\analysis.png" />
+    <Content Include="imagenes\Ansiedad.png" />
+    <Content Include="imagenes\Artistica.jpg" />
+    <Content Include="imagenes\Conectar.jpg" />
+    <Content Include="imagenes\conocimiento.jpg" />
+    <Content Include="imagenes\considerable.jpg" />
+    <Content Include="imagenes\Empresarial.jpg" />
     <Content Include="imagenes\icons8-editar-propiedad-50.png" />
     <Content Include="imagenes\icons8-historia-de-la-actividad-80.png" />
     <Content Include="imagenes\icons8-usuario-masculino-en-círculo-50.png" />
     <Content Include="imagenes\image001.png" />
+    <Content Include="imagenes\leve.jpg" />
     <Content Include="imagenes\login.svg" />
     <Content Include="imagenes\logoBla.png" />
     <Content Include="imagenes\MicrosoftTeams-image.png" />
+    <Content Include="imagenes\Polar.png" />
     <Content Include="imagenes\pruebas.png" />
+    <Content Include="imagenes\Psicologia.png" />
     <Content Include="imagenes\signo-de-genero.png" />
+    <Content Include="imagenes\Social.jpg" />
     <Content Include="imagenes\susana.jpeg" />
     <Content Include="imagenes\prueba.jpeg" />
+    <Content Include="imagenes\Vacia.jpg" />
     <Content Include="Modelo\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -610,6 +619,13 @@
     <Content Include="Views\Home\suspiro.cshtml" />
     <Content Include="Views\Home\suspiroRecibido.cshtml" />
     <Content Include="Views\Home\suspiroAceptado.cshtml" />
+    <Content Include="Views\TestPersonalidad\Index.cshtml" />
+    <Content Include="Views\TestPersonalidad\TestPersonalidad1.cshtml" />
+    <Content Include="Views\TestPersonalidad\Test1Preguntas.cshtml" />
+    <Content Include="Views\TestPersonalidad\TestPersonalidad2.cshtml" />
+    <Content Include="Views\TestPersonalidad\Test2Preguntas.cshtml" />
+    <Content Include="Views\TestPersonalidad\TestPersonalidad3.cshtml" />
+    <Content Include="Views\TestPersonalidad\Test3Preguntas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
