@@ -39,6 +39,13 @@ namespace capaPresentacionCliente.Controllers
 
             return View();
         }
+        public ActionResult Pregunta6()
+
+        {
+            ObtenerGeneros();
+
+            return View();
+        }
         public void ObtenerGeneros()
         {
             // Obtener todos los intereses activos
@@ -77,7 +84,33 @@ namespace capaPresentacionCliente.Controllers
             }
 
             // Redirigir al usuario a la siguiente página
-            return RedirectToAction("DobleAutenticacion", "Aceeso");
+            return RedirectToAction("Pregunta6");
+
+
+
+
+        }
+
+        [HttpPost]
+        public ActionResult Pregunta6(int generos)
+        {
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+            var idCliente = oClienteSession.idCliente;
+
+            //Guardar el género seleccionado en la base de datos
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO GeneroPreferencia (idTipoGenero, idCliente) VALUES (@idTipoGenero,@idCliente)", oconexion);
+                cmd.Parameters.AddWithValue("@idTipoGenero", generos);
+                cmd.Parameters.AddWithValue("@idCliente", idCliente);
+                oconexion.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+
+            // Redirigir al usuario a la siguiente página
+            return RedirectToAction("DobleAutenticacion", "Acceso");
 
 
 

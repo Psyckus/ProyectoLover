@@ -119,3 +119,14 @@ C:\Users\Usuario\OneDrive\Escritorio\Respaldo\ProyectoLover\CapaNegocios\obj\Deb
 C:\Users\Usuario\OneDrive\Escritorio\Respaldo\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
 C:\Users\Usuario\OneDrive\Escritorio\Respaldo\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.dll
 C:\Users\Usuario\OneDrive\Escritorio\Respaldo\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.pdb
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\bin\Debug\CapaNegocios.dll
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\bin\Debug\CapaNegocios.pdb
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\bin\Debug\CapaDatos.dll
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\bin\Debug\CapaEntidad.dll
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\bin\Debug\CapaDatos.pdb
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\bin\Debug\CapaEntidad.pdb
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.csproj.AssemblyReference.cache
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.dll
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaNegocios\obj\Debug\CapaNegocios.pdb

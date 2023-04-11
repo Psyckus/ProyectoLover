@@ -63,3 +63,9 @@ C:\Users\Usuario\OneDrive\Escritorio\Respaldo\ProyectoLover\CapaEntidad\obj\Debu
 C:\Users\Usuario\OneDrive\Escritorio\Respaldo\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\OneDrive\Escritorio\Respaldo\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Users\Usuario\OneDrive\Escritorio\Respaldo\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\kevin\Source\Repos\ProyectoLover\CapaEntidad\obj\Debug\CapaEntidad.pdb
