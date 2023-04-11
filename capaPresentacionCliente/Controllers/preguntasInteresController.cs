@@ -108,12 +108,8 @@ namespace capaPresentacionCliente.Controllers
                 cmd.ExecuteNonQuery();
             }
 
-
             // Redirigir al usuario a la siguiente página
             return RedirectToAction("DobleAutenticacion", "Acceso");
-
-
-
 
         }
 
