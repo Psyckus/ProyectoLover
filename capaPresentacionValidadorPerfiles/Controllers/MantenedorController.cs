@@ -68,5 +68,39 @@ namespace capaPresentacionValidadorPerfiles.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public JsonResult ListarPreferencia()
+        {
+
+            List<preferencia> oLista = new List<preferencia>();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListarCaInt()
+        {
+
+            List<categoria_interes> oLista = new List<categoria_interes>();
+            oLista = new CN_Preferencia().ListarCaInt();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GuardarPreferencia(preferencia obj)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (obj.idPreferencia == 0)
+            {
+                resultado = new CN_Preferencia().Registrar(obj, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Preferencia().editar(obj, out mensaje);
+            }
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+
+
+        }
     }
 }

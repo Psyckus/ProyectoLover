@@ -68,6 +68,7 @@
     <Compile Include="CD_Cliente.cs" />
     <Compile Include="CD_Historial.cs" />
     <Compile Include="CD_Interes.cs" />
+    <Compile Include="CD_Preferencias.cs" />
     <Compile Include="CD_Usuarios.cs" />
     <Compile Include="conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

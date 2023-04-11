@@ -461,6 +461,9 @@
     <Content Include="Global.asax" />
     <Content Include="imagenes\administrador.png" />
     <Content Include="imagenes\logoLover.jpeg" />
+    <Content Include="ImgTest\estrella.png" />
+    <Content Include="ImgTest\test-personalidad.jpg" />
+    <Content Include="ImgTest\test_de_ansiedad_de_hamilton_4143_600.jpg" />
     <Content Include="Modelo\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

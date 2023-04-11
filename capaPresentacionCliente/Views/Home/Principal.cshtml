@@ -43,7 +43,7 @@
             <div class="menu">
                 <ul>
                     <li>Matches</li>
-                    <li class="active">Mensajes</li>
+                    <li class="active" href="@Url.Action("Index","chat")">Mensajes</li>
                     <li>Suspiros</li>
                 </ul>
             </div>
@@ -121,9 +121,9 @@
                             <span id="edad">20</span>
                         </div>
                         <div id="myBtn" class="icon">
-                            
-                                <i class="las la-eye"></i>
-                            
+
+                            <i class="las la-eye"></i>
+
 
                         </div>
 
@@ -184,13 +184,33 @@
 
         <!-- Contenido del modal ver perfil -->
         <div id="myModal" class="perfil-modal">
-            <div class="modal-content">
+            <div class="">
                 <span class="close">&times;</span>
                 <p>Ver perfil</p>
+            </div>
+            <div class="verPerfil">
+                
+                <div class="profile">
+                    <p id="id2" style="display:none"></p>
+                    <div class="name">
+                        <span id="nom"></span>
+                        <span id="edad"></span>
+                    </div>
+                    
+
+                    <div class="local">
+                        <span><b>Descripción:</b></span>
+                    </div>
+                    <div class="desc">
+                        <span id="desc"></span>
+                    </div>
+
+                </div>
             </div>
         </div>
 
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -470,6 +490,32 @@
 
 
         }
+
+        function verPerfil() {
+             $.ajax({
+                type: "POST",
+                 url: '@Url.Action("VerP", "Home")',
+                data: JSON.stringify({ idCliente: id}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var obj = data.data;
+                    var ruta = obj.idCliente;
+                    var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(ruta);
+                    $("#user").attr("src", data)
+                    $("#nom").text(obj.nombre)
+                    $("#edad").text(obj.edad)
+                    $("#desc").text(obj.descripcion)
+                    console.log("Datos obtenidos con exito");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Error al enviar la datos al servidor.");
+                        }
+                    });
+
+        }
+
+        
 
 
 
