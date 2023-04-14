@@ -4,5 +4,341 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>preferencia</h2>
+<h2>Preferencia</h2>
 
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
+    <li class="breadcrumb-item active">Preferencia</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista Preferencias
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
+            </div>
+        </div>
+
+        <hr />
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Categoria</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Usuarios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <input id="txtid" type="hidden" value="0" />
+
+
+                <form id="contenedor" class="row">
+
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="txtnombre" name="nombre" />
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-3">
+
+                        <div class="mb-3">
+                            <label class="form-label">Categoria</label>
+                            <select id="cbocate" class="form-select">
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Estado</label>
+                            <select id="cboestado" class="form-select">
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                </form>
+                <!--Mensaje de alerta-->
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+    <script>
+
+        var tabladata;
+        var filaSeleccionada
+
+        jQuery.ajax({
+            url: '@Url.Action("ListarPreferencia", "Mantenedor")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+
+
+                console.log(data)
+            }
+        })
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarPreferencia", "Mantenedor")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+
+                { "data": "nombre" },
+
+                {
+                    "data": "oCategoria_interes", "render": function (data) {
+                        return data.nombre
+                    }
+                },
+                {
+                    "data": "estado", "render": function (valor) {
+
+                        if (valor) {
+                            return '<span class="badge rounded-pill bg-success">Activo</span>'
+                        } else {
+                            return '<span class="badge rounded-pill bg-danger">Inactivo</span>'
+                        }
+
+                    }
+                },
+
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' ,
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "90px"
+                }
+
+            ],
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.13.2/i18n/es-ES.json" }
+        });
+
+
+
+
+        jQuery.ajax({
+                        url: '@Url.Action("ListarCaInt", "Mantenedor")',
+                        type: "GET",
+                        data: null,
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data)
+
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cbocate");
+
+                $.each(data.data, function (index, item)
+                {
+                    $("<option>").attr({ "value": item.idRol }).text(item.nombre).appendTo("#cbocate");
+                })
+
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        },
+
+        });
+
+
+
+        jQuery.validator.addMethod("validar", function (value, element) {
+            return this.optional(element) || /^\d{0,4}(\. \d{0,2})?$/i.test(value);
+        });
+
+        $("#contenedor").validate({
+            rules: {
+
+                nombre: {
+                    required: true
+                },
+
+            },
+            messages: {
+                nombre: "- El campo nombre es obligatorio",
+
+            },
+            errorElement: "div",
+            errorLabelContainer: ".alert-danger"
+        })
+
+
+
+        function abrirModatl(json) {
+
+            $("#txtid").val(0);
+
+            $("#txtnombre").val("");
+
+            $("#cbocate").val($("#cbocate option:first").val());
+            $("#cboestado").val(1);
+            $("#mensajeError").hide();
+
+
+
+
+            if (json != null) {
+                $("#txtid").val(json.idPreferencia);
+
+                $("#txtnombre").val(json.nombre);
+
+                $("#cbocate").val(json.oCategoria_interes.idCategoria_interes);
+                $("#cboestado").val(json.estado == true ? 1 : 0);
+
+
+            }
+
+            $("#FormModal").modal("show")
+        }
+
+        $("#tabla tbody").on("click", '.btn-editar', function () {
+            filaSeleccionada = $(this).closest("tr");
+            var data = tabladata.row(filaSeleccionada).data();
+
+            abrirModatl(data)
+
+
+        })
+
+
+
+
+        function guardar() {
+
+
+            if (!$("#contenedor").valid()) {
+                return;
+            }
+
+            var usuario = {
+
+                idPreferencia: $("#txtid").val(),
+
+                nombre: $("#txtnombre").val(),
+
+                oCategoria_interes: {
+                    idCategoria_interes: $("#cbocate option:selected").val(),
+                    nombre: $("#cbocate option:selected").text()
+                },
+                activo: $("#cboestado").val() == 1 ? true: false
+
+
+
+            }
+
+            jQuery.ajax({
+                url: '@Url.Action("GuardarPreferencia", "Mantenedor")',
+                type: "POST",
+                data: JSON.stringify({ obj: preferencia }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+
+
+                    //preferencia nueva
+                    if (preferencia.idPreferencia == 0) {
+
+                        if (data.resultado != 0) {
+
+                            preferencia.idPreferencia = data.resultado;
+                            tabladata.row.add(preferencia).draw(false);
+                            $("#FormModal").modal("hide");
+
+
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+
+
+
+                         //Editar preferencia
+                    } else {
+
+                        if (data.resultado) {
+                            tabladata.row(filaSeleccionada).data(preferencia).draw(false);
+                            filaSeleccionada = null;
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error");
+                    $("#mensajeError").show();
+                },
+                beforeSend: function () {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "Cargando...",
+                        size:14
+                        })
+                }
+            });
+
+
+
+        }
+
+
+    </script>
+
+}

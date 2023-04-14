@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <title>Principal</title>
 </head>
+
 <body onload="getLocation()">
     <div class="container">
         <div class="side">
@@ -115,13 +116,13 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <ul id="mensajes">
         @foreach (var mensaje in Model)
         {
             <li>@mensaje.FechaHora.ToString("dd/MM/yyyy HH:mm:ss") - @mensaje.idCliente1: @mensaje.Mensaje</li>
         }
     </ul>
+
 
 
 

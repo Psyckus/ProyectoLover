@@ -182,8 +182,14 @@ namespace capaPresentacionCliente.Controllers
         }
 
 
+        [HttpPost]
+        public JsonResult VerP(int cliente1, int idCliente)
+        {
 
+            descubrir obj = new CN_Clientes().Descubrir(cliente1, idCliente);
+            return Json(new { data = obj }, JsonRequestBehavior.AllowGet);
 
+        }
 
 
         [HttpPost]
