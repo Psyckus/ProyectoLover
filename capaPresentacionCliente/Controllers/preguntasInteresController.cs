@@ -39,6 +39,25 @@ namespace capaPresentacionCliente.Controllers
 
             return View();
         }
+        public ActionResult Pregunta6()
+
+        {
+            ObtenerGeneros();
+
+            return View();
+        }
+        public ActionResult Pregunta7()
+
+        {
+
+            return View();
+        }
+        public ActionResult Pregunta8()
+
+        {
+
+            return View();
+        }
         public void ObtenerGeneros()
         {
             // Obtener todos los intereses activos
@@ -77,10 +96,75 @@ namespace capaPresentacionCliente.Controllers
             }
 
             // Redirigir al usuario a la siguiente página
+            return RedirectToAction("Pregunta6");
+
+
+
+        }
+
+        [HttpPost]
+        public ActionResult Pregunta6(int generos)
+        {
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+            var idCliente = oClienteSession.idCliente;
+
+            //Guardar el género seleccionado en la base de datos
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO GeneroPreferencia (idTipoGenero, idCliente) VALUES (@idTipoGenero,@idCliente)", oconexion);
+                cmd.Parameters.AddWithValue("@idTipoGenero", generos);
+                cmd.Parameters.AddWithValue("@idCliente", idCliente);
+                oconexion.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            // Redirigir al usuario a la siguiente página
+            return RedirectToAction("Pregunta7");
+
+        }
+
+        [HttpPost]
+        public ActionResult Pregunta7( int edadMinima, int edadMaxima)
+        {
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+            var idCliente = oClienteSession.idCliente;
+
+            //Guardar el género seleccionado en la base de datos
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO EdadCliente (idCliente,edadMinima,edadMaxima) VALUES (@idCliente,@edadMinima,@edadMaxima)", oconexion);
+                cmd.Parameters.AddWithValue("@idCliente", idCliente);
+                cmd.Parameters.AddWithValue("@edadMinima", edadMinima);
+                cmd.Parameters.AddWithValue("@edadMaxima", edadMaxima);
+                oconexion.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            // Redirigir al usuario a la siguiente página
             return RedirectToAction("DobleAutenticacion", "Aceeso");
 
+        }
+        [HttpPost]
+        public ActionResult Pregunta8(int kilometros)
+        {
+            var session = HttpContext.Session;
+            var oClienteSession = session["Cliente"] as CapaEntidad.cliente;
+            var idCliente = oClienteSession.idCliente;
 
+            //Guardar el género seleccionado en la base de datos
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO EdadCliente (idCliente,edadMinima,edadMaxima) VALUES (@idCliente,@edadMinima,@edadMaxima)", oconexion);
+                cmd.Parameters.AddWithValue("@idCliente", idCliente);
+                cmd.Parameters.AddWithValue("@edadMinima", kilometros);
+                oconexion.Open();
+                cmd.ExecuteNonQuery();
+            }
 
+            // Redirigir al usuario a la siguiente página
+            return RedirectToAction("DobleAutenticacion", "Aceeso");
 
         }
 

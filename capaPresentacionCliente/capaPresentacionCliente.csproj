@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>capaPresentacionCliente</RootNamespace>
     <AssemblyName>capaPresentacionCliente</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -626,6 +626,9 @@
     <Content Include="Views\TestPersonalidad\Test2Preguntas.cshtml" />
     <Content Include="Views\TestPersonalidad\TestPersonalidad3.cshtml" />
     <Content Include="Views\TestPersonalidad\Test3Preguntas.cshtml" />
+    <Content Include="Views\preguntasInteres\Pregunta6.cshtml" />
+    <Content Include="Views\preguntasInteres\Pregunta7.cshtml" />
+    <Content Include="Views\preguntasInteres\Pregunta8.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

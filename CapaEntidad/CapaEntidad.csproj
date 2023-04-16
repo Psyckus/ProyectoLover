@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CapaEntidad</RootNamespace>
     <AssemblyName>CapaEntidad</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -63,6 +63,7 @@
     <Compile Include="cliente.cs" />
     <Compile Include="CodigoAutenticacion.cs" />
     <Compile Include="descubrir.cs" />
+    <Compile Include="EdadPreferencia.cs" />
     <Compile Include="estado.cs" />
     <Compile Include="foto.cs" />
     <Compile Include="generoCliente.cs" />
