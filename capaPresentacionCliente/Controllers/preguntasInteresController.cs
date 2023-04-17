@@ -305,5 +305,77 @@ namespace capaPresentacionCliente.Controllers
             }
 
         }
+
+        [HttpPost]
+        public JsonResult ObtenerInteresesPorCliente(int id)
+        {
+            List<interes_cliente> lista = new List<interes_cliente>();
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                oconexion.Open();
+
+
+
+                string sql = "select i.nombre from interes as i join interes_cliente as ic on i.idInteres = ic.idInteres and ic.idCliente = @id";
+
+
+
+                SqlCommand cmd = new SqlCommand(sql, oconexion);
+                cmd.Parameters.AddWithValue("@id", id);
+
+
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+
+                while (reader.Read())
+                {
+                    interes_cliente interes = new interes_cliente();
+                    interes.oInteres = reader["nombre"].ToString();
+                    lista.Add(interes);
+                }
+            }
+
+
+
+            return Json(lista);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerPreferenciasPorCliente(int id)
+        {
+            List<preferencia_cliente> lista = new List<preferencia_cliente>();
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                oconexion.Open();
+
+
+
+                string sql = "select p.nombre from preferencia as p join preferencia_cliente as ic on p.idPreferencia = ic.idPreferencia and ic.idCliente = @id";
+
+
+
+                SqlCommand cmd = new SqlCommand(sql, oconexion);
+                cmd.Parameters.AddWithValue("@id", id);
+
+
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+
+                while (reader.Read())
+                {
+                    preferencia_cliente preferencia = new preferencia_cliente();
+                    preferencia.oPreferencia = reader["nombre"].ToString();
+                    lista.Add(preferencia);
+                }
+            }
+
+
+
+            return Json(lista);
+        }
     }
 }

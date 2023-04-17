@@ -8,8 +8,6 @@ namespace CapaEntidad
 {
     public class preferencia_cliente
     {
-        public int idPreferenciaCliente { get; set; }
-        public preferencia opreferencia { get; set; }
-        public cliente ocliente { get; set; }
+        public string oPreferencia { get; set; }
     }
 }
