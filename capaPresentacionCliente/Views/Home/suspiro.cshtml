@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "suspiro";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -15,7 +14,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <title>Principal</title>
 </head>
 <body>
@@ -28,9 +27,10 @@
         <p></p>
     }
     <div id="id" style="display: none">@(miObjeto != null ? miObjeto.idCliente : Session["idCliente"])</div>
+    <div class="container">
+        <div class="wrapper" id="cards">
 
-    <h2 class="titulo">Suspiros enviados</h2>
-    <div class="cards" id="cards">
+        </div>
     </div>
 
 </body>
@@ -54,12 +54,15 @@
                         var foto = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(item.cliente2);
                         var card = $("<div>").addClass("card");
                         var img = $("<img>").attr("src", foto);
-                        var title = $("<h3>").text(item.nombre);
-                        var botones = $("<div>").addClass("button-container");
+                        var info = $("<div>").addClass("info");
+                        var title = $("<h1>").text(item.nombre);
+                        var descripcion = $("<p>").text(item.descripcion);
+                        var fecha = $("<p>").text("Enviado el: " + item.Fecha);
+                        var br = $("<br />");
                         var boton = $("<button>").text("Reconsiderar").addClass("boton");
                         var cliente = $("<p>").text(item.cliente2).addClass("cliente").attr("hidden", true);
-                        botones.append(boton)
-                        card.append(img, title,botones,cliente);
+                        card.append(img,info);
+                        info.append( title, descripcion, fecha, br, boton, cliente);
                         $("#cards").append(card);
                     });
                     const botones = document.querySelectorAll(".boton"); // selecciona todos los botones con la clase "boton"
@@ -104,16 +107,4 @@
          // actualiza la página cada 5 segundos
     });
     });
-    var card = $("<div>").addClass("card");
-    var img = $("<img>").attr("src", foto).addClass("card-img-top");
-    var body = $("<div>").addClass("card-body");
-    var title = $("<h5>").addClass("card-title").text(item.nombre);
-    var cliente = $("<p>").text(item.cliente2).addClass("cliente").attr("hidden", true);
-    var botones = $("<div>").addClass("d-grid gap-2");
-    var boton = $("<button>").text("Reconsiderar").addClass("btn btn-primary").attr("type", "button");
-    botones.append(boton);
-    body.append(title, botones, cliente);
-    card.append(img, body);
-    $("#cards").append(card);
-
 </script>

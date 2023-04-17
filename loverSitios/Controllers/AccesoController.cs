@@ -47,7 +47,7 @@ namespace loverSitios.Controllers
                 //aqui se valia que rol traer el usuario y lo redirecciona segun cada pagina a que le pertenezca al usuario
                 else if (oUsuario.orol.nombre.Contains("Admin"))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "ConfCorreos");
                 }
                 else if (oUsuario.orol.nombre.Contains("Validador de perfiles"))
                 {

@@ -39,6 +39,23 @@ namespace capaPresentacionCliente.Controllers
 
             return View();
         }
+        public ActionResult Pregunta6()
+
+        {
+            ObtenerGeneros();
+
+            return View();
+        }
+
+        public ActionResult Pregunta7()
+        {
+            return View();
+        }
+
+        public ActionResult Pregunta8()
+        {
+            return View();
+        }
         public void ObtenerGeneros()
         {
             // Obtener todos los intereses activos
@@ -124,7 +141,7 @@ namespace capaPresentacionCliente.Controllers
             }
 
             // Redirigir al usuario a la siguiente página
-            return RedirectToAction("DobleAutenticacion", "Aceeso");
+            return RedirectToAction("DobleAutenticacion", "Acceso");
 
         }
         [HttpPost]
@@ -145,7 +162,7 @@ namespace capaPresentacionCliente.Controllers
             }
 
             // Redirigir al usuario a la siguiente página
-            return RedirectToAction("DobleAutenticacion", "Aceeso");
+            return RedirectToAction("DobleAutenticacion", "Acceso");
 
         }
 
