@@ -1,0 +1,64 @@
+﻿
+@model CapaEntidad.tipo_genero
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pregunta6</title>
+
+    <link href="~/Content/StylesJona/pregunta1p.css" rel="stylesheet" />
+    <link href="~/Content/StylesJona/selectgenero.css" rel="stylesheet" />
+</head>
+<body>
+    @if (ViewBag.Message != null)
+    {
+        <div class="error-message">@ViewBag.Message</div>
+    }
+
+
+
+
+    </div>
+    <div class="outer-container">
+        <div class="question-container">
+            <!-- Código HTML actual de la pregunta -->
+            <div id="container">
+                <div class="question-container">
+                    <div class="question-header">
+                        <img src="~/imagenes/image001.png" alt="Logo">
+                        <hr>
+                        <h2><strong>Género que busco:</strong></h2>
+                    </div>
+                    <div class="form-container">
+                        <input type="hidden" id="interesesSeleccionadosInput" name="interesesSeleccionados" value="">
+
+                        @using (Html.BeginForm("Pregunta6", "preguntasInteres", FormMethod.Post))
+                        {
+
+                            <select id="generos" name="generos" required>
+                                <option value="">Seleccione una Genero</option>
+                                @foreach (var genero in ViewBag.tipo_generos)
+                                {
+                                    <option value="@genero.idtipoGenero ">@genero.nombre</option>
+                                }
+
+                            </select>
+                            <div class="button-container">
+
+                                <input id="button" type="submit" value="Continuar">
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
