@@ -1,0 +1,108 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Geolocalizacion</title>
+    <link rel="stylesheet" href="~/Content/geolocalizacion.css" />
+    <script async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnf8er0Joj55sJ5WkrzwkOV9emJ7htpa8&callback=initMap">
+    </script>
+</head>
+<body onload="initMap()">
+    @*@con esto me tarigo el nombre y la imagen del usuario actual@*@
+    @{
+        var miObjeto = Session["Cliente"] as CapaEntidad.cliente;
+    }
+    @if (miObjeto != null)
+    {
+        <p></p>
+    }
+    <div id="id" style="display: none">@(miObjeto != null ? miObjeto.idCliente : Session["idCliente"])</div>
+    <div class="module-card-wrap">
+
+        <div class="module-card">
+
+
+            <div class="module-card-bottom">
+                <div class="question-header">
+                    <img src="~/imagenes/image001.png" alt="Logo">
+                </div>
+                <div id="map"></div>
+
+                <div>
+                    <h3>Por favor, habilite la ubicación en su navegador</h3>
+                    <p>Para utilizar esta aplicación, necesitamos conocer su ubicación actual.</p>
+                </div>
+
+                <button id="habilitar" class="module-card-button" onclick="getLocation()">Habilitar</button>
+
+            </div>
+        </div>
+
+    </div> <!-- /module-card-wrap -->
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+
+    function initMap() {
+        // Obtener la ubicación actual del usuario
+        navigator.geolocation.getCurrentPosition(function (position) {
+            // Crear un objeto LatLng con la ubicación actual
+            var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+            // Crear un mapa de Google Maps centrado en la ubicación actual
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: currentLocation,
+                zoom: 15
+            });
+
+            // Agregar un marcador en la ubicación actual
+            var marker = new google.maps.Marker({
+                position: currentLocation,
+                map: map,
+                title: "Ubicación actual"
+            });
+        });
+    }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("La geolocalización no es compatible con este navegador.");
+            }
+        }
+
+
+        function showPosition(position) {
+
+            var id = document.querySelector('#id').innerHTML;
+
+            $.ajax({
+                type: "POST",
+                 url: '@Url.Action("ubicacion", "Acceso")',
+                data: JSON.stringify({ idCliente: id,latitud: position.coords.latitude, longitud: position.coords.longitude }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert('Su ubicación esta siendo utilizada')
+                    window.location.href = "@Url.Action("Principal", "Home")";
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert('Error')
+                }
+            });
+        }
+                </script>

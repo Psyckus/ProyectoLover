@@ -1,0 +1,448 @@
+﻿
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
+    <li class="breadcrumb-item active">Usuarios</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de usuarios
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
+            </div>
+        </div>
+
+        <hr />
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Identificación</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Usuarios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <input id="txtid" type="hidden" value="0" />
+
+
+                <form id="contenedor" class="row">
+                    <div class="col-sm-3">
+                        <div class="mb-2">
+                            <label class="form-label">Tipo de identificación</label>
+                            <select id="cbotipoid" class="form-select">
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Identificación</label>
+                            <input type="text" class="form-control" id="txtidentificacion" name="identificacion" />
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="txtnombre" name="nombre" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="txtapellido" name="apellido" />
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control" id="txtemail" name="email" autocomplete="off" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Rol</label>
+                            <select id="cborol" class="form-select">
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Activo</label>
+                            <select id="cboactivo" class="form-select">
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                </form>
+                <!--Mensaje de alerta-->
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+    <script>
+
+        var tabladata;
+        var filaSeleccionada
+
+        jQuery.ajax({
+            url: '@Url.Action("ListarUsuario", "Home")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+
+
+                console.log(data)
+            }
+        })
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarUsuario", "Home")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                { "data": "identificacion" },
+                { "data": "nombre" },
+                { "data": "apellido" },
+                { "data": "email" },
+                {
+                    "data": "orol", "render": function (data) {
+                        return data.nombre
+                    }
+                },
+                {
+                    "data": "activo", "render": function (valor) {
+
+                        if (valor) {
+                            return '<span class="badge rounded-pill bg-success">Sí</span>'
+                        } else {
+                            return '<span class="badge rounded-pill bg-danger">No</span>'
+                        }
+
+                    }
+                },
+
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' +
+                        '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "90px"
+                }
+
+            ],
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.13.2/i18n/es-ES.json" }
+        });
+
+
+        jQuery.ajax({
+                        url: '@Url.Action("ListarTipoID", "Home")',
+                        type: "GET",
+                        data: null,
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data)
+
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cbotipoid");
+
+                $.each(data.data, function (index, item)
+                {
+                    $("<option>").attr({ "value": item.idTipoIdentificacion }).text(item.nombre).appendTo("#cbotipoid");
+                })
+
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        },
+
+                });
+
+        jQuery.ajax({
+                        url: '@Url.Action("ListarRoles", "Home")',
+                        type: "GET",
+                        data: null,
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data)
+
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cborol");
+
+                $.each(data.data, function (index, item)
+                {
+                    $("<option>").attr({ "value": item.idRol }).text(item.nombre).appendTo("#cborol");
+                })
+
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        },
+
+        });
+
+
+
+        jQuery.validator.addMethod("validar", function (value, element) {
+            return this.optional(element) || /^\d{0,4}(\. \d{0,2})?$/i.test(value);
+        }, "Solo debe ingresar numeros en la identificacion");
+
+        $("#contenedor").validate({
+            rules: {
+
+                nombre: {
+                    required: true
+                },
+                apellido: {
+                    required: true
+                },
+                email: {
+                    required: true
+                },
+                
+                identificacion: {
+                    required: true,
+                    number: true
+                }
+            },
+            messages: {
+                nombre: "- El campo nombre es obligatorio",
+                apellido: "- El campo apellido es obligatorio",
+                email: "- El campo email es obligatorio",
+                identificacion: { required: "- El campo identificacion es obligatorio", validar: "-Debe ingresar solo numeros" }
+            },
+            errorElement: "div",
+            errorLabelContainer: ".alert-danger"
+        })
+
+
+
+        function abrirModatl(json) {
+
+            $("#txtid").val(0);
+            $("#cbotipoid").val($("#cbotipoid option:first").val());
+            $("#txtidentificacion").val("");
+            $("#txtnombre").val("");
+            $("#txtapellido").val("");
+            $("#txtemail").val("");
+            $("#cborol").val($("#cborol option:first").val());
+            $("#cboactivo").val(1);
+            $("#mensajeError").hide();
+
+
+
+
+            if (json != null) {
+                $("#txtid").val(json.idUsuario);
+                $("#cbotipoid").val(json.otipoIdentificacion.idTipoIdentificacion);
+                $("#txtidentificacion").val(json.identificacion);
+                $("#txtnombre").val(json.nombre);
+                $("#txtapellido").val(json.apellido);
+                $("#txtemail").val(json.email);
+                $("#cborol").val(json.orol.idRol);
+                $("#cboactivo").val(json.activo == true ? 1 : 0);
+
+
+            }
+
+            $("#FormModal").modal("show")
+        }
+
+        $("#tabla tbody").on("click", '.btn-editar', function () {
+            filaSeleccionada = $(this).closest("tr");
+            var data = tabladata.row(filaSeleccionada).data();
+
+            abrirModatl(data)
+
+
+        })
+
+        $("#tabla tbody").on("click", '.btn-eliminar', function () {
+
+            var productoSeleccionado = $(this).closest("tr");
+            var data = tabladata.row(productoSeleccionado).data();
+
+            swal({
+                title: "Esta Seguro?",
+                text: "¿Desea eliminar el usuario?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-primary",
+                confirmButtonText: "Si",
+                cancelButtomText: "No",
+                closeOnConfirm: true
+
+            },
+                function () {
+                    jQuery.ajax({
+                        url: '@Url.Action("EliminarUser", "Home")',
+                        type: "POST",
+                        data: JSON.stringify({ id: data.idUsuario }),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+
+                            if (data.resultado) {
+
+                                tabladata.row(productoSeleccionado).remove().draw();
+
+                            } else {
+                                swal("No se pudo eliminar", data.mensaje, "error")
+                            }
+
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        }
+
+                });
+
+
+                    });
+                    console.log(data);
+                })
+
+
+        function guardar() {
+
+
+            if (!$("#contenedor").valid()) {
+                return;
+            }
+
+            var usuario = {
+
+                idUsuario: $("#txtid").val(),
+                otipoIdentificacion: {
+                    idTipoIdentificacion: $("#cbotipoid option:selected").val(),
+                    nombre: $("#cbotipoid option:selected").text()
+                    },
+                identificacion: $("#txtidentificacion").val(),
+                nombre: $("#txtnombre").val(),
+                apellido: $("#txtapellido").val(),
+                email: $("#txtemail").val(),
+                orol: {
+                    idRol: $("#cborol option:selected").val(),
+                    nombre: $("#cborol option:selected").text()
+                },
+                activo: $("#cboactivo").val() == 1 ? true: false
+
+
+
+            }
+
+            jQuery.ajax({
+                url: '@Url.Action("GuardarUser", "Home")',
+                type: "POST",
+                data: JSON.stringify({ obj: usuario }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+
+
+                    //usuario nuevo
+                    if (usuario.idUsuario == 0) {
+
+                        if (data.resultado != 0) {
+
+                            usuario.idUsuario = data.resultado;
+                            tabladata.row.add(usuario).draw(false);
+                            $("#FormModal").modal("hide");
+
+
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+
+
+
+                         //Editar proucto
+                    } else {
+
+                        if (data.resultado) {
+                            tabladata.row(filaSeleccionada).data(usuario).draw(false);
+                            filaSeleccionada = null;
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error");
+                    $("#mensajeError").show();
+                },
+                beforeSend: function () {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "Cargando...",
+                        size:14
+                        })
+                }
+            });
+
+
+
+        }
+
+
+    </script>
+
+}

@@ -28,9 +28,10 @@
         <p></p>
     }
     <div id="id" style="display: none">@(miObjeto != null ? miObjeto.idCliente : Session["idCliente"])</div>
+    <div class="container">
+        <div class="wrapper" id="cards">
 
-    <h2 class="titulo">Suspiros enviados</h2>
-    <div class="cards" id="cards">
+        </div>
     </div>
 
 </body>
@@ -54,12 +55,15 @@
                         var foto = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(item.cliente2);
                         var card = $("<div>").addClass("card");
                         var img = $("<img>").attr("src", foto);
-                        var title = $("<h3>").text(item.nombre);
-                        var botones = $("<div>").addClass("button-container");
+                        var info = $("<div>").addClass("info");
+                        var title = $("<h1>").text(item.nombre);
+                        var descripcion = $("<p>").text(item.descripcion);
+                        var fecha = $("<p>").text("Enviado el: " + item.Fecha);
+                        var br = $("<br />");
                         var boton = $("<button>").text("Reconsiderar").addClass("boton");
                         var cliente = $("<p>").text(item.cliente2).addClass("cliente").attr("hidden", true);
-                        botones.append(boton)
-                        card.append(img, title,botones,cliente);
+                        card.append(img,info);
+                        info.append( title, descripcion, fecha, br, boton, cliente);
                         $("#cards").append(card);
                     });
                     const botones = document.querySelectorAll(".boton"); // selecciona todos los botones con la clase "boton"

@@ -43,7 +43,13 @@
     }
 
 
-
+.item1 .avatar img {
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+    margin: 5px;
+    border: 1px solid #5F0C0C;
+}
 
 
 
@@ -110,12 +116,9 @@ body {
         color: #fff;
     }
 
-.box {
-    float: left;
-    width: 50%; /* opcional para hacer que ambos div tengan el mismo ancho */
-    height: 100px; /* altura opcional */
-    background-color: #5F0C0C; /* color de fondo opcional */
-    color: #000000;
+ .cliente1 img{
+    position: absolute;
+    left:50px;
 }
 
 
@@ -179,6 +182,12 @@ button {
 }
 
 
+.hidden {
+    display: none;
+}
+
+
+
 
 .perfil-modal {
     
@@ -195,7 +204,7 @@ button {
 
 .modal-content {
     background-color: #fefefe; /* Color de fondo del modal */
-    padding: 20px;
+    padding: 10px;
     border-radius: 20px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
     text-align: center;
@@ -221,12 +230,13 @@ button {
 
 
 .container {
-    display: flex;
+    display:flex;
+
 }
 
 .side {
-    min-width: 320px;
-    height: 200px;
+    max-width: 280px;
+    max-height: 50px;
     background-color: #fff;
     height: 100%;
     min-height: 100vh;
@@ -266,7 +276,6 @@ button {
         color: #fff;
         font-size: 20px;
     }
-
 .side .menu ul {
     display: flex;
     padding: 0 20px;
@@ -325,6 +334,7 @@ button {
     position: relative;
     height: 450px;
 }
+
 
 .content .card .user {
     width: 300px;

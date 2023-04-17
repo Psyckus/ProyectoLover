@@ -99,7 +99,7 @@
         var interesesSeleccionados = [];
         var limiteIntereses = 0;
         $.ajax({
-            url: '/PreguntasInteres/ObtenerLimiteMaximoIntereses',
+            url: '@Url.Action("ObtenerLimiteMaximoIntereses", "preguntasInteres")',
             type: 'GET',
             success: function (data) {
                 limiteIntereses = data;

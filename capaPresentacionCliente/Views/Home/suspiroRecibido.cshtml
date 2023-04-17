@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/Content/suspiroRecibido.css" />
+    <link rel="stylesheet" href="~/Content/suspiro.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,500&display=swap"
           rel="stylesheet" />
     <link rel="stylesheet"
@@ -31,18 +31,20 @@
     }
     <div id="id" style="display: none">@(miObjeto != null ? miObjeto.idCliente : Session["idCliente"])</div>
 
-    <h2 class="titulo">Suspiros recibidos</h2>
-    <div class="cards" id="cards">
+    <div class="container">
+        <div class="wrapper" id="cards">
+
+        </div>
     </div>
 
 </body>
 </html>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
+
     var id = document.querySelector('#id').innerHTML;
-    $(document).ready(function () {
+     $(document).ready(function () {
             $.ajax({
                 type: "POST",
                  url: '@Url.Action("ListarSuspiroRecibido", "Home")',
@@ -56,13 +58,18 @@
                         var foto = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(item.cliente2);
                         var card = $("<div>").addClass("card");
                         var img = $("<img>").attr("src", foto);
-                        var title = $("<h3>").text(item.nombre);
-                        var botones = $("<div>").addClass("button-container");
+                        var info = $("<div>").addClass("info");
+                        var title = $("<h1>").text(item.nombre);
+                        var descripcion = $("<p>").text(item.descripcion);
+                        var fecha = $("<p>").text("Recibido el: " + item.Fecha);
+                        var br = $("<br />");
+                        var botones = $("<div>").addClass("botones");
                         var boton = $("<button>").text("Aceptar").addClass("boton");
                         var boton1 = $("<button>").text("Rechazar").addClass("boton1");
                         var cliente = $("<p>").text(item.cliente2).addClass("cliente").attr("hidden", true);
-                        botones.append(boton,boton1)
-                        card.append(img, title,botones,cliente);
+                        botones.append(boton, boton1);
+                        card.append(img,info);
+                        info.append( title, descripcion, fecha, br, botones, cliente);
                         $("#cards").append(card);
                     });
                     const botones = document.querySelectorAll(".boton"); // selecciona todos los botones con la clase "boton"
@@ -141,5 +148,6 @@
                 }
             });
     });
+
 </script>
 

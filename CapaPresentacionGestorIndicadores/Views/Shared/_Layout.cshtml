@@ -1,76 +1,35 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link href="~/Content/panel.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-5YzMX5pBjjlFvAd8Wd2+b7gDf9lhr3xqW1yE7nCp9Xu9mVJfvm+aZl7AvwRP2QmfdMvfvxW/Yf8dhPjH/9MGGw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @Styles.Render("~/Content/css")
-
 </head>
 <body>
-    @{
-        var miObjeto = Session["Usuario"] as CapaEntidad.usuario;
-    }
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">@(miObjeto != null ? miObjeto.orol.nombre : Session["nombre"])</a>
-        <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-        <!-- Navbar Search-->
-        <!-- Navbar-->
-        <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Email</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Cerrar Sesion</a></li>
-                </ul>
-            </li>
+
+    @RenderBody()
+    <div class="header"></div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebarMenu">
+        <div class="logo">
+            <img src="~/imagenes/logoLover.jpeg" alt="Logo">
+        </div>
+        <h3>Indicadores</h3>
+        <ul class="sidebarMenuInner">
+            <li><a href="@Url.Action("Index","Home")">Dashboard</a></li>
+            <li><a href="@Url.Action("Index","Acceso")">Cerrar sesión</a></li>
         </ul>
-    </nav>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Resumen</div>
-                        <a class="nav-link" href="@Url.Action("Index","Home")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-
-                    </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Conectado como: @(miObjeto != null ? miObjeto.nombre : Session["nombre"])</div>
-        
-                </div>
-            </nav>
-        </div>
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    @RenderBody()
-                </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
     </div>
-
-
 
 
     @Scripts.Render("~/bundles/jquery")
@@ -79,3 +38,7 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script>
+
+</script>

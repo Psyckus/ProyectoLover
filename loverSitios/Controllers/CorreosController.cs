@@ -14,6 +14,11 @@ namespace loverSitios.Controllers
     {
         private tiusr3pl_loverEntities2 db = new tiusr3pl_loverEntities2();
 
+        public ActionResult Servidor()
+        {
+            return View();
+        }
+
         // GET: Correos
         public ActionResult Index()
         {

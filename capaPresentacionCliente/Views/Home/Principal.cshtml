@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Principal</title>
 </head>
-<body onload="getLocation()">
+<body>
     <div class="container">
         <div class="side">
             <div class="header">
@@ -42,9 +42,7 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li>Matches</li>
                     <li class="active">Mensajes</li>
-                    <li>Suspiros</li>
                 </ul>
             </div>
             <div class="messages">
@@ -92,7 +90,7 @@
                     <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing</div>
                 </div>
             </div>
-        </div>
+        </div>    
         <div class="content">
             <div class="card">
                 <div class="responsive">
@@ -195,6 +193,49 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
+
+
+        var elementos = document.getElementsByTagName("li");
+
+        for (var i = 0; i < elementos.length; i++) {
+            elementos[i].addEventListener("click", function () {
+                var id = this.id;
+                var contenedores = document.getElementsByTagName("div");
+
+                for (var j = 0; j < contenedores.length; j++) {
+                    contenedores[j].style.display = "none";
+                }
+
+                document.getElementById("contenedor" + id.slice(-1)).style.display = "block";
+            });
+        }
+
+
+
+
+        const items = document.querySelectorAll('li');
+
+        items.forEach(item => {
+            item.addEventListener('click', function () {
+                // remueve la clase 'active' de todos los elementos
+                items.forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // agrega la clase 'active' al elemento presionado
+                this.classList.add('active');
+            });
+        });
+
+        $(document).ready(function () {
+            $('ul li a').click(function () {
+                var itemId = $(this).attr('href');
+                $('.item').hide();
+                $(itemId).show();
+            });
+        });
+
+
 
 
         // Obtén el botón que abre el modal
@@ -473,35 +514,6 @@
 
 
 
-
-
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                alert("La geolocalización no es compatible con este navegador.");
-            }
-        }
-
-
-        function showPosition(position) {
-
-            var id = document.querySelector('#id').innerHTML;
-
-            $.ajax({
-                type: "POST",
-                 url: '@Url.Action("ubicacion", "Acceso")',
-                data: JSON.stringify({ idCliente: id,latitud: position.coords.latitude, longitud: position.coords.longitude }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    alert('Su ubicación esta siendo utilizada')
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert('Error')
-                }
-            });
-        }
 
     </script>
 

@@ -302,6 +302,7 @@
     <Content Include="Content\brands.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\panel.css" />
     <Content Include="Content\regular.css" />
     <Content Include="Content\regular.min.css" />
     <Content Include="Content\Site.css" />
@@ -398,9 +399,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="webfonts\fa-brands-400.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
     <Content Include="webfonts\fa-solid-900.svg" />
@@ -429,11 +427,13 @@
     <Content Include="Views\Correos\Details.cshtml" />
     <Content Include="Views\Correos\Edit.cshtml" />
     <Content Include="Views\Correos\Index.cshtml" />
+    <Content Include="Views\Correos\Servidor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Aceso\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

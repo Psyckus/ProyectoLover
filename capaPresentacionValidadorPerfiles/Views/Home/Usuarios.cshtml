@@ -4,124 +4,155 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<ol class="breadcrumb mb-4 mt-4">
-    <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
-    <li class="breadcrumb-item active">Usuarios</li>
-</ol>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,500&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .container {
+            position: absolute;
+            top: 30px;
+            left: 110px;
+            max-width: 80%;
+            height: 90%;
+            margin: 20px auto;
+            padding: 20px;
+        }
+    </style>
+    <title>Principal</title>
+</head>
+<body>
+    <div class="container">
 
-<div class="card">
-    <div class="card-header">
-        <i class="fas fa-users me-1"></i> Lista de usuarios
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-12">
-                <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
+        <ol class="breadcrumb mb-4 mt-4">
+            <li class="breadcrumb-item"><a href="#">Resumen</a></li>
+            <li class="breadcrumb-item active">Usuarios</li>
+        </ol>
+
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-users me-1"></i> Lista de usuarios
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
+                    </div>
+                </div>
+
+                <hr />
+                <table id="tabla" class="display cell-border" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Identificación</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Activo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <hr />
-        <table id="tabla" class="display cell-border" style="width: 100%">
-            <thead>
-                <tr>
-                    <th>Identificación</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th>Activo</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Usuarios</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <input id="txtid" type="hidden" value="0" />
-
-
-                <form id="contenedor" class="row">
-                    <div class="col-sm-3">
-                        <div class="mb-2">
-                            <label class="form-label">Tipo de identificación</label>
-                            <select id="cbotipoid" class="form-select">
-                            </select>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label">Identificación</label>
-                            <input type="text" class="form-control" id="txtidentificacion" name="identificacion" />
-                        </div>
-
+        <!-- Modal -->
+        <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="exampleModalLabel">Usuarios</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
 
-                    <div class="col-sm-3">
-                        <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="txtnombre" name="nombre" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="txtapellido" name="apellido" />
-
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="text" class="form-control" id="txtemail" name="email" autocomplete="off" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Rol</label>
-                            <select id="cborol" class="form-select">
-                            </select>
-                        </div>
-
-                    </div>
+                        <input id="txtid" type="hidden" value="0" />
 
 
-                    <div class="col-sm-3">
-                        <div class="mb-3">
-                            <label class="form-label">Activo</label>
-                            <select id="cboactivo" class="form-select">
-                                <option value="1">Sí</option>
-                                <option value="0">No</option>
-                            </select>
-                        </div>
+                        <form id="contenedor" class="row">
+                            <div class="col-sm-3">
+                                <div class="mb-2">
+                                    <label class="form-label">Tipo de identificación</label>
+                                    <select id="cbotipoid" class="form-select">
+                                    </select>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Identificación</label>
+                                    <input type="text" class="form-control" id="txtidentificacion" name="identificacion" />
+                                </div>
 
-                    </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="txtnombre" name="nombre" />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Apellido</label>
+                                    <input type="text" class="form-control" id="txtapellido" name="apellido" />
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="text" class="form-control" id="txtemail" name="email" autocomplete="off" />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Rol</label>
+                                    <select id="cborol" class="form-select">
+                                    </select>
+                                </div>
+
+                            </div>
 
 
-                </form>
-                <!--Mensaje de alerta-->
-                <div class="row mt-2">
-                    <div class="col-12">
-                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Activo</label>
+                                    <select id="cboactivo" class="form-select">
+                                        <option value="1">Sí</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+                        </form>
+                        <!--Mensaje de alerta-->
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div id="mensajeError" class="alert alert-danger" role="alert">
+
+                                </div>
+                            </div>
 
                         </div>
                     </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
-            </div>
         </div>
+
     </div>
-</div>
+</body>
+</html>
 
 
 
@@ -252,7 +283,7 @@
                 email: {
                     required: true
                 },
-                
+
                 identificacion: {
                     required: true,
                     number: true

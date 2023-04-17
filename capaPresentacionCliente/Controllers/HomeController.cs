@@ -16,6 +16,12 @@ namespace capaPresentacionCliente.Controllers
             return View();
         }
 
+        public ActionResult Geolocalizacion()
+        {
+            return View();
+        }
+
+
         public ActionResult Panel()
         {
             return View();

@@ -5,23 +5,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,500&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .container {
+            position: absolute;
+            top: 30px;
+            left: 110px;
+            max-width: 80%;
+            height: 90%;
+            margin: 20px auto;
+            padding: 20px;
+        }
+    </style>
+    <title>Principal</title>
+</head>
+<body>
+<div class="container">
 
-<ol class="breadcrumb mb-4 mt-4">
-    <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
-    <li class="breadcrumb-item active">Correos del sistema</li>
-</ol>
+    <ol class="breadcrumb mb-4 mt-4">
+        <li class="breadcrumb-item"><a href="#">Resumen</a></li>
+        <li class="breadcrumb-item active">Correos del sistema</li>
+    </ol>
 
-<div class="card">
-    <div class="card-header">
-        <i class="fas fa-users me-1"></i> Correos del sistema
-    </div>
-    <div class="card-body">
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-users me-1"></i> Correos del sistema
+        </div>
+        <div class="card-body">
             <div class="row">
                 <div class="col-12">
                     <button type="button" class="btn btn-success">@Html.ActionLink("Crear Correo", "Create")</button>
                 </div>
             </div>
-        <hr />
+            <hr />
             <table id="tabla" class="display cell-border" style="width: 100%">
                 <thead>
                     <tr>
@@ -57,40 +83,44 @@
         </div>
     </div>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Asunto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Mensaje)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConfCorreos.Servidor)
-            </th>
-            <th></th>
-        </tr>
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Asunto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mensaje)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConfCorreos.Servidor)
+                </th>
+                <th></th>
+            </tr>
 
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Asunto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mensaje)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConfCorreos.Servidor)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idCorreo }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idCorreo }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idCorreo })
-            </td>
-        </tr>
-    }
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Asunto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mensaje)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ConfCorreos.Servidor)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.idCorreo }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.idCorreo }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.idCorreo })
+                </td>
+            </tr>
+        }
 
-    </table>*@
+        </table>*@
+
+</div>
+    </body>
+</html>

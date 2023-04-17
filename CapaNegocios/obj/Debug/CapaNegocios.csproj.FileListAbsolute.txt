@@ -123,6 +123,14 @@ C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\CapaNegocios.d
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\CapaNegocios.pdb
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\CapaDatos.dll
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\CapaEntidad.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\Microsoft.CSharp.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\System.Data.DataSetExtensions.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\System.Data.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\System.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\System.Net.Http.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\System.Web.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\System.Xml.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\System.Xml.Linq.dll
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\CapaDatos.pdb
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\bin\Debug\CapaEntidad.pdb
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaNegocios\obj\Debug\CapaNegocios.csproj.AssemblyReference.cache

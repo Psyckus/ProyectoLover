@@ -401,6 +401,7 @@
     <Content Include="Content\brands.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\geolocalizacion.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\pregunta2p.css" />
     <Content Include="Content\regular.css" />
@@ -445,9 +446,11 @@
     <Content Include="imagenes\icons8-historia-de-la-actividad-80.png" />
     <Content Include="imagenes\icons8-usuario-masculino-en-círculo-50.png" />
     <Content Include="imagenes\image001.png" />
+    <Content Include="imagenes\location-red-icon-simple-design-free-vector.jpg" />
     <Content Include="imagenes\login.svg" />
     <Content Include="imagenes\logoBla.png" />
     <Content Include="imagenes\MicrosoftTeams-image.png" />
+    <Content Include="imagenes\por-que-es-peligroso-compartir-tu-ubicacion-en-las-redes-sociales.jpg" />
     <Content Include="imagenes\pruebas.png" />
     <Content Include="imagenes\signo-de-genero.png" />
     <Content Include="imagenes\susana.jpeg" />
@@ -610,6 +613,7 @@
     <Content Include="Views\Home\suspiro.cshtml" />
     <Content Include="Views\Home\suspiroRecibido.cshtml" />
     <Content Include="Views\Home\suspiroAceptado.cshtml" />
+    <Content Include="Views\Home\Geolocalizacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

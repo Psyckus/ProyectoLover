@@ -100,6 +100,15 @@ C:\Users\Usuario\OneDrive\Escritorio\Respaldo\ProyectoLover\CapaDatos\obj\Debug\
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\CapaDatos.dll
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\CapaDatos.pdb
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\Microsoft.CSharp.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\System.Configuration.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\System.Data.DataSetExtensions.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\System.Data.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\System.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\System.Net.Http.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\System.Web.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\System.Xml.dll
+C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\System.Xml.Linq.dll
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\bin\Debug\CapaEntidad.pdb
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
 C:\Users\dnb12\Source\Repos\ProyectoLover1\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache

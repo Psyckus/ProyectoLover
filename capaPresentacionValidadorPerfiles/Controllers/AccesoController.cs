@@ -56,7 +56,7 @@ namespace capaPresentacionValidadorPerfiles.Controllers
                 }
                 else if (oUsuario.orol.nombre.Contains("Validador de perfiles"))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Usuarios", "Home");
 
 
                 }

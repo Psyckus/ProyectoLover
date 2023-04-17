@@ -200,7 +200,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    string query = "SELECT s.idSuspiro, s.cliente2, c.nombre FROM suspiro1 s JOIN cliente c ON s.cliente2 = c.idCliente where cliente1= @cliente1 and idEstado = 1";
+                    string query = "SELECT s.idSuspiro, s.cliente2, c.nombre,c.descripcion, CONVERT(varchar, s.fechaRegistro, 103) AS Fecha FROM suspiro1 s JOIN cliente c ON s.cliente2 = c.idCliente where cliente1= @cliente1 and idEstado = 1";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.Parameters.AddWithValue("@cliente1", cliente1);
@@ -213,8 +213,9 @@ namespace CapaDatos
                             {
                                 idSuspiro = Convert.ToInt32(dr["idSuspiro"]),
                                 cliente2 = Convert.ToInt32(dr["cliente2"]),
-                                nombre = dr["nombre"].ToString()
-
+                                nombre = dr["nombre"].ToString(),
+                                 descripcion = dr["descripcion"].ToString(),
+                                Fecha = dr["Fecha"].ToString()
 
 
                             });
@@ -245,7 +246,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    string query = "SELECT s.idSuspiro, s.cliente1, c.nombre FROM suspiro1 s JOIN cliente c ON s.cliente2 = @cliente1 where cliente1 = c.idCliente and idEstado = 6\r\n";
+                    string query = "SELECT s.idSuspiro, s.cliente1, c.nombre, c.descripcion, CONVERT(varchar, s.fechaRegistro, 103) AS Fecha FROM suspiro1 s JOIN cliente c ON s.cliente2 = @cliente1 where cliente1 = c.idCliente and idEstado = 6\r\n";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.Parameters.AddWithValue("@cliente1", cliente1);
@@ -258,7 +259,9 @@ namespace CapaDatos
                             {
                                 idSuspiro = Convert.ToInt32(dr["idSuspiro"]),
                                 cliente2 = Convert.ToInt32(dr["cliente1"]),
-                                nombre = dr["nombre"].ToString()
+                                nombre = dr["nombre"].ToString(),
+                                descripcion = dr["descripcion"].ToString(),
+                                Fecha = dr["Fecha"].ToString()
 
 
 
@@ -289,7 +292,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    string query = "SELECT s.idSuspiro, s.cliente1, c.nombre FROM suspiro1 s JOIN cliente c ON s.cliente2 = @cliente2 where cliente1 = c.idCliente and idEstado = 1";
+                    string query = "SELECT s.idSuspiro, s.cliente1, c.nombre,c.descripcion, CONVERT(varchar, s.fechaRegistro, 103) AS Fecha FROM suspiro1 s JOIN cliente c ON s.cliente2 = @cliente2 where cliente1 = c.idCliente and idEstado = 1";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.Parameters.AddWithValue("@cliente2", cliente2);
@@ -302,7 +305,10 @@ namespace CapaDatos
                             {
                                 idSuspiro = Convert.ToInt32(dr["idSuspiro"]),
                                 cliente2 = Convert.ToInt32(dr["cliente1"]),
-                                nombre = dr["nombre"].ToString()
+                                nombre = dr["nombre"].ToString(),
+                                 descripcion = dr["descripcion"].ToString(),
+                                Fecha = dr["Fecha"].ToString()
+
 
 
 
