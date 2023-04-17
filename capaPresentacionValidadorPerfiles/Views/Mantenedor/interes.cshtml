@@ -4,106 +4,137 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>interes</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,500&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .container {
+            position: absolute;
+            top: 30px;
+            left: 110px;
+            max-width: 80%;
+            height: 90%;
+            margin: 20px auto;
+            padding: 20px;
+        }
+    </style>
+    <title>Principal</title>
+</head>
+<body>
+    <div class="container">
+        <h2>interes</h2>
 
 
-<ol class="breadcrumb mb-4 mt-4">
-    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
-    <li class="breadcrumb-item active">Intereses</li>
-</ol>
+        <ol class="breadcrumb mb-4 mt-4">
+            <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
+            <li class="breadcrumb-item active">Intereses</li>
+        </ol>
 
-<div class="card">
-    <div class="card-header">
-        <i class="fas fa-users me-1"></i> Lista interes
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-12">
-                <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-users me-1"></i> Lista interes
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
+                    </div>
+                </div>
+
+                <hr />
+                <table id="tabla" class="display cell-border" style="width: 100%">
+                    <thead>
+                        <tr>
+
+                            <th>Nombre Interes</th>
+                            <th>Estado Interes</th>
+                            <th>Nombre Categoria</th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <hr />
-        <table id="tabla" class="display cell-border" style="width: 100%">
-            <thead>
-                <tr>
-
-                    <th>Nombre Interes</th>
-                    <th>Estado Interes</th>
-                    <th>Nombre Categoria</th>
-                    
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Intereses</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <input id="txtid" type="hidden" value="0" />
-
-
-                <form id="contenedor" class="row">
-
-                    <div class="col-sm-3">
-                        <div class="mb-3">
-                            <label class="form-label">Nombre Interes</label>
-                            <input type="text" class="form-control" id="txtnombre" name="nombre" />
-                        </div>
-
+        <!-- Modal -->
+        <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="exampleModalLabel">Intereses</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+
+                        <input id="txtid" type="hidden" value="0" />
 
 
-                    <div class="col-sm-3">
-                        <div class="mb-3">
-                            <label class="form-label">Estado</label>
-                            <select id="cboestado" class="form-select">
-                                <option value="1">Activo</option>
-                                <option value="0">Inactivo</option>
-                            </select>
-                        </div>
+                        <form id="contenedor" class="row">
 
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="mb-2">
-                            <label class="form-label">Categoria</label>
-                            <select id="cboCate" class="form-select">
-                            </select>
-                        </div>
-                       
-                    </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre Interes</label>
+                                    <input type="text" class="form-control" id="txtnombre" name="nombre" />
+                                </div>
+
+                            </div>
 
 
-                
-                </form>
-                <!--Mensaje de alerta-->
-                <div class="row mt-2">
-                    <div class="col-12">
-                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Estado</label>
+                                    <select id="cboestado" class="form-select">
+                                        <option value="1">Activo</option>
+                                        <option value="0">Inactivo</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-2">
+                                    <label class="form-label">Categoria</label>
+                                    <select id="cboCate" class="form-select">
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+
+                        </form>
+                        <!--Mensaje de alerta-->
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div id="mensajeError" class="alert alert-danger" role="alert">
+
+                                </div>
+                            </div>
 
                         </div>
                     </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
-            </div>
         </div>
+
     </div>
-</div>
+</body>
+</html>
+
 
 
 @section scripts{
@@ -137,7 +168,7 @@
 
                 { "data": "nombreI" },
 
-                 
+
                 {
                     "data": "estado", "render": function (valor) {
 

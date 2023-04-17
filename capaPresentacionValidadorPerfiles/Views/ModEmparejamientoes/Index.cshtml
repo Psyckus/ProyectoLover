@@ -5,51 +5,82 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<ol class="breadcrumb mb-4 mt-4">
-    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
-    <li class="breadcrumb-item active">Modulo Emparejamiento</li>
-</ol>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,500&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .container {
+            position: absolute;
+            top: 30px;
+            left: 110px;
+            max-width: 80%;
+            height: 90%;
+            margin: 20px auto;
+            padding: 20px;
+        }
+    </style>
+    <title>Principal</title>
+</head>
+<body>
+    <div class="container">
+
+        <ol class="breadcrumb mb-4 mt-4">
+            <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
+            <li class="breadcrumb-item active">Modulo Emparejamiento</li>
+        </ol>
 
 
-<div class="card">
-    <div class="card-header">
-        <i class="fas fa-users me-1"></i> Modulo Emparejamiento
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-users me-1"></i> Modulo Emparejamiento
+            </div>
+            <div class="card-body">
+                <table id="tabla" class="display cell-border" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Citerio interes</th>
+                            <th>Edad Critrio</th>
+                            <th>Test Criterio</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CriterioInteres)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EdadCriterio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TestCriterio)
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i>@Html.ActionLink("Edit", "Edit", new { id = item.Id_modconf })</button>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <table id="tabla" class="display cell-border" style="width: 100%">
-            <thead>
-                <tr>
-                    <th>Citerio interes</th>
-                    <th>Edad Critrio</th>
-                    <th>Test Criterio</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
+</body>
+</html>
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CriterioInteres)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EdadCriterio)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TestCriterio)
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i>@Html.ActionLink("Edit", "Edit", new { id = item.Id_modconf })</button>
-                            
-                        </td>
-                    </tr>
-                }
-
-            </tbody>
-        </table>
-    </div>
-</div>
 
 
 

@@ -1,86 +1,137 @@
-﻿.titulo {
-    text-align: center;
-}
-
-﻿﻿
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-
-    .button-container button {
-        background-color: #5F0C0C;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        margin-right: 10px;
-        font-size: 1rem;
-        cursor: pointer;
-    }
-
-        .button-container button:last-child {
-            margin-right: 0;
-        }
-
-
-.boton:hover {
-    background-color: rgb(30, 29, 29, 0.30);
-    color: #fff;
-}
-
-
-.card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.card img {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-
-.cards {
-    position: relative;
-    top: 10px;
-    display: flex;
-    flex-wrap: wrap; /* para envolver las tarjetas en varias líneas si no caben en una sola */
-    flex-direction: row; /* para que los elementos se acomoden de arriba a abajo */
-    gap: 10px; /* para agregar espacio entre cada elemento */
-    max-width: 60%;
-    height: 500px;
+﻿
+.container {
     margin: 0 auto;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-    overflow: auto;
+    position: relative;
+    top: 20px;
+    bottom: 20px;
+    left: 100px;
+    max-width: 1000px;
 }
 
+
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* para agregar espacio entre cada elemento */
+    width: 90%;
+    justify-content: space-around;
+}
 
 .card {
-    align-items: center;
-    max-width: 200px;
-    height: 300px;
-    margin: 0 auto;
-    border: 2px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    max-width: 280px;
+    height: 360px;
+    border-radius: 15px;
+    padding: 1.5rem;
+    background: white;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    transition: 0.4s ease-out;
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
 }
 
+    .card:hover:before {
+        opacity: 1;
+    }
 
+    .card:hover .info {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 
+    .card:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+        /*        transition: 0.5s;
+*/ opacity: 0;
+    }
 
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 15px;
+    }
 
+    .card .info {
+        position: relative;
+        z-index: 3;
+        color: white;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 0.5s;
+    }
 
+        .card .info h1 {
+            margin: 0px;
+        }
 
+        .card .info p {
+            letter-spacing: 1px;
+            font-size: 15px;
+            margin-top: 8px;
+        }
 
+        .card .info button {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 0.6rem;
+            outline: none;
+            border: none;
+            border-radius: 3px;
+            background: white;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.4s ease;
+        }
 
+        .card .info .botones {
+            display: flex;
+            justify-content: center;
+        }
 
+        .card .info button:hover {
+            background-color: rgba(95, 12, 12, 0.51);
+            color: white;
+        }
 
+@media screen and (max-width: 768px) {
+    .container {
+        left: 25px;
+    }
 
+        .container .card {
+            width: 150px;
+            height: 250px;
+            font-size: 10px;
+        }
 
+            .container .card p {
+                font-size: 10px;
+            }
 
+    .card .info button {
+        width: 100px;
+        margin-right: 10px;
+        padding: 0.3rem;
+    }
+
+    .card .info .botones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px; /* para agregar espacio entre cada elemento */
+    }
+}

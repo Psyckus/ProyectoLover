@@ -396,6 +396,7 @@
     <Content Include="Content\brands.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\geolocalizacion.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\pregunta2p.css" />
     <Content Include="Content\regular.css" />
@@ -629,6 +630,7 @@
     <Content Include="Views\preguntasInteres\Pregunta6.cshtml" />
     <Content Include="Views\preguntasInteres\Pregunta7.cshtml" />
     <Content Include="Views\preguntasInteres\Pregunta8.cshtml" />
+    <Content Include="Views\Home\Geolocalizacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

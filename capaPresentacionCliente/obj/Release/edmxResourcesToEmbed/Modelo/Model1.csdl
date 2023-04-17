@@ -46,6 +46,9 @@
     <NavigationProperty Name="suspiro21" Relationship="Self.FK__suspiro2__client__1A9EF37A" FromRole="cliente" ToRole="suspiro2" />
     <NavigationProperty Name="testUser" Relationship="Self.FK__testUser__idClie__251C81ED" FromRole="cliente" ToRole="testUser" />
     <NavigationProperty Name="ubicacion" Relationship="Self.FK__ubicacion__idCli__03BB8E22" FromRole="cliente" ToRole="ubicacion" />
+    <NavigationProperty Name="interes_cliente" Relationship="tiusr3pl_loverModel.FK__interes_c__idCli__7755B73D1" FromRole="cliente" ToRole="interes_cliente" />
+    <NavigationProperty Name="Mensajes" Relationship="tiusr3pl_loverModel.FK_Mensajes_cliente2" FromRole="cliente" ToRole="Mensajes" />
+    <NavigationProperty Name="Mensajes1" Relationship="tiusr3pl_loverModel.FK_Mensajes_cliente3" FromRole="cliente" ToRole="Mensajes" />
   </EntityType>
   <EntityType Name="estado">
     <Key>
@@ -57,6 +60,7 @@
     <NavigationProperty Name="match2" Relationship="Self.FK__match2__idEstado__10216507" FromRole="estado" ToRole="match2" />
     <NavigationProperty Name="suspiro1" Relationship="Self.FK__suspiro1__idEsta__15DA3E5D" FromRole="estado" ToRole="suspiro1" />
     <NavigationProperty Name="suspiro2" Relationship="Self.FK__suspiro2__idEsta__1B9317B3" FromRole="estado" ToRole="suspiro2" />
+    <NavigationProperty Name="match11" Relationship="tiusr3pl_loverModel.FK__match1__idEstado__3335971A" FromRole="estado" ToRole="match1" />
   </EntityType>
   <EntityType Name="foto">
     <Key>
@@ -66,6 +70,7 @@
     <Property Name="idCliente" Type="Int32" />
     <Property Name="rutaFoto" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="cliente" Relationship="Self.FK__foto__idCliente__7A3223E8" FromRole="foto" ToRole="cliente" />
+    <Property Name="esPrincipal" Type="Boolean" />
   </EntityType>
   <EntityType Name="generoCliente">
     <Key>
@@ -88,6 +93,7 @@
     <Property Name="estado" Type="Boolean" />
     <NavigationProperty Name="categoria_interes" Relationship="Self.FK__interes__idCateg__72910220" FromRole="interes" ToRole="categoria_interes" />
     <NavigationProperty Name="interes_ciente" Relationship="Self.FK__interes_c__idint__76619304" FromRole="interes" ToRole="interes_ciente" />
+    <NavigationProperty Name="interes_cliente" Relationship="tiusr3pl_loverModel.FK__interes_c__idint__766193041" FromRole="interes" ToRole="interes_cliente" />
   </EntityType>
   <EntityType Name="interes_ciente">
     <Key>
@@ -107,10 +113,12 @@
     <Property Name="cliente1" Type="Int32" />
     <Property Name="cliente2" Type="Int32" />
     <Property Name="idEstado" Type="Int32" />
-    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
     <NavigationProperty Name="cliente" Relationship="Self.FK__match1__cliente1__0880433F" FromRole="match1" ToRole="cliente" />
     <NavigationProperty Name="cliente3" Relationship="Self.FK__match1__cliente2__09746778" FromRole="match1" ToRole="cliente" />
     <NavigationProperty Name="estado" Relationship="Self.FK__match1__idEstado__0A688BB1" FromRole="match1" ToRole="estado" />
+    <Property Name="idEstado1" Type="Int32" />
+    <NavigationProperty Name="estado1" Relationship="tiusr3pl_loverModel.FK__match1__idEstado__3335971A" FromRole="match1" ToRole="estado" />
   </EntityType>
   <EntityType Name="match2">
     <Key>
@@ -124,6 +132,7 @@
     <NavigationProperty Name="cliente" Relationship="Self.FK__match2__cliente1__0F2D40CE" FromRole="match2" ToRole="cliente" />
     <NavigationProperty Name="cliente3" Relationship="Self.FK__match2__cliente2__0E391C95" FromRole="match2" ToRole="cliente" />
     <NavigationProperty Name="estado" Relationship="Self.FK__match2__idEstado__10216507" FromRole="match2" ToRole="estado" />
+    <Property Name="fecha_Registro" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="mensaje">
     <Key>
@@ -777,6 +786,29 @@
       <End Role="ConfCorreos" EntitySet="ConfCorreos" />
       <End Role="Correos" EntitySet="Correos" />
     </AssociationSet>
+    <EntitySet Name="Configuracion" EntityType="tiusr3pl_loverModel.Configuracion" />
+    <EntitySet Name="interes_cliente" EntityType="tiusr3pl_loverModel.interes_cliente" />
+    <EntitySet Name="Mensajes" EntityType="tiusr3pl_loverModel.Mensajes" />
+    <AssociationSet Name="FK__interes_c__idCli__7755B73D1" Association="tiusr3pl_loverModel.FK__interes_c__idCli__7755B73D1">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="interes_cliente" EntitySet="interes_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mensajes_cliente2" Association="tiusr3pl_loverModel.FK_Mensajes_cliente2">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="Mensajes" EntitySet="Mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mensajes_cliente3" Association="tiusr3pl_loverModel.FK_Mensajes_cliente3">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="Mensajes" EntitySet="Mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__match1__idEstado__3335971A" Association="tiusr3pl_loverModel.FK__match1__idEstado__3335971A">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="match1" EntitySet="match1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__interes_c__idint__766193041" Association="tiusr3pl_loverModel.FK__interes_c__idint__766193041">
+      <End Role="interes" EntitySet="interes" />
+      <End Role="interes_cliente" EntitySet="interes_cliente" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ConfCorreos">
     <Key>
@@ -808,6 +840,96 @@
       </Principal>
       <Dependent Role="Correos">
         <PropertyRef Name="idConfCorreo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="id_configuracion" />
+    </Key>
+    <Property Name="id_configuracion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LimiteSeleccion" Type="Int32" />
+  </EntityType>
+  <EntityType Name="interes_cliente">
+    <Key>
+      <PropertyRef Name="idInteresCliente" />
+    </Key>
+    <Property Name="idInteresCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idinteres" Type="Int32" />
+    <Property Name="idCliente" Type="Int32" />
+    <NavigationProperty Name="cliente" Relationship="tiusr3pl_loverModel.FK__interes_c__idCli__7755B73D1" FromRole="interes_cliente" ToRole="cliente" />
+    <NavigationProperty Name="interes" Relationship="tiusr3pl_loverModel.FK__interes_c__idint__766193041" FromRole="interes_cliente" ToRole="interes" />
+  </EntityType>
+  <EntityType Name="Mensajes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente1" Type="Int32" />
+    <Property Name="idCliente2" Type="Int32" />
+    <Property Name="Mensaje" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaHora" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="cliente" Relationship="tiusr3pl_loverModel.FK_Mensajes_cliente2" FromRole="Mensajes" ToRole="cliente" />
+    <NavigationProperty Name="cliente1" Relationship="tiusr3pl_loverModel.FK_Mensajes_cliente3" FromRole="Mensajes" ToRole="cliente" />
+  </EntityType>
+  <Association Name="FK__interes_c__idCli__7755B73D1">
+    <End Type="tiusr3pl_loverModel.cliente" Role="cliente" Multiplicity="0..1" />
+    <End Type="tiusr3pl_loverModel.interes_cliente" Role="interes_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="interes_cliente">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mensajes_cliente2">
+    <End Type="tiusr3pl_loverModel.cliente" Role="cliente" Multiplicity="0..1" />
+    <End Type="tiusr3pl_loverModel.Mensajes" Role="Mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Mensajes">
+        <PropertyRef Name="idCliente1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mensajes_cliente3">
+    <End Type="tiusr3pl_loverModel.cliente" Role="cliente" Multiplicity="0..1" />
+    <End Type="tiusr3pl_loverModel.Mensajes" Role="Mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Mensajes">
+        <PropertyRef Name="idCliente2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__match1__idEstado__3335971A">
+    <End Type="tiusr3pl_loverModel.estado" Role="estado" Multiplicity="0..1" />
+    <End Type="tiusr3pl_loverModel.match1" Role="match1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="match1">
+        <PropertyRef Name="idEstado1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__interes_c__idint__766193041">
+    <End Type="tiusr3pl_loverModel.interes" Role="interes" Multiplicity="0..1" />
+    <End Type="tiusr3pl_loverModel.interes_cliente" Role="interes_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="interes">
+        <PropertyRef Name="idinteres" />
+      </Principal>
+      <Dependent Role="interes_cliente">
+        <PropertyRef Name="idinteres" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
