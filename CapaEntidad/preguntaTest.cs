@@ -11,5 +11,6 @@ namespace CapaEntidad
         public int idPreguntaTest { get; set; }
         public test otest { get; set; }
         public string nombre { get; set; }
+      
     }
 }
