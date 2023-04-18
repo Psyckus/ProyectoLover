@@ -19,5 +19,49 @@ namespace CapaNegocios
         {
             return objCapaDato.ListarCaI();
         }
+        public int Registrar(interes obj, out string mensaje)
+        {
+            mensaje = string.Empty;
+            
+            if (obj.oCategoria_interes.idCategoria_interes == 0)
+            {
+                mensaje = "Debe ingresar un tipo de categoria";
+            }
+
+            else if (string.IsNullOrEmpty(obj.nombre) || string.IsNullOrWhiteSpace(obj.nombre))
+            {
+                mensaje = "Debe ingresar un nombre";
+            }
+            return objCapaDato.Registrar(obj, out mensaje);
+
+
+          }
+           
+
+        
+
+        public bool editar(interes obj, out string mensaje)
+        {
+            mensaje = string.Empty;
+            if (obj.oCategoria_interes.idCategoria_interes == 0)
+            {
+                mensaje = "Debe ingresar una categoria";
+            }
+
+            else if (string.IsNullOrEmpty(obj.nombre) || string.IsNullOrWhiteSpace(obj.nombre))
+            {
+                mensaje = "Debe ingresar un nombre";
+            }
+          
+
+            if (string.IsNullOrEmpty(mensaje))
+            {
+                return objCapaDato.editar(obj, out mensaje);
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

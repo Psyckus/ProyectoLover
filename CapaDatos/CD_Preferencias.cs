@@ -18,7 +18,7 @@ namespace CapaDatos
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
 
-                    string query = "select p.idPreferencia, p.nombre, p.estado, c.idCategoria_interes, c.nombre from preferencia p join categoria_interes c on p.idCategoria_interes = c.idCategoria_interes";
+                    string query = "select p.idPreferencia, p.nombre, p.estado, c.idCategoria_interes, c.nombre[tipo] from preferencia p join categoria_interes c on p.idCategoria_interes = c.idCategoria_interes";
 
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
@@ -32,7 +32,7 @@ namespace CapaDatos
                                 idPreferencia = Convert.ToInt32(dr["idPreferencia"]),
                                 nombre = Convert.ToString(dr["nombre"]),
                                 estado = Convert.ToBoolean(dr["estado"]),
-                                oCategoria_interes = new categoria_interes { idCategoria_interes = Convert.ToInt32(dr["idCategoria_interes"]), nombre = dr["nombre"].ToString() }
+                                oCategoria_interes = new categoria_interes { idCategoria_interes = Convert.ToInt32(dr["idCategoria_interes"]), nombre = dr["tipo"].ToString() }
 
 
                             });

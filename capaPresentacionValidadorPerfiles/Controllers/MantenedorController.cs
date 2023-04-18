@@ -64,6 +64,26 @@ namespace capaPresentacionValidadorPerfiles.Controllers
             oLista = new CN_Interes().ListarCaI();
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GuardarInteres(interes obj)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (obj.idinteres == 0)
+            {
+                resultado = new CN_Interes().Registrar(obj, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Interes().editar(obj, out mensaje);
+            }
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+
+
+        }
+
+
         public ActionResult preferencia()
         {
             return View();
@@ -71,10 +91,13 @@ namespace capaPresentacionValidadorPerfiles.Controllers
         [HttpGet]
         public JsonResult ListarPreferencia()
         {
-
             List<preferencia> oLista = new List<preferencia>();
+            oLista = new CN_Preferencia().Listar();
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
+
+       
+        
 
         [HttpGet]
         public JsonResult ListarCaInt()

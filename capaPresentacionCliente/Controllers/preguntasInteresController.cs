@@ -377,5 +377,40 @@ namespace capaPresentacionCliente.Controllers
 
             return Json(lista);
         }
+        [HttpPost]
+        public JsonResult ObtenerGeneroPorCliente(int id)
+        {
+            List<generoCliente> lista = new List<generoCliente>();
+            using (SqlConnection oconexion = new SqlConnection(conexion.cn))
+            {
+                oconexion.Open();
+
+
+
+                string sql = "select t.nombre from tipo_genero as t join generoCliente as g on t.idtipoGenero= g.idtipoGenero and g.idCliente = @id";
+
+
+
+                SqlCommand cmd = new SqlCommand(sql, oconexion);
+                cmd.Parameters.AddWithValue("@id", id);
+
+
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+
+                while (reader.Read())
+                {
+                    generoCliente genero = new generoCliente();
+                    genero.ocliente = reader["nombre"].ToString();
+                    lista.Add(genero);
+                }
+            }
+
+
+
+            return Json(lista);
+        }
     }
 }

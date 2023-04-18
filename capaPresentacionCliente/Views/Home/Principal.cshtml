@@ -189,9 +189,10 @@
                 <br>
 
                 <div class="name">
-                    <b><span id="nom2">20</span></b>
+                    <b><span id="nom2">20</span> </b>
                     <span id="edad2">20</span>
                 </div>
+                <span id="genero"> Hola soy olaf y adoro los abrazos </span>
 
                 <hr />
                 <div class="local2">
@@ -203,14 +204,19 @@
                     <br>
 
                     <hr />
+
+
+
+                </div>
+                
                     <b>Intereses:</b>
+
                     <span id="interes">Hola soy olaf y adoro los abrazos</span>
 
-
-                    <hr />
-                    <p><b>Preferencia:</b></p>
-                    <span id="preferencia">Hola soy olaf y adoro los abrazos</span>
-                </div>
+                
+                <hr />
+                <p><b>Preferencia:</b></p>
+                <span id="preferencia">Hola soy olaf y adoro los abrazos</span>
             </div>
         </div>
 
@@ -340,6 +346,7 @@
 
 
         var idTarjeta;
+        var genTarjeta;
 
         window.addEventListener('load', function() {
             $.ajax({
@@ -361,6 +368,7 @@
                     $("#desc").text(obj.descripcion);
                     $("#desc2").text(obj.descripcion);
                     idTarjeta = parseInt(obj.idCliente);
+                    genTarjeta = parseInt(obj.idCliente);
                     console.log('Datos cargados con éxito');
 
                     // Segunda petición AJAX dentro de la función success de la primera petición
@@ -378,7 +386,7 @@
                                 // Iterar sobre los datos y construir el contenido de texto
                                 for (var obj of data) {
                                     // Acceder a las propiedades del objeto para obtener los valores
-                                    contenidoTexto += "<p> " + obj.oInteres + "</p>"; // Formato de ejemplo, asumiendo que la propiedad deseada se llama "nombre"
+                                    contenidoTexto += "<p>" + obj.oInteres + "</p>"; // Formato de ejemplo, asumiendo que la propiedad deseada se llama "nombre"
                                 }
                             } else {
                                 contenidoTexto = "No se encontraron intereses."; // Mensaje de error si "data" no está definido, no es un array o está vacio
@@ -414,6 +422,35 @@
                             }
 
                             $("#preferencia").html(contenidoTexto);
+                            console.log(contenidoTexto);
+                            console.log('Datos cargados con éxito');
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Error al enviar la ubicación al servidor.");
+                        }
+                     });
+                     // cuarta petición AJAX dentro de la función success de la primera petición
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("ObtenerGeneroPorCliente", "preguntasInteres")',
+                        data: JSON.stringify({ id: genTarjeta }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            var contenidoTexto = ""; // Variable para almacenar el contenido de texto
+
+                            // Verificar si "data" está definido y es un array con elementos
+                            if (typeof data !== 'undefined' && Array.isArray(data) && data.length > 0) {
+                                // Iterar sobre los datos y construir el contenido de texto
+                                for (var obj of data) {
+                                    // Acceder a las propiedades del objeto para obtener los valores
+                                    contenidoTexto += "<p> " + obj.ocliente + "</p>"; // Formato de ejemplo, asumiendo que la propiedad deseada se llama "nombre"
+                                }
+                            } else {
+                                contenidoTexto = "No se encontraron intereses."; // Mensaje de error si "data" no está definido, no es un array o está vacio
+                            }
+
+                            $("#genero").html(contenidoTexto);
                             console.log(contenidoTexto);
                             console.log('Datos cargados con éxito');
                         },

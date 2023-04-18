@@ -11,6 +11,6 @@ namespace CapaEntidad
         public int idGenero { get; set; }
         public int idtipoGenero { get; set;}
         public bool estado { get; set;}
-        public cliente ocliente { get; set;}
+        public string ocliente { get; set;}
     }
 }

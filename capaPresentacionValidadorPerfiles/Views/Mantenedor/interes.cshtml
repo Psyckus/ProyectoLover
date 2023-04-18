@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>interes</h2>
+<h2>Intereses</h2>
 
 
 <ol class="breadcrumb mb-4 mt-4">
@@ -14,7 +14,7 @@
 
 <div class="card">
     <div class="card-header">
-        <i class="fas fa-users me-1"></i> Lista interes
+        <i class="fas fa-users me-1"></i> Lista Intereses
     </div>
     <div class="card-body">
         <div class="row">
@@ -31,7 +31,7 @@
                     <th>Nombre Interes</th>
                     <th>Estado Interes</th>
                     <th>Nombre Categoria</th>
-                    
+
                     <th></th>
                 </tr>
             </thead>
@@ -81,11 +81,11 @@
                             <select id="cboCate" class="form-select">
                             </select>
                         </div>
-                       
+
                     </div>
 
 
-                
+
                 </form>
                 <!--Mensaje de alerta-->
                 <div class="row mt-2">
@@ -135,9 +135,9 @@
             },
             "columns": [
 
-                { "data": "nombreI" },
+                { "data": "nombre" },
 
-                 
+
                 {
                     "data": "estado", "render": function (valor) {
 
@@ -204,16 +204,23 @@
 
 
 
-
-        $("#contenedor").validate({
+         $("#contenedor").validate({
             rules: {
 
                 nombre: {
                     required: true
                 },
+               
+
+                idCategoria_interes: {
+                    required: true,
+                   
+                }
             },
             messages: {
-                nombre: "- El campo nombre es obligatorio"
+                nombre: "- El campo nombre es obligatorio",
+                idCategoria_interes: "- El campo categoria es obligatorio",
+               
             },
             errorElement: "div",
             errorLabelContainer: ".alert-danger"
@@ -222,22 +229,23 @@
 
 
         function abrirModatl(json) {
-            //campos del modal txtid es invisible
+
             $("#txtid").val(0);
             $("#txtnombre").val("");
-            $("#cboestado").val(1);
             $("#cboCate").val($("#cboCate option:first").val());
+            $("#cboestado").val(1);
             $("#mensajeError").hide();
 
 
 
-            //información obtenida de bd
-            if (json != null) {
 
+            if (json != null) {
                 $("#txtid").val(json.idinteres);
-                $("#txtnombre").val(json.nombreI);
-                $("#cboestado").val(json.estado == true ? 1 : 0);
+                $("#txtnombre").val(json.nombre);
                 $("#cboCate").val(json.oCategoria_interes.idCategoria_interes);
+                $("#cboestado").val(json.estado == true ? 1 : 0);
+
+
             }
 
             $("#FormModal").modal("show")
@@ -252,9 +260,9 @@
 
         })
 
+        
 
 
-        //crear un nuevo usuario y editarlo
         function guardar() {
 
 
@@ -262,13 +270,16 @@
                 return;
             }
 
-            var categoria = {
+            var interes = {
 
-                idCategoria_interes: $("#txtid").val(),
-
-
+                idinteres: $("#txtid").val(),
+                oCategoria_interes: {
+                    idCategoria_interes: $("#cboCate option:selected").val(),
+                    nombre: $("#cboCate option:selected").text()
+                    },
+                
                 nombre: $("#txtnombre").val(),
-
+                
                 estado: $("#cboestado").val() == 1 ? true: false
 
 
@@ -276,22 +287,22 @@
             }
 
             jQuery.ajax({
-                url: '@Url.Action("GuardarCategoria", "Mantenedor")',
+                url: '@Url.Action("GuardarInteres", "Mantenedor")',
                 type: "POST",
-                data: JSON.stringify({ obj: categoria }),
+                data: JSON.stringify({ obj: interes }),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     $(".modal-body").LoadingOverlay("hide");
 
 
-                    //crear nueva categoria
-                    if (categoria.idCategoria_interes == 0) {
+                    //interes nuevo
+                    if (interes.idinteres == 0) {
 
                         if (data.resultado != 0) {
 
-                            categoria.idCategoria_interes = data.resultado;
-                            tabladata.row.add(categoria).draw(false);
+                            interes.idinteres = data.resultado;
+                            tabladata.row.add(interes).draw(false);
                             $("#FormModal").modal("hide");
 
 
@@ -302,11 +313,11 @@
 
 
 
-                         //Editar categoria
+                         //Editar interes
                     } else {
 
                         if (data.resultado) {
-                            tabladata.row(filaSeleccionada).data(categoria).draw(false);
+                            tabladata.row(filaSeleccionada).data(interes).draw(false);
                             filaSeleccionada = null;
                             $("#FormModal").modal("hide");
                         } else {
