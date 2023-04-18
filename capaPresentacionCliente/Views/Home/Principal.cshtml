@@ -182,31 +182,41 @@
 
         <!-- Contenido del modal ver perfil -->
         <div id="myModal" class="perfil-modal">
-            <div class="">
+            <div class="modal-content" style="text-align:left">
                 <span class="close">&times;</span>
-                <p>Ver perfil</p>
-            </div>
-            <div class="verPerfil">
-                
-                <div class="profile">
-                    <p id="id2" style="display:none"></p>
-                    <div class="name">
-                        <span id="nom"></span>
-                        <span id="edad"></span>
-                    </div>
-                    
+                <br>
 
-                    <div class="local">
-                        <span><b>Descripción:</b></span>
-                    </div>
-                    <div class="desc">
-                        <span id="desc"></span>
-                    </div>
+                <div class="name">
+                    <b><span id="nom2">20</span> </b>
+                    <span id="edad2">20</span>
+                </div>
+                <span id="genero"> Hola soy olaf y adoro los abrazos </span>
+
+                <hr />
+                <div class="local2">
+                    <span><b>Descripción:</b></span>
+                </div>
+                <br>
+                <div class="desc">
+                    <span id="desc2">Hola soy olaf y adoro los abrazos</span>
+                    <br>
+
+                    <hr />
+
+
 
                 </div>
+                
+                    <b>Intereses:</b>
+
+                    <span id="interes">Hola soy olaf y adoro los abrazos</span>
+
+                
+                <hr />
+                <p><b>Preferencia:</b></p>
+                <span id="preferencia">Hola soy olaf y adoro los abrazos</span>
             </div>
         </div>
-
 
     </div>
 
@@ -341,33 +351,124 @@ $("#mi-modal").on("hidden.bs.modal", function () {
 
 
 
+ 	var idTarjeta;
+        var genTarjeta;
 
-
-        window.addEventListener('load', function(){
-
+         window.addEventListener('load', function() {
             $.ajax({
                 type: "POST",
-                 url: '@Url.Action("Descubrir", "Home")',
+                url: '@Url.Action("Descubrir", "Home")',
                 data: JSON.stringify({ cliente1: id, idCliente: id }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-
                     var obj = data.data;
                     window.ajaxData = obj.idCliente;
                     var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(window.ajaxData);
-                    $("#user").attr("src", data)
-                    $("#prueba").text(obj.idCliente)
-                    $("#nom").text(obj.nombre)
-                    $("#edad").text(obj.edad)
-                    $("#desc").text(obj.descripcion)
-                    console.log('Datos cargados con exito')
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $("#user").attr("src", data);
+                    $("#prueba").text(obj.idCliente);
+                    $("#nom").text(obj.nombre);
+                    $("#nom2").text(obj.nombre);
+                    $("#edad").text(obj.edad);
+                    $("#edad2").text(obj.edad);
+                    $("#desc").text(obj.descripcion);
+                    $("#desc2").text(obj.descripcion);
+                    idTarjeta = parseInt(obj.idCliente);
+                    genTarjeta = parseInt(obj.idCliente);
+                    console.log('Datos cargados con éxito');
+
+                    // Segunda petición AJAX dentro de la función success de la primera petición
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("ObtenerInteresesPorCliente", "preguntasInteres")',
+                        data: JSON.stringify({ id: idTarjeta }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            var contenidoTexto = ""; // Variable para almacenar el contenido de texto
+
+                            // Verificar si "data" está definido y es un array con elementos
+                            if (typeof data !== 'undefined' && Array.isArray(data) && data.length > 0) {
+                                // Iterar sobre los datos y construir el contenido de texto
+                                for (var obj of data) {
+                                    // Acceder a las propiedades del objeto para obtener los valores
+                                    contenidoTexto += "<p>" + obj.oInteres + "</p>"; // Formato de ejemplo, asumiendo que la propiedad deseada se llama "nombre"
+                                }
+                            } else {
+                                contenidoTexto = "No se encontraron intereses."; // Mensaje de error si "data" no está definido, no es un array o está vacio
+                            }
+
+                            $("#interes").html(contenidoTexto);
+                            console.log(contenidoTexto);
+                            console.log('Datos cargados con éxito');
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Error al enviar la ubicación al servidor.");
+                        }
+                    });
+                    // Tercera petición AJAX dentro de la función success de la primera petición
+                     $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("ObtenerPreferenciasPorCliente", "preguntasInteres")',
+                        data: JSON.stringify({ id: idTarjeta }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            var contenidoTexto = ""; // Variable para almacenar el contenido de texto
+
+                            // Verificar si "data" está definido y es un array con elementos
+                            if (typeof data !== 'undefined' && Array.isArray(data) && data.length > 0) {
+                                // Iterar sobre los datos y construir el contenido de texto
+                                for (var obj of data) {
+                                    // Acceder a las propiedades del objeto para obtener los valores
+                                    contenidoTexto += "<p> " + obj.oPreferencia + "</p>"; // Formato de ejemplo, asumiendo que la propiedad deseada se llama "nombre"
+                                }
+                            } else {
+                                contenidoTexto = "No se encontraron preferencias."; // Mensaje de error si "data" no está definido, no es un array o está vacio
+                            }
+
+                            $("#preferencia").html(contenidoTexto);
+                            console.log(contenidoTexto);
+                            console.log('Datos cargados con éxito');
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Error al enviar la ubicación al servidor.");
+                        }
+                     });
+                     // cuarta petición AJAX dentro de la función success de la primera petición
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("ObtenerGeneroPorCliente", "preguntasInteres")',
+                        data: JSON.stringify({ id: genTarjeta }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            var contenidoTexto = ""; // Variable para almacenar el contenido de texto
+
+                            // Verificar si "data" está definido y es un array con elementos
+                            if (typeof data !== 'undefined' && Array.isArray(data) && data.length > 0) {
+                                // Iterar sobre los datos y construir el contenido de texto
+                                for (var obj of data) {
+                                    // Acceder a las propiedades del objeto para obtener los valores
+                                    contenidoTexto += "<p> " + obj.ocliente + "</p>"; // Formato de ejemplo, asumiendo que la propiedad deseada se llama "nombre"
+                                }
+                            } else {
+                                contenidoTexto = "No se encontraron intereses."; // Mensaje de error si "data" no está definido, no es un array o está vacio
+                            }
+
+                            $("#genero").html(contenidoTexto);
+                            console.log(contenidoTexto);
+                            console.log('Datos cargados con éxito');
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Error al enviar la ubicación al servidor.");
+                        }
+                    });
+
+                }, error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert("Error al enviar la ubicación al servidor.");
                 }
             });
-
         });
 
 

@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 using CapaEntidad;
 namespace CapaDatos
 {
-   public class CD_Interes
+    public class CD_Respuesta
     {
-        public List<interes> Listar()
+        public List<respuestaTest> Listar()
         {
-            List<interes> lista = new List<interes>();
+            List<respuestaTest> lista = new List<respuestaTest>();
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
 
-                  
 
-                    string query = "select i.idinteres, i.nombre, i.estado, c.idCategoria_interes, c.nombre[tipo] from interes i join categoria_interes c on i.idCategoria_interes = c.idCategoria_interes";
+
+                    string query = "select r.id_respuestaTest, r.respuesta, p.idpreguntaTest, p.nombre[tipo] from respuestaTest r join preguntaTest p on r.idPregunta = p.idpreguntaTest";
 
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
@@ -29,12 +29,12 @@ namespace CapaDatos
                     {
                         while (dr.Read())
                         {
-                            lista.Add(new interes()
+                            lista.Add(new respuestaTest()
                             {
-                                idinteres = Convert.ToInt32(dr["idinteres"]),
-                                nombre = Convert.ToString(dr["nombre"]),
-                                estado = Convert.ToBoolean(dr["estado"]),
-                                oCategoria_interes = new categoria_interes { idCategoria_interes = Convert.ToInt32(dr["idCategoria_interes"]), nombre = dr["tipo"].ToString()}
+                                id_respuestaTest = Convert.ToInt32(dr["id_respuestaTest"]),
+                                respuesta = Convert.ToString(dr["respuesta"]),
+                                
+                                opregunta = new preguntaTest { idPreguntaTest = Convert.ToInt32(dr["idpreguntaTest"]), nombre = dr["tipo"].ToString() }
 
 
                             });
@@ -46,19 +46,19 @@ namespace CapaDatos
             }
             catch (Exception)
             {
-                lista = new List<interes>();
+                lista = new List<respuestaTest>();
             }
             return lista;
 
         }
-        public List<categoria_interes> ListarCaI()
+        public List<preguntaTest> ListarP()
         {
-            List<categoria_interes> lista = new List<categoria_interes>();
+            List<preguntaTest> lista = new List<preguntaTest>();
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    string query = "select idCategoria_interes, nombre from categoria_interes";
+                    string query = "select idpreguntaTest, nombre from preguntaTest";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     oconexion.Open();
@@ -66,9 +66,9 @@ namespace CapaDatos
                     {
                         while (dr.Read())
                         {
-                            lista.Add(new categoria_interes()
+                            lista.Add(new preguntaTest()
                             {
-                                idCategoria_interes = Convert.ToInt32(dr["idCategoria_interes"]),
+                                idPreguntaTest = Convert.ToInt32(dr["idpreguntaTest"]),
                                 nombre = dr["nombre"].ToString(),
 
                             });
@@ -80,12 +80,12 @@ namespace CapaDatos
             }
             catch (Exception)
             {
-                lista = new List<categoria_interes>();
+                lista = new List<preguntaTest>();
             }
             return lista;
 
         }
-        public int Registrar(interes obj, out string mensaje)
+        public int Registrar(respuestaTest obj, out string mensaje)
         {
             int idautogenerado = 0;
             mensaje = string.Empty;
@@ -94,10 +94,10 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_registrarInteres", oconexion);
-                    cmd.Parameters.AddWithValue("nombre", obj.nombre);
-                    cmd.Parameters.AddWithValue("estado", obj.estado);
-                    cmd.Parameters.AddWithValue("idCategoria_interes", obj.oCategoria_interes.idCategoria_interes);
+                    SqlCommand cmd = new SqlCommand("sp_registrarRes", oconexion);
+                    cmd.Parameters.AddWithValue("respuesta", obj.respuesta);
+                    
+                    cmd.Parameters.AddWithValue("idPreguntaTest", obj.opregunta.idPreguntaTest);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -117,7 +117,7 @@ namespace CapaDatos
             return idautogenerado;
         }
 
-        public bool editar(interes obj, out string mensaje)
+        public bool editar(respuestaTest obj, out string mensaje)
         {
             bool resultado = false;
             mensaje = string.Empty;
@@ -125,11 +125,11 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_EditarInteres", oconexion);
-                    cmd.Parameters.AddWithValue("idinteres", obj.idinteres);
-                    cmd.Parameters.AddWithValue("nombre", obj.nombre);
-                    cmd.Parameters.AddWithValue("estado", obj.estado);
-                    cmd.Parameters.AddWithValue("idCategoria_interes", obj.oCategoria_interes.idCategoria_interes);
+                    SqlCommand cmd = new SqlCommand("sp_EditarRes", oconexion);
+                    cmd.Parameters.AddWithValue("id_respuestaTest", obj.id_respuestaTest);
+                    cmd.Parameters.AddWithValue("respuesta", obj.respuesta);
+                   
+                    cmd.Parameters.AddWithValue("idPreguntaTest", obj.opregunta.idPreguntaTest);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;

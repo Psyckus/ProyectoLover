@@ -1,19 +1,20 @@
 ﻿
 @{
-    ViewBag.Title = "preferencia";
+    ViewBag.Title = "interes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Preferencias</h2>
+<h2>Respuestas</h2>
+
 
 <ol class="breadcrumb mb-4 mt-4">
-    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
-    <li class="breadcrumb-item active">Preferencias</li>
+    <li class="breadcrumb-item"><a href="index.html">Test</a></li>
+    <li class="breadcrumb-item active">Respuestas</li>
 </ol>
 
 <div class="card">
     <div class="card-header">
-        <i class="fas fa-users me-1"></i> Lista Preferencias
+        <i class="fas fa-users me-1"></i> Lista Intereses
     </div>
     <div class="card-body">
         <div class="row">
@@ -27,9 +28,9 @@
             <thead>
                 <tr>
 
-                    <th>Nombre Preferencia</th>
-                    <th>Estado Preferencia</th>
-                    <th>Nombre Categoria</th>
+                    <th>Respuesta</th>
+                    
+                    <th>Pregunta</th>
 
                     <th></th>
                 </tr>
@@ -45,7 +46,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Preferencias</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Intereses</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -57,27 +58,18 @@
 
                     <div class="col-sm-3">
                         <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="txtnombre" name="nombre" />
+                            <label class="form-label">Respuesta</label>
+                            <input type="text" class="form-control" id="txtrespuesta" name="respuesta" />
                         </div>
 
                     </div>
 
 
-                    <div class="col-sm-3">
-                        <div class="mb-3">
-                            <label class="form-label">Estado</label>
-                            <select id="cboestado" class="form-select">
-                                <option value="1">Activo</option>
-                                <option value="0">Inactivo</option>
-                            </select>
-                        </div>
-
-                    </div>
+                    
                     <div class="col-sm-3">
                         <div class="mb-2">
-                            <label class="form-label">Categoria</label>
-                            <select id="cboCate" class="form-select">
+                            <label class="form-label">Pregunta</label>
+                            <select id="cboP" class="form-select">
                             </select>
                         </div>
 
@@ -112,7 +104,7 @@
         var filaSeleccionada
 
         jQuery.ajax({
-            url: '@Url.Action("ListarPreferencia", "Mantenedor")',
+            url: '@Url.Action("ListarRes", "TestPersonalidad")',
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
@@ -128,28 +120,18 @@
             responsive: true,
             ordering: false,
             "ajax": {
-                url: '@Url.Action("ListarPreferencia", "Mantenedor")',
+                url: '@Url.Action("ListarRes", "TestPersonalidad")',
                 type: "GET",
                 dataType: "json"
             },
             "columns": [
 
-                { "data": "nombre" },
+                { "data": "respuesta" },
 
 
+                
                 {
-                    "data": "estado", "render": function (valor) {
-
-                        if (valor) {
-                            return '<span class="badge rounded-pill bg-success">Activo</span>'
-                        } else {
-                            return '<span class="badge rounded-pill bg-danger">Inactivo</span>'
-                        }
-
-                    }
-                },
-                {
-                    "data": "oCategoria_interes", "render": function (data) {
+                    "data": "opregunta", "render": function (data) {
                         return data.nombre
                     }
                 },
@@ -165,7 +147,7 @@
             "language": { "url": "//cdn.datatables.net/plug-ins/1.13.2/i18n/es-ES.json" }
         });
            jQuery.ajax({
-                        url: '@Url.Action("ListarCaInt", "Mantenedor")',
+                        url: '@Url.Action("ListarP", "TestPersonalidad")',
                         type: "GET",
                         data: null,
                         dataType: "json",
@@ -173,11 +155,11 @@
             success: function (data) {
                 console.log(data)
 
-                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cboCate");
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cboP");
 
                 $.each(data.data, function (index, item)
                 {
-                    $("<option>").attr({ "value": item.idCategoria_interes }).text(item.nombre).appendTo("#cboCate");
+                    $("<option>").attr({ "value": item.idPreguntaTest }).text(item.nombre).appendTo("#cboP");
                 })
 
                         },
@@ -206,19 +188,19 @@
          $("#contenedor").validate({
             rules: {
 
-                nombre: {
+                respuesta: {
                     required: true
                 },
 
 
-                idCategoria_interes: {
+                 idPreguntaTest: {
                     required: true,
 
                 }
             },
             messages: {
-                nombre: "- El campo nombre es obligatorio",
-                idCategoria_interes: "- El campo categoria es obligatorio",
+                respuesta: "- El campo respuesta es obligatorio",
+                idPreguntaTest: "- El campo pregunta es obligatorio",
 
             },
             errorElement: "div",
@@ -230,19 +212,19 @@
         function abrirModatl(json) {
 
             $("#txtid").val(0);
-            $("#txtnombre").val("");
-            $("#cboCate").val($("#cboCate option:first").val());
-            $("#cboestado").val(1);
+            $("#txtrespuesta").val("");
+            $("#cboP").val($("#cboP option:first").val());
+            
             $("#mensajeError").hide();
 
 
 
 
             if (json != null) {
-                $("#txtid").val(json.idPreferencia);
-                $("#txtnombre").val(json.nombre);
-                $("#cboCate").val(json.oCategoria_interes.idCategoria_interes);
-                $("#cboestado").val(json.estado == true ? 1 : 0);
+                $("#txtid").val(json.id_respuestaTest);
+                $("#txtnombre").val(json.respuesta);
+                $("#cboP").val(json.opregunta.idPreguntaTest);
+                
 
 
             }
@@ -269,26 +251,26 @@
                 return;
             }
 
-            var preferencia = {
+            var respuesta = {
 
-                idPreferencia: $("#txtid").val(),
-                oCategoria_interes: {
-                    idCategoria_interes: $("#cboCate option:selected").val(),
-                    nombre: $("#cboCate option:selected").text()
+                id_respuestaTest: $("#txtid").val(),
+                opregunta: {
+                    idPreguntaTest: $("#cboP option:selected").val(),
+                    nombre: $("#cboP option:selected").text()
                     },
 
-                nombre: $("#txtnombre").val(),
+                respuesta: $("#txtrespuesta").val(),
 
-                estado: $("#cboestado").val() == 1 ? true: false
+               
 
 
 
             }
 
             jQuery.ajax({
-                url: '@Url.Action("GuardarPreferencia", "Mantenedor")',
+                url: '@Url.Action("GuardarRes", "TestPersonalidad")',
                 type: "POST",
-                data: JSON.stringify({ obj: preferencia }),
+                data: JSON.stringify({ obj: respuesta }),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
@@ -296,12 +278,12 @@
 
 
                     //interes nuevo
-                    if (preferencia.idPreferencia == 0) {
+                    if (respuesta.id_respuestaTest == 0) {
 
                         if (data.resultado != 0) {
 
-                            preferencia.idPreferencia = data.resultado;
-                            tabladata.row.add(preferencia).draw(false);
+                            respuesta.id_respuestaTest = data.resultado;
+                            tabladata.row.add(respuesta).draw(false);
                             $("#FormModal").modal("hide");
 
 
@@ -316,7 +298,7 @@
                     } else {
 
                         if (data.resultado) {
-                            tabladata.row(filaSeleccionada).data(preferencia).draw(false);
+                            tabladata.row(filaSeleccionada).data(respuesta).draw(false);
                             filaSeleccionada = null;
                             $("#FormModal").modal("hide");
                         } else {
