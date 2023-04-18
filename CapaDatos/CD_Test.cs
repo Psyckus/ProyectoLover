@@ -6,21 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaEntidad;
+
 namespace CapaDatos
 {
-   public class CD_Interes
+    public class CD_Test
     {
-        public List<interes> Listar()
+        public List<test> Listar()
         {
-            List<interes> lista = new List<interes>();
+            List<test> lista = new List<test>();
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
 
-                  
-
-                    string query = "select i.idinteres, i.nombre, i.estado, c.idCategoria_interes, c.nombre[tipo] from interes i join categoria_interes c on i.idCategoria_interes = c.idCategoria_interes";
+                    string query = "select * from test ";
 
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
@@ -29,48 +28,14 @@ namespace CapaDatos
                     {
                         while (dr.Read())
                         {
-                            lista.Add(new interes()
+                            lista.Add(new test()
                             {
-                                idinteres = Convert.ToInt32(dr["idinteres"]),
-                                nombre = Convert.ToString(dr["nombre"]),
-                                estado = Convert.ToBoolean(dr["estado"]),
-                                oCategoria_interes = new categoria_interes { idCategoria_interes = Convert.ToInt32(dr["idCategoria_interes"]), nombre = dr["tipo"].ToString()}
-
-
-                            });
-                        }
-                    }
-
-
-                }
-            }
-            catch (Exception)
-            {
-                lista = new List<interes>();
-            }
-            return lista;
-
-        }
-        public List<categoria_interes> ListarCaI()
-        {
-            List<categoria_interes> lista = new List<categoria_interes>();
-            try
-            {
-                using (SqlConnection oconexion = new SqlConnection(conexion.cn))
-                {
-                    string query = "select idCategoria_interes, nombre from categoria_interes";
-
-                    SqlCommand cmd = new SqlCommand(query, oconexion);
-                    oconexion.Open();
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            lista.Add(new categoria_interes()
-                            {
-                                idCategoria_interes = Convert.ToInt32(dr["idCategoria_interes"]),
+                                idtest = Convert.ToInt32(dr["idtest"]),
                                 nombre = dr["nombre"].ToString(),
 
+                                descripcion = dr["descripcion"].ToString(),
+
+
                             });
                         }
                     }
@@ -80,12 +45,12 @@ namespace CapaDatos
             }
             catch (Exception)
             {
-                lista = new List<categoria_interes>();
+                lista = new List<test>();
             }
             return lista;
 
         }
-        public int Registrar(interes obj, out string mensaje)
+        public int Registrar(test obj, out string mensaje)
         {
             int idautogenerado = 0;
             mensaje = string.Empty;
@@ -94,10 +59,11 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_registrarInteres", oconexion);
+                    SqlCommand cmd = new SqlCommand("sp_registroTest", oconexion);
+
                     cmd.Parameters.AddWithValue("nombre", obj.nombre);
-                    cmd.Parameters.AddWithValue("estado", obj.estado);
-                    cmd.Parameters.AddWithValue("idCategoria_interes", obj.oCategoria_interes.idCategoria_interes);
+                    cmd.Parameters.AddWithValue("descripcion", obj.descripcion);
+
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -117,7 +83,7 @@ namespace CapaDatos
             return idautogenerado;
         }
 
-        public bool editar(interes obj, out string mensaje)
+        public bool editar(test obj, out string mensaje)
         {
             bool resultado = false;
             mensaje = string.Empty;
@@ -125,11 +91,12 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_EditarInteres", oconexion);
-                    cmd.Parameters.AddWithValue("idinteres", obj.idinteres);
+                    SqlCommand cmd = new SqlCommand("sp_editarTest", oconexion);
+                    cmd.Parameters.AddWithValue("idtest", obj.idtest);
+
                     cmd.Parameters.AddWithValue("nombre", obj.nombre);
-                    cmd.Parameters.AddWithValue("estado", obj.estado);
-                    cmd.Parameters.AddWithValue("idCategoria_interes", obj.oCategoria_interes.idCategoria_interes);
+                    cmd.Parameters.AddWithValue("descripcion", obj.descripcion);
+                    
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -149,5 +116,7 @@ namespace CapaDatos
             }
             return resultado;
         }
+        
+
     }
 }

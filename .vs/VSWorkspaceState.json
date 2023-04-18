@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\capaPresentacionValidadorPerfiles",
+    "\\capaPresentacionValidadorPerfiles\\Controllers"
   ],
-  "SelectedNode": "\\loverSitios.sln",
+  "SelectedNode": "\\capaPresentacionValidadorPerfiles\\Controllers\\TestPersonalidadController.cs",
   "PreviewInSolutionExplorer": false
 }

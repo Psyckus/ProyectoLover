@@ -4,16 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Preferencias</h2>
+<h2>Preguntas</h2>
 
 <ol class="breadcrumb mb-4 mt-4">
-    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
-    <li class="breadcrumb-item active">Preferencias</li>
+    <li class="breadcrumb-item"><a href="index.html">Test</a></li>
+    <li class="breadcrumb-item active">Preguntas</li>
 </ol>
 
 <div class="card">
     <div class="card-header">
-        <i class="fas fa-users me-1"></i> Lista Preferencias
+        <i class="fas fa-users me-1"></i> Lista Preguntas
     </div>
     <div class="card-body">
         <div class="row">
@@ -27,9 +27,9 @@
             <thead>
                 <tr>
 
-                    <th>Nombre Preferencia</th>
-                    <th>Estado Preferencia</th>
-                    <th>Nombre Categoria</th>
+                    <th>Nombre </th>
+                    <th>Test</th>
+                    
 
                     <th></th>
                 </tr>
@@ -64,20 +64,13 @@
                     </div>
 
 
-                    <div class="col-sm-3">
-                        <div class="mb-3">
-                            <label class="form-label">Estado</label>
-                            <select id="cboestado" class="form-select">
-                                <option value="1">Activo</option>
-                                <option value="0">Inactivo</option>
-                            </select>
-                        </div>
+                    
 
-                    </div>
+                    
                     <div class="col-sm-3">
                         <div class="mb-2">
-                            <label class="form-label">Categoria</label>
-                            <select id="cboCate" class="form-select">
+                            <label class="form-label">Test</label>
+                            <select id="cboTest" class="form-select">
                             </select>
                         </div>
 
@@ -96,6 +89,7 @@
 
                 </div>
             </div>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
@@ -105,6 +99,8 @@
 </div>
 
 
+
+
 @section scripts{
     <script>
 
@@ -112,7 +108,7 @@
         var filaSeleccionada
 
         jQuery.ajax({
-            url: '@Url.Action("ListarPreferencia", "Mantenedor")',
+            url: '@Url.Action("ListarPregunta", "TestPersonalidad")',
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
@@ -128,7 +124,7 @@
             responsive: true,
             ordering: false,
             "ajax": {
-                url: '@Url.Action("ListarPreferencia", "Mantenedor")',
+                url: '@Url.Action("ListarPregunta", "TestPersonalidad")',
                 type: "GET",
                 dataType: "json"
             },
@@ -137,19 +133,9 @@
                 { "data": "nombre" },
 
 
+               
                 {
-                    "data": "estado", "render": function (valor) {
-
-                        if (valor) {
-                            return '<span class="badge rounded-pill bg-success">Activo</span>'
-                        } else {
-                            return '<span class="badge rounded-pill bg-danger">Inactivo</span>'
-                        }
-
-                    }
-                },
-                {
-                    "data": "oCategoria_interes", "render": function (data) {
+                    "data": "otest", "render": function (data) {
                         return data.nombre
                     }
                 },
@@ -165,7 +151,7 @@
             "language": { "url": "//cdn.datatables.net/plug-ins/1.13.2/i18n/es-ES.json" }
         });
            jQuery.ajax({
-                        url: '@Url.Action("ListarCaInt", "Mantenedor")',
+                        url: '@Url.Action("Listart", "TestPersonalidad")',
                         type: "GET",
                         data: null,
                         dataType: "json",
@@ -173,11 +159,11 @@
             success: function (data) {
                 console.log(data)
 
-                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cboCate");
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cboTest");
 
                 $.each(data.data, function (index, item)
                 {
-                    $("<option>").attr({ "value": item.idCategoria_interes }).text(item.nombre).appendTo("#cboCate");
+                    $("<option>").attr({ "value": item.idtest }).text(item.nombre).appendTo("#cboTest");
                 })
 
                         },
@@ -211,14 +197,14 @@
                 },
 
 
-                idCategoria_interes: {
+                idtest: {
                     required: true,
 
                 }
             },
             messages: {
                 nombre: "- El campo nombre es obligatorio",
-                idCategoria_interes: "- El campo categoria es obligatorio",
+                idtest: "- El campo test es obligatorio",
 
             },
             errorElement: "div",
@@ -231,18 +217,18 @@
 
             $("#txtid").val(0);
             $("#txtnombre").val("");
-            $("#cboCate").val($("#cboCate option:first").val());
-            $("#cboestado").val(1);
+            $("#cboTest").val($("#cboTest option:first").val());
+            
             $("#mensajeError").hide();
 
 
 
 
             if (json != null) {
-                $("#txtid").val(json.idPreferencia);
+                $("#txtid").val(json.idPreguntaTest);
                 $("#txtnombre").val(json.nombre);
-                $("#cboCate").val(json.oCategoria_interes.idCategoria_interes);
-                $("#cboestado").val(json.estado == true ? 1 : 0);
+                $("#cboTest").val(json.otest.idtest);
+                
 
 
             }
@@ -269,26 +255,26 @@
                 return;
             }
 
-            var preferencia = {
+            var pregunta = {
 
-                idPreferencia: $("#txtid").val(),
-                oCategoria_interes: {
-                    idCategoria_interes: $("#cboCate option:selected").val(),
-                    nombre: $("#cboCate option:selected").text()
+                idPreguntaTest: $("#txtid").val(),
+                otest: {
+                    idtest: $("#cboTest option:selected").val(),
+                    nombre: $("#cboTest option:selected").text()
                     },
 
                 nombre: $("#txtnombre").val(),
 
-                estado: $("#cboestado").val() == 1 ? true: false
+               
 
 
 
             }
 
             jQuery.ajax({
-                url: '@Url.Action("GuardarPreferencia", "Mantenedor")',
+                url: '@Url.Action("GuardarPregunta", "TestPersonalidad")',
                 type: "POST",
-                data: JSON.stringify({ obj: preferencia }),
+                data: JSON.stringify({ obj: pregunta }),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
@@ -296,12 +282,12 @@
 
 
                     //interes nuevo
-                    if (preferencia.idPreferencia == 0) {
+                    if (pregunta.idPreguntaTest == 0) {
 
                         if (data.resultado != 0) {
 
-                            preferencia.idPreferencia = data.resultado;
-                            tabladata.row.add(preferencia).draw(false);
+                            pregunta.idPreguntaTest = data.resultado;
+                            tabladata.row.add(pregunta).draw(false);
                             $("#FormModal").modal("hide");
 
 
@@ -316,7 +302,7 @@
                     } else {
 
                         if (data.resultado) {
-                            tabladata.row(filaSeleccionada).data(preferencia).draw(false);
+                            tabladata.row(filaSeleccionada).data(pregunta).draw(false);
                             filaSeleccionada = null;
                             $("#FormModal").modal("hide");
                         } else {

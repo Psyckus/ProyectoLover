@@ -4,122 +4,274 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Test Personalidad</h2>
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
+    <li class="breadcrumb-item active">Test Personalidad</li>
+</ol>
 
 
-@{
-    ViewBag.Title = "Servidor";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,500&display=swap"
-          rel="stylesheet" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        .container {
-            position: absolute;
-            top: 30px;
-            left: 110px;
-            max-width: 80%;
-            height: 90%;
-            margin: 20px auto;
-            padding: 20px;
-        }
-    </style>
-    <title>Principal</title>
-</head>
-<body>
-    <div class="container">
-       
-
-        <button type="button" class="btn btn-outline-success">Guardar</button>
-        <br />
-        <br />
-        <div class="container" style=" background-color: #FFFFFF">
-
-            <div class="row">
-
-                <div class="col-12 col-md-4 mt-5">
-                    <div class="card" style="width: 18rem; background-color: #ADD8E6;">
-                        <img class="card-img-top" src="~/ImgTest/test-personalidad.jpg" alt="Card image cap">
-                        <div class="card-body">
-
-                            <h5 class="card-title text-center" style="color: black;">Test de Psicologia</h5>
-                            <p class="card-text text-center" style="color: black;">
-                                Preguntas en Total: 15
-                            </p>
-                            <br />
-                            <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <div class="col-12 col-md-4 mt-5">
-                    <div class="card" style="width: 18rem; background-color: #ADD8E6;">
-                        <img class="card-img-top" src="~/ImgTest/test_de_ansiedad_de_hamilton_4143_600.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title text-center" style="color: black;">Test de Ansiedad</h5>
-                            <p class="card-text text-center" style="color: black;">
-                                Preguntas en Total: 15
-                            </p>
-                            <br />
-                            <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <div class="col-12 col-md-4 mt-5">
-                    <div class="card" style="width: 18rem; background-color: #ADD8E6;">
-                        <img class="card-img-top" src="~/ImgTest/estrella.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title text-center" style="color: black;">Test de Estrella Polar</h5>
-                            <p class="card-text text-center" style="color: black;">
-                                Preguntas en Total: 15
-                            </p>
-                            <br />
-                            <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de categorias
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirModatl(null)">Crear Nuevo</button>
             </div>
-            <br />
-            <br />
+        </div>
 
+        <hr />
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+
+                    <th>Nombre</th>
+
+                    <th>Descripción</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Categorias</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <input id="txtid" type="hidden" value="0" />
+
+
+                <form id="contenedor" class="row">
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="txtnombre" name="nombre" />
+                        </div>
+
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" class="form-control" id="txtdescripcion" name="descripcion" />
+                        </div>
+
+                    </div>
+
+                    
+
+
+                </form>
+                <!--Mensaje de alerta-->
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+            </div>
         </div>
     </div>
-</body>
-</html>
+</div>
+
+
+@section scripts{
+    <script>
+
+        var tabladata;
+        var filaSeleccionada
+
+        jQuery.ajax({
+            url: '@Url.Action("ListarTest", "TestPersonalidad")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
 
 
 
+                console.log(data)
+            }
+        })
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarTest", "TestPersonalidad")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+
+                { "data": "nombre" },
+                { "data": "descripcion" },
+
+                
+
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "90px"
+                }
+
+            ],
+            "language": { "url": "//cdn.datatables.net/plug-ins/1.13.2/i18n/es-ES.json" }
+        });
 
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        $("#contenedor").validate({
+            rules: {
 
+                nombre: {
+                    required: true
+                },
+               descripcion: {
+                    required: true
+                },
+            },
+            messages: {
+                nombre: "- El campo nombre es obligatorio",
+                descripcion: "- El campo descripcion es obligatorio"
+            },
+            errorElement: "div",
+            errorLabelContainer: ".alert-danger"
+        })
+
+
+
+        function abrirModatl(json) {
+            //campos del modal txtid es invisible
+            $("#txtid").val(0);
+            $("#txtnombre").val("");
+            $("#txtdescripcion").val("");
+            $("#mensajeError").hide();
+
+
+
+            //información obtenida de bd
+            if (json != null) {
+
+                $("#txtid").val(json.idtest);
+                $("#txtnombre").val(json.nombre);
+                $("#txtdescripcion").val(json.descripcion);
+                
+
+            }
+
+            $("#FormModal").modal("show")
+        }
+
+        $("#tabla tbody").on("click", '.btn-editar', function () {
+            filaSeleccionada = $(this).closest("tr");
+            var data = tabladata.row(filaSeleccionada).data();
+
+            abrirModatl(data)
+
+
+        })
+
+
+
+        
+        function guardar() {
+
+
+            if (!$("#contenedor").valid()) {
+                return;
+            }
+
+            var test = {
+
+                idtest: $("#txtid").val(),
+
+
+                nombre: $("#txtnombre").val(),
+                descripcion: $("#txdescripcion").val(),
+
+               
+
+
+
+            }
+
+            jQuery.ajax({
+                url: '@Url.Action("GuardarTest", "Mantenedor")',
+                type: "POST",
+                data: JSON.stringify({ obj: test }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+
+
+                    //crear nueva categoria
+                    if (test.idtest == 0) {
+
+                        if (data.resultado != 0) {
+
+                           test.idtest = data.resultado;
+                            tabladata.row.add(test).draw(false);
+                            $("#FormModal").modal("hide");
+
+
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+
+
+
+                         //Editar categoria
+                    } else {
+
+                        if (data.resultado) {
+                            tabladata.row(filaSeleccionada).data(test).draw(false);
+                            filaSeleccionada = null;
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error");
+                    $("#mensajeError").show();
+                },
+                beforeSend: function () {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "Cargando...",
+                        size:14
+                        })
+                }
+            });
+
+
+
+        }
+
+
+    </script>
+
+}

@@ -3,56 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CapaDatos;
 using CapaEntidad;
+using CapaDatos;
+
 namespace CapaNegocios
 {
-    public class CN_Interes
+    public class CN_Respuesta
     {
-        private CD_Interes objCapaDato = new CD_Interes();
+        private CD_Respuesta objCapaDato = new CD_Respuesta();
 
-        public List<interes> Listar()
+        public List<respuestaTest> Listar()
         {
             return objCapaDato.Listar();
         }
-        public List<categoria_interes> ListarCaI()
+        public List<preguntaTest> ListarP()
         {
-            return objCapaDato.ListarCaI();
+            return objCapaDato.ListarP();
         }
-        public int Registrar(interes obj, out string mensaje)
+        public int Registrar(respuestaTest obj, out string mensaje)
         {
             mensaje = string.Empty;
-            
-            if (obj.oCategoria_interes.idCategoria_interes == 0)
+
+            if (obj.opregunta.idPreguntaTest== 0)
             {
-                mensaje = "Debe ingresar un tipo de categoria";
+                mensaje = "Debe ingresar un tipo de pregunta";
             }
 
-            else if (string.IsNullOrEmpty(obj.nombre) || string.IsNullOrWhiteSpace(obj.nombre))
+            else if (string.IsNullOrEmpty(obj.respuesta) || string.IsNullOrWhiteSpace(obj.respuesta))
             {
                 mensaje = "Debe ingresar un nombre";
             }
             return objCapaDato.Registrar(obj, out mensaje);
 
 
-          }
-           
+        }
 
-        
 
-        public bool editar(interes obj, out string mensaje)
+
+
+        public bool editar(respuestaTest obj, out string mensaje)
         {
             mensaje = string.Empty;
-            if (obj.oCategoria_interes.idCategoria_interes == 0)
+            if (obj.opregunta.idPreguntaTest == 0)
             {
                 mensaje = "Debe ingresar una categoria";
             }
 
-            else if (string.IsNullOrEmpty(obj.nombre) || string.IsNullOrWhiteSpace(obj.nombre))
+            else if (string.IsNullOrEmpty(obj.respuesta) || string.IsNullOrWhiteSpace(obj.respuesta))
             {
-                mensaje = "Debe ingresar un nombre";
+                mensaje = "Debe ingresar una respuesta";
             }
-          
+
 
             if (string.IsNullOrEmpty(mensaje))
             {
