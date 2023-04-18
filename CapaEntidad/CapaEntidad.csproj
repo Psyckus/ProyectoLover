@@ -76,6 +76,7 @@
     <Compile Include="preferencia_cliente.cs" />
     <Compile Include="preguntaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="respuestaTest.cs" />
     <Compile Include="rol.cs" />
     <Compile Include="suspiro1.cs" />
     <Compile Include="suspiro2.cs" />
