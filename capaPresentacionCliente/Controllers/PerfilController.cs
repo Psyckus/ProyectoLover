@@ -317,7 +317,7 @@ namespace capaPresentacionCliente.Controllers
         [HttpGet]
         public JsonResult ObtenerDatosInteres()
         {
-            string queryStringMax = "SELECT LimiteSeleccion FROM Configuracion";
+            string queryStringMax = "SELECT LimiteSeleccion FROM Configuracion where id_configuracion = 9";
             int maxIntereses = 0;
 
             using (SqlConnection oconexion = new SqlConnection(conexion.cn))

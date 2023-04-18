@@ -365,7 +365,7 @@ namespace capaPresentacionCliente.Controllers
             cliente oCliente = new cliente();
             oCliente = new CN_Clientes().Listar().Where(u => u.idCliente == idCliente).FirstOrDefault();
             string mensaje = string.Empty;
-            bool respuesta = new CN_Clientes().Pregunta3(idCliente, file, out mensaje);
+            bool respuesta = new CN_Clientes().Pregunta3Primer(idCliente, file, out mensaje);
             if (respuesta)
             {
                 var session = HttpContext.Session;

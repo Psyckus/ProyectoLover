@@ -34,6 +34,7 @@ namespace CapaDatos
 
                     cliente.idCliente = Convert.ToInt32(reader["idCliente"]);
                     cliente.nombre = reader["nombre"].ToString();
+                    cliente.descripcion = reader["descripcion"].ToString();
                     // Obtener otros campos de cliente según sea necesario
 
                     clientesGustados.Add(cliente);

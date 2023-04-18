@@ -294,41 +294,51 @@
         }
 
 
-        function match() {
-             $.ajax({
-                type: "POST",
-                 url: '@Url.Action("mostrarMatch", "Home")',
-                 data: JSON.stringify({ cliente1: id, cliente2: id, cliente3:id }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                 success: function (data) {
-                      var obj = data.data;
-                    window.ruta = obj.idCliente;
-                     var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(window.ruta);
-                    $("#cliente2").attr("src", data)
-                    $("#nomMatch").text(obj.nombre)
+     // Variable para almacenar el intervalo
+var intervalo;
 
-
-                     if (obj.idCliente == 0) {
-
-                         console.log("Error al enviar la datos al servidor.");
-
-                     } else {
-
-                         $("#mi-modal").css("display", "block");
-
-
-                    }
-
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    console.log("Error al enviar la datos al servidor.");
-                        }
-            });
-
+function match() {
+    $.ajax({
+        type: "POST",
+        url: '@Url.Action("mostrarMatch", "Home")',
+        data: JSON.stringify({ cliente1: id, cliente2: id, cliente3:id }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var obj = data.data;
+            window.ruta = obj.idCliente;
+            var data = '@Url.Action("GetImage", "preguntasInteres")' + '?id=' + encodeURIComponent(window.ruta);
+            $("#cliente2").attr("src", data)
+            $("#nomMatch").text(obj.nombre)
+            if (obj.idCliente == 0) {
+                console.log("Error al enviar la datos al servidor.");
+            } else {
+                $("#mi-modal").css("display", "block");
+                // Detener el intervalo cuando el modal esté visible
+                clearInterval(intervalo);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("Error al enviar la datos al servidor.");
         }
+    });
+}
 
-        setInterval(match, 5000);
+// Iniciar el intervalo y guardar la variable de retorno
+intervalo = setInterval(match, 5000);
+
+// Cuando se oculta el modal, volver a iniciar el intervalo
+$("#mi-modal").on("hidden.bs.modal", function () {
+    intervalo = setInterval(match, 5000);
+});
+
+// Controlador de eventos de clic del botón "Seguir desplazando"
+        $("#miDiv").on("click", function() {
+    // Volver a iniciar el intervalo
+    intervalo = setInterval(match, 5000);
+});
+
+
 
 
 
@@ -514,7 +524,7 @@
 
         }
 
-        
+
 
 
 
