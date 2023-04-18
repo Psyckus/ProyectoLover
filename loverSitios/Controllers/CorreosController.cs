@@ -12,7 +12,7 @@ namespace loverSitios.Controllers
 {
     public class CorreosController : Controller
     {
-        private tiusr3pl_loverEntities2 db = new tiusr3pl_loverEntities2();
+        private tiusr3pl_loverEntities3 db = new tiusr3pl_loverEntities3();
 
 
         public ActionResult Servidor()

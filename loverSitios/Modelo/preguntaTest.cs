@@ -14,10 +14,18 @@ namespace loverSitios.Modelo
     
     public partial class preguntaTest
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public preguntaTest()
+        {
+            this.respuestaTest = new HashSet<respuestaTest>();
+        }
+    
         public int idpreguntaTest { get; set; }
         public Nullable<int> idTest { get; set; }
         public string nombre { get; set; }
     
         public virtual test test { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<respuestaTest> respuestaTest { get; set; }
     }
 }
