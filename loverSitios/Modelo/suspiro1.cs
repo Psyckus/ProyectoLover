@@ -15,8 +15,8 @@ namespace loverSitios.Modelo
     public partial class suspiro1
     {
         public int idSuspiro { get; set; }
-        public Nullable<int> cliente2 { get; set; }
         public Nullable<int> cliente1 { get; set; }
+        public Nullable<int> cliente2 { get; set; }
         public Nullable<int> idEstado { get; set; }
         public Nullable<System.DateTime> fechaRegistro { get; set; }
     

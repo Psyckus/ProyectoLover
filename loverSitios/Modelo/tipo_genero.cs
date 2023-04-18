@@ -18,6 +18,7 @@ namespace loverSitios.Modelo
         public tipo_genero()
         {
             this.generoCliente = new HashSet<generoCliente>();
+            this.GeneroPreferencia = new HashSet<GeneroPreferencia>();
         }
     
         public int idtipoGenero { get; set; }
@@ -25,5 +26,7 @@ namespace loverSitios.Modelo
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<generoCliente> generoCliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GeneroPreferencia> GeneroPreferencia { get; set; }
     }
 }
