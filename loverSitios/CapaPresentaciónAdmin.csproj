@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>loverSitios</RootNamespace>
     <AssemblyName>loverSitios</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -167,6 +167,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
     <Compile Include="Controllers\ConfCorreosController.cs" />
+    <Compile Include="Controllers\ConfiguracionsController.cs" />
     <Compile Include="Controllers\CorreosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,10 +182,19 @@
     <Compile Include="Modelo\cliente.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\codigo_autenticacion.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\ConfCorreos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Configuracion.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Correos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\EdadCliente.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\estado.cs">
@@ -196,6 +206,9 @@
     <Compile Include="Modelo\generoCliente.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\GeneroPreferencia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\interes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -205,13 +218,16 @@
     <Compile Include="Modelo\match1.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\match2.cs">
+    <Compile Include="Modelo\matches.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\mensaje.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Mensajes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\MensajesConversaciones.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Model1.Context.cs">
@@ -239,6 +255,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\preguntaTest.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\respuestaTest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\rol.cs">
@@ -422,6 +441,11 @@
     <Content Include="Views\Correos\Edit.cshtml" />
     <Content Include="Views\Correos\Index.cshtml" />
     <Content Include="Views\Correos\Servidor.cshtml" />
+    <Content Include="Views\Configuracions\Create.cshtml" />
+    <Content Include="Views\Configuracions\Delete.cshtml" />
+    <Content Include="Views\Configuracions\Details.cshtml" />
+    <Content Include="Views\Configuracions\Edit.cshtml" />
+    <Content Include="Views\Configuracions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,6 +17,7 @@ namespace loverSitios.Modelo
         public int idfoto { get; set; }
         public Nullable<int> idCliente { get; set; }
         public byte[] rutaFoto { get; set; }
+        public Nullable<bool> esPrincipal { get; set; }
     
         public virtual cliente cliente { get; set; }
     }

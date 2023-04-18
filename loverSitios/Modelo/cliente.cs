@@ -17,13 +17,16 @@ namespace loverSitios.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public cliente()
         {
+            this.codigo_autenticacion = new HashSet<codigo_autenticacion>();
             this.foto = new HashSet<foto>();
             this.generoCliente = new HashSet<generoCliente>();
             this.interes_cliente = new HashSet<interes_cliente>();
             this.match1 = new HashSet<match1>();
             this.match11 = new HashSet<match1>();
-            this.match2 = new HashSet<match2>();
-            this.match21 = new HashSet<match2>();
+            this.matches = new HashSet<matches>();
+            this.matches1 = new HashSet<matches>();
+            this.MensajesConversaciones = new HashSet<MensajesConversaciones>();
+            this.MensajesConversaciones1 = new HashSet<MensajesConversaciones>();
             this.preferencia_cliente = new HashSet<preferencia_cliente>();
             this.suspiro1 = new HashSet<suspiro1>();
             this.suspiro11 = new HashSet<suspiro1>();
@@ -31,6 +34,10 @@ namespace loverSitios.Modelo
             this.suspiro21 = new HashSet<suspiro2>();
             this.testUser = new HashSet<testUser>();
             this.ubicacion = new HashSet<ubicacion>();
+            this.EdadCliente = new HashSet<EdadCliente>();
+            this.GeneroPreferencia = new HashSet<GeneroPreferencia>();
+            this.Mensajes = new HashSet<Mensajes>();
+            this.Mensajes1 = new HashSet<Mensajes>();
         }
     
         public int idCliente { get; set; }
@@ -45,6 +52,8 @@ namespace loverSitios.Modelo
         public Nullable<System.DateTime> fechaRegistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<codigo_autenticacion> codigo_autenticacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<foto> foto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<generoCliente> generoCliente { get; set; }
@@ -55,9 +64,13 @@ namespace loverSitios.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<match1> match11 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<match2> match2 { get; set; }
+        public virtual ICollection<matches> matches { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<match2> match21 { get; set; }
+        public virtual ICollection<matches> matches1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MensajesConversaciones> MensajesConversaciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MensajesConversaciones> MensajesConversaciones1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<preferencia_cliente> preferencia_cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -72,5 +85,13 @@ namespace loverSitios.Modelo
         public virtual ICollection<testUser> testUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ubicacion> ubicacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EdadCliente> EdadCliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GeneroPreferencia> GeneroPreferencia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mensajes> Mensajes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mensajes> Mensajes1 { get; set; }
     }
 }

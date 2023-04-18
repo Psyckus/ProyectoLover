@@ -15,8 +15,12 @@ namespace loverSitios.Modelo
     public partial class Mensajes
     {
         public int Id { get; set; }
-        public string Sender { get; set; }
-        public string Message { get; set; }
-        public Nullable<System.DateTime> Timestamp { get; set; }
+        public Nullable<int> idCliente1 { get; set; }
+        public Nullable<int> idCliente2 { get; set; }
+        public string Mensaje { get; set; }
+        public Nullable<System.DateTime> FechaHora { get; set; }
+    
+        public virtual cliente cliente { get; set; }
+        public virtual cliente cliente1 { get; set; }
     }
 }
