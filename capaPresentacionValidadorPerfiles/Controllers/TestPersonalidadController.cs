@@ -60,6 +60,44 @@ namespace capaPresentacionValidadorPerfiles.Controllers
         {
             return View();
         }
+
+
+
+        [HttpGet]
+        public JsonResult ListarRes()
+        {
+
+            List<respuestaTest> oLista = new List<respuestaTest>();
+            oLista = new CN_Respuesta().Listar();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListarP()
+        {
+
+            List<preguntaTest> oLista = new List<preguntaTest>();
+            oLista = new CN_Respuesta().ListarP();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GuardarRes(respuestaTest obj)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (obj.id_respuestaTest == 0)
+            {
+                resultado = new CN_Respuesta().Registrar(obj, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Respuesta().editar(obj, out mensaje);
+            }
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+
+
+        }
         [HttpGet]
         public JsonResult ListarTest()
         {

@@ -70,6 +70,7 @@
     <Compile Include="CD_Interes.cs" />
     <Compile Include="CD_Preferencias.cs" />
     <Compile Include="CD_Preguntas.cs" />
+    <Compile Include="CD_Respuesta.cs" />
     <Compile Include="CD_Test.cs" />
     <Compile Include="CD_Usuarios.cs" />
     <Compile Include="conexion.cs" />

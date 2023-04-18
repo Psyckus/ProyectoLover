@@ -1,19 +1,20 @@
 ﻿
 @{
-    ViewBag.Title = "preferencia";
+    ViewBag.Title = "interes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Preguntas</h2>
+<h2>Respuestas</h2>
+
 
 <ol class="breadcrumb mb-4 mt-4">
     <li class="breadcrumb-item"><a href="index.html">Test</a></li>
-    <li class="breadcrumb-item active">Preguntas</li>
+    <li class="breadcrumb-item active">Respuestas</li>
 </ol>
 
 <div class="card">
     <div class="card-header">
-        <i class="fas fa-users me-1"></i> Lista Preguntas
+        <i class="fas fa-users me-1"></i> Lista Intereses
     </div>
     <div class="card-body">
         <div class="row">
@@ -27,9 +28,9 @@
             <thead>
                 <tr>
 
-                    <th>Nombre </th>
-                    <th>Test</th>
+                    <th>Respuesta</th>
                     
+                    <th>Pregunta</th>
 
                     <th></th>
                 </tr>
@@ -45,7 +46,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Preferencias</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Intereses</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -57,20 +58,18 @@
 
                     <div class="col-sm-3">
                         <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="txtnombre" name="nombre" />
+                            <label class="form-label">Respuesta</label>
+                            <input type="text" class="form-control" id="txtrespuesta" name="respuesta" />
                         </div>
 
                     </div>
 
 
                     
-
-                    
                     <div class="col-sm-3">
                         <div class="mb-2">
-                            <label class="form-label">Test</label>
-                            <select id="cboTest" class="form-select">
+                            <label class="form-label">Pregunta</label>
+                            <select id="cboP" class="form-select">
                             </select>
                         </div>
 
@@ -89,7 +88,6 @@
 
                 </div>
             </div>
-            
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
@@ -99,8 +97,6 @@
 </div>
 
 
-
-
 @section scripts{
     <script>
 
@@ -108,7 +104,7 @@
         var filaSeleccionada
 
         jQuery.ajax({
-            url: '@Url.Action("ListarPregunta", "TestPersonalidad")',
+            url: '@Url.Action("ListarRes", "TestPersonalidad")',
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
@@ -124,18 +120,18 @@
             responsive: true,
             ordering: false,
             "ajax": {
-                url: '@Url.Action("ListarPregunta", "TestPersonalidad")',
+                url: '@Url.Action("ListarRes", "TestPersonalidad")',
                 type: "GET",
                 dataType: "json"
             },
             "columns": [
 
-                { "data": "nombre" },
+                { "data": "respuesta" },
 
 
-               
+                
                 {
-                    "data": "otest", "render": function (data) {
+                    "data": "opregunta", "render": function (data) {
                         return data.nombre
                     }
                 },
@@ -151,7 +147,7 @@
             "language": { "url": "//cdn.datatables.net/plug-ins/1.13.2/i18n/es-ES.json" }
         });
            jQuery.ajax({
-                        url: '@Url.Action("Listart", "TestPersonalidad")',
+                        url: '@Url.Action("ListarP", "TestPersonalidad")',
                         type: "GET",
                         data: null,
                         dataType: "json",
@@ -159,11 +155,11 @@
             success: function (data) {
                 console.log(data)
 
-                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cboTest");
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cboP");
 
                 $.each(data.data, function (index, item)
                 {
-                    $("<option>").attr({ "value": item.idtest }).text(item.nombre).appendTo("#cboTest");
+                    $("<option>").attr({ "value": item.idPreguntaTest }).text(item.nombre).appendTo("#cboP");
                 })
 
                         },
@@ -192,19 +188,19 @@
          $("#contenedor").validate({
             rules: {
 
-                nombre: {
+                respuesta: {
                     required: true
                 },
 
 
-                idtest: {
+                 idPreguntaTest: {
                     required: true,
 
                 }
             },
             messages: {
-                nombre: "- El campo nombre es obligatorio",
-                idtest: "- El campo test es obligatorio",
+                respuesta: "- El campo respuesta es obligatorio",
+                idPreguntaTest: "- El campo pregunta es obligatorio",
 
             },
             errorElement: "div",
@@ -216,8 +212,8 @@
         function abrirModatl(json) {
 
             $("#txtid").val(0);
-            $("#txtnombre").val("");
-            $("#cboTest").val($("#cboTest option:first").val());
+            $("#txtrespuesta").val("");
+            $("#cboP").val($("#cboP option:first").val());
             
             $("#mensajeError").hide();
 
@@ -225,9 +221,9 @@
 
 
             if (json != null) {
-                $("#txtid").val(json.idPreguntaTest);
-                $("#txtnombre").val(json.nombre);
-                $("#cboTest").val(json.otest.idtest);
+                $("#txtid").val(json.id_respuestaTest);
+                $("#txtnombre").val(json.respuesta);
+                $("#cboP").val(json.opregunta.idPreguntaTest);
                 
 
 
@@ -255,15 +251,15 @@
                 return;
             }
 
-            var pregunta = {
+            var respuesta = {
 
-                idPreguntaTest: $("#txtid").val(),
-                otest: {
-                    idtest: $("#cboTest option:selected").val(),
-                    nombre: $("#cboTest option:selected").text()
+                id_respuestaTest: $("#txtid").val(),
+                opregunta: {
+                    idPreguntaTest: $("#cboP option:selected").val(),
+                    nombre: $("#cboP option:selected").text()
                     },
 
-                nombre: $("#txtnombre").val(),
+                respuesta: $("#txtrespuesta").val(),
 
                
 
@@ -272,9 +268,9 @@
             }
 
             jQuery.ajax({
-                url: '@Url.Action("GuardarPregunta", "TestPersonalidad")',
+                url: '@Url.Action("GuardarRes", "TestPersonalidad")',
                 type: "POST",
-                data: JSON.stringify({ obj: pregunta }),
+                data: JSON.stringify({ obj: respuesta }),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
@@ -282,12 +278,12 @@
 
 
                     //interes nuevo
-                    if (pregunta.idPreguntaTest == 0) {
+                    if (respuesta.id_respuestaTest == 0) {
 
                         if (data.resultado != 0) {
 
-                            pregunta.idPreguntaTest = data.resultado;
-                            tabladata.row.add(pregunta).draw(false);
+                            respuesta.id_respuestaTest = data.resultado;
+                            tabladata.row.add(respuesta).draw(false);
                             $("#FormModal").modal("hide");
 
 
@@ -302,7 +298,7 @@
                     } else {
 
                         if (data.resultado) {
-                            tabladata.row(filaSeleccionada).data(pregunta).draw(false);
+                            tabladata.row(filaSeleccionada).data(respuesta).draw(false);
                             filaSeleccionada = null;
                             $("#FormModal").modal("hide");
                         } else {
