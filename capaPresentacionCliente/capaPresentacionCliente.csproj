@@ -411,6 +411,7 @@
     <Content Include="Content\StylesJona\Editperfil.css" />
     <Content Include="Content\StylesJona\estilosBotones.css" />
     <Content Include="Content\StylesJona\Modal.css" />
+    <Content Include="Content\StylesJona\Preferencias.css" />
     <Content Include="Content\StylesJona\Pregunta1.css" />
     <Content Include="Content\StylesJona\pregunta1p.css" />
     <Content Include="Content\StylesJona\Pregunta4.css" />

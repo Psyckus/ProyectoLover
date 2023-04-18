@@ -13,10 +13,10 @@ namespace loverSitios.Modelo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class tiusr3pl_loverEntities2 : DbContext
+    public partial class tiusr3pl_loverEntities3 : DbContext
     {
-        public tiusr3pl_loverEntities2()
-            : base("name=tiusr3pl_loverEntities2")
+        public tiusr3pl_loverEntities3()
+            : base("name=tiusr3pl_loverEntities3")
         {
         }
     
@@ -28,21 +28,27 @@ namespace loverSitios.Modelo
         public virtual DbSet<categoria_interes> categoria_interes { get; set; }
         public virtual DbSet<categoria_preferencia> categoria_preferencia { get; set; }
         public virtual DbSet<cliente> cliente { get; set; }
+        public virtual DbSet<codigo_autenticacion> codigo_autenticacion { get; set; }
         public virtual DbSet<ConfCorreos> ConfCorreos { get; set; }
+        public virtual DbSet<Configuracion> Configuracion { get; set; }
         public virtual DbSet<Correos> Correos { get; set; }
+        public virtual DbSet<EdadCliente> EdadCliente { get; set; }
         public virtual DbSet<estado> estado { get; set; }
         public virtual DbSet<foto> foto { get; set; }
         public virtual DbSet<generoCliente> generoCliente { get; set; }
+        public virtual DbSet<GeneroPreferencia> GeneroPreferencia { get; set; }
         public virtual DbSet<interes> interes { get; set; }
         public virtual DbSet<interes_cliente> interes_cliente { get; set; }
         public virtual DbSet<match1> match1 { get; set; }
-        public virtual DbSet<match2> match2 { get; set; }
+        public virtual DbSet<matches> matches { get; set; }
         public virtual DbSet<mensaje> mensaje { get; set; }
         public virtual DbSet<Mensajes> Mensajes { get; set; }
+        public virtual DbSet<MensajesConversaciones> MensajesConversaciones { get; set; }
         public virtual DbSet<ModEmparejamiento> ModEmparejamiento { get; set; }
         public virtual DbSet<preferencia> preferencia { get; set; }
         public virtual DbSet<preferencia_cliente> preferencia_cliente { get; set; }
         public virtual DbSet<preguntaTest> preguntaTest { get; set; }
+        public virtual DbSet<respuestaTest> respuestaTest { get; set; }
         public virtual DbSet<rol> rol { get; set; }
         public virtual DbSet<suspiro1> suspiro1 { get; set; }
         public virtual DbSet<suspiro2> suspiro2 { get; set; }
