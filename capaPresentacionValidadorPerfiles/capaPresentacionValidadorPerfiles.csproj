@@ -658,6 +658,7 @@
     <Content Include="Views\Acceso\Index.cshtml" />
     <Content Include="Views\Acceso\CambiarClave.cshtml" />
     <Content Include="Views\Acceso\Reestablecer.cshtml" />
+    <Content Include="Views\TestPersonalidad\Preguntas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

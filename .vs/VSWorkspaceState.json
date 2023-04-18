@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\capaPresentacionCliente",
+    "\\capaPresentacionCliente\\Views",
+    "\\capaPresentacionCliente\\Views\\Home"
   ],
-  "SelectedNode": "\\loverSitios.sln",
+  "SelectedNode": "\\capaPresentacionCliente\\Views\\Home\\Principal.cshtml",
   "PreviewInSolutionExplorer": false
 }
